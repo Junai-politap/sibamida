@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Opd;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pegawai;
 use Illuminate\Http\Request;
 
 class PegawaiController extends Controller
@@ -12,7 +13,8 @@ class PegawaiController extends Controller
      */
     public function index()
     {
-        return view('opd.pegawai.index');
+        $data['list_pegawai'] = Pegawai::all();
+        return view('opd.pegawai.index', $data);
     }
 
     /**
@@ -28,7 +30,19 @@ class PegawaiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pegawai = new Pegawai();
+        $pegawai->nama=request('nama');
+        $pegawai->username=request('username');
+        $pegawai->jabatan=request('jabatan');
+        $pegawai->nik=request('nik');
+        $pegawai->nip=request('nip');
+        $pegawai->nomor_hp=request('nomor_hp');
+        $pegawai->password=request('password');
+        $pegawai->handleUploadFoto();
+        $pegawai->save();
+
+        return redirect('opd/pegawai')->with('success', ' Data Berhasil Disimpan');
+
     }
 
     /**
