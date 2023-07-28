@@ -34,30 +34,48 @@ class OpdController extends Controller
 
         $opd->save();
 
-        return redirect('admin/opd');
+        return redirect('admin/opd')->with('success', 'Data Berhasil Di Simpan');
     }
 
     
-    public function show(string $id)
+    public function show($opd)
     {
-        //
+        $data['opd'] = Opd::find($opd);
+
+        return view('admin.opd.show', $data);
     }
 
     
-    public function edit(string $id)
+    public function edit($opd)
     {
-        //
+        $data['opd'] = Opd::find($opd);
+
+        return view('admin.opd.edit', $data);
     }
 
     
-    public function update(Request $request, string $id)
+    public function update($opd)
     {
-        //
+        $opd = Opd::find($opd);
+        $opd->nama_opd = request('nama_opd');
+        $opd->username = request('username');
+
+        if(request('password')) $opd->password = request('password');
+
+        $opd->alamat = request('alamat');
+        $opd->no_telp = request('no_telp');
+        $opd->handleUploadLogo();
+
+        $opd->save();
+
+        return redirect('admin/opd')->with('warning', 'Data Berhasil Di Simpan');
     }
 
     
-    public function destroy(string $id)
+    public function destroy($opd)
     {
-        //
+        Opd::destroy($opd);
+
+        return back()->with('danger', 'Data Berhasil Di Hapus');
     }
 }

@@ -4,22 +4,22 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <x-button.back-button url="admin/opd" />
+                        <x-button.back-button url="admin/admin" />
                         <h3 class="card-title" style="font-family: bold">
-                            <h2 class="text-center">Edit Data OPD</h2></h3>
+                            <h2 class="text-center">Edit Data Suoer Admin</h2></h3>
                     </div>
-                    <form action="{{ url('admin/opd', $opd->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ url('admin/admin', $admin->id) }}" method="POST" enctype="multipart/form-data">
                         @method("PUT")
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
-                                <label> Nama OPD</label>
-                                <input type="text" class="form-control" name="nama_opd" value="{{ $opd->nama_opd }}">
+                                <label> Nama </label>
+                                <input type="text" class="form-control" name="nama" value="{{ $admin->nama }}">
                             </div>
 
                             <div class="form-group">
                                 <label>Username</label>
-                                <input type="text" class="form-control" name="username" value="{{ $opd->username }}">
+                                <input type="text" class="form-control" name="username" value="{{ $admin->username }}">
                             </div>
 
                             <div class="form-group">
@@ -27,25 +27,16 @@
                                 <input type="password" class="form-control" name="password">
                             </div>
 
+                           
                             <div class="form-group">
-                                <label>Alamat</label>
-                                <input type="text" class="form-control" name="alamat" value="{{ $opd->alamat }}">
-                            </div>
-
-                            <div class="form-group">
-                                <label>Nomor Telp</label>
-                                <input type="text" class="form-control" name="no_telp" value="{{ $opd->no_telp }}">
-                            </div>
-
-                            <div class="form-group">
-                                <label>Logo OPD</label>
+                                <label>Poto</label>
                                 <div class="row">
                                     <div class="col-md-6">
 
-                                        <img src="{{ url("public/$opd->logo") }}" style="width:50%; ">
+                                        <img src="{{ url("public/$admin->poto") }}" style="width:50%; ">
                                     </div>
                                     <div class="col-md-6">
-                                        <input type="file" class="form-control" name="logo" accept=".png, .jpg, .jpeg" value="{{ $opd->logo }}">
+                                        <input type="file" class="form-control" name="poto" accept=".png, .jpg, .jpeg" value="{{ $admin->poto }}">
 
                                     </div>
                                 </div>

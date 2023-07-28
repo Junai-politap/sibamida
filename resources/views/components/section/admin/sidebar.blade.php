@@ -37,13 +37,22 @@
 
                 <li class="nav-item">
                     <a href="{{ url('admin/opd') }}" class="nav-link">
-                        <i class="nav-icon fas fa-landmark"></i>
+                        <i class="nav-icon fas fa-university"></i>
                         <p>
                             Data OPD
                         </p>
                     </a>
                 </li>
                 
+                <li class="nav-item">
+                    <a href="{{ url('admin/admin') }}" class="nav-link">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>
+                            Data Admin
+                        </p>
+                    </a>
+                </li>
+
                 <li class="nav-item">
                     <a href="{{ url('admin/pegawai') }}" class="nav-link">
                         <i class="nav-icon fas fa-users"></i>
@@ -52,6 +61,8 @@
                         </p>
                     </a>
                 </li>
+
+               
                
                 <li class="nav-item">
                     <a href="#" class="nav-link">

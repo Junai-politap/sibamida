@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\User;
-use App\Models\Mahasiswa;
+use App\Models\Opd;
+use App\Models\Admin;
 return [
 
     /*
@@ -43,9 +43,14 @@ return [
             'provider' => 'users',
         ],
 
-        'mahasiswa' => [
+        'opd' => [
             'driver' => 'session',
-            'provider' => 'mahasiswa',
+            'provider' => 'opd',
+        ],
+
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admin',
         ],
     ],
 
@@ -72,9 +77,14 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        'mahasiswa' => [
+        'opd' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Mahasiswa::class,
+            'model' => App\Models\Opd::class,
+        ],
+
+        'admin' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
         ],
 
         // 'users' => [
