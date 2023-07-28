@@ -6,5 +6,5 @@ use App\Models\Model;
 
 class Opd extends Model
 {
-    protected $table = "opd" ;
+    protected $table = "opd";
 }

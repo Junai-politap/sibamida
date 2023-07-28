@@ -4,13 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Opd;
 
 class OpdController extends Controller
 {
     
     public function index()
     {
-        return view('admin.opd.index');
+        $data['list_opd'] = Opd::all();
+        return view('admin.opd.index', $data);
     }
 
     
