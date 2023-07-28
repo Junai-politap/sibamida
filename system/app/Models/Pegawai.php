@@ -9,22 +9,11 @@ class Pegawai extends ModelAuthenticate
 {
     protected $table="pegawai";
 
-    public static function boot()
-    {
-        parent::boot();
 
-        static::creating(function ($item) {
-            $item->id = (string) Str::orderedUuid();
-        });
-    }
-
-    public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = bcrypt($value);
-    }
 
     function handleUploadFoto()
     {
+        $this->handleDelete();
         if (request()->hasFile('foto')) {
             $foto = request()->file('foto');
             $destination = "pegawai";
@@ -32,7 +21,7 @@ class Pegawai extends ModelAuthenticate
             $filename = time() . "-"  . $randomStr . "."  . $foto->extension();
             $url = $foto->storeAs($destination, $filename);
             $this->foto = "app/" . $url;
-
+            $this->save();
 
         }
     }

@@ -23,23 +23,24 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($list_pegawai as $pegawai)
-
-                                    <tr>
-                                        <td>1</td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <x.button.info-button url="opd/pegawai"
-                                                    id="{{ $pegawai->id }}" />
-                                                <x.button.edit-button url="opd/pegawai"
-                                                    id="{{ $pegawai->id }}" />
-                                                <x.button.delete-button url="opd/pegawai"
-                                                    id="{{ $pegawai->id }}" />
-                                            </div>
-                                        </td>
-                                        <td>Win sonn</td>
-                                        <td> wkw</td>
-                                        <td>fsdhaf</td>
-                                    </tr>
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <x-button.info-button url="opd/pegawai" id="{{ $pegawai->id }}" />
+                                                    <x-button.edit-button url="opd/pegawai" id="{{ $pegawai->id }}" />
+                                                    <x-button.delete-button url="opd/pegawai"
+                                                        id="{{ $pegawai->id }}" />
+                                                </div>
+                                            </td>
+                                            <td>{{ $pegawai->nama }}</td>
+                                            <td>{{ $pegawai->username }}</td>
+                                            <td>
+                                                <img src="{{ url("public/$pegawai->pegawai") }}"
+                                                    style="width:40%; height:40%;"
+                                                    onerror="this.src='https://bootdey.com/img/Content/avatar/avatar7.png';">
+                                            </td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>
