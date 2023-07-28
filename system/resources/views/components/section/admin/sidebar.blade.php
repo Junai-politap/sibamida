@@ -25,7 +25,7 @@
                 data-accordion="false">
 
                 <li class="nav-item menu-open">
-                    <a href="#" class="nav-link">
+                    <a href="{{ url('admin') }}" class="nav-link">
                         <i class="nav-icon fas fa-home"></i>
                         <p>
                             Dashboard
@@ -34,22 +34,25 @@
                     </a>
 
                 </li>
+
                 <li class="nav-item">
-                    <a href="pages/widgets.html" class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
-                        <p>
-                            Data Pegawai
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="pages/widgets.html" class="nav-link">
+                    <a href="{{ url('admin/opd') }}" class="nav-link">
                         <i class="nav-icon fas fa-landmark"></i>
                         <p>
                             Data OPD
                         </p>
                     </a>
                 </li>
+                
+                <li class="nav-item">
+                    <a href="{{ url('admin/pegawai') }}" class="nav-link">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            Data Pegawai
+                        </p>
+                    </a>
+                </li>
+               
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-database"></i>
@@ -60,19 +63,19 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ url('admin/ruangan') }}" class="nav-link">
                                 <i class="fa fa-plus nav-icon"></i>
                                 <p>Data Ruangan</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ url('admin/kategori') }}" class="nav-link">
                                 <i class="fa fa-plus nav-icon"></i>
                                 <p>Data Kategori Aset</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ url('admin/aset') }}" class="nav-link">
                                 <i class="fa fa-plus nav-icon"></i>
                                 <p>Data Aset</p>
                             </a>
