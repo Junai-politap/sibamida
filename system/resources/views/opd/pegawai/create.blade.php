@@ -11,26 +11,27 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form>
+                        <form action="{{ url('opd/pegawai') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputText">Nama</label>
-                                    <input type="text" class="form-control"
-                                        placeholder="Masukkan Nama Pegawai">
+                                    <input type="text" class="form-control" placeholder="Masukkan Nama Pegawai"
+                                        name="nama">
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Username</label>
                                             <input type="text" class="form-control"
-                                                placeholder="Masukkan Username Pegawai">
+                                                placeholder="Masukkan Username Pegawai" name="username">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Jabatan</label>
                                             <input type="text" class="form-control"
-                                                placeholder="Masukkan Jabatan Pegawai">
+                                                placeholder="Masukkan Jabatan Pegawai" name="jabatan">
                                         </div>
                                     </div>
                                 </div>
@@ -40,14 +41,14 @@
                                         <div class="form-group">
                                             <label for="exampleInputText">NIK</label>
                                             <input type="text" class="form-control"
-                                                placeholder="Masukkan NIK Pegawai">
+                                                placeholder="Masukkan NIK Pegawai" name="nik">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">NIP</label>
                                             <input type="text" class="form-control"
-                                                placeholder="Masukkan NIP Pegawai">
+                                                placeholder="Masukkan NIP Pegawai" name="nip">
                                         </div>
                                     </div>
                                 </div>
@@ -57,14 +58,14 @@
                                         <div class="form-group">
                                             <label for="exampleInputText">Alamat</label>
                                             <input type="text" class="form-control"
-                                                placeholder="Masukkan Alamat Pegawai">
+                                                placeholder="Masukkan Alamat Pegawai" name="alamat">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nomor Handphone</label>
                                             <input type="text" class="form-control"
-                                                placeholder="Masukkan Nomor Handphone Pegawai">
+                                                placeholder="Masukkan Nomor Handphone Pegawai" name="nomor_hp">
                                         </div>
                                     </div>
                                 </div>
@@ -74,26 +75,26 @@
                                         <div class="form-group">
                                             <label for="exampleInputText">Foto</label>
                                             <input type="file" class="form-control"
-                                                placeholder="Masukkan Foto Pegawai">
+                                                placeholder="Masukkan Foto Pegawai" name="foto">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputPassword">Password</label>
                                             <input type="password" class="form-control"
-                                                placeholder="Masukkan Password Pegawai">
+                                                placeholder="Masukkan Password Pegawai" name="password">
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- /.card-body -->
+
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary float-right">Simpan</button>
+                            </div>
                         </form>
                     </div>
-                    <!-- /.card-body -->
-
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-primary float-right">Simpan</button>
-                    </div>
-                    </form>
                 </div>
                 <!-- /.card -->
 
