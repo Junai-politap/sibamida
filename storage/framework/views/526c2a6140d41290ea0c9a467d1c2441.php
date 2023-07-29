@@ -1,0 +1,2 @@
+<a href="<?php echo e(url($url)); ?>" class="btn btn-primary btn-xs"><span class="fa fa-arrow-left"></span> Kembali</a>
+<?php /**PATH C:\laragon\www\sibamida\resources\views/components/button/back-button.blade.php ENDPATH**/ ?>

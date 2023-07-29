@@ -52,19 +52,19 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="ruangan" class="nav-link">
                                 <i class="fa fa-plus nav-icon"></i>
                                 <p>Data Ruangan</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="kategori" class="nav-link">
                                 <i class="fa fa-plus nav-icon"></i>
                                 <p>Data Kategori Aset</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="aset" class="nav-link">
                                 <i class="fa fa-plus nav-icon"></i>
                                 <p>Data Aset</p>
                             </a>

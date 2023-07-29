@@ -7,4 +7,9 @@ use App\Models\Model;
 class Kategori extends Model
 {
     protected $table="kategori";
+
+    public function Aset()
+    {
+        return $this->belongsTo(Aset::class, 'id');
+    }
 }
