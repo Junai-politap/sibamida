@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [OpdController::class, 'index']);
+Route::post('riwayat', [AsetController::class, 'riwayat']);
+
+Route::get('/delete-riwayat/{riwayat}', [AsetController::class, 'hapus']);
 Route::resource('pegawai', PegawaiController::class);
 Route::resource('ruangan', RuanganController::class);
 Route::resource('kategori', KategoriController::class);

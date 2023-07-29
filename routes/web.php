@@ -26,6 +26,7 @@ Route::prefix('staff-administrasi')->group(function(){
     include "_/staff_administrasi.php";
 });
 
+
 Route::get('/', [AuthController::class, 'login']);
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::post('login', [AuthController::class, 'LoginProses']);

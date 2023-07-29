@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Riwayat;
 use Illuminate\Support\Str;
 use App\Models\ModelAuthenticate;
 
@@ -9,7 +10,10 @@ class Pegawai extends ModelAuthenticate
 {
     protected $table="pegawai";
 
-
+    public function Riwayat()
+    {
+        return $this->belongsTo(Riwayat::class, 'id');
+    }
 
     function handleUploadFoto()
     {
