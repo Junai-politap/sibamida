@@ -16,13 +16,14 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Aksi</th>
+                                        <th>NIP / NIK</th>
                                         <th>Nama Pegawai</th>
-                                        <th>Username</th>
-                                        <th>Foto</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($list_pegawai as $pegawai)
+                                    @if ( Auth::guard('opd')->user()->id == $pegawai->id_opd)
+                                    
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
@@ -33,14 +34,16 @@
                                                         id="{{ $pegawai->id }}" />
                                                 </div>
                                             </td>
-                                            <td>{{ $pegawai->nama }}</td>
-                                            <td>{{ $pegawai->username }}</td>
-                                            <td class="text-center" style="width: 50%" >
-                                                <img src="{{ url("public/$pegawai->foto") }}"
-                                                    style="width:40%; height:40%;"
-                                                    onerror="this.src='https://bootdey.com/img/Content/avatar/avatar7.png';">
+                                            <td>
+                                                NIP : {{ $pegawai->nip }}
+                                                <br>
+                                                NIK : {{ $pegawai->nik }}
                                             </td>
+                                            <td>{{ $pegawai->nama }}</td>
+
                                         </tr>
+                                            
+                                    @endif
                                     @endforeach
                                 </tbody>
                             </table>

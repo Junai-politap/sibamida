@@ -22,6 +22,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($list_ruangan as $ruangan)
+                                    @if ( Auth::guard('opd')->user()->id == $ruangan->id_opd)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
@@ -35,6 +36,7 @@
                                             <td>{{ $ruangan->kode_ruangan }}</td>
                                             <td>{{ $ruangan->nama_ruangan }}</td>
                                         </tr>
+                                        @endif
                                     @endforeach
                                 </tbody>
                             </table>

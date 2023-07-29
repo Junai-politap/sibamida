@@ -21,7 +21,7 @@
                                     <th class="text-center">Aksi</th>
                                     <th class="text-center">Nama OPD</th>
                                     <th class="text-center">Alamat</th>
-                                    <th class="text-center">Logo</th>
+                                    <th class="text-center">Jumlah Pegawai</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -38,7 +38,11 @@
                                         <td class="text-center">{{ $opd->nama_opd }}</td>
                                         <td class="text-center">{{ $opd->alamat }}</td>
                                         <td class="text-center" style="width: 20%">
-                                            <img src="{{ url("public/$opd->logo") }}" style="width:30%; height:30%;" onerror="this.src='https://bootdey.com/img/Content/avatar/avatar7.png';">
+                                            @foreach ($list_pegawai as $pegawai)
+                                                {{ $data_pegawai->filter(function ($q) use ($opd) {
+                                                        return $opd->id == $q->id_opd;
+                                                    })->count('id_opd') }}
+                                            @endforeach
                                         </td>
                                     </tr>
                                 @endforeach

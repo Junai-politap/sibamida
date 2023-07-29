@@ -16,6 +16,12 @@
                             </div>
 
                             <div class="form-group">
+                                <label> Singkatan OPD</label>
+                                <input type="text" class="form-control" name="singkatan"
+                                    placeholder="Singkatan Nama Organisasi Pemerintah Daerah">
+                            </div>
+
+                            <div class="form-group">
                                 <label>Username</label>
                                 <input type="text" class="form-control" name="username"
                                     placeholder="Username">

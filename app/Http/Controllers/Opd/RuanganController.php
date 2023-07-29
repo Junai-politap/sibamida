@@ -31,6 +31,7 @@ class RuanganController extends Controller
     public function store(Request $request)
     {
         $ruangan = new Ruangan();
+        $ruangan ->id_opd=request('id_opd');
         $ruangan ->kode_ruangan=request('kode_ruangan');
         $ruangan-> nama_ruangan=request('nama_ruangan');
         $ruangan->save();

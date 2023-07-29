@@ -15,6 +15,11 @@
                             <div class="form-group">
                                 <label> Nama OPD</label>
                                 <input type="text" class="form-control" name="nama_opd" value="{{ $opd->nama_opd }}">
+                            </div>  
+
+                            <div class="form-group">
+                                <label> Singkatan OPD</label>
+                                <input type="text" class="form-control" name="singkatan" value="{{ $opd->singkatan }}">
                             </div>
 
                             <div class="form-group">

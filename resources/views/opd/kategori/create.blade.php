@@ -7,14 +7,15 @@
                     <!-- general form elements -->
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Tambahh Data Kategori</h3>
+                            <x-button.back-button url="opd/kategori" />
+                            <h3 class="text-center title">Tambahh Data Kategori</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
                         <form action="{{ url('opd/kategori') }}" method="POST" enctype="multipart/form-data">
-                            <x-button.back-button url="opd/kategori" />
                             @csrf
                             <div class="card-body">
+                                <input type="text" name="id_opd" value="{{ Auth::guard('opd')->user()->id }}" hidden>
                                 <div class="form-group">
                                     <label for="exampleInputText">Nama Kategori</label>
                                     <input type="text" class="form-control" placeholder="Masukkan Kode kategori"

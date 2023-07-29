@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Opd;
+use App\Models\Pegawai;
 
 class OpdController extends Controller
 {
@@ -12,6 +13,11 @@ class OpdController extends Controller
     public function index()
     {
         $data['list_opd'] = Opd::all();
+
+        $data['list_pegawai'] = Pegawai::orderBy('id', 'ASC')->take(1)->get();
+        $data['data_pegawai'] = Pegawai::all();
+
+
         return view('admin.opd.index', $data);
     }
 
@@ -26,6 +32,7 @@ class OpdController extends Controller
     {
         $opd = New Opd();
         $opd->nama_opd = request('nama_opd');
+        $opd->singkatan = request('singkatan');
         $opd->username = request('username');
         $opd->password = request('password');
         $opd->alamat = request('alamat');
@@ -58,6 +65,7 @@ class OpdController extends Controller
     {
         $opd = Opd::find($opd);
         $opd->nama_opd = request('nama_opd');
+        $opd->singkatan = request('singkatan');
         $opd->username = request('username');
 
         if(request('password')) $opd->password = request('password');

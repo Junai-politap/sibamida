@@ -31,6 +31,7 @@ class KategoriController extends Controller
     public function store(Request $request)
     {
         $kategori = new kategori();
+        $kategori->di_opd=request('di_opd');
         $kategori->nama_kategori=request('nama_kategori');
         $kategori->save();
 
