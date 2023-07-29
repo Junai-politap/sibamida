@@ -15,6 +15,11 @@ class Pegawai extends ModelAuthenticate
     {
         return $this->belongsTo(Riwayat::class, 'id');
     }
+    
+    public function Opd()
+    {
+        return $this->belongsTo(Opd::class, 'id_opd');
+    }
 
     function handleUploadFoto()
     {

@@ -38,6 +38,7 @@ class AsetController extends Controller
     public function store(Request $request)
     {
         $aset = new Aset();
+        $aset->id_opd = request('id_opd');
         $aset->id_kategori = request('id_kategori');
         $aset->id_ruangan = request('id_ruangan');
         $aset->nama_aset=request('nama_aset');

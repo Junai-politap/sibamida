@@ -6,6 +6,7 @@ use App\Models\Ruangan;
 use App\Models\Riwayat;
 use App\Models\Kategori;
 use App\Models\Model;
+use App\Models\Opd;
 use Illuminate\Support\Str;
 
 class Aset extends Model
@@ -25,6 +26,11 @@ class Aset extends Model
     public function Riwayat()
     {
         return $this->belongsTo(Riwayat::class, 'id');
+    }
+
+    public function Opd()
+    {
+        return $this->belongsTo(Opd::class, 'id_opd');
     }
 
     function handleUploadFoto()

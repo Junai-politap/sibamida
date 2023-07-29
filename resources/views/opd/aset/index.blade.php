@@ -24,6 +24,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($list_aset as $aset)
+                                    @if ( Auth::guard('opd')->user()->id == $aset->id_opd)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
@@ -39,6 +40,7 @@
                                             <td>{{ $aset->kode_aset }}</td>
                                             <td>{{ $aset->nama_aset }}</td>
                                         </tr>
+                                        @endif
                                     @endforeach
                                 </tbody>
                             </table>

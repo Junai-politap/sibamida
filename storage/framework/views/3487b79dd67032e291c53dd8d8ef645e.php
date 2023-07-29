@@ -1,4 +1,12 @@
-<x-opd>
+<?php if (isset($component)) { $__componentOriginal851cb6f5a7f89db41449dadedd8953e5 = $component; } ?>
+<?php $component = App\View\Components\Opd::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('opd'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(App\View\Components\Opd::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
     <section class="content">
         <div class="container-fluid">
             <div class="row">
@@ -7,16 +15,30 @@
                     <!-- general form elements -->
                     <div class="card">
                         <div class="card-header">
-                            <x-button.back-button url="opd/aset" />
+                            <?php if (isset($component)) { $__componentOriginal211193f73d013ad1f030860171096d7c = $component; } ?>
+<?php $component = App\View\Components\Button\BackButton::resolve(['url' => 'opd/aset'] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('button.back-button'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(App\View\Components\Button\BackButton::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal211193f73d013ad1f030860171096d7c)): ?>
+<?php $component = $__componentOriginal211193f73d013ad1f030860171096d7c; ?>
+<?php unset($__componentOriginal211193f73d013ad1f030860171096d7c); ?>
+<?php endif; ?>
                             <h3 class="text-center title">Tambah Data Assets</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{ url('opd/aset') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
+                        <form action="<?php echo e(url('opd/aset')); ?>" method="POST" enctype="multipart/form-data">
+                            <?php echo csrf_field(); ?>
                             <div class="card-body">
                                 <div class="row">
-                                    <input type="text" name="id_opd" value="{{ Auth::guard('opd')->user()->id }}" hidden>
+                                    <input type="text" name="id_opd" value="<?php echo e(Auth::guard('opd')->user()->id); ?>" hidden>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nama Assets</label>
@@ -39,10 +61,11 @@
                                             <label for="exampleInputText">Kategori Assets</label>
                                             <select class="form-control" name="id_kategori">
                                                 <option value=""> Pilih Kategori Assets</option>
-                                                @foreach ($kategori as $kategori)
-                                                    <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}
+                                                <?php $__currentLoopData = $kategori; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $kategori): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <option value="<?php echo e($kategori->id); ?>"><?php echo e($kategori->nama_kategori); ?>
+
                                                     </option>
-                                                @endforeach
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </select>
                                         </div>
                                     </div>
@@ -51,10 +74,11 @@
                                             <label for="exampleInputText">Nama Ruangan</label>
                                             <select class="form-control" name="id_ruangan">
                                                 <option value=""> Pilih Ruangan Assets</option>
-                                                @foreach ($ruangan as $ruangan)
-                                                    <option value="{{ $ruangan->id }}">{{ $ruangan->nama_ruangan }}
+                                                <?php $__currentLoopData = $ruangan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ruangan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <option value="<?php echo e($ruangan->id); ?>"><?php echo e($ruangan->nama_ruangan); ?>
+
                                                     </option>
-                                                @endforeach
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </select>
                                         </div>
                                     </div>
@@ -83,4 +107,10 @@
         </div>
         </div>
     </section>
-</x-opd>
+ <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal851cb6f5a7f89db41449dadedd8953e5)): ?>
+<?php $component = $__componentOriginal851cb6f5a7f89db41449dadedd8953e5; ?>
+<?php unset($__componentOriginal851cb6f5a7f89db41449dadedd8953e5); ?>
+<?php endif; ?>
+<?php /**PATH E:\Sistem\sibamida\resources\views/opd/aset/create.blade.php ENDPATH**/ ?>

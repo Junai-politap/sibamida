@@ -10,11 +10,6 @@ class Opd extends ModelAuthenticate
 {
     protected $table = "opd";
 
-    public function Pegawai()
-    {
-        return $this->belongsTo(Pegawai::class, 'id');
-    }
-
     function handleUploadLogo()
     {
         if (request()->hasFile('logo')) {
@@ -28,4 +23,25 @@ class Opd extends ModelAuthenticate
 
         }
     }
+
+    public function Pegawai()
+    {
+        return $this->belongsTo(Pegawai::class, 'id');
+    }
+
+    public function Aset()
+    {
+        return $this->belongsTo(Aset::class, 'id');
+    }
+
+    public function Kategori()
+    {
+        return $this->belongsTo(Kategori::class, 'id');
+    }
+
+    public function Ruangan()
+    {
+        return $this->belongsTo(Ruangan::class, 'id');
+    }
+
 }

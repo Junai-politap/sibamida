@@ -6,7 +6,7 @@ use App\Models\Model;
 use App\Models\Aset;
 use App\Models\Pegawai;
 use App\Models\Ruangan;
-
+use App\Models\Opd;
 class Riwayat extends Model
 {
     protected $table = 'riwayat';
@@ -24,5 +24,9 @@ class Riwayat extends Model
         return $this->belongsTo(Ruangan::class, 'id_ruangan');
     }
 
+    public function Opd()
+    {
+        return $this->belongsTo(Opd::class, 'id_opd');
+    }
 
 }
