@@ -20,7 +20,7 @@
                             </ul>
                         </div>
                         <div class="col-5 text-center">
-                            <img src="{{ url("public/$pegawai->pegawai") }}" style="width:70%; height:70%;"
+                            <img src="{{ url("public/$pegawai->foto") }}" style="width:50%; height:auto"
                                 onerror="this.src='https://bootdey.com/img/Content/avatar/avatar7.png';">
                         </div>
                     </div>

@@ -7,7 +7,7 @@
                         <div class="card-header">
                             <a href="{{ url('opd/pegawai/create') }}" class="btn btn-primary float-right mb-10"> <span
                                     class="fa fa-plus"></span> Tambah Data</a>
-                            <h3 class="card-title">DataTable with minimal features & hover style</h3>
+                            <h3 class="card-title">Data Seluruh Pegawai</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -35,8 +35,8 @@
                                             </td>
                                             <td>{{ $pegawai->nama }}</td>
                                             <td>{{ $pegawai->username }}</td>
-                                            <td>
-                                                <img src="{{ url("public/$pegawai->pegawai") }}"
+                                            <td class="text-center" style="width: 50%" >
+                                                <img src="{{ url("public/$pegawai->foto") }}"
                                                     style="width:40%; height:40%;"
                                                     onerror="this.src='https://bootdey.com/img/Content/avatar/avatar7.png';">
                                             </td>
