@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Ruangan;
+use App\Models\Riwayat;
 use App\Models\Kategori;
 use App\Models\Model;
 use Illuminate\Support\Str;
@@ -19,6 +20,11 @@ class Aset extends Model
     public function Kategori()
     {
         return $this->belongsTo(Kategori::class, 'id_kategori');
+    }
+
+    public function Riwayat()
+    {
+        return $this->belongsTo(Riwayat::class, 'id');
     }
 
     function handleUploadFoto()

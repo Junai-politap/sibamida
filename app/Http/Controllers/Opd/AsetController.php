@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Opd;
 use App\Http\Controllers\Controller;
 use App\Models\Aset;
 use App\Models\Kategori;
+use App\Models\Pegawai;
+use App\Models\Riwayat;
 use App\Models\Ruangan;
 use Illuminate\Http\Request;
 
@@ -52,6 +54,10 @@ class AsetController extends Controller
     public function show(string $aset)
     {
         $data['aset'] = Aset::find($aset);
+        $data['kategori'] = Kategori::all();
+        $data['pegawai'] = Pegawai::all();
+        $data['ruangan'] = Ruangan::all();
+        $data['riwayat'] = Riwayat::all();
         return view('opd.aset.show', $data);
     }
 
@@ -90,6 +96,28 @@ class AsetController extends Controller
         $aset->handleDelete();
         // return $aset;
         $aset->delete();
+
+        return back()->with('danger', 'Data Berhasiil Dihapus');
+    }
+
+    public function riwayat(Request $request)
+    {
+        $aset = new Riwayat();
+        $aset->id_pegawai = request('id_pegawai');
+        $aset->id_ruangan = request('id_ruangan');
+        $aset->id_aset = request('id_aset');
+        $aset->tanggal_mulai=request('tanggal_mulai');
+        $aset->keterangan=request('keterangan');
+        $aset->save();
+
+        return back()->with('success', 'Data Berhasil Disimpan');
+    }
+
+    public function hapus(string $riwayat)
+    {
+        $riwayat= Riwayat::find($riwayat);
+        // return $aset;
+        $riwayat->delete();
 
         return back()->with('danger', 'Data Berhasiil Dihapus');
     }
