@@ -10,11 +10,7 @@ class Pegawai extends ModelAuthenticate
 {
     protected $table="pegawai";
 
-    public function Opd()
-    {
-        return $this->belongsTo(Opd::class, 'id_opd');
-    }
-
+   
 
     function handleUploadFoto()
     {
