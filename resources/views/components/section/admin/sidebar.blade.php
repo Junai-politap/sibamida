@@ -13,7 +13,7 @@
             </div>
             <div class="info">
                 <a href="#" class="d-block">
-                    Admin
+                    {{ Auth::guard('admin')->user()->nama }}
                 </a>
             </div>
         </div>

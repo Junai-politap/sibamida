@@ -27,8 +27,8 @@
                     <i class="fas fa-cog"></i> Setting
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                    <i class="fas fa-arrow-left"></i> Logout
+                <a onclick="return confirm('Apakah Anda Yakin Ingin Keluar?')" href="{{ url('logout') }}" class="dropdown-item">
+                    <i class="fa fa-arrow-circle-left"></i> Logout
                 </a>
                 <div class="dropdown-divider"></div>
                 

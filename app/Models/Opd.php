@@ -4,10 +4,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\ModelAuthenticate;
 use Illuminate\Support\Str;
+use App\Models\Pegawai;
 
 class Opd extends ModelAuthenticate
 {
     protected $table = "opd";
+
+    public function Pegawai()
+    {
+        return $this->belongsTo(Pegawai::class, 'id');
+    }
 
     function handleUploadLogo()
     {

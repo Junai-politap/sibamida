@@ -32,6 +32,7 @@ class PegawaiController extends Controller
     public function store(Request $request)
     {
         $pegawai = new Pegawai();
+        $pegawai->id_opd = request('id_opd');
         $pegawai->nama = request('nama');
         $pegawai->username = request('username');
         $pegawai->jabatan = request('jabatan');

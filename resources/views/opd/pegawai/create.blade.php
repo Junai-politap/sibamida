@@ -7,35 +7,19 @@
                     <!-- general form elements -->
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Quick Example</h3>
+                            <h3 class="card-title">Tambah Data Pegawai</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
                         <form action="{{ url('opd/pegawai') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
+                                <input type="text" name="id_opd" value="{{ Auth::guard('opd')->user()->id }}" hidden>
                                 <div class="form-group">
                                     <label for="exampleInputText">Nama</label>
                                     <input type="text" class="form-control" placeholder="Masukkan Nama Pegawai"
                                         name="nama">
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="exampleInputText">Username</label>
-                                            <input type="text" class="form-control"
-                                                placeholder="Masukkan Username Pegawai" name="username">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="exampleInputText">Jabatan</label>
-                                            <input type="text" class="form-control"
-                                                placeholder="Masukkan Jabatan Pegawai" name="jabatan">
-                                        </div>
-                                    </div>
-                                </div>
-
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -52,6 +36,26 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Username</label>
+                                            <input type="text" class="form-control"
+                                                placeholder="Masukkan Username Pegawai" name="username">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword">Password</label>
+                                            <input type="password" class="form-control"
+                                                placeholder="Masukkan Password Pegawai" name="password">
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+
+                               
 
                                 <div class="row">
                                     <div class="col-md-6">
@@ -73,18 +77,19 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
+                                            <label for="exampleInputText">Jabatan</label>
+                                            <input type="text" class="form-control"
+                                                placeholder="Masukkan Jabatan Pegawai" name="jabatan">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
                                             <label for="exampleInputText">Foto</label>
                                             <input type="file" class="form-control"
                                                 placeholder="Masukkan Foto Pegawai" name="foto">
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="exampleInputPassword">Password</label>
-                                            <input type="password" class="form-control"
-                                                placeholder="Masukkan Password Pegawai" name="password">
-                                        </div>
-                                    </div>
+                                   
                                 </div>
                             </div>
 

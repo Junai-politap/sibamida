@@ -3,63 +3,88 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Opd;
 use Illuminate\Http\Request;
+use App\Models\Pegawai;
 
 class PegawaiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
-        //
+        $data['list_pegawai'] = Pegawai::all();
+        return view('admin.pegawai.index', $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    
     public function create()
     {
-        //
+        $data['list_opd'] = Opd::all();
+        return view('admin.pegawai.create', $data);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    
+    public function store()
     {
-        //
+        $pegawai = New Pegawai();
+        $pegawai->id_opd = request('id_opd');
+        $pegawai->nip = request('nip');
+        $pegawai->nik = request('nik');
+        $pegawai->nama = request('nama');
+        $pegawai->username = request('username');
+        $pegawai->password = request('password');
+        $pegawai->jabatan = request('jabatan');
+        $pegawai->alamat = request('alamat');
+        $pegawai->nomor_hp = request('nomor_hp');
+        $pegawai->handleUploadFoto();
+
+        $pegawai->save();
+
+        return redirect('admin/pegawai')->with('success', 'Data Berhasil Di Simpan');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    
+    public function show($pegawai)
     {
-        //
+        $data['pegawai'] = Pegawai::find($pegawai);
+        return view('admin.pegawai.show', $data);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    
+    public function edit($pegawai)
     {
-        //
+        $data['list_opd'] = Opd::all();
+        $data['pegawai'] = Pegawai::find($pegawai);
+        return view('admin.pegawai.edit', $data);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    
+    public function update($pegawai)
     {
-        //
+        $pegawai = Pegawai::find($pegawai);
+        $pegawai->id_opd = request('id_opd');
+        $pegawai->nip = request('nip');
+        $pegawai->nik = request('nik');
+        $pegawai->nama = request('nama');
+        $pegawai->username = request('username');
+        if(request('password')) $pegawai->password = request('password');    
+        $pegawai->jabatan = request('jabatan');
+        $pegawai->alamat = request('alamat');
+        $pegawai->nomor_hp = request('nomor_hp');
+        $pegawai->handleUploadFoto();
+
+        $pegawai->save();
+
+        return redirect('admin/pegawai')->with('success', 'Data Berhasil Di Simpan');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    
+    public function destroy($pegawai)
     {
-        //
+        $pegawai = Pegawai::find($pegawai);
+        $pegawai->handleDelete();
+        $pegawai->delete();
+
+        return back()->with('danger', 'Data Berhasil Dihapus');
     }
 }

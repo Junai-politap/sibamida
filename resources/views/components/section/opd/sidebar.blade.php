@@ -13,7 +13,7 @@
             </div>
             <div class="info">
                 <a href="#" class="d-block">
-                    OPD
+                    {{ Auth::guard('opd')->user()->singkatan }}
                 </a>
             </div>
         </div>

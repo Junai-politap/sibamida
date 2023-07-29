@@ -1,0 +1,1 @@
+<?php /**PATH /data/www/teknologiinformasi/system/resources/views/admin/slide/show.blade.php ENDPATH**/ ?>

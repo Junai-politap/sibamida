@@ -21,6 +21,8 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($list_kategori as $kategori)
+                                    @if (Auth::guard('opd')->user()->id == $kategori->id_opd)
+                                        
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
@@ -33,6 +35,7 @@
                                             </td>
                                             <td>{{ $kategori->nama_kategori }}</td>
                                         </tr>
+                                        @endif
                                     @endforeach
                                 </tbody>
                             </table>
