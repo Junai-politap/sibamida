@@ -25,18 +25,18 @@
                         <table id="example2" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>No</th>
-                                    <th>Aksi</th>
-                                    <th>Nama OPD</th>
-                                    <th>Alamat</th>
-                                    <th>Logo</th>
+                                    <th class="text-center">No</th>
+                                    <th class="text-center">Aksi</th>
+                                    <th class="text-center">Nama OPD</th>
+                                    <th class="text-center">Alamat</th>
+                                    <th class="text-center">Jumlah Pegawai</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php $__currentLoopData = $list_opd; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $opd): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr>
-                                        <td><?php echo e($loop->iteration); ?></td>
-                                        <td>
+                                        <td class="text-center"><?php echo e($loop->iteration); ?></td>
+                                        <td class="text-center">
                                             <div class="btn-group">
                                                 <?php if (isset($component)) { $__componentOriginaldf05ec2d539ccc47939751d83314ef26 = $component; } ?>
 <?php $component = App\View\Components\Button\InfoButton::resolve(['url' => 'admin/opd','id' => ''.e($opd->id).''] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
@@ -85,10 +85,15 @@
 <?php endif; ?>
                                             </div>
                                         </td>
-                                        <td><?php echo e($opd->nama_opd); ?></td>
-                                        <td><?php echo e($opd->alamat); ?></td>
-                                        <td>
-                                            <img src="<?php echo e(url("public/$opd->logo")); ?>" style="width:40%; height:40%;" onerror="this.src='https://bootdey.com/img/Content/avatar/avatar7.png';">
+                                        <td class="text-center"><?php echo e($opd->nama_opd); ?></td>
+                                        <td class="text-center"><?php echo e($opd->alamat); ?></td>
+                                        <td class="text-center" style="width: 20%">
+                                            <?php $__currentLoopData = $list_pegawai; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pegawai): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php echo e($data_pegawai->filter(function ($q) use ($opd) {
+                                                        return $opd->id == $q->id_opd;
+                                                    })->count('id_opd')); ?>
+
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </td>
                                     </tr>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

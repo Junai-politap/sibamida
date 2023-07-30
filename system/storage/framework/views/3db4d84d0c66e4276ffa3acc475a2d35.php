@@ -24,6 +24,12 @@
                             </div>
 
                             <div class="form-group">
+                                <label> Singkatan OPD</label>
+                                <input type="text" class="form-control" name="singkatan"
+                                    placeholder="Singkatan Nama Organisasi Pemerintah Daerah">
+                            </div>
+
+                            <div class="form-group">
                                 <label>Username</label>
                                 <input type="text" class="form-control" name="username"
                                     placeholder="Username">
@@ -51,10 +57,13 @@
                                 <label>Logo OPD</label>
                                 <input type="file" class="form-control" name="logo" accept=".png, .jpg, .jpeg">
                             </div>
+
+                            <div class="footer mt-5">
+                                
+                                <button class="btn btn-primary float-right">Simpan</button>
+                              </div>
                         </div>
-                        <div class="card-footer">
-                            <button class="btn btn-primary">Submit</button>
-                          </div>
+                       
                     </form>
                 </div>
             </div>
