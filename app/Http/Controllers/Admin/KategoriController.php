@@ -3,63 +3,53 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Kategori;
+use App\Models\Opd;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\New_;
 
 class KategoriController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
-        //
-    }
+        $data['list_kategori'] = Kategori::all();
+        $data['list_opd'] = Opd::all();
+        
+        return view('admin.kategori.index', $data);
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
+    
+    
     public function store(Request $request)
     {
-        //
+        $kategori = New Kategori();
+        $kategori->id_opd = request('id_opd');
+        $kategori->nama_kategori = request('nama_kategori');
+
+        $kategori->save();
+
+        return back()->with('success', 'Data Bserhasil Di Simpan');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+   
+    
+    public function update($kategori)
     {
-        //
+        $kategori = Kategori::find($kategori);
+        $kategori->id_opd = request('id_opd');
+        $kategori->nama_kategori = request('nama_kategori');
+
+        $kategori->save();
+
+        return back()->with('success', 'Data Bserhasil Di Simpan');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    
+    public function destroy($kategori)
     {
-        //
-    }
+        Kategori::destroy($kategori);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return back()->with('danger', 'Data Berhasil Di Hapus');
     }
 }

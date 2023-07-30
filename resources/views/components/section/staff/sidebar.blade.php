@@ -1,3 +1,13 @@
+@php
+
+function checkRouteActive($route)
+{
+    if (Route::current()->uri == $route) {
+        return 'active';
+    }
+}
+@endphp
+
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="index3.html" class="brand-link">
         <img src="{{ url('public/admin') }}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
@@ -13,35 +23,28 @@
             </div>
             <div class="info">
                 <a href="#" class="d-block">
-                    Staff Administrasi
+                    {{ Auth::guard('staff')->user()->nama }}
                 </a>
             </div>
         </div>
 
-       
+
 
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
-                
-                <li class="nav-item menu-open">
-                    <a href="#" class="nav-link">
+
+                <li class="nav-item">
+                    <a href="{{ url('staff-administrasi') }}" class="nav-link {{ checkRouteActive('staff-administrasi') }}">
                         <i class="nav-icon fas fa-home"></i>
                         <p>
                             Dashboard
-                        
+
                         </p>
                     </a>
-                   
+
                 </li>
-                <li class="nav-item">
-                    <a href="pages/widgets.html" class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
-                        <p>
-                            Data Pegawai
-                        </p>
-                    </a>
-                </li>
+                
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-database"></i>
@@ -52,27 +55,27 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ url('staff-administrasi/ruangan') }}" class="nav-link {{ checkRouteActive('staff-administrasi/ruangan') }}">
                                 <i class="fa fa-plus nav-icon"></i>
                                 <p>Data Ruangan</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ url('staff-administrasi/kategori') }}" class="nav-link {{ checkRouteActive('staff-administrasi/kategori') }}">
                                 <i class="fa fa-plus nav-icon"></i>
                                 <p>Data Kategori Aset</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ url('staff-administrasi/aset') }}" class="nav-link {{ checkRouteActive('staff-administrasi/aset') }}">
                                 <i class="fa fa-plus nav-icon"></i>
                                 <p>Data Aset</p>
                             </a>
                         </li>
-                        
+
                     </ul>
                 </li>
-                
+
             </ul>
         </nav>
     </div>

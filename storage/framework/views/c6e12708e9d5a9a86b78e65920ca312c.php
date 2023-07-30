@@ -1,10 +1,32 @@
-<x-opd>
+<?php if (isset($component)) { $__componentOriginal851cb6f5a7f89db41449dadedd8953e5 = $component; } ?>
+<?php $component = App\View\Components\Opd::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('opd'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(App\View\Components\Opd::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
     <section class="content">
         <div class="row">
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
-                        <x-button.back-button url="opd/aset" />
+                        <?php if (isset($component)) { $__componentOriginal211193f73d013ad1f030860171096d7c = $component; } ?>
+<?php $component = App\View\Components\Button\BackButton::resolve(['url' => 'opd/aset'] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('button.back-button'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(App\View\Components\Button\BackButton::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal211193f73d013ad1f030860171096d7c)): ?>
+<?php $component = $__componentOriginal211193f73d013ad1f030860171096d7c; ?>
+<?php unset($__componentOriginal211193f73d013ad1f030860171096d7c); ?>
+<?php endif; ?>
                         <h3 class="text-center title">Info Assets</h3>
 
 
@@ -12,12 +34,13 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6  text-center">
-                                <img src="{{ url("public/$aset->foto") }}" style="width:80%; height:auto"
+                                <img src="<?php echo e(url("public/$aset->foto")); ?>" style="width:80%; height:auto"
                                     onerror="this.src='https://bootdey.com/img/Content/avatar/avatar7.png';">
                             </div>
 
                             <div class="col-md-6 text-center">
-                                {!! QrCode::size(200)->generate('{{ $aset->kode_aset }}') !!}
+                                <?php echo QrCode::size(200)->generate('<?php echo e($aset->kode_aset); ?>'); ?>
+
 
                             </div>
                         </div>
@@ -28,113 +51,114 @@
                                     <thead>
                                         <tr>
                                             <td>Nama OPD</td>
-                                            <td> : {{ $aset->opd->nama_opd }}</td>
+                                            <td> : <?php echo e($aset->opd->nama_opd); ?></td>
                                         </tr>
 
                                         <tr>
                                             <td>Kategori</td>
-                                            <td> : {{ $aset->kategori->nama_kategori }}</td>
+                                            <td> : <?php echo e($aset->kategori->nama_kategori); ?></td>
                                         </tr>
                                         <tr>
                                             <td>Ruangan</td>
-                                            <td> : {{ $aset->ruangan->nama_ruangan }}</td>
+                                            <td> : <?php echo e($aset->ruangan->nama_ruangan); ?></td>
                                         </tr>
                                         <tr>
                                             <td>Nama Penanggung Jawab</td>
-                                            <td> : {{ $aset->pegawai->nama }}</td>
+                                            <td> : <?php echo e($aset->pegawai->nama); ?></td>
                                         </tr>
                                         <tr>
                                             <td>Kode Aset</td>
-                                            <td> : {{ $aset->kode_aset }}</td>
+                                            <td> : <?php echo e($aset->kode_aset); ?></td>
                                         </tr>
                                         <tr>
                                             <td>Nama Aset</td>
-                                            <td> : {{ $aset->nama_aset }}</td>
+                                            <td> : <?php echo e($aset->nama_aset); ?></td>
                                         </tr>
                                         <tr>
                                             <td>Nomor Register</td>
-                                            <td> : {{ $aset->no_register }}</td>
+                                            <td> : <?php echo e($aset->no_register); ?></td>
                                         </tr>
                                         <tr>
                                             <td>Tahun Perolehan</td>
-                                            <td> : {{ $aset->tahun_perolehan }}</td>
+                                            <td> : <?php echo e($aset->tahun_perolehan); ?></td>
                                         </tr>
                                         <tr>
                                             <td>Harga Perolehan</td>
-                                            <td> : {{ $aset->harga_perolehan }}</td>
+                                            <td> : <?php echo e($aset->harga_perolehan); ?></td>
                                         </tr>
                                         <tr>
                                             <td>Keterangan</td>
-                                            <td> : {{ $aset->keterangan }}</td>
+                                            <td> : <?php echo e($aset->keterangan); ?></td>
                                         </tr>
                                         <tr>
                                             <td>Alamat</td>
-                                            <td> : {{ $aset->alamat }}</td>
+                                            <td> : <?php echo e($aset->alamat); ?></td>
                                         </tr>
                                         <tr>
                                             <td>Nama Kondisi</td>
-                                            <td> : {{ $aset->nama_kondisi }}</td>
+                                            <td> : <?php echo e($aset->nama_kondisi); ?></td>
                                         </tr>
                                         <tr>
                                             <td>Nama Sumber Dana</td>
-                                            <td> : {{ $aset->nama_sumber_dana }}</td>
+                                            <td> : <?php echo e($aset->nama_sumber_dana); ?></td>
                                         </tr>
                                         <tr>
                                             <td>Nomor SPPD</td>
-                                            <td> : {{ $aset->no_sppd }}</td>
+                                            <td> : <?php echo e($aset->no_sppd); ?></td>
                                         </tr>
                                         <tr>
                                             <td>Nomor SPK</td>
-                                            <td> : {{ $aset->no_spk }}</td>
+                                            <td> : <?php echo e($aset->no_spk); ?></td>
                                         </tr>
                                         <tr>
                                             <td>Nomor Berita Acara</td>
-                                            <td> : {{ $aset->no_ba }}</td>
+                                            <td> : <?php echo e($aset->no_ba); ?></td>
                                         </tr>
                                         <tr>
                                             <td>Tanggal Serah Terima</td>
-                                            <td> : {{ $aset->tanggal_serah_terima }}</td>
+                                            <td> : <?php echo e($aset->tanggal_serah_terima); ?></td>
                                         </tr>
                                         <tr>
                                             <td>Kontruksi</td>
-                                            <td> : {{ $aset->kontruksi }}</td>
+                                            <td> : <?php echo e($aset->kontruksi); ?></td>
                                         </tr>
                                         <tr>
                                             <td>Panjang / Lebar / Luas</td>
-                                            <td> : {{ $aset->panjang }} / {{ $aset->lebar }} / {{ $aset->luas }}
+                                            <td> : <?php echo e($aset->panjang); ?> / <?php echo e($aset->lebar); ?> / <?php echo e($aset->luas); ?>
+
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Nomor Dokumen</td>
-                                            <td> : {{ $aset->nomor_dokumen }}</td>
+                                            <td> : <?php echo e($aset->nomor_dokumen); ?></td>
                                         </tr>
                                         <tr>
                                             <td>Tanggal Dokumen</td>
-                                            <td> : {{ $aset->tanggal_dokumen }}</td>
+                                            <td> : <?php echo e($aset->tanggal_dokumen); ?></td>
                                         </tr>
                                         <tr>
                                             <td>Status Tanah</td>
-                                            <td> : {{ $aset->status_tanah }}</td>
+                                            <td> : <?php echo e($aset->status_tanah); ?></td>
                                         </tr>
                                         <tr>
                                             <td>Nomor Tanah</td>
-                                            <td> : {{ $aset->nomor_tanah }}</td>
+                                            <td> : <?php echo e($aset->nomor_tanah); ?></td>
                                         </tr>
                                         <tr>
                                             <td>Lokasi</td>
-                                            <td> : {{ $aset->lokasi }}</td>
+                                            <td> : <?php echo e($aset->lokasi); ?></td>
                                         </tr>
                                         <tr>
                                             <td>Header</td>
-                                            <td> : {{ $aset->header }}</td>
+                                            <td> : <?php echo e($aset->header); ?></td>
                                         </tr>
                                         <tr>
                                             <td>Urut Kelompok</td>
-                                            <td> : {{ $aset->urut_kelompok }}</td>
+                                            <td> : <?php echo e($aset->urut_kelompok); ?></td>
                                         </tr>
                                         <tr>
                                             <td>Kelompok</td>
-                                            <td> : {{ $aset->kelompok }}</td>
+                                            <td> : <?php echo e($aset->kelompok); ?></td>
                                         </tr>
                                     </thead>
                                 </table>
@@ -159,17 +183,17 @@
                         </div>
                     </div>
 
-                    @foreach ($riwayat as $riwayat)
+                    <?php $__currentLoopData = $riwayat; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $riwayat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="card-body p-0">
                             <div class="card">
                                 <div class="card-header">
                                     <div class="btn-group float-right">
                                         <button class="btn btn-warning" data-toggle="modal"
-                                            data-target="#modal-edit{{ $riwayat->id }}">
+                                            data-target="#modal-edit<?php echo e($riwayat->id); ?>">
                                             <span class="fa fa-edit"></span>
                                         </button>
 
-                                        <a href="{{ url("opd/delete-riwayat/$riwayat->id") }}"
+                                        <a href="<?php echo e(url("opd/delete-riwayat/$riwayat->id")); ?>"
                                             class="btn btn-danger"><i class="fa fa-trash"></i></a>
 
 
@@ -180,16 +204,18 @@
                                 <div class="card-body">
                                     <strong>Tanggal Mulai</strong>
                                     <p class="text-muted">
-                                        {{ $riwayat->created_at->format('d F Y') }}
+                                        <?php echo e($riwayat->created_at->format('d F Y')); ?>
+
                                     </p>
                                     <hr>
                                     <strong>Nama Penanggung Jawab</strong>
-                                    <p class="text-muted">{{ $riwayat->pegawai->nama }}</p>
+                                    <p class="text-muted"><?php echo e($riwayat->pegawai->nama); ?></p>
                                     <hr>
                                     <strong>Keterangan</strong>
                                     <p class="text-muted">
                                     <p>
-                                        {{ $riwayat->keterangan }}
+                                        <?php echo e($riwayat->keterangan); ?>
+
                                     </p>
                                     </p>
                                     <hr>
@@ -197,7 +223,7 @@
                             </div>
                         </div>
 
-                        <div class="modal fade" id="modal-edit{{ $riwayat->id }}">
+                        <div class="modal fade" id="modal-edit<?php echo e($riwayat->id); ?>">
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -206,23 +232,23 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <form action="{{ url('admin/kategori', $riwayat->id) }}" method="POST">
+                                    <form action="<?php echo e(url('admin/kategori', $riwayat->id)); ?>" method="POST">
                                         <div class="modal-body">
 
-                                            @csrf
-                                            @method('PUT')
+                                            <?php echo csrf_field(); ?>
+                                            <?php echo method_field('PUT'); ?>
                                             <div class="card-body">
 
                                                 <div class="form-group row">
                                                     <label class="col-sm-3 col-form-label">Nama OPD</label>
                                                     <div class="col-sm-9">
                                                         <select name="id_pegawai" class="form-control">
-                                                            @foreach ($list_pegawai as $pegawai)
+                                                            <?php $__currentLoopData = $list_pegawai; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pegawai): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                                 <option
-                                                                    @if ($pegawai->id == $riwayat->id_pegawai) selected @endif
-                                                                    value="{{ $pegawai->id }}">
-                                                                    {{ $pegawai->nama }}</option>
-                                                            @endforeach
+                                                                    <?php if($pegawai->id == $riwayat->id_pegawai): ?> selected <?php endif; ?>
+                                                                    value="<?php echo e($pegawai->id); ?>">
+                                                                    <?php echo e($pegawai->nama); ?></option>
+                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -233,7 +259,7 @@
                                                     </label>
                                                     <div class="col-sm-9">
                                                         <input type="text" class="form-control" name="tanggal_mulai"
-                                                            value="{{ $riwayat->tanggal_mulai }}">
+                                                            value="<?php echo e($riwayat->tanggal_mulai); ?>">
                                                     </div>
                                                 </div>
 
@@ -242,7 +268,7 @@
                                                         Keterangan
                                                     </label>
                                                     <div class="col-sm-9">
-                                                        <textarea class="summernote" name="keterangan">{{ $riwayat->keterangan }}</textarea>
+                                                        <textarea class="summernote" name="keterangan"><?php echo e($riwayat->keterangan); ?></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -256,7 +282,7 @@
                             </div>
 
                         </div>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                 </div>
 
@@ -271,22 +297,23 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="{{ url('opd/riwayat') }}" method="post" enctype="multipart/form-data">
-                            @csrf
+                        <form action="<?php echo e(url('opd/riwayat')); ?>" method="post" enctype="multipart/form-data">
+                            <?php echo csrf_field(); ?>
                             <div class="row">
-                                <input type="text" value="{{ $aset->id }}" name="id_aset" hidden>
-                                <input type="text" value="{{ $aset->id_ruangan }}" name="id_ruangan" hidden>
+                                <input type="text" value="<?php echo e($aset->id); ?>" name="id_aset" hidden>
+                                <input type="text" value="<?php echo e($aset->id_ruangan); ?>" name="id_ruangan" hidden>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="exampleInputText">Nama Pegawai</label>
                                         <select class="form-control" name="id_pegawai" required>
                                             <option value=""> Pilih Nama Pegawai</option>
-                                            @foreach ($list_pegawai as $pegawai)
-                                                @if (Auth::guard('opd')->user()->id == $pegawai->id_opd)
-                                                    <option value="{{ $pegawai->id }}">{{ $pegawai->nama }}
+                                            <?php $__currentLoopData = $list_pegawai; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pegawai): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if(Auth::guard('opd')->user()->id == $pegawai->id_opd): ?>
+                                                    <option value="<?php echo e($pegawai->id); ?>"><?php echo e($pegawai->nama); ?>
+
                                                     </option>
-                                                @endif
-                                            @endforeach
+                                                <?php endif; ?>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </select>
                                     </div>
                                 </div>
@@ -312,4 +339,10 @@
             </div>
         </div>
     </section>
-</x-opd>
+ <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal851cb6f5a7f89db41449dadedd8953e5)): ?>
+<?php $component = $__componentOriginal851cb6f5a7f89db41449dadedd8953e5; ?>
+<?php unset($__componentOriginal851cb6f5a7f89db41449dadedd8953e5); ?>
+<?php endif; ?>
+<?php /**PATH E:\Sistem\sibamida\resources\views/opd/aset/show.blade.php ENDPATH**/ ?>

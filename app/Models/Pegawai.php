@@ -21,6 +21,11 @@ class Pegawai extends ModelAuthenticate
         return $this->belongsTo(Opd::class, 'id_opd');
     }
 
+    public function Aset()
+    {
+        return $this->belongsTo(Aset::class, 'id');
+    }
+
     function handleUploadFoto()
     {
         $this->handleDelete();

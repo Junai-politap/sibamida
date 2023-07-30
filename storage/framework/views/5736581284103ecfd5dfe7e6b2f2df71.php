@@ -1,3 +1,13 @@
+<?php
+
+function checkRouteActive($route)
+{
+    if (Route::current()->uri == $route) {
+        return 'active';
+    }
+}
+?>
+
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="index3.html" class="brand-link">
         <img src="<?php echo e(url('public/admin')); ?>/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
@@ -25,8 +35,8 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
 
-                <li class="nav-item menu-open">
-                    <a href="#" class="nav-link">
+                <li class="nav-item">
+                    <a href="<?php echo e(url('opd')); ?>" class="nav-link <?php echo e(checkRouteActive('opd')); ?>">
                         <i class="nav-icon fas fa-home"></i>
                         <p>
                             Dashboard
@@ -36,7 +46,7 @@
 
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo e(url('opd/pegawai')); ?>" class="nav-link">
+                    <a href="<?php echo e(url('opd/pegawai')); ?>" class="nav-link <?php echo e(checkRouteActive('opd/pegawai')); ?>">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                             Data Pegawai
@@ -53,19 +63,19 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="ruangan" class="nav-link">
+                            <a href="<?php echo e(url('opd/ruangan')); ?>" class="nav-link <?php echo e(checkRouteActive('opd/ruangan')); ?>">
                                 <i class="fa fa-plus nav-icon"></i>
                                 <p>Data Ruangan</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="kategori" class="nav-link">
+                            <a href="<?php echo e(url('opd/kategori')); ?>" class="nav-link <?php echo e(checkRouteActive('opd/kategori')); ?>">
                                 <i class="fa fa-plus nav-icon"></i>
                                 <p>Data Kategori Aset</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="aset" class="nav-link">
+                            <a href="<?php echo e(url('opd/aset')); ?>" class="nav-link <?php echo e(checkRouteActive('opd/aset')); ?>">
                                 <i class="fa fa-plus nav-icon"></i>
                                 <p>Data Aset</p>
                             </a>

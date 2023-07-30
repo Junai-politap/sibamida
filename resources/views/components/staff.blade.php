@@ -68,6 +68,14 @@
     <script src="{{ url('public/admin') }}/dist/js/adminlte.js"></script>
 
     <script src="{{ url('public/admin') }}/dist/js/pages/dashboard.js"></script>
+
+    <script>
+        $(function() {
+            $('.summernote').summernote({
+                height: 100
+            })
+        })
+    </script>
 </body>
 
 </html>

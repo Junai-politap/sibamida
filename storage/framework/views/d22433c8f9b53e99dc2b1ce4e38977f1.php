@@ -131,6 +131,14 @@
     <script src="<?php echo e(url('public/admin')); ?>/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
     <script>
+        $(function() {
+            $('.summernote').summernote({
+                height: 100
+            })
+        })
+    </script>
+    
+    <script>
         $(function () {
           $("#example1").DataTable({
             "responsive": true, "lengthChange": false, "autoWidth": false,

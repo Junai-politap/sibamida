@@ -3,63 +3,51 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Opd;
+use App\Models\Ruangan;
 use Illuminate\Http\Request;
 
 class RuanganController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
-        //
+        $data['list_ruangan'] = Ruangan::all();
+        $data['list_opd'] = Opd::all();
+        return view('admin.ruangan.index', $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
+  
+    
     public function store(Request $request)
     {
-        //
+        $ruangan = New Ruangan();
+        $ruangan->id_opd = request('id_opd');
+        $ruangan->kode_ruangan = request('kode_ruangan');
+        $ruangan->nama_ruangan = request('nama_ruangan');
+
+        $ruangan->save();
+
+        return back()->with('success', 'Data Berhasil Di Simpan');
+    }
+    
+    public function update($ruangan)
+    {
+        $ruangan = Ruangan::find($ruangan);
+        $ruangan->id_opd = request('id_opd');
+        $ruangan->kode_ruangan = request('kode_ruangan');
+        $ruangan->nama_ruangan = request('nama_ruangan');
+
+        $ruangan->save();
+
+        return back()->with('success', 'Data Berhasil Di Simpan');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    
+    public function destroy($ruangan)
     {
-        //
-    }
+        Ruangan::destroy($ruangan);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return back()->with('danger', 'Data Berhasil Di Simpan');
     }
 }

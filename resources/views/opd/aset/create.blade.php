@@ -8,79 +8,332 @@
                     <div class="card">
                         <div class="card-header">
                             <x-button.back-button url="opd/aset" />
-                            <h3 class="text-center title">Tambah Data Assets</h3>
+                            <h3 class="text-center title">Tambah Data Aset</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
                         <form action="{{ url('opd/aset') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
+                                <input type="text" name="id_opd" value="{{ Auth::guard('opd')->user()->id }}"
+                                    hidden>
+                                <div class="form-group">
+                                    <label for="exampleInputText">Nama Penanggung Jawab</label>
+                                    <select name="id_pegawai" class="form-control" required>
+                                        <option value=""> Pilih Penanggung Jawab Aset</option>
+                                        @foreach ($list_pegawai as $pegawai)
+                                            @if (Auth::guard('opd')->user()->id == $pegawai->id_opd)
+                                                <option value="{{ $pegawai->id }}">{{ $pegawai->nama }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <div class="row">
-                                    <input type="text" name="id_opd" value="{{ Auth::guard('opd')->user()->id }}" hidden>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="exampleInputText">Nama Assets</label>
-                                            <input type="text" class="form-control"
-                                                placeholder="Masukkan Nama Assets" name="nama_aset">
+                                            <label for="exampleInputText">Kode Aset</label>
+                                            <input type="text" class="form-control" placeholder="Masukkan Kode Aset"
+                                                name="kode_aset" required>
                                         </div>
                                     </div>
+
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="exampleInputText">Kode Assets</label>
-                                            <input type="text" class="form-control"
-                                                placeholder="Masukkan Kode Assets" name="kode_aset">
+                                            <label for="exampleInputText">Nama Aset</label>
+                                            <input type="text" class="form-control" placeholder="Masukkan Nama Aset"
+                                                name="nama_aset" required>
                                         </div>
                                     </div>
+
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="exampleInputText">Kategori Assets</label>
-                                            <select class="form-control" name="id_kategori">
-                                                <option value=""> Pilih Kategori Assets</option>
-                                                @foreach ($kategori as $kategori)
-                                                    <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nama Ruangan</label>
-                                            <select class="form-control" name="id_ruangan">
-                                                <option value=""> Pilih Ruangan Assets</option>
+                                            <select class="form-control" name="id_ruangan" required>
+                                                <option value=""> Pilih Ruangan Aset</option>
                                                 @foreach ($ruangan as $ruangan)
-                                                    <option value="{{ $ruangan->id }}">{{ $ruangan->nama_ruangan }}
-                                                    </option>
+                                                    @if (Auth::guard('opd')->user()->id == $ruangan->id_opd)
+                                                        <option value="{{ $ruangan->id }}">{{ $ruangan->nama_ruangan }}
+                                                        </option>
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Kategori Aset</label>
+                                            <select class="form-control" name="id_kategori" required>
+                                                <option value=""> Pilih Kategori Aset</option>
+                                                @foreach ($kategori as $kategori)
+                                                    @if (Auth::guard('opd')->user()->id == $kategori->id_opd)
+                                                        <option value="{{ $kategori->id }}">
+                                                            {{ $kategori->nama_kategori }}
+                                                        </option>
+                                                    @endif
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="exampleInputText">Foto</label>
-                                    <input type="file" class="form-control" placeholder="Masukkan Foto Assets"
-                                        name="foto">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Nomor Register</label>
+                                            <input type="text" class="form-control"
+                                                placeholder="Masukkan Nomor Register" name="no_register">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Tahun Perolehan</label>
+                                            <input type="year" class="form-control"
+                                                placeholder="Masukkan Tahun Perolehan" name="tahun_perolehan">
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <!-- /.card-body -->
+                                <div class="row">
 
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-primary float-right">Simpan</button>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Harga Perolehan</label>
+                                            <input type="text" class="form-control"
+                                                placeholder="Masukkan Harga Perolehan" name="harga_perolehan">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Alamat</label>
+                                            <input type="text" class="form-control" placeholder="Masukkan Alamat"
+                                                name="alamat">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Keterangan</label>
+                                            <input type="text" class="form-control" placeholder="Masukkan Keterangan"
+                                                name="keterangan">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Nama Kondisi</label>
+                                            <input type="text" class="form-control"
+                                                placeholder="Masukkan Nama Kondisi" name="nama_kondisi">
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Nama Sumber Dana</label>
+                                            <input type="text" class="form-control"
+                                                placeholder="Masukkan Nama Sumber Dana" name="nama_sumber_dana">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Nomor SPPD</label>
+                                            <input type="text" class="form-control"
+                                                placeholder="Masukkan Nomor SPPD" name="no_sppd">
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Nomor SPK</label>
+                                            <input type="text" class="form-control"
+                                                placeholder="Masukkan Nomor SPK" name="no_spk">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Nomor Berita Acara</label>
+                                            <input type="text" class="form-control"
+                                                placeholder="Masukkan Nomor Berita Acara" name="no_ba">
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Tanggal Serah Terima</label>
+                                            <input type="date" class="form-control"
+                                                placeholder="Masukkan Tanggal Serah Terima"
+                                                name="tanggal_serah_terima">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Jenis Kontruksi</label>
+                                            <input type="text" class="form-control"
+                                                placeholder="Masukkan Jenis Kontruksi" name="kontruksi">
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Panjang </label>
+                                            <input type="text" class="form-control"
+                                                placeholder="Masukkan Panjang " name="panjang">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Lebar </label>
+                                            <input type="text" class="form-control" placeholder="Masukkan Lebar "
+                                                name="lebar">
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Luas</label>
+                                            <input type="text" class="form-control" placeholder="Masukkan Luas"
+                                                name="luas">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Nomor Dokumen</label>
+                                            <input type="text" class="form-control"
+                                                placeholder="Masukkan Nomor Dokumen" name="nomor_dokumen">
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Tanggal Dokumen</label>
+                                            <input type="date" class="form-control"
+                                                placeholder="Masukkan Tanggal Dokumen" name="tanggal_dokumen">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Status Tanah</label>
+                                            <input type="text" class="form-control"
+                                                placeholder="Masukkan Status Tanah" name="status_tanah">
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Nomor Tanah</label>
+                                            <input type="text" class="form-control"
+                                                placeholder="Masukkan Nomor Tanah" name="nomor_tanah">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Lokasi</label>
+                                            <input type="text" class="form-control" placeholder="Masukkan Lokasi"
+                                                name="lokasi">
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Header</label>
+                                            <input type="text" class="form-control" placeholder="Masukkan Header"
+                                                name="header">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Urut Kelompok</label>
+                                            <input type="text" class="form-control"
+                                                placeholder="Masukkan Urut Kelompok" name="urut_kelompok">
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Kelompok</label>
+                                            <input type="text" class="form-control"
+                                                placeholder="Masukkan Kelompok" name="kelompok">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Foto</label>
+                                            <input type="file" class="form-control"
+                                                placeholder="Masukkan Foto Aset" name="foto"
+                                                accept=".jpg, .png, .jpeg">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="footer">
+                                    <button type="reset" class="btn btn-default "><span class="fa fa-times"></span>
+                                        Batal</button>
+                                    <button type="submit" class="btn btn-primary float-right"><span
+                                            class="fa fa-save"></span>
+                                        Simpan</button>
+                                </div>
+
                             </div>
                         </form>
+
                     </div>
                 </div>
-                <!-- /.card -->
-
-                <!-- /.card -->
-
             </div>
-        </div>
+
         </div>
     </section>
 </x-opd>

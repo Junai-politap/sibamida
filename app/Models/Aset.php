@@ -33,6 +33,13 @@ class Aset extends Model
         return $this->belongsTo(Opd::class, 'id_opd');
     }
 
+    public function Pegawai()
+    {
+        return $this->belongsTo(Pegawai::class, 'id_pegawai');
+    }
+
+
+
     function handleUploadFoto()
     {
         $this->handleDelete();
