@@ -15,6 +15,11 @@ class Riwayat extends Model
     {
         return $this->belongsTo(Jembatan::class, 'id_aset');
     }
+
+    public function Peralatan()
+    {
+        return $this->belongsTo(Peralatan::class, 'id_aset');
+    }
     public function Pegawai()
     {
         return $this->belongsTo(Pegawai::class, 'id_pegawai');

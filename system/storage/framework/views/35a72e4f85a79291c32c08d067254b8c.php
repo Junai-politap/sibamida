@@ -228,7 +228,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <form action="<?php echo e(url('admin/kategori', $riwayat->id)); ?>" method="POST">
+                                    <form action="<?php echo e(url('opd/kategori', $riwayat->id)); ?>" method="POST">
                                         <div class="modal-body">
 
                                             <?php echo csrf_field(); ?>
@@ -296,7 +296,7 @@
                         <form action="<?php echo e(url('opd/riwayat')); ?>" method="post" enctype="multipart/form-data">
                             <?php echo csrf_field(); ?>
                             <div class="row">
-                                <input type="text" value="<?php echo e($jembatan->id); ?>" name="id_jembatan" hidden>
+                                <input type="text" value="<?php echo e($jembatan->id); ?>" name="id_aset" hidden>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="exampleInputText">Nama Pegawai</label>
