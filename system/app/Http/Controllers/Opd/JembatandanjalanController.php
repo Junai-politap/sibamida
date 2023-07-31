@@ -101,23 +101,7 @@ class JembatandanjalanController extends Controller
      */
     public function update(Jembatan $jembatan)
     {
-<<<<<<< HEAD
-        $jembatan->id_opd               = request('id_opd');
-        $jembatan->id_kategori          = request('id_kategori');
-        $jembatan->id_pegawai           = request('id_pegawai');
-        $jembatan->kode_aset            = request('kode_aset');
-        $jembatan->nama_aset            = request('nama_aset');
-        $jembatan->no_register          = request('no_register');
-        $jembatan->tahun_perolehan      = request('tahun_perolehan');
-        $jembatan->harga_perolehan      = request('harga_perolehan');
-        $jembatan->keterangan           = request('keterangan');
-        $jembatan->alamat               = request('alamat');
-        $jembatan->nama_kondisi         = request('nama_kondisi');
-        $jembatan->nama_sumber_dana     = request('nama_sumber_dana');
-        $jembatan->no_sppd              = request('no_sppd');
-        $jembatan->no_spk               = request('no_spk');
-        $jembatan->no_ba                = request('no_ba');
-=======
+      
         $jembatan->id_opd = request('id_opd');
         $jembatan->id_kategori = request('id_kategori');
         $jembatan->id_pegawai = request('id_pegawai');
@@ -133,7 +117,6 @@ class JembatandanjalanController extends Controller
         $jembatan->no_sppd = request('no_sppd');
         $jembatan->no_spk = request('no_spk');
         $jembatan->no_ba = request('no_ba');
->>>>>>> 69a94ef602d44c1aba41549a6f9049c16686ef58
         $jembatan->tanggal_serah_terima = request('tanggal_serah_terima');
         $jembatan->kontruksi = request('kontruksi');
         $jembatan->panjang = request('panjang');
