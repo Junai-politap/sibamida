@@ -103,7 +103,7 @@ class JembatandanjalanController extends Controller
     {
         $jembatan->id_opd               = request('id_opd');
         $jembatan->id_kategori          = request('id_kategori');
-        $jembatan->id_pegawai          = request('id_pegawai');
+        $jembatan->id_pegawai           = request('id_pegawai');
         $jembatan->kode_aset            = request('kode_aset');
         $jembatan->nama_aset            = request('nama_aset');
         $jembatan->no_register          = request('no_register');

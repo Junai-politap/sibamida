@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\AsetController;
+use App\Http\Controllers\Admin\JembatanController;
 use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\OpdController;
 use App\Http\Controllers\Admin\PegawaiController;
@@ -26,6 +26,6 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::put('kategori/{kategori}', [KategoriController::class, 'update']);
     Route::get('kategori/delete/{kategori}', [KategoriController::class, 'destroy']);
 
-    Route::resource('aset', AsetController::class);
+    Route::resource('master/jembatan-jalan', JembatanController::class);
 
 });
