@@ -202,7 +202,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <form action="{{ url('admin/kategori', $riwayat->id) }}" method="POST">
+                                    <form action="{{ url('opd/kategori', $riwayat->id) }}" method="POST">
                                         <div class="modal-body">
 
                                             @csrf
@@ -270,7 +270,7 @@
                         <form action="{{ url('opd/riwayat') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
-                                <input type="text" value="{{ $jembatan->id }}" name="id_jembatan" hidden>
+                                <input type="text" value="{{ $jembatan->id }}" name="id_aset" hidden>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="exampleInputText">Nama Pegawai</label>
