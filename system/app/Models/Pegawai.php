@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Riwayat;
 use App\Models\Jembatan;
+use App\Models\Peralatan;
 use Illuminate\Support\Str;
 use App\Models\ModelAuthenticate;
 use App\models\Opd;
@@ -25,6 +26,10 @@ class Pegawai extends ModelAuthenticate
     public function Jembatan()
     {
         return $this->belongsTo(Jembatan::class, 'id');
+    }
+    public function Peralatan()
+    {
+        return $this->belongsTo(Peralatan::class, 'id');
     }
 
     function handleUploadFoto()

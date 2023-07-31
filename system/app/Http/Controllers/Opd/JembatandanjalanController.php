@@ -38,38 +38,38 @@ class JembatandanjalanController extends Controller
     public function store(Request $request)
     {
         $jembatan = new Jembatan();
-        $jembatan->id_opd               = request('id_opd');
-        $jembatan->id_kategori          = request('id_kategori');
-        $jembatan->id_pegawai          = request('id_pegawai');
-        $jembatan->kode_aset            = request('kode_aset');
-        $jembatan->nama_aset            = request('nama_aset');
-        $jembatan->no_register          = request('no_register');
-        $jembatan->tahun_perolehan      = request('tahun_perolehan');
-        $jembatan->harga_perolehan      = request('harga_perolehan');
-        $jembatan->keterangan           = request('keterangan');
-        $jembatan->alamat               = request('alamat');
-        $jembatan->nama_kondisi         = request('nama_kondisi');
-        $jembatan->nama_sumber_dana     = request('nama_sumber_dana');
-        $jembatan->no_sppd              = request('no_sppd');
-        $jembatan->no_spk               = request('no_spk');
-        $jembatan->no_ba                = request('no_ba');
+        $jembatan->id_opd = request('id_opd');
+        $jembatan->id_kategori = request('id_kategori');
+        $jembatan->id_pegawai = request('id_pegawai');
+        $jembatan->kode_aset = request('kode_aset');
+        $jembatan->nama_aset = request('nama_aset');
+        $jembatan->no_register = request('no_register');
+        $jembatan->tahun_perolehan = request('tahun_perolehan');
+        $jembatan->harga_perolehan = request('harga_perolehan');
+        $jembatan->keterangan = request('keterangan');
+        $jembatan->alamat = request('alamat');
+        $jembatan->nama_kondisi = request('nama_kondisi');
+        $jembatan->nama_sumber_dana = request('nama_sumber_dana');
+        $jembatan->no_sppd = request('no_sppd');
+        $jembatan->no_spk = request('no_spk');
+        $jembatan->no_ba = request('no_ba');
         $jembatan->tanggal_serah_terima = request('tanggal_serah_terima');
-        $jembatan->kontruksi            = request('kontruksi');
-        $jembatan->panjang              = request('panjang');
-        $jembatan->lebar                = request('lebar');
-        $jembatan->luas                 = request('luas');
-        $jembatan->nomor_dokumen        = request('nomor_dokumen');
-        $jembatan->tanggal_dokumen      = request('tanggal_dokumen');
-        $jembatan->status_tanah         = request('status_tanah');
-        $jembatan->nomor_tanah          = request('nomor_tanah');
-        $jembatan->lokasi               = request('lokasi');
-        $jembatan->header               = request('header');
-        $jembatan->urut_kelompok        = request('urut_kelompok');
-        $jembatan->kelompok             = request('kelompok');
+        $jembatan->kontruksi = request('kontruksi');
+        $jembatan->panjang = request('panjang');
+        $jembatan->lebar = request('lebar');
+        $jembatan->luas = request('luas');
+        $jembatan->nomor_dokumen = request('nomor_dokumen');
+        $jembatan->tanggal_dokumen = request('tanggal_dokumen');
+        $jembatan->status_tanah = request('status_tanah');
+        $jembatan->nomor_tanah = request('nomor_tanah');
+        $jembatan->lokasi = request('lokasi');
+        $jembatan->header = request('header');
+        $jembatan->urut_kelompok = request('urut_kelompok');
+        $jembatan->kelompok = request('kelompok');
         $jembatan->handleUploadFoto();
         $jembatan->save();
 
-        return redirect('opd/jembatan')->with('success', 'Data Berhasil Disimpan');
+        return redirect('opd/master/jembatan-jalan')->with('success', 'Data Berhasil Disimpan');
     }
 
     /**
@@ -81,7 +81,7 @@ class JembatandanjalanController extends Controller
         $data['kategori'] = Kategori::all();
         $data['list_pegawai'] = Pegawai::all();
         $data['ruangan'] = Ruangan::all();
-        $data['riwayat'] = Riwayat::where('id_jembatan', $jembatan)->get();
+        $data['riwayat'] = Riwayat::where('id_aset', $jembatan)->get();
         return view('opd.jembatan.show', $data);
     }
 
@@ -101,6 +101,7 @@ class JembatandanjalanController extends Controller
      */
     public function update(Jembatan $jembatan)
     {
+<<<<<<< HEAD
         $jembatan->id_opd               = request('id_opd');
         $jembatan->id_kategori          = request('id_kategori');
         $jembatan->id_pegawai           = request('id_pegawai');
@@ -116,23 +117,41 @@ class JembatandanjalanController extends Controller
         $jembatan->no_sppd              = request('no_sppd');
         $jembatan->no_spk               = request('no_spk');
         $jembatan->no_ba                = request('no_ba');
+=======
+        $jembatan->id_opd = request('id_opd');
+        $jembatan->id_kategori = request('id_kategori');
+        $jembatan->id_pegawai = request('id_pegawai');
+        $jembatan->kode_aset = request('kode_aset');
+        $jembatan->nama_aset = request('nama_aset');
+        $jembatan->no_register = request('no_register');
+        $jembatan->tahun_perolehan = request('tahun_perolehan');
+        $jembatan->harga_perolehan = request('harga_perolehan');
+        $jembatan->keterangan = request('keterangan');
+        $jembatan->alamat = request('alamat');
+        $jembatan->nama_kondisi = request('nama_kondisi');
+        $jembatan->nama_sumber_dana = request('nama_sumber_dana');
+        $jembatan->no_sppd = request('no_sppd');
+        $jembatan->no_spk = request('no_spk');
+        $jembatan->no_ba = request('no_ba');
+>>>>>>> 69a94ef602d44c1aba41549a6f9049c16686ef58
         $jembatan->tanggal_serah_terima = request('tanggal_serah_terima');
-        $jembatan->kontruksi            = request('kontruksi');
-        $jembatan->panjang              = request('panjang');
-        $jembatan->lebar                = request('lebar');
-        $jembatan->luas                 = request('luas');
-        $jembatan->nomor_dokumen        = request('nomor_dokumen');
-        $jembatan->tanggal_dokumen      = request('tanggal_dokumen');
-        $jembatan->status_tanah         = request('status_tanah');
-        $jembatan->nomor_tanah          = request('nomor_tanah');
-        $jembatan->lokasi               = request('lokasi');
-        $jembatan->header               = request('header');
-        $jembatan->urut_kelompok        = request('urut_kelompok');
-        $jembatan->kelompok             = request('kelompok');
-        if (request('foto')) $jembatan->handleUploadFoto();
+        $jembatan->kontruksi = request('kontruksi');
+        $jembatan->panjang = request('panjang');
+        $jembatan->lebar = request('lebar');
+        $jembatan->luas = request('luas');
+        $jembatan->nomor_dokumen = request('nomor_dokumen');
+        $jembatan->tanggal_dokumen = request('tanggal_dokumen');
+        $jembatan->status_tanah = request('status_tanah');
+        $jembatan->nomor_tanah = request('nomor_tanah');
+        $jembatan->lokasi = request('lokasi');
+        $jembatan->header = request('header');
+        $jembatan->urut_kelompok = request('urut_kelompok');
+        $jembatan->kelompok = request('kelompok');
+        if (request('foto'))
+            $jembatan->handleUploadFoto();
         $jembatan->save();
 
-        return redirect('opd/jembatan')->with('success', 'Data Berhasil Diedit');
+        return redirect('opd/master/jembatan-jalan')->with('success', 'Data Berhasil Diedit');
     }
 
     /**

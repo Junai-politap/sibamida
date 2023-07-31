@@ -35,6 +35,11 @@ class Opd extends ModelAuthenticate
         return $this->belongsTo(Jembatan::class, 'id');
     }
 
+    public function Peralatan()
+    {
+        return $this->belongsTo(Peralatan::class, 'id');
+    }
+
     public function Kategori()
     {
         return $this->belongsTo(Kategori::class, 'id');

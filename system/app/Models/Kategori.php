@@ -14,6 +14,10 @@ class Kategori extends Model
     {
         return $this->belongsTo(Jembatan::class, 'id');
     }
+    public function Peralatan()
+    {
+        return $this->belongsTo(Peralatan::class, 'id');
+    }
 
     public function Opd()
     {
