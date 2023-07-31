@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Models\Model;
-use App\Models\Aset;
+use App\Models\Jembatan;
 use App\Models\Pegawai;
 use App\Models\Ruangan;
 use App\Models\Opd;
@@ -11,9 +11,9 @@ class Riwayat extends Model
 {
     protected $table = 'riwayat';
 
-    public function Aset()
+    public function Jembatan()
     {
-        return $this->belongsTo(Aset::class, 'id_aset');
+        return $this->belongsTo(Jembatan::class, 'id_aset');
     }
     public function Pegawai()
     {

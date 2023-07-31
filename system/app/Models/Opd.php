@@ -5,6 +5,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\ModelAuthenticate;
 use Illuminate\Support\Str;
 use App\Models\Pegawai;
+use App\Models\Jembatan;
 
 class Opd extends ModelAuthenticate
 {
@@ -29,9 +30,9 @@ class Opd extends ModelAuthenticate
         return $this->belongsTo(Pegawai::class, 'id');
     }
 
-    public function Aset()
+    public function Jembatan()
     {
-        return $this->belongsTo(Aset::class, 'id');
+        return $this->belongsTo(Jembatan::class, 'id');
     }
 
     public function Kategori()

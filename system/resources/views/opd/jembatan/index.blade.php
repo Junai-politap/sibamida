@@ -5,7 +5,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <a href="{{ url('opd/aset/create') }}" class="btn btn-primary float-right mb-10"> <span
+                            <a href="{{ url('opd/master/jembatan-jalan/create') }}" class="btn btn-primary float-right mb-10"> <span
                                     class="fa fa-plus"></span> Tambah Data</a>
                             <h3 class="card-title">Data Seluruh Assets</h3>
                         </div>
@@ -17,28 +17,26 @@
                                         <th>No</th>
                                         <th>Aksi</th>
                                         <th>Kategori</th>
-                                        <th>Ruangan</th>
                                         <th>Kode Assets</th>
                                         <th>Nama Assets</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($list_aset as $aset)
-                                    @if ( Auth::guard('opd')->user()->id == $aset->id_opd)
+                                    @foreach ($list_jembatan as $jembatan)
+                                    @if ( Auth::guard('opd')->user()->id == $jembatan->id_opd)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <x-button.info-button url="opd/aset" id="{{ $aset->id }}" />
-                                                    <x-button.edit-button url="opd/aset" id="{{ $aset->id }}" />
-                                                    <x-button.delete-button url="opd/aset"
-                                                        id="{{ $aset->id }}" />
+                                                    <x-button.info-button url="opd/master/jembatan-jalan" id="{{ $jembatan->id }}" />
+                                                    <x-button.edit-button url="opd/master/jembatan-jalan" id="{{ $jembatan->id }}" />
+                                                    <x-button.delete-button url="opd/master/jembatan-jalan"
+                                                        id="{{ $jembatan->id }}" />
                                                 </div>
                                             </td>
-                                            <td>{{ $aset->kategori->nama_kategori }}</td>
-                                            <td>{{ $aset->ruangan->nama_ruangan }}</td>
-                                            <td>{{ $aset->kode_aset }}</td>
-                                            <td>{{ $aset->nama_aset }}</td>
+                                            <td>{{ $jembatan->kategori->nama_kategori }}</td>
+                                            <td>{{ $jembatan->kode_aset }}</td>
+                                            <td>{{ $jembatan->nama_aset }}</td>
                                         </tr>
                                         @endif
                                     @endforeach

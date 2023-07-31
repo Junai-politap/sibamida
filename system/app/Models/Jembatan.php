@@ -2,21 +2,16 @@
 
 namespace App\Models;
 
-use App\Models\Ruangan;
 use App\Models\Riwayat;
 use App\Models\Kategori;
 use App\Models\Model;
 use App\Models\Opd;
 use Illuminate\Support\Str;
 
-class Aset extends Model
+class Jembatan extends Model
 {
-    protected $table ="aset";
+    protected $table ="jembatan";
 
-    public function Ruangan()
-    {
-        return $this->belongsTo(Ruangan::class, 'id_ruangan');
-    }
 
     public function Kategori()
     {
@@ -45,7 +40,7 @@ class Aset extends Model
         $this->handleDelete();
         if (request()->hasFile('foto')) {
             $foto = request()->file('foto');
-            $destination = "assets";
+            $destination = "jembatan";
             $randomStr = Str::random(5);
             $filename = time() . "-"  . $randomStr . "."  . $foto->extension();
             $url = $foto->storeAs($destination, $filename);

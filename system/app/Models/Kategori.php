@@ -3,15 +3,16 @@
 namespace App\Models;
 
 use App\Models\Model;
+use App\Models\jembatan;
 use App\Models\Opd;
 
 class Kategori extends Model
 {
     protected $table="kategori";
 
-    public function Aset()
+    public function Jembatan()
     {
-        return $this->belongsTo(Aset::class, 'id');
+        return $this->belongsTo(Jembatan::class, 'id');
     }
 
     public function Opd()

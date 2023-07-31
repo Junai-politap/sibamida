@@ -1,4 +1,12 @@
-<x-opd>
+<?php if (isset($component)) { $__componentOriginal851cb6f5a7f89db41449dadedd8953e5 = $component; } ?>
+<?php $component = App\View\Components\Opd::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('opd'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(App\View\Components\Opd::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
     <section class="content">
         <div class="container-fluid">
             <div class="row">
@@ -7,29 +15,43 @@
                     <!-- general form elements -->
                     <div class="card">
                         <div class="card-header">
-                            <x-button.back-button url="opd/aset" />
+                            <?php if (isset($component)) { $__componentOriginal211193f73d013ad1f030860171096d7c = $component; } ?>
+<?php $component = App\View\Components\Button\BackButton::resolve(['url' => 'opd/master/jembatan-jalan'] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('button.back-button'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(App\View\Components\Button\BackButton::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal211193f73d013ad1f030860171096d7c)): ?>
+<?php $component = $__componentOriginal211193f73d013ad1f030860171096d7c; ?>
+<?php unset($__componentOriginal211193f73d013ad1f030860171096d7c); ?>
+<?php endif; ?>
                             <h3 class="text-center title">Tambah Data Aset</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{ url('opd/aset') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
+                        <form action="<?php echo e(url('opd/master/jembatan-jalan')); ?>" method="POST" enctype="multipart/form-data">
+                            <?php echo csrf_field(); ?>
                             <div class="card-body">
-                                <input type="text" name="id_opd" value="{{ Auth::guard('opd')->user()->id }}"
+                                <input type="text" name="id_opd" value="<?php echo e(Auth::guard('opd')->user()->id); ?>"
                                     hidden>
                                 <div class="form-group">
                                     <label for="exampleInputText">Nama Penanggung Jawab</label>
                                     <select name="id_pegawai" class="form-control" required>
                                         <option value=""> Pilih Penanggung Jawab Aset</option>
-                                        @foreach ($list_pegawai as $pegawai)
-                                            @if (Auth::guard('opd')->user()->id == $pegawai->id_opd)
-                                                <option value="{{ $pegawai->id }}">{{ $pegawai->nama }}</option>
-                                            @endif
-                                        @endforeach
+                                        <?php $__currentLoopData = $list_pegawai; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pegawai): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <?php if(Auth::guard('opd')->user()->id == $pegawai->id_opd): ?>
+                                                <option value="<?php echo e($pegawai->id); ?>"><?php echo e($pegawai->nama); ?></option>
+                                            <?php endif; ?>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kode Aset</label>
                                             <input type="text" class="form-control" placeholder="Masukkan Kode Aset"
@@ -37,7 +59,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nama Aset</label>
                                             <input type="text" class="form-control" placeholder="Masukkan Nama Aset"
@@ -45,35 +67,19 @@
                                         </div>
                                     </div>
 
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="exampleInputText">Nama Ruangan</label>
-                                            <select class="form-control" name="id_ruangan" required>
-                                                <option value=""> Pilih Ruangan Aset</option>
-                                                @foreach ($ruangan as $ruangan)
-                                                    @if (Auth::guard('opd')->user()->id == $ruangan->id_opd)
-                                                        <option value="{{ $ruangan->id }}">{{ $ruangan->nama_ruangan }}
-                                                        </option>
-                                                    @endif
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kategori Aset</label>
                                             <select class="form-control" name="id_kategori" required>
                                                 <option value=""> Pilih Kategori Aset</option>
-                                                @foreach ($kategori as $kategori)
-                                                    @if (Auth::guard('opd')->user()->id == $kategori->id_opd)
-                                                        <option value="{{ $kategori->id }}">
-                                                            {{ $kategori->nama_kategori }}
+                                                <?php $__currentLoopData = $kategori; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $kategori): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <?php if(Auth::guard('opd')->user()->id == $kategori->id_opd): ?>
+                                                        <option value="<?php echo e($kategori->id); ?>">
+                                                            <?php echo e($kategori->nama_kategori); ?>
+
                                                         </option>
-                                                    @endif
-                                                @endforeach
+                                                    <?php endif; ?>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </select>
                                         </div>
                                     </div>
@@ -336,4 +342,10 @@
 
         </div>
     </section>
-</x-opd>
+ <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal851cb6f5a7f89db41449dadedd8953e5)): ?>
+<?php $component = $__componentOriginal851cb6f5a7f89db41449dadedd8953e5; ?>
+<?php unset($__componentOriginal851cb6f5a7f89db41449dadedd8953e5); ?>
+<?php endif; ?>
+<?php /**PATH D:\Github\sibamida\system\resources\views/opd/jembatan/create.blade.php ENDPATH**/ ?>

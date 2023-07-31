@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Opd\AsetController;
+use App\Http\Controllers\Opd\JembatandanjalanController;
 use App\Http\Controllers\Opd\KategoriController;
 use App\Http\Controllers\Opd\OpdController;
 use App\Http\Controllers\Opd\PegawaiController;
@@ -11,11 +11,11 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'auth:opd'], function () {
 
     Route::get('/', [OpdController::class, 'index']);
-    Route::post('riwayat', [AsetController::class, 'riwayat']);
+    Route::post('riwayat', [JembatandanjalanController::class, 'riwayat']);
 
-    Route::get('/delete-riwayat/{riwayat}', [AsetController::class, 'hapus']);
+    Route::get('/delete-riwayat/{riwayat}', [JembatandanjalanController::class, 'hapus']);
     Route::resource('pegawai', PegawaiController::class);
     Route::resource('ruangan', RuanganController::class);
     Route::resource('kategori', KategoriController::class);
-    Route::resource('aset', AsetController::class);
+    Route::resource('master/jembatan-jalan', JembatandanjalanController::class);
 });
