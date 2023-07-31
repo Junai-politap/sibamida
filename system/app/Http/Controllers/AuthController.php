@@ -22,6 +22,10 @@ class AuthController extends Controller
             return redirect('opd')->with('success', 'Login Berhasil');
         }
 
+		if (auth()->guard('staff')->attempt(['username' => request('username'), 'password' => request('password')])){
+            return redirect('staff-administrasi')->with('success', 'Login Berhasil');
+        }
+
 		return redirect('login');
 	}
 
@@ -29,6 +33,7 @@ class AuthController extends Controller
 		
 		auth()->guard('admin')->logout();
 		auth()->guard('opd')->logout();
+		auth()->guard('staff')->logout();
 		return redirect('login');
 	}
 

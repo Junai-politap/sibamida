@@ -2,6 +2,7 @@
 
 use App\Models\Opd;
 use App\Models\Admin;
+use App\Models\Pegawai;
 return [
 
     /*
@@ -52,6 +53,11 @@ return [
             'driver' => 'session',
             'provider' => 'admin',
         ],
+
+        'staff' => [
+            'driver' => 'session',
+            'provider' => 'staff',
+        ],
     ],
 
     /*
@@ -85,6 +91,11 @@ return [
         'admin' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
+        ],
+
+        'staff' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Pegawai::class,
         ],
 
         // 'users' => [
