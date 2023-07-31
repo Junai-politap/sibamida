@@ -1,11 +1,11 @@
 @php
-
-function checkRouteActive($route)
-{
-    if (Route::current()->uri == $route) {
-        return 'active';
+    
+    function checkRouteActive($route)
+    {
+        if (Route::current()->uri == $route) {
+            return 'active';
+        }
     }
-}
 @endphp
 
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -53,7 +53,7 @@ function checkRouteActive($route)
                         </p>
                     </a>
                 </li>
-                
+
                 <li class="nav-item">
                     <a href="{{ url('admin/admin') }}" class="nav-link {{ checkRouteActive('admin/admin') }}">
                         <i class="nav-icon fas fa-user"></i>
@@ -74,17 +74,17 @@ function checkRouteActive($route)
 
                 <li class="nav-item">
                     <a href="{{ url('admin/ruangan') }}" class="nav-link {{ checkRouteActive('admin/ruangan') }}">
-                        <i class="fa fa-building nav-icon"></i>
+                        <i class="nav-icon fa fa-city"></i>
                         <p>Data Ruangan</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ url('admin/kategori') }}" class="nav-link {{ checkRouteActive('admin/kategori') }}">
-                        <i class="fa fa-list nav-icon"></i>
+                        <i class="nav-icon fa fa-list "></i>
                         <p>Data Kategori Aset</p>
                     </a>
                 </li>
-               
+
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-database"></i>
@@ -94,32 +94,36 @@ function checkRouteActive($route)
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        
+
                         <li class="nav-item">
-                            <a href="{{ url('admin/master/jembatan-jalan') }}" class="nav-link {{ checkRouteActive('admin/master/jembatan-jalan') }}">
+                            <a href="{{ url('admin/master/jembatan-jalan') }}"
+                                class="nav-link {{ checkRouteActive('admin/master/jembatan-jalan') }}">
                                 <i class="fa fa-plus nav-icon"></i>
                                 <p>Jembatan dan Jalan</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('admin/master/peralatan-mesin') }}" class="nav-link {{ checkRouteActive('admin/master/peralatan-mesin') }}">
+                            <a href="{{ url('admin/master/peralatan-mesin') }}"
+                                class="nav-link {{ checkRouteActive('admin/master/peralatan-mesin') }}">
                                 <i class="fa fa-plus nav-icon"></i>
                                 <p>Peralatan dan Mesin</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('admin/master/bangunan') }}" class="nav-link {{ checkRouteActive('admin/master/bangunan') }}">
+                            <a href="{{ url('admin/master/bangunan') }}"
+                                class="nav-link {{ checkRouteActive('admin/master/bangunan') }}">
                                 <i class="fa fa-plus nav-icon"></i>
                                 <p>Bangunan</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('admin/master/tanah') }}" class="nav-link {{ checkRouteActive('admin/master/tanah') }}">
+                            <a href="{{ url('admin/master/tanah') }}"
+                                class="nav-link {{ checkRouteActive('admin/master/tanah') }}">
                                 <i class="fa fa-plus nav-icon"></i>
                                 <p>Tanah</p>
                             </a>
                         </li>
-                        
+
 
                     </ul>
                 </li>

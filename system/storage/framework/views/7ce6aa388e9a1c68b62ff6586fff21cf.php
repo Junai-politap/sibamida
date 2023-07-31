@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SIBAMIDA</title>
-
+    <link rel="icon" href="<?php echo e(url('public/admin')); ?>/logo.png" type="image/x-icon">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="<?php echo e(url('public/admin')); ?>/plugins/fontawesome-free/css/all.min.css">
@@ -130,6 +130,14 @@
     <script src="<?php echo e(url('public/admin')); ?>/plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="<?php echo e(url('public/admin')); ?>/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
+    <script>
+        $(function() {
+            $('.summernote').summernote({
+                height: 100
+            })
+        })
+    </script>
+    
     <script>
         $(function () {
           $("#example1").DataTable({

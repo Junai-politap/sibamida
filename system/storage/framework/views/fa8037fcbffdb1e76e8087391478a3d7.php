@@ -75,13 +75,13 @@ function checkRouteActive($route)
 
                 <li class="nav-item">
                     <a href="<?php echo e(url('admin/ruangan')); ?>" class="nav-link <?php echo e(checkRouteActive('admin/ruangan')); ?>">
-                        <i class="fa fa-building nav-icon"></i>
+                        <i class="nav-icon fa fa-city"></i>
                         <p>Data Ruangan</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="<?php echo e(url('admin/kategori')); ?>" class="nav-link <?php echo e(checkRouteActive('admin/kategori')); ?>">
-                        <i class="fa fa-list nav-icon"></i>
+                        <i class="nav-icon fa fa-list "></i>
                         <p>Data Kategori Aset</p>
                     </a>
                 </li>
