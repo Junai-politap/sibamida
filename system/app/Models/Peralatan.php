@@ -44,7 +44,7 @@ class Peralatan extends Model
             $filename = time() . "-"  . $randomStr . "."  . $foto->extension();
             $url = $foto->storeAs($destination, $filename);
             $this->foto = "app/" . $url;
-            $this->save();
+          
 
         }
     }

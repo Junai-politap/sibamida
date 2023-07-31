@@ -12,7 +12,7 @@
 
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
-                Staff Administrasi
+                {{ Auth::guard('staff')->user()->nama }}
                 <i class="far fa-user"></i>
                
             </a>

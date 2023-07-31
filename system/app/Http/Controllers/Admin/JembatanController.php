@@ -74,7 +74,7 @@ class JembatanController extends Controller
     public function show($jembatan)
     {
         $data['jembatan'] = Jembatan::find($jembatan);
-        $data['riwayat'] = Riwayat::all();
+        $data['riwayat'] = Riwayat::where('id_aset', $jembatan)->get();
         $data['list_pegawai'] = Pegawai::all();
 
         return view('admin.jembatan.show', $data);
@@ -137,5 +137,38 @@ class JembatanController extends Controller
         Jembatan::destroy($jembatan);
 
         return back()->with('danger', ' Data Berhasil Di Hapus');
+    }
+
+    public function riwayat(Request $request)
+    {
+        $jembatan = new Riwayat();
+        $jembatan->id_pegawai = request('id_pegawai');
+        $jembatan->id_aset = request('id_aset');
+        $jembatan->tanggal_mulai = request('tanggal_mulai');
+        $jembatan->keterangan = request('keterangan');
+        $jembatan->save();
+
+        return back()->with('success', 'Data Berhasil Disimpan');
+    }
+
+    public function riwayatUpdate($riwayat)
+    {
+        $jembatan = Riwayat::find($riwayat);
+        $jembatan->id_pegawai = request('id_pegawai');
+        $jembatan->tanggal_mulai = request('tanggal_mulai');
+        $jembatan->keterangan = request('keterangan');
+        $jembatan->save();
+
+        return back()->with('success', 'Data Berhasil Disimpan');
+    }
+
+
+    public function hapus(string $riwayat)
+    {
+        $riwayat = Riwayat::find($riwayat);
+        
+        $riwayat->delete();
+
+        return back()->with('danger', 'Data Berhasiil Dihapus');
     }
 }

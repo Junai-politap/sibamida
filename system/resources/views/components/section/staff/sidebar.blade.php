@@ -44,35 +44,56 @@ function checkRouteActive($route)
                     </a>
 
                 </li>
+
+                <li class="nav-item">
+                    <a href="{{ url('staff-administrasi/ruangan') }}" class="nav-link {{ checkRouteActive('staff-administrasi/ruangan') }}">
+                        <i class="nav-icon fa fa-city"></i>
+                        <p>Data Ruangan</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url('staff-administrasi/kategori') }}" class="nav-link {{ checkRouteActive('staff-administrasi/kategori') }}">
+                        <i class="nav-icon fa fa-list "></i>
+                        <p>Data Kategori Aset</p>
+                    </a>
+                </li>
                 
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-database"></i>
                         <p>
-                            Master Data
+                            Master Data Aset
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
+
                         <li class="nav-item">
-                            <a href="{{ url('staff-administrasi/ruangan') }}" class="nav-link {{ checkRouteActive('staff-administrasi/ruangan') }}">
+                            <a href="{{ url('staff-administrasi/master/jembatan-jalan') }}" class="nav-link {{ checkRouteActive('staff-administrasi/master/jembatan-jalan') }}">
                                 <i class="fa fa-plus nav-icon"></i>
-                                <p>Data Ruangan</p>
+                                <p>Jembatan dan Jalan</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('staff-administrasi/kategori') }}" class="nav-link {{ checkRouteActive('staff-administrasi/kategori') }}">
+                            <a href="{{ url('staff-administrasi/master/peralatan-mesin') }}" class="nav-link {{ checkRouteActive('staff-administrasi/master/peralatan-mesin') }}">
                                 <i class="fa fa-plus nav-icon"></i>
-                                <p>Data Kategori Aset</p>
+                                <p>Peralatan dan Mesin</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('staff-administrasi/aset') }}" class="nav-link {{ checkRouteActive('staff-administrasi/aset') }}">
+                            <a href="{{ url('staff-administrasi/master/bangunan') }}" class="nav-link {{ checkRouteActive('staff-administrasi/master/bangunan') }}">
                                 <i class="fa fa-plus nav-icon"></i>
-                                <p>Data Aset</p>
+                                <p>Bangunan</p>
                             </a>
                         </li>
 
+                        <li class="nav-item">
+                            <a href="{{ url('staff-administrasi/master/tanah') }}" class="nav-link {{ checkRouteActive('staff-administrasi/master/tanah') }}">
+                                <i class="fa fa-plus nav-icon"></i>
+                                <p>Tanah</p>
+                            </a>
+                        </li>
+                       
                     </ul>
                 </li>
 

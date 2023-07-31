@@ -97,7 +97,8 @@
                                         </tr>
                                         <tr>
                                             <td>Panjang / Lebar / Luas</td>
-                                            <td> : {{ $jembatan->panjang }} / {{ $jembatan->lebar }} / {{ $jembatan->luas }}
+                                            <td> : {{ $jembatan->panjang }} / {{ $jembatan->lebar }} /
+                                                {{ $jembatan->luas }}
                                             </td>
                                         </tr>
                                         <tr>
@@ -165,7 +166,8 @@
                                             <span class="fa fa-edit"></span>
                                         </button>
 
-                                        <a href="{{ url("opd/delete-riwayat/$riwayat->id") }}"
+                                        <a onclick="return confirm('Yakin ingin menghapus data ini?')"
+                                            href="{{ url("admin/delete-riwayat/$riwayat->id") }}"
                                             class="btn btn-danger"><i class="fa fa-trash"></i></a>
 
 
@@ -202,7 +204,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <form action="{{ url('admin/kategori', $riwayat->id) }}" method="POST">
+                                    <form action="{{ url('admin/update-riwayat', $riwayat->id) }}" method="POST">
                                         <div class="modal-body">
 
                                             @csrf
@@ -214,10 +216,12 @@
                                                     <div class="col-sm-9">
                                                         <select name="id_pegawai" class="form-control">
                                                             @foreach ($list_pegawai as $pegawai)
-                                                                <option
-                                                                    @if ($pegawai->id == $riwayat->id_pegawai) selected @endif
-                                                                    value="{{ $pegawai->id }}">
-                                                                    {{ $pegawai->nama }}</option>
+                                                                @if ($pegawai->id_opd == $jembatan->opd->id)
+                                                                    <option
+                                                                        @if ($pegawai->id == $riwayat->id_pegawai) selected @endif
+                                                                        value="{{ $pegawai->id }}">
+                                                                        {{ $pegawai->nama }}</option>
+                                                                @endif
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -270,7 +274,7 @@
                         <form action="{{ url('admin/riwayat') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
-                                <input type="text" value="{{ $jembatan->id }}" name="id_jembatan" hidden>
+                                <input type="text" value="{{ $jembatan->id }}" name="id_aset" hidden>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="exampleInputText">Nama Pegawai</label>
@@ -278,8 +282,8 @@
                                             <option value=""> Pilih Nama Pegawai</option>
                                             @foreach ($list_pegawai as $pegawai)
                                                 @if ($pegawai->id_opd == $jembatan->opd->id)
-                                                <option value="{{ $pegawai->id }}">{{ $pegawai->nama }}
-                                                </option>
+                                                    <option value="{{ $pegawai->id }}">{{ $pegawai->nama }}
+                                                    </option>
                                                 @endif
                                             @endforeach
                                         </select>
