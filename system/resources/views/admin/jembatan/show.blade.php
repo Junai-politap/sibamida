@@ -167,7 +167,7 @@
                                         </button>
 
                                         <a onclick="return confirm('Yakin ingin menghapus data ini?')"
-                                            href="{{ url("admin/delete-riwayat/$riwayat->id") }}"
+                                            href="{{ url("admin/jembatan-jalan/delete-riwayat/$riwayat->id") }}"
                                             class="btn btn-danger"><i class="fa fa-trash"></i></a>
 
 
@@ -178,7 +178,7 @@
                                 <div class="card-body">
                                     <strong>Tanggal Mulai</strong>
                                     <p class="text-muted">
-                                        {{ $riwayat->created_at->format('d F Y') }}
+                                        {{date("d-F-Y", strtotime($riwayat->tanggal_mulai)) }}
                                     </p>
                                     <hr>
                                     <strong>Nama Penanggung Jawab</strong>
@@ -187,7 +187,7 @@
                                     <strong>Keterangan</strong>
                                     <p class="text-muted">
                                     <p>
-                                        {{ $riwayat->keterangan }}
+                                        {!! nl2br( $riwayat->keterangan )!!}
                                     </p>
                                     </p>
                                     <hr>
@@ -204,7 +204,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <form action="{{ url('admin/update-riwayat', $riwayat->id) }}" method="POST">
+                                    <form action="{{ url('admin/jembatan-jalan/update-riwayat', $riwayat->id) }}" method="POST">
                                         <div class="modal-body">
 
                                             @csrf
@@ -232,8 +232,8 @@
                                                         Tanggal Mulai
                                                     </label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="tanggal_mulai"
-                                                            value="{{ $riwayat->tanggal_mulai }}">
+                                                        <input type="date" class="form-control" name="tanggal_mulai"
+                                                            value="{{date("Y-m-d", strtotime($riwayat->tanggal_mulai)) }}">
                                                     </div>
                                                 </div>
 
@@ -271,7 +271,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="{{ url('admin/riwayat') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ url('admin/jembatan-jalan/riwayat') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <input type="text" value="{{ $jembatan->id }}" name="id_aset" hidden>

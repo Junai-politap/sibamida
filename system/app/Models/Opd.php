@@ -40,6 +40,16 @@ class Opd extends ModelAuthenticate
         return $this->belongsTo(Peralatan::class, 'id');
     }
 
+    public function Bangunan()
+    {
+        return $this->belongsTo(Peralatan::class, 'id');
+    }
+
+    public function Tanah()
+    {
+        return $this->belongsTo(Tanah::class, 'id');
+    }
+    
     public function Kategori()
     {
         return $this->belongsTo(Kategori::class, 'id');

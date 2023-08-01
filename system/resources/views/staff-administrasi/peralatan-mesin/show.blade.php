@@ -142,7 +142,7 @@
                                             <span class="fa fa-edit"></span>
                                         </button>
 
-                                        <a onclick="return confirm('Yakin ingin menghapus data ini?')" href="{{ url("staff-administrasi/delete-riwayat/$riwayat->id") }}"
+                                        <a onclick="return confirm('Yakin ingin menghapus data ini?')" href="{{ url("staff-administrasi/peralatan-jalan/delete-riwayat/$riwayat->id") }}"
                                             class="btn btn-danger"><i class="fa fa-trash"></i></a>
 
 
@@ -179,7 +179,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <form action="{{ url('staff-administrasi/update-riwayat', $riwayat->id) }}"
+                                    <form action="{{ url('staff-administrasi/peralatan-jalan/update-riwayat', $riwayat->id) }}"
                                         method="POST">
                                         <div class="modal-body">
 
@@ -247,7 +247,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="{{ url('staff-administrasi/riwayat') }}" method="post"
+                        <form action="{{ url('staff-administrasi/peralatan-jalan/riwayat') }}" method="post"
                             enctype="multipart/form-data">
                             @csrf
                             <div class="row">

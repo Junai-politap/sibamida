@@ -150,10 +150,22 @@ class PeralatandanmesinController extends Controller
         return back()->with('success', 'Data Berhasil Disimpan');
     }
 
+    public function riwayatUpdate($riwayat)
+    {
+        $jembatan = Riwayat::find($riwayat);
+        $jembatan->id_pegawai = request('id_pegawai');
+        $jembatan->tanggal_mulai = request('tanggal_mulai');
+        $jembatan->keterangan = request('keterangan');
+        $jembatan->save();
+
+        return back()->with('success', 'Data Berhasil Disimpan');
+    }
+
+
     public function hapus(string $riwayat)
     {
         $riwayat = Riwayat::find($riwayat);
-        // return $jembatan;
+        
         $riwayat->delete();
 
         return back()->with('danger', 'Data Berhasiil Dihapus');

@@ -191,7 +191,7 @@
                                         </button>
 
                                         <a onclick="return confirm('Yakin ingin menghapus data ini?')"
-                                            href="<?php echo e(url("admin/delete-riwayat/$riwayat->id")); ?>"
+                                            href="<?php echo e(url("admin/jembatan-jalan/delete-riwayat/$riwayat->id")); ?>"
                                             class="btn btn-danger"><i class="fa fa-trash"></i></a>
 
 
@@ -202,7 +202,7 @@
                                 <div class="card-body">
                                     <strong>Tanggal Mulai</strong>
                                     <p class="text-muted">
-                                        <?php echo e($riwayat->created_at->format('d F Y')); ?>
+                                        <?php echo e(date("d-F-Y", strtotime($riwayat->tanggal_mulai))); ?>
 
                                     </p>
                                     <hr>
@@ -212,7 +212,7 @@
                                     <strong>Keterangan</strong>
                                     <p class="text-muted">
                                     <p>
-                                        <?php echo e($riwayat->keterangan); ?>
+                                        <?php echo nl2br( $riwayat->keterangan ); ?>
 
                                     </p>
                                     </p>
@@ -230,7 +230,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <form action="<?php echo e(url('admin/update-riwayat', $riwayat->id)); ?>" method="POST">
+                                    <form action="<?php echo e(url('admin/jembatan-jalan/update-riwayat', $riwayat->id)); ?>" method="POST">
                                         <div class="modal-body">
 
                                             <?php echo csrf_field(); ?>
@@ -258,8 +258,8 @@
                                                         Tanggal Mulai
                                                     </label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="tanggal_mulai"
-                                                            value="<?php echo e($riwayat->tanggal_mulai); ?>">
+                                                        <input type="date" class="form-control" name="tanggal_mulai"
+                                                            value="<?php echo e(date("Y-m-d", strtotime($riwayat->tanggal_mulai))); ?>">
                                                     </div>
                                                 </div>
 
@@ -297,7 +297,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="<?php echo e(url('admin/riwayat')); ?>" method="post" enctype="multipart/form-data">
+                        <form action="<?php echo e(url('admin/jembatan-jalan/riwayat')); ?>" method="post" enctype="multipart/form-data">
                             <?php echo csrf_field(); ?>
                             <div class="row">
                                 <input type="text" value="<?php echo e($jembatan->id); ?>" name="id_aset" hidden>

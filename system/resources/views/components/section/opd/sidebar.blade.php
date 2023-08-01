@@ -86,18 +86,21 @@ function checkRouteActive($route)
                                 <p>Peralatan dan Mesin</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ url('opd/master/tanah') }}" class="nav-link {{ checkRouteActive('opd/master/tanah') }}">
-                                <i class="fa fa-plus nav-icon"></i>
-                                <p>Tanah</p>
-                            </a>
-                        </li>
+
                         <li class="nav-item">
                             <a href="{{ url('opd/master/bangunan') }}" class="nav-link {{ checkRouteActive('opd/master/bangunan') }}">
                                 <i class="fa fa-plus nav-icon"></i>
                                 <p>Bangunan</p>
                             </a>
                         </li>
+                        
+                        <li class="nav-item">
+                            <a href="{{ url('opd/master/tanah') }}" class="nav-link {{ checkRouteActive('opd/master/tanah') }}">
+                                <i class="fa fa-plus nav-icon"></i>
+                                <p>Tanah</p>
+                            </a>
+                        </li>
+                        
 
                     </ul>
                 </li>
