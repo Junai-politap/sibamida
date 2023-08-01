@@ -27,9 +27,20 @@ class Pegawai extends ModelAuthenticate
     {
         return $this->belongsTo(Jembatan::class, 'id');
     }
+
     public function Peralatan()
     {
         return $this->belongsTo(Peralatan::class, 'id');
+    }
+
+    public function Bangunan()
+    {
+        return $this->belongsTo(Peralatan::class, 'id');
+    }
+
+    public function Tanah()
+    {
+        return $this->belongsTo(Tanah::class, 'id');
     }
 
     function handleUploadFoto()

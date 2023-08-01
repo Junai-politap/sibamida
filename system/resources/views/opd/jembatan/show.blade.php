@@ -165,7 +165,7 @@
                                             <span class="fa fa-edit"></span>
                                         </button>
 
-                                        <a href="{{ url("opd/delete-riwayat/$riwayat->id") }}"
+                                        <a href="{{ url("opd/jembatan-jalan/delete-riwayat/$riwayat->id") }}"
                                             class="btn btn-danger"><i class="fa fa-trash"></i></a>
 
 
@@ -176,7 +176,7 @@
                                 <div class="card-body">
                                     <strong>Tanggal Mulai</strong>
                                     <p class="text-muted">
-                                        {{ $riwayat->created_at->format('d F Y') }}
+                                        {{date("Y-m-d", strtotime($riwayat->tanggal_mulai)) }}
                                     </p>
                                     <hr>
                                     <strong>Nama Penanggung Jawab</strong>
@@ -202,7 +202,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <form action="{{ url('opd/kategori', $riwayat->id) }}" method="POST">
+                                    <form action="{{ url('opd/jembatan-jalan/update-riwayat', $riwayat->id) }}" method="POST">
                                         <div class="modal-body">
 
                                             @csrf
@@ -214,10 +214,12 @@
                                                     <div class="col-sm-9">
                                                         <select name="id_pegawai" class="form-control">
                                                             @foreach ($list_pegawai as $pegawai)
+                                                            @if (Auth::guard('opd')->user()->id == $pegawai->id_opd)
                                                                 <option
                                                                     @if ($pegawai->id == $riwayat->id_pegawai) selected @endif
                                                                     value="{{ $pegawai->id }}">
                                                                     {{ $pegawai->nama }}</option>
+                                                                    @endif
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -228,8 +230,8 @@
                                                         Tanggal Mulai
                                                     </label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="tanggal_mulai"
-                                                            value="{{ $riwayat->tanggal_mulai }}">
+                                                        <input type="date" class="form-control" name="tanggal_mulai"
+                                                            value="{{date("Y-m-d", strtotime($riwayat->tanggal_mulai)) }}">
                                                     </div>
                                                 </div>
 
@@ -267,7 +269,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="{{ url('opd/riwayat') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ url('opd/jembatan-jalan/riwayat') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <input type="text" value="{{ $jembatan->id }}" name="id_aset" hidden>

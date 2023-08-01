@@ -151,7 +151,7 @@
                                 <div class="card-body">
                                     <strong>Tanggal Mulai</strong>
                                     <p class="text-muted">
-                                        {{ $riwayat->created_at->format('d F Y') }}
+                                        {{date("Y-m-d", strtotime($riwayat->tanggal_mulai)) }}
                                     </p>
                                     <hr>
                                     <strong>Nama Penanggung Jawab</strong>
@@ -189,10 +189,12 @@
                                                     <div class="col-sm-9">
                                                         <select name="id_pegawai" class="form-control">
                                                             @foreach ($list_pegawai as $pegawai)
+                                                            @if (Auth::guard('opd')->user()->id == $pegawai->id_opd)
                                                                 <option
                                                                     @if ($pegawai->id == $riwayat->id_pegawai) selected @endif
                                                                     value="{{ $pegawai->id }}">
                                                                     {{ $pegawai->nama }}</option>
+                                                                    @endif
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -203,8 +205,8 @@
                                                         Tanggal Mulai
                                                     </label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="tanggal_mulai"
-                                                            value="{{ $riwayat->tanggal_mulai }}">
+                                                        <input type="date" class="form-control" name="tanggal_mulai"
+                                                            value="{{date("Y-m-d", strtotime($riwayat->tanggal_mulai)) }}">
                                                     </div>
                                                 </div>
 

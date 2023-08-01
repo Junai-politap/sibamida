@@ -166,7 +166,7 @@
                                         </button>
 
                                         <a onclick="return confirm('Yakin ingin menghapus data ini?')"
-                                            href="<?php echo e(url("admin/delete-riwayat/$riwayat->id")); ?>"
+                                            href="<?php echo e(url("admin/peralatan-mesin/delete-riwayat/$riwayat->id")); ?>"
                                             class="btn btn-danger"><i class="fa fa-trash"></i></a>
 
 
@@ -205,7 +205,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <form action="<?php echo e(url('admin/update-riwayat', $riwayat->id)); ?>" method="POST">
+                                    <form action="<?php echo e(url('admin/peralatan-mesin/update-riwayat', $riwayat->id)); ?>" method="POST">
                                         <div class="modal-body">
 
                                             <?php echo csrf_field(); ?>
@@ -272,7 +272,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="<?php echo e(url('admin/riwayat')); ?>" method="post" enctype="multipart/form-data">
+                        <form action="<?php echo e(url('admin/peralatan-mesin/riwayat')); ?>" method="post" enctype="multipart/form-data">
                             <?php echo csrf_field(); ?>
                             <div class="row">
                                 <input type="text" value="<?php echo e($peralatan->id); ?>" name="id_aset" hidden>
