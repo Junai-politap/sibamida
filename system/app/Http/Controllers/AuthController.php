@@ -34,7 +34,7 @@ class AuthController extends Controller
 		auth()->guard('admin')->logout();
 		auth()->guard('opd')->logout();
 		auth()->guard('staff')->logout();
-		return redirect('login');
+		return redirect('/');
 	}
 
 }

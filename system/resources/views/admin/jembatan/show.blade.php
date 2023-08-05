@@ -17,7 +17,7 @@
                             </div>
 
                             <div class="col-md-6 text-center">
-                                {!! QrCode::size(200)->generate('{{ $jembatan->kode_aset }}') !!}
+                                {{$qrCode }}
 
                             </div>
                         </div>

@@ -10,6 +10,7 @@ use App\Models\Pegawai;
 use App\Models\Riwayat;
 use App\Models\Ruangan;
 use Illuminate\Http\Request;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class JembatanController extends Controller
 {
@@ -77,7 +78,27 @@ class JembatanController extends Controller
         $data['riwayat'] = Riwayat::where('id_aset', $jembatan)->get();
         $data['list_pegawai'] = Pegawai::all();
 
-        return view('admin.jembatan.show', $data);
+        $jembatan = Jembatan::find($jembatan);
+
+        $vCardData = [
+            'Nama OPD' => $jembatan->opd->nama_opd,
+            'Nama Penanggung Jawab' => $jembatan->pegawai->nama,
+            'Kategori' => $jembatan->kategori->nama_kategori,
+            'Kode Aset' => $jembatan->kode_aset,
+            'Nama Aset' => $jembatan->nama_aset,
+            'Nomor Register' => $jembatan->no_register,
+            'Tahun Perolehan' => $jembatan->tahun_perolehan,
+            'Harga Perolehan ' => $jembatan->harga_perolehan,
+            'Keterangan ' => $jembatan->keterangan,
+            'Alamat ' => $jembatan->alamat,
+            'Nama Kondisi ' => $jembatan->nama_kondisi,
+            'Nama Sumber Dana ' => $jembatan->nama_sumber_dana,
+        ];
+
+        $jsonData = json_encode($vCardData);
+        $qrCode = QrCode::size(200)->generate($jsonData);
+
+        return view('admin.jembatan.show', $data, compact('qrCode'));
     
     }
 

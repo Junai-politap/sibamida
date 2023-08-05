@@ -1,6 +1,6 @@
 <footer class="main-footer">
-    <strong>Copyright &copy; <?php echo e(date('Y')); ?> DISPARBUD</strong>
-    Kabupaen Ketapang
+    <strong>Copyright &copy; <?php echo e(date('Y')); ?> SIBAMIDA</strong>
+    Kabupaten Ketapang
     <div class="float-right d-none d-sm-inline-block">
         
     </div>
