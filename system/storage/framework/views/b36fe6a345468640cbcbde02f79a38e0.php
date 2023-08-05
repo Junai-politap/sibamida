@@ -177,7 +177,7 @@
                                 <div class="card-body">
                                     <strong>Tanggal Mulai</strong>
                                     <p class="text-muted">
-                                        <?php echo e($riwayat->created_at->format('d F Y')); ?>
+                                        <?php echo e(date("Y-m-d", strtotime($riwayat->tanggal_mulai))); ?>
 
                                     </p>
                                     <hr>
@@ -233,8 +233,8 @@
                                                         Tanggal Mulai
                                                     </label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="tanggal_mulai"
-                                                            value="<?php echo e($riwayat->tanggal_mulai); ?>">
+                                                        <input type="date" class="form-control" name="tanggal_mulai"
+                                                            value="<?php echo e(date("Y-m-d", strtotime($riwayat->tanggal_mulai))); ?>">
                                                     </div>
                                                 </div>
 

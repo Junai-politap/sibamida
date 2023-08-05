@@ -30,7 +30,7 @@
 <?php $component = $__componentOriginal211193f73d013ad1f030860171096d7c; ?>
 <?php unset($__componentOriginal211193f73d013ad1f030860171096d7c); ?>
 <?php endif; ?>
-                            <h3 class="text-center title">Tambah Data Aset</h3>
+                            <h3 class="text-center title">Tambah Data Aset Jembatan dan Jalan</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->

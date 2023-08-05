@@ -39,7 +39,7 @@
                             </div>
 
                             <div class="col-md-6 text-center">
-                                <?php echo QrCode::size(200)->generate('<?php echo e($jembatan->kode_aset); ?>'); ?>
+                                <?php echo e($qrCode); ?>
 
 
                             </div>

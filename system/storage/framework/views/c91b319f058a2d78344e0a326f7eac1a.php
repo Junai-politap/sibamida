@@ -1,3 +1,13 @@
+<?php
+
+function checkRouteActive($route)
+{
+    if (Route::current()->uri == $route) {
+        return 'active';
+    }
+}
+?>
+
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="index3.html" class="brand-link">
         <img src="<?php echo e(url('public/admin')); ?>/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
@@ -13,7 +23,8 @@
             </div>
             <div class="info">
                 <a href="#" class="d-block">
-                    Admin
+                    <?php echo e(Auth::guard('admin')->user()->nama); ?>
+
                 </a>
             </div>
         </div>
@@ -24,8 +35,8 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
 
-                <li class="nav-item menu-open">
-                    <a href="#" class="nav-link">
+                <li class="nav-item">
+                    <a href="<?php echo e(url('admin')); ?>" class="nav-link <?php echo e(checkRouteActive('admin')); ?>">
                         <i class="nav-icon fas fa-home"></i>
                         <p>
                             Dashboard
@@ -34,49 +45,82 @@
                     </a>
 
                 </li>
+
                 <li class="nav-item">
-                    <a href="pages/widgets.html" class="nav-link">
+                    <a href="<?php echo e(url('admin/opd')); ?>" class="nav-link <?php echo e(checkRouteActive('admin/opd')); ?>">
+                        <i class="nav-icon fas fa-university"></i>
+                        <p>
+                            Data OPD
+                        </p>
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="<?php echo e(url('admin/admin')); ?>" class="nav-link <?php echo e(checkRouteActive('admin/admin')); ?>">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>
+                            Data Admin
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="<?php echo e(url('admin/pegawai')); ?>" class="nav-link <?php echo e(checkRouteActive('admin/pegawai')); ?>">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                             Data Pegawai
                         </p>
                     </a>
                 </li>
+
                 <li class="nav-item">
-                    <a href="pages/widgets.html" class="nav-link">
-                        <i class="nav-icon fas fa-landmark"></i>
-                        <p>
-                            Data OPD
-                        </p>
+                    <a href="<?php echo e(url('admin/ruangan')); ?>" class="nav-link <?php echo e(checkRouteActive('admin/ruangan')); ?>">
+                        <i class="fa fa-building nav-icon"></i>
+                        <p>Data Ruangan</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="<?php echo e(url('admin/kategori')); ?>" class="nav-link <?php echo e(checkRouteActive('admin/kategori')); ?>">
+                        <i class="fa fa-list nav-icon"></i>
+                        <p>Data Kategori Aset</p>
+                    </a>
+                </li>
+               
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-database"></i>
                         <p>
-                            Master Data
+                            Master Data Aset
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
+                        
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="<?php echo e(url('admin/master/jembatan-jalan')); ?>" class="nav-link <?php echo e(checkRouteActive('admin/master/jembatan-jalan')); ?>">
                                 <i class="fa fa-plus nav-icon"></i>
-                                <p>Data Ruangan</p>
+                                <p>Jembatan dan Jalan</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="<?php echo e(url('admin/master/peralatan-mesin')); ?>" class="nav-link <?php echo e(checkRouteActive('admin/master/peralatan-mesin')); ?>">
                                 <i class="fa fa-plus nav-icon"></i>
-                                <p>Data Kategori Aset</p>
+                                <p>Peralatan dan Mesin</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="<?php echo e(url('admin/master/bangunan')); ?>" class="nav-link <?php echo e(checkRouteActive('admin/master/bangunan')); ?>">
                                 <i class="fa fa-plus nav-icon"></i>
-                                <p>Data Aset</p>
+                                <p>Bangunan</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="<?php echo e(url('admin/master/tanah')); ?>" class="nav-link <?php echo e(checkRouteActive('admin/master/tanah')); ?>">
+                                <i class="fa fa-plus nav-icon"></i>
+                                <p>Tanah</p>
+                            </a>
+                        </li>
+                        
 
                     </ul>
                 </li>
