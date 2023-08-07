@@ -1,0 +1,67 @@
+
+/*=========================
+    07. Start Category css 
+==========================*/
+
+/* Category Section CSS */ 
+
+.category-one{
+    background-color: #f8f6ef;
+    padding-bottom: 220px;
+    &:after,
+    &:before{
+        position: absolute;
+        content: '';
+        width: 100%;
+        left: 0;
+        background-size: contain;
+    }
+    &:before{
+        top: -15px;
+        background: url(../images/shape/top2.png) no-repeat center;
+        height: 16px;
+    }
+    &:after{
+        bottom: -24px;
+        height: 25px;
+        background: url(../images/shape/bottom2.png) no-repeat center;
+    }
+    & .shape{
+        position: absolute;
+        &.shape-one{
+            bottom: 150px;
+            left: 60px;
+        }
+        &.shape-two{
+            top: 85px;
+            right: 0;
+        }
+    }
+}
+
+/* Category Item CSS */ 
+
+.single-category-item{
+    & .category-img{
+        & img{
+            width: 100%;
+        }
+    }
+    & .category-info{
+        padding: 13px 20px;
+        & h3.title{
+            font-size: 20px;
+            line-height: 30px;
+        }
+        & .arrow-btn{
+            font-size: 20px;
+            color: $heading;
+        }
+        & h3.title,
+        & .arrow-btn{
+            &:hover{
+                color: $primary;
+            }
+        }
+    }
+}

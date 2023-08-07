@@ -1,71 +1,143 @@
-<footer class="site-footer-one">
-
-    <div class="site-footer-one__upper">
-        <div class="container">
-            <div class="footer-widget-row">
-                <div class="footer-widget footer-widget__about">
-                    <div class="footer-widget__inner">
-                        <a href="index.html">
-                            <img src="<?php echo e(url('public/web')); ?>/assets/images/logo-2-1.png" alt="" width="143">
-                        </a>
-                        <p>&copy; Copyright 2020 by <br>
-                            Scubo Template</p>
+<footer class="footer-default footer-white dark-black-bg">
+    <div class="container">
+        <div class="footer-top wow fadeInUp">
+            <div class="row">
+                <div class="col-lg-4 col-md-12 footer-contact-item">
+                    <div class="contact-info d-flex justify-content-center">
+                        <div class="site-logo text-center">
+                            <a href="index.html" class="brand-logo"><img src="<?php echo e(url('public/web')); ?>/assets/images/logo/logo-2.png" alt="Footer Logo"></a>
+                        </div>
                     </div>
                 </div>
-                <div class="footer-widget footer-widget__links__widget-1">
-                    <div class="footer-widget__inner">
-                        <h3 class="footer-widget__title">Company</h3>
-                        <ul class="footer-widget__links-list list-unstyled">
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Our History</a></li>
-                            <li><a href="#">Contact</a></li>
-                        </ul>
+                <div class="col-lg-4 col-md-12 footer-contact-item">
+                    <div class="contact-info d-flex">
+                        <div class="icon">
+                            <i class="flaticon-placeholder"></i>
+                        </div>
+                        <div class="text">
+                            <h5>Locations</h5>
+                            <h6>55 Main Street, New York</h6>
+                        </div>
                     </div>
                 </div>
-                <div class="footer-widget footer-widget__links__widget-2">
-                    <div class="footer-widget__inner">
-                        <h3 class="footer-widget__title">Explore</h3>
-                        <ul class="footer-widget__links-list list-unstyled">
-                            <li><a href="#">Popular Courses</a></li>
-                            <li><a href="#">How It Works</a></li>
-                            <li><a href="#">Help Center</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="footer-widget footer-widget__links__widget-3">
-                    <div class="footer-widget__inner">
-                        <h3 class="footer-widget__title">Links</h3>
-                        <ul class="footer-widget__links-list list-unstyled">
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms & Conditions</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="footer-widget footer-widget__social__widget">
-                    <div class="footer-widget__inner">
-                        <h3 class="footer-widget__title">Follow</h3>
-                        <div class="footer-widget__social">
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-facebook-square"></i></a>
-                            <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
+                <div class="col-lg-4 col-md-12 footer-contact-item">
+                    <div class="contact-info d-flex">
+                        <div class="icon">
+                            <i class="flaticon-placeholder"></i>
+                        </div>
+                        <div class="text">
+                            <h5>Email Us</h5>
+                            <h6><a href="mailto:hotlineinfo@gmial.com">hotlineinfo@gmial.com</a></h6>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="site-footer__bottom">
-        <div class="container">
+        <div class="footer-widget pt-70 pb-25">
             <div class="row">
-                <div class="col-lg-4">
-                    <a href="tel:666-888-0000"><i class="fa fa-phone-alt"></i>666 888 0000</a>
+                <div class="col-xl-4 col-lg-4 col-md-5 col-sm-12">
+                    <div class="footer-widget about-widget mb-40 wow fadeInDown">
+                        <h4 class="widget-title">About Us</h4>
+                        <div class="footer-about-content">
+                            <p>Sit amet consectetur adipiscing
+                                elit sed do eiusmo tempor incidunt ut labore et dolore magna aliquae. Quis ipsum suspendisse ultrices gravida commodo viverra</p>
+                            <div class="social-box">
+                                <h4 class="mb-15">Follow On</h4>
+                                <ul class="social-link">
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-lg-4">
-                    <a href="mailto:needhelp@example.com"><i class="fa fa-envelope"></i>needhelp@example.com</a>
+                <div class="col-lg-4 col-lg-4 col-md-7 col-sm-12">
+                    <div class="footer-widget footer-nav-widget mb-40 wow fadeInUp">
+                        <h4 class="widget-title">Services</h4>
+                        <div class="footer-widget-nav">
+                            <ul>
+                                <li><a href="#">Agriculture Foods</a></li>
+                                <li><a href="#">Organic Vegetables</a></li>
+                                <li><a href="#">Pond & Sea Fish</a></li>
+                                <li><a href="#">Cow Milk & Meat</a></li>
+                                <li><a href="#">Modern Equipment</a></li>
+                                <li><a href="#">Natural Wheats</a></li>
+                                <li><a href="#">Eggs & Meat</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="#">Company History</a></li>
+                                <li><a href="#">Latest News</a></li>
+                                <li><a href="#">Needs a Career ?</a></li>
+                                <li><a href="#">Meet The Team</a></li>
+                                <li><a href="#">Setting & Privacy</a></li>
+                                <li><a href="#">My Account</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-lg-4">
-                    <a href="contact.html"><i class="fa fa-map"></i>22 Broklyn Street, USA</a>
+                <div class="col-lg-4 col-lg-4 col-md-6 col-sm-12">
+                    <div class="footer-widget recent-post-widget mb-40 wow fadeInDown">
+                        <h4 class="widget-title">Recent News</h4>
+                        <ul class="post-widget-wrap">
+                            <li class="post-item">
+                                <img src="<?php echo e(url('public/web')); ?>/assets/images/widget/news-1.jpg" alt="Post Image">
+                                <div class="post-title-date">
+                                    <h3 class="title"><a href="blog-details.html">Designing Better Links Websites & Emails</a></h3>
+                                    <span class="posted-on"><i class="fas fa-calendar-alt"></i><a href="#">25 March 2022</a></span>
+                                </div>
+                            </li>
+                            <li class="post-item">
+                                <img src="<?php echo e(url('public/web')); ?>/assets/images/widget/news-2.jpg" alt="Post Image">
+                                <div class="post-title-date">
+                                    <h3 class="title"><a href="blog-details.html">Advent Calendars For Web Designers</a></h3>
+                                    <span class="posted-on"><i class="fas fa-calendar-alt"></i><a href="#">25 March 2022</a></span>
+                                </div>
+                            </li>
+                        </ul>
+                        <a href="blog-standard.html" class="more-btn">View More News</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-newsletter footer-newsletter-one text-white wow fadeInUp">
+            <div class="row">
+                <div class="col-xl-3">
+                    <div class="footer-text">
+                        <h5>Subscrive Our Newsletter
+                            To Get More Updates</h5>
+                    </div>
+                </div>
+                <div class="col-xl-9">
+                    <div class="newsletter-form">
+                        <form>
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <div class="form_group">
+                                        <input type="email" class="form_control" placeholder="Email Address" name="email" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form_group">
+                                        <input type="text" class="form_control" placeholder="Phone" name="phone" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="form_group">
+                                        <button class="main-btn btn-yellow">Subscribe Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="col-lg-12">
+                <div class="copyright-text text-center">
+                    <p>&copy; 2022 Orgrarium. All Rights Reserved</p>
                 </div>
             </div>
         </div>
