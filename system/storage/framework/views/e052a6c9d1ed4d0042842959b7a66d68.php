@@ -43,7 +43,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nama OPD</label>
-                                            <select name="id_opd" class="form-control" required>
+                                            <select name="id_opd" class="form-control" onchange="gantiOpd(this.value)">
                                                 <option value=""> Pilih Organisasi Perangkat Daerah</option>
                                                 <?php $__currentLoopData = $list_opd; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $opd): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                     <option value="<?php echo e($opd->id); ?>"><?php echo e($opd->nama_opd); ?></option>
@@ -55,7 +55,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nama Penanggung Jawab</label>
-                                            <select name="id_pegawai" class="form-control" required>
+                                            <select name="id_pegawai" class="form-control pegawai" id="pegawai">
                                                 <option value=""> Pilih Penanggung Jawab Aset</option>
                                                 <?php $__currentLoopData = $list_pegawai; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pegawai): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                     <option value="<?php echo e($pegawai->id); ?>"><?php echo e($pegawai->nama); ?></option>
@@ -69,16 +69,9 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kategori Aset</label>
-                                            <select class="form-control" name="id_kategori" required>
+                                            <select class="form-control kategori" name="id_kategori" id="kategori">
                                                 <option value=""> Pilih Kategori Aset</option>
-                                                <?php $__currentLoopData = $list_kategori; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $kategori): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                   
-                                                        <option value="<?php echo e($kategori->id); ?>">
-                                                            <?php echo e($kategori->nama_kategori); ?>
-
-                                                        </option>
-                                                    
-                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                              
                                             </select>
                                         </div>
                                     </div>
@@ -101,8 +94,8 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kelompok</label>
-                                            <input type="text" class="form-control"
-                                                placeholder="Masukkan Kelompok" name="kelompok" required>
+                                            <input type="text" class="form-control" placeholder="Masukkan Kelompok"
+                                                name="kelompok" required>
                                         </div>
                                     </div>
 
@@ -153,15 +146,15 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nomor SPPD</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan Nomor SPPD"
-                                                name="no_sppd">
+                                            <input type="text" class="form-control"
+                                                placeholder="Masukkan Nomor SPPD" name="no_sppd">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nomor SPK</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan Nomor SPK"
-                                                name="no_spk">
+                                            <input type="text" class="form-control"
+                                                placeholder="Masukkan Nomor SPK" name="no_spk">
                                         </div>
                                     </div>
                                 </div>
@@ -287,6 +280,32 @@
 
         </div>
     </section>
+
+    <?php $__env->startPush('script'); ?>
+        <script>
+            function gantiOpd(id) {
+                $.get("/api/opd/" + id, function(result) {
+                    result = JSON.parse(result)
+                    option = ""
+                    for (item of result) {
+                        option += `<option value="${item.id}">${item.nama}</option>`;
+                        console.log(item.nama)
+                    }
+                    $("#pegawai").html(option)
+                });
+
+                $.get("/api/opd-kategori/" + id, function(result) {
+                    result = JSON.parse(result)
+                    option = ""
+                    for (item of result) {
+                        option += `<option value="${item.id}">${item.nama_kategori}</option>`;
+                        console.log(item.nama)
+                    }
+                    $("#kategori").html(option)
+                });
+            }
+        </script>
+    <?php $__env->stopPush(); ?>
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__componentOriginal2812d824e80b3a65bceda8e6a9bfa7a0)): ?>

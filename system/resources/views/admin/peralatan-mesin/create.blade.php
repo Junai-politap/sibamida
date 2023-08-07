@@ -21,7 +21,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nama OPD</label>
-                                            <select name="id_opd" class="form-control" required>
+                                            <select name="id_opd" class="form-control" onchange="gantiOpd(this.value)">
                                                 <option value=""> Pilih Organisasi Perangkat Daerah</option>
                                                 @foreach ($list_opd as $opd)
                                                     <option value="{{ $opd->id }}">{{ $opd->nama_opd }}</option>
@@ -33,7 +33,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nama Penanggung Jawab</label>
-                                            <select name="id_pegawai" class="form-control" required>
+                                            <select name="id_pegawai" class="form-control pegawai" id="pegawai">
                                                 <option value=""> Pilih Penanggung Jawab Aset</option>
                                                 @foreach ($list_pegawai as $pegawai)
                                                     <option value="{{ $pegawai->id }}">{{ $pegawai->nama }}</option>
@@ -47,15 +47,9 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kategori Aset</label>
-                                            <select class="form-control" name="id_kategori" required>
+                                            <select class="form-control kategori" name="id_kategori" id="kategori">
                                                 <option value=""> Pilih Kategori Aset</option>
-                                                @foreach ($list_kategori as $kategori)
-                                                   
-                                                        <option value="{{ $kategori->id }}">
-                                                            {{ $kategori->nama_kategori }}
-                                                        </option>
-                                                    
-                                                @endforeach
+                                              
                                             </select>
                                         </div>
                                     </div>
@@ -78,8 +72,8 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kelompok</label>
-                                            <input type="text" class="form-control"
-                                                placeholder="Masukkan Kelompok" name="kelompok" required>
+                                            <input type="text" class="form-control" placeholder="Masukkan Kelompok"
+                                                name="kelompok" required>
                                         </div>
                                     </div>
 
@@ -130,15 +124,15 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nomor SPPD</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan Nomor SPPD"
-                                                name="no_sppd">
+                                            <input type="text" class="form-control"
+                                                placeholder="Masukkan Nomor SPPD" name="no_sppd">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nomor SPK</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan Nomor SPK"
-                                                name="no_spk">
+                                            <input type="text" class="form-control"
+                                                placeholder="Masukkan Nomor SPK" name="no_spk">
                                         </div>
                                     </div>
                                 </div>
@@ -264,4 +258,30 @@
 
         </div>
     </section>
+
+    @push('script')
+        <script>
+            function gantiOpd(id) {
+                $.get("/api/opd/" + id, function(result) {
+                    result = JSON.parse(result)
+                    option = ""
+                    for (item of result) {
+                        option += `<option value="${item.id}">${item.nama}</option>`;
+                        console.log(item.nama)
+                    }
+                    $("#pegawai").html(option)
+                });
+
+                $.get("/api/opd-kategori/" + id, function(result) {
+                    result = JSON.parse(result)
+                    option = ""
+                    for (item of result) {
+                        option += `<option value="${item.id}">${item.nama_kategori}</option>`;
+                        console.log(item.nama)
+                    }
+                    $("#kategori").html(option)
+                });
+            }
+        </script>
+    @endpush
 </x-admin>
