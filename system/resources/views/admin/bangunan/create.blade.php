@@ -12,15 +12,14 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{ url('admin/master/bangunan') }}" method="POST"
-                            enctype="multipart/form-data">
+                        <form action="{{ url('admin/master/bangunan') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nama OPD</label>
-                                            <select name="id_opd" class="form-control" required>
+                                            <select name="id_opd" class="form-control" onchange="gantiOpd(this.value)">
                                                 <option value=""> Pilih Organisasi Perangkat Daerah</option>
                                                 @foreach ($list_opd as $opd)
                                                     <option value="{{ $opd->id }}">{{ $opd->nama_opd }}</option>
@@ -32,11 +31,9 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nama Penanggung Jawab</label>
-                                            <select name="id_pegawai" class="form-control" required>
+                                            <select name="id_pegawai" class="form-control pegawai" id="pegawai">
                                                 <option value=""> Pilih Penanggung Jawab Aset</option>
-                                                @foreach ($list_pegawai as $pegawai)
-                                                    <option value="{{ $pegawai->id }}">{{ $pegawai->nama }}</option>
-                                                @endforeach
+
                                             </select>
                                         </div>
                                     </div>
@@ -45,29 +42,25 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kode Barang</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan Kode Barang"
-                                                name="kode_barang" required>
+                                            <input type="text" class="form-control"
+                                                placeholder="Masukkan Kode Barang" name="kode_barang" required>
                                         </div>
                                     </div>
 
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nama Barang</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan Nama Barang"
-                                                name="nama_barang" required>
+                                            <input type="text" class="form-control"
+                                                placeholder="Masukkan Nama Barang" name="nama_barang" required>
                                         </div>
                                     </div>
 
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kategori Aset</label>
-                                            <select class="form-control" name="id_kategori" required>
+                                            <select class="form-control kategori" name="id_kategori" id="kategori">
                                                 <option value=""> Pilih Kategori Aset</option>
-                                                @foreach ($list_kategori as $kategori)
-                                                    <option value="{{ $kategori->id }}">
-                                                        {{ $kategori->nama_kategori }}
-                                                    </option>
-                                                @endforeach
+
                                             </select>
                                         </div>
                                     </div>
@@ -128,7 +121,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    
+
 
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -150,7 +143,7 @@
 
 
                                 <div class="row">
-                                   
+
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nomor Berita Acara</label>
@@ -162,14 +155,14 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Bertingkat</label>
-                                            <input type="text" class="form-control"
-                                                placeholder="Masukan Tingkat" name="bertingkat">
+                                            <input type="text" class="form-control" placeholder="Masukan Tingkat"
+                                                name="bertingkat">
                                         </div>
                                     </div>
 
                                 </div>
 
-                               
+
                                 <div class="row">
 
                                     <div class="col-md-6">
@@ -241,4 +234,30 @@
 
         </div>
     </section>
+
+    @push('script')
+        <script>
+            function gantiOpd(id) {
+                $.get("/api/opd/" + id, function(result) {
+                    result = JSON.parse(result)
+                    option = ""
+                    for (item of result) {
+                        option += `<option value="${item.id}">${item.nama}</option>`;
+                        console.log(item.nama)
+                    }
+                    $("#pegawai").html(option)
+                });
+
+                $.get("/api/opd-kategori/" + id, function(result) {
+                    result = JSON.parse(result)
+                    option = ""
+                    for (item of result) {
+                        option += `<option value="${item.id}">${item.nama_kategori}</option>`;
+                        console.log(item.nama)
+                    }
+                    $("#kategori").html(option)
+                });
+            }
+        </script>
+    @endpush
 </x-admin>

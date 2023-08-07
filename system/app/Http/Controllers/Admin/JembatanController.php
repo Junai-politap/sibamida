@@ -23,7 +23,7 @@ class JembatanController extends Controller
     }
 
     
-    public function create()
+    public function create() 
     {
         $data['list_opd'] = Opd::all();
         $data['list_kategori'] = Kategori::all();
@@ -35,7 +35,7 @@ class JembatanController extends Controller
 
     
     public function store(Request $request)
-    {
+    { 
         $jembatan = new Jembatan();
         $jembatan->id_opd               = request('id_opd');
         $jembatan->id_kategori          = request('id_kategori');
