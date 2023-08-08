@@ -8,6 +8,7 @@ function checkRouteActive($route)
 }
 ?>
 
+
 <header class="header-area">
     <div class="top-bar-one dark-black-bg">
         <div class="container-fluid">
@@ -78,7 +79,7 @@ function checkRouteActive($route)
         <div class="container-1350">
             <div class="primary-menu">
                 <div class="site-branding">
-                    <a href="index.html" class="brand-logo"><img src="<?php echo e(url('public/web')); ?>/assets/images/logo/logo-1.png" alt=""></a>
+                    <a href="index.html" class="brand-logo"><img src="<?php echo e(url('public/web')); ?>/assets/images/logo/ketapang.png" alt="Site Logo"></a>
                 </div>
                 <div class="nav-inner-menu">
                     <div class="nav-menu">
@@ -86,11 +87,11 @@ function checkRouteActive($route)
                         <div class="navbar-close"><i class="far fa-times"></i></div>
                         <nav class="main-menu">
                             <ul>
-                                <li><a href="<?php echo e(url('/')); ?>">Dashboard</a></li>
+                                <li><a href="<?php echo e(url('/')); ?>" class="nav-link <?php echo e(checkRouteActive('/')); ?>">Dashboard</a></li>
                                 <li class="menu-item has-children"><a href="#">Assets</a>
                                     <?php echo $__env->yieldContent('menu'); ?>
                                 </li>
-                                <li><a href="<?php echo e(url('contact')); ?>">Contact</a></li>
+                                <li><a href="<?php echo e(url('contact')); ?>" class="nav-link <?php echo e(checkRouteActive('contact')); ?>">Contact</a></li>
                             </ul>
                         </nav>
                     </div>
