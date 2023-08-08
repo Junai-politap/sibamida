@@ -39,8 +39,14 @@
                             </div>
 
                             <div class="col-md-6 text-center">
-                                <?php echo e($qrCode); ?>
-
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <td><?php echo e($qrCode); ?></td>
+                                        </tr>
+                                    </thead>
+                                </table>
+                                
 
                             </div>
                         </div>

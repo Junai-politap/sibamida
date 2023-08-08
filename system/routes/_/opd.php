@@ -3,6 +3,7 @@
 use App\Http\Controllers\Opd\BangunanController;
 use App\Http\Controllers\Opd\JembatandanjalanController;
 use App\Http\Controllers\Opd\KategoriController;
+use App\Http\Controllers\Opd\LaporanController;
 use App\Http\Controllers\Opd\OpdController;
 use App\Http\Controllers\Opd\PegawaiController;
 use App\Http\Controllers\Opd\PeralatandanmesinController;
@@ -40,4 +41,6 @@ Route::group(['middleware' => 'auth:opd'], function () {
     Route::post('tanah/riwayat', [TanahController::class, 'riwayat']);
     Route::put('/tanah/update-riwayat/{riwayat}', [TanahController::class, 'riwayatUpdate']);
     Route::get('/tanah/delete-riwayat/{riwayat}', [TanahController::class, 'hapus']);
+
+    Route::get('laporan', [LaporanController::class, 'index']);
 });

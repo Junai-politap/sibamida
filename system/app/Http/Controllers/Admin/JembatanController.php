@@ -98,6 +98,8 @@ class JembatanController extends Controller
         $jsonData = json_encode($vCardData);
         $qrCode = QrCode::size(200)->generate($jsonData);
 
+       
+
         return view('admin.jembatan.show', $data, compact('qrCode'));
     
     }
