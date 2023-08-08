@@ -1,6 +1,28 @@
 <x-web>
 
     @include('menu.menu')
+
+
+    <!--====== Start Page-Banner Section ======-->
+    <section class="page-banner bg_cover p-r z-1" style="background-image: url({{ url('public/web') }}/assets/images/bg/page-bg-1.jpg);">
+        <div class="brand-card text-center">
+            <img src="{{ url('public/web') }}/assets/images/icon/wheat.png" alt="icon">
+            <h3>Orgarium</h3>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="page-title">
+                        <h1>Assets</h1>
+                        <ul class="breadcrumbs-link">
+                            <li><a href="index.html">Home</a></li>
+                            <li class="active">{{$opd->nama_opd}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--====== End Page-Banner Section ======-->
     <!--====== Start Portfolio Grid Page ======-->
     <section class="project-grid-page p-r z-1 pt-170 pb-130" id="project-filter">
         <div class="container">
@@ -13,11 +35,26 @@
                     </div>
                 </div>
             </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="portfolio-filter-button text-center mb-60 wow fadeInDown">
+                        <ul class="filter-btn">
+                            <li class="active" data-filter="*">Show All</li>
+                            <li data-filter=".cat-1">Cow</li>
+                            <li data-filter=".cat-2">Vegetables</li>
+                            <li data-filter=".cat-3">Chicken</li>
+                            <li data-filter=".cat-4">Fruits</li>
+                            <li data-filter=".cat-5">Sea Fish</li>
+                            <li data-filter=".cat-6">Milk & Meats</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
             <div class="row project-row">
                 <div class="col-lg-4 col-md-6 col-sm-12 project-column cat-1">
                     <div class="project-item-three mb-30 wow fadeInUp">
                         <div class="img-holder">
-                            <img src="assets/images/portfolio/img-4.jpg" alt="">
+                            <img src="{{ url('public/web') }}/assets/images/portfolio/img-4.jpg" alt="">
                             <div class="hover-portfolio">
                                 <div class="icon-btn"><a href="portfolio-details.html"><i
                                             class="far fa-arrow-right"></i></a></div>
@@ -32,7 +69,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-12 project-column cat-2">
                     <div class="project-item-three mb-30 wow fadeInDown">
                         <div class="img-holder">
-                            <img src="assets/images/portfolio/img-5.jpg" alt="">
+                            <img src="{{ url('public/web') }}/assets/images/portfolio/img-5.jpg" alt="">
                             <div class="hover-portfolio">
                                 <div class="icon-btn"><a href="portfolio-details.html"><i
                                             class="far fa-arrow-right"></i></a></div>
@@ -47,7 +84,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-12 project-column cat-3">
                     <div class="project-item-three mb-30 wow fadeInUp">
                         <div class="img-holder">
-                            <img src="assets/images/portfolio/img-6.jpg" alt="">
+                            <img src="{{ url('public/web') }}/assets/images/portfolio/img-6.jpg" alt="">
                             <div class="hover-portfolio">
                                 <div class="icon-btn"><a href="portfolio-details.html"><i
                                             class="far fa-arrow-right"></i></a></div>
@@ -62,7 +99,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-12 project-column cat-4">
                     <div class="project-item-three mb-30 wow fadeInDown">
                         <div class="img-holder">
-                            <img src="assets/images/portfolio/img-7.jpg" alt="">
+                            <img src="{{ url('public/web') }}/assets/images/portfolio/img-7.jpg" alt="">
                             <div class="hover-portfolio">
                                 <div class="icon-btn"><a href="portfolio-details.html"><i
                                             class="far fa-arrow-right"></i></a></div>
@@ -77,7 +114,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-12 project-column cat-5">
                     <div class="project-item-three mb-30 wow fadeInUp">
                         <div class="img-holder">
-                            <img src="assets/images/portfolio/img-8.jpg" alt="">
+                            <img src="{{ url('public/web') }}/assets/images/portfolio/img-8.jpg" alt="">
                             <div class="hover-portfolio">
                                 <div class="icon-btn"><a href="portfolio-details.html"><i
                                             class="far fa-arrow-right"></i></a></div>
@@ -92,7 +129,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-12 project-column cat-6 cat-1">
                     <div class="project-item-three mb-30 wow fadeInDown">
                         <div class="img-holder">
-                            <img src="assets/images/portfolio/img-9.jpg" alt="">
+                            <img src="{{ url('public/web') }}/assets/images/portfolio/img-9.jpg" alt="">
                             <div class="hover-portfolio">
                                 <div class="icon-btn"><a href="portfolio-details.html"><i
                                             class="far fa-arrow-right"></i></a></div>
@@ -107,7 +144,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-12 project-column cat-3 cat-6">
                     <div class="project-item-three mb-30 wow fadeInUp">
                         <div class="img-holder">
-                            <img src="assets/images/portfolio/img-10.jpg" alt="">
+                            <img src="{{ url('public/web') }}/assets/images/portfolio/img-10.jpg" alt="">
                             <div class="hover-portfolio">
                                 <div class="icon-btn"><a href="portfolio-details.html"><i
                                             class="far fa-arrow-right"></i></a></div>
@@ -122,7 +159,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-12 project-column cat-2 cat-5">
                     <div class="project-item-three mb-30 wow fadeInDown">
                         <div class="img-holder">
-                            <img src="assets/images/portfolio/img-11.jpg" alt="">
+                            <img src="{{ url('public/web') }}/assets/images/portfolio/img-11.jpg" alt="">
                             <div class="hover-portfolio">
                                 <div class="icon-btn"><a href="portfolio-details.html"><i
                                             class="far fa-arrow-right"></i></a></div>
@@ -137,7 +174,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-12 project-column cat-4">
                     <div class="project-item-three mb-30 wow fadeInUp">
                         <div class="img-holder">
-                            <img src="assets/images/portfolio/img-12.jpg" alt="">
+                            <img src="{{ url('public/web') }}/assets/images/portfolio/img-12.jpg" alt="">
                             <div class="hover-portfolio">
                                 <div class="icon-btn"><a href="portfolio-details.html"><i
                                             class="far fa-arrow-right"></i></a></div>
@@ -150,14 +187,14 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-lg-12">
                     <div class="button-box text-center mt-30 wow fadeInDown">
                         <a href="portfoloio-grid.html" class="main-btn bordered-btn bordered-yellow">View More
                             Projects</a>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </section><!--====== End Portfolio Grid Page ======-->
 </x-web>
