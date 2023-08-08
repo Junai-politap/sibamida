@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Web;
-
+use App\Models\Opd;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -9,17 +9,20 @@ class BaseController extends Controller
 {
     public function index()
     {
-        return view('web.index');
+        $data['list_opd'] = Opd::all();
+        return view('web.index', $data);
     }
 
-    public function create()
+    public function entah()
     {
-        //
+        // $data['list_opd'] = Opd::all();
+        return view('web.aset');
     }
 
-    public function store(Request $request)
+    public function bahaya()
     {
-        //
+        $data['list_opd'] = Opd::all();
+        return view('web.contact', $data);
     }
 
     public function show(string $id)
