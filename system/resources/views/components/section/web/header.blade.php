@@ -1,3 +1,13 @@
+@php
+
+function checkRouteActive($route)
+{
+    if (Route::current()->uri == $route) {
+        return 'active';
+    }
+}
+@endphp
+
 <header class="header-area">
     <div class="top-bar-one dark-black-bg">
         <div class="container-fluid">
@@ -72,44 +82,15 @@
                 </div>
                 <div class="nav-inner-menu">
                     <div class="nav-menu">
-                        
+
                         <div class="navbar-close"><i class="far fa-times"></i></div>
                         <nav class="main-menu">
                             <ul>
-                                <li class="menu-item has-children"><a href="#" class="active">Home</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="index.html">Home 01</a></li>
-                                        <li><a href="index-2.html">Home 02</a></li>
-                                        <li><a href="index-3.html">Home 03</a></li>
-                                    </ul>
+                                <li><a href="{{url('/')}}">Dashboard</a></li>
+                                <li class="menu-item has-children"><a href="#">Assets</a>
+                                    @yield('menu')
                                 </li>
-                                <li><a href="about.html">About</a></li>
-                                <li class="menu-item has-children"><a href="#">Services</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="services.html">Our Services</a></li>
-                                        <li><a href="service-details.html">Service Details</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item has-children"><a href="#">Portfolio</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="portfolio-grid.html">Portfolio Grid</a></li>
-                                        <li><a href="portfolio-full-width.html">Portfolio Full Width</a></li>
-                                        <li><a href="portfolio-details.html">Portfolio Details</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item has-children"><a href="#">Shop</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="products.html">Our Products</a></li>
-                                        <li><a href="product-details.html">Product Details</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item has-children"><a href="#">Blog</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="blog-standard.html">Blog Standard</a></li>
-                                        <li><a href="blog-details.html">Blog Details</a></li>
-                                    </ul>
-                                </li>
-                              
+                                <li><a href="{{url('contact')}}">Contact</a></li>
                             </ul>
                         </nav>
                     </div>
