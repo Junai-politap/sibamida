@@ -3,6 +3,7 @@
 use App\Http\Controllers\Staff\BangunanController;
 use App\Http\Controllers\Staff\JembatanDanJalanController;
 use App\Http\Controllers\Staff\KategoriController;
+use App\Http\Controllers\Staff\LaporanController;
 use App\Http\Controllers\Staff\PeralatanDanMesinController;
 use App\Http\Controllers\Staff\RuanganController;
 use App\Http\Controllers\Staff\StaffController;
@@ -36,5 +37,7 @@ Route::resource('master/tanah', TanahController::class);
 Route::post('tanah/riwayat', [TanahController::class, 'riwayat']);
 Route::put('/tanah/update-riwayat/{riwayat}', [TanahController::class, 'riwayatUpdate']);
 Route::get('/tanah/delete-riwayat/{riwayat}', [TanahController::class, 'hapus']);
+
+Route::get('laporan', [LaporanController::class, 'index']);
 
 });

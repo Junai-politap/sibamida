@@ -47,18 +47,12 @@ function checkRouteActive($route)
                 </li>
 
                 <li class="nav-item">
-                    <a href="<?php echo e(url('staff-administrasi/ruangan')); ?>" class="nav-link <?php echo e(checkRouteActive('staff-administrasi/ruangan')); ?>">
-                        <i class="nav-icon fa fa-city"></i>
-                        <p>Data Ruangan</p>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a href="<?php echo e(url('staff-administrasi/kategori')); ?>" class="nav-link <?php echo e(checkRouteActive('staff-administrasi/kategori')); ?>">
                         <i class="nav-icon fa fa-list "></i>
                         <p>Data Kategori Aset</p>
                     </a>
                 </li>
-                
+
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-database"></i>
@@ -94,8 +88,16 @@ function checkRouteActive($route)
                                 <p>Tanah</p>
                             </a>
                         </li>
-                       
+
                     </ul>
+    
+                </li>
+
+                <li class="nav-item">
+                    <a href="<?php echo e(url('staff-administrasi/laporan')); ?>" class="nav-link <?php echo e(checkRouteActive('staff-administrasi/laporan')); ?>">
+                        <i class="nav-icon fa fa-list "></i>
+                        <p> Laporan</p>
+                    </a>
                 </li>
 
             </ul>

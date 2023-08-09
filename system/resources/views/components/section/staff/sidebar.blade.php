@@ -89,6 +89,14 @@ function checkRouteActive($route)
                         </li>
 
                     </ul>
+    
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ url('staff-administrasi/laporan') }}" class="nav-link {{ checkRouteActive('staff-administrasi/laporan') }}">
+                        <i class="nav-icon fa fa-list "></i>
+                        <p> Laporan</p>
+                    </a>
                 </li>
 
             </ul>
