@@ -22,28 +22,26 @@ use Endroid\QrCode\Writer\PngWriter;
 
 class JembatanController extends Controller
 {
-    
+
     public function index()
     {
         $data['list_jembatan'] = Jembatan::all();
-
         return view('admin.jembatan.index', $data);
     }
 
-    
-    public function create() 
+
+    public function create()
     {
         $data['list_opd'] = Opd::all();
         $data['list_kategori'] = Kategori::all();
-        $data['list_ruangan'] = Ruangan::all();
         $data['list_pegawai'] = Pegawai::all();
-        
+
         return view('admin.jembatan.create', $data);
     }
 
-    
+
     public function store(Request $request)
-    { 
+    {
         $jembatan = new Jembatan();
         $jembatan->id_opd               = request('id_opd');
         $jembatan->id_kategori          = request('id_kategori');
@@ -79,7 +77,7 @@ class JembatanController extends Controller
         return redirect('admin/master/jembatan-jalan')->with('success', 'Data Berhasil Di Simpan');
     }
 
-    
+
     public function show($jembatan)
     {
         $data['jembatan'] = Jembatan::find($jembatan);
@@ -87,7 +85,7 @@ class JembatanController extends Controller
         $data['list_pegawai'] = Pegawai::all();
 
         $jembatan = Jembatan::find($jembatan);
-
+      
         $result = Builder::create()
             ->writer(new PngWriter())
             ->writerOptions([])
@@ -105,10 +103,9 @@ class JembatanController extends Controller
         $data['img'] = $result->getDataUri();
 
         return view('admin.jembatan.show', $data);
-    
     }
 
-    
+
     public function edit($jembatan)
     {
         $data['list_opd'] = Opd::all();
@@ -120,7 +117,7 @@ class JembatanController extends Controller
 
     }
 
-    
+
     public function update($jembatan)
     {
         $jembatan = Jembatan::find($jembatan);
@@ -158,7 +155,7 @@ class JembatanController extends Controller
         return redirect('admin/master/jembatan-jalan')->with('success', 'Data Berhasil Di Simpan');
     }
 
-    
+
     public function destroy($jembatan)
     {
         Jembatan::destroy($jembatan);
@@ -193,7 +190,7 @@ class JembatanController extends Controller
     public function hapus(string $riwayat)
     {
         $riwayat = Riwayat::find($riwayat);
-        
+
         $riwayat->delete();
 
         return back()->with('danger', 'Data Berhasiil Dihapus');
