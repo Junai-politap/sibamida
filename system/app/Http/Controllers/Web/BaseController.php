@@ -29,6 +29,7 @@ class BaseController extends Controller
         $data['list_bangunan'] = Bangunan::where('id_opd', $opd)->get();
         $data['list_peralatan'] = Peralatan::where('id_opd', $opd)->get();
         $data['list_jembatan'] = Jembatan::where('id_opd', $opd)->get();
+        $data['list_tanah'] = Tanah::where('id_opd', $opd)->get();
         // return $data;
         return view('web.aset', $data);
     }
