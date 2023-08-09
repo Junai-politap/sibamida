@@ -39,8 +39,7 @@
                             </div>
 
                             <div class="col-md-6 text-center">
-                                <?php echo e($qrCode); ?>
-
+                                <img src="<?php echo e($img); ?>" alt="QR Code" style="display:block; margin:auto;">
 
                             </div>
                         </div>
