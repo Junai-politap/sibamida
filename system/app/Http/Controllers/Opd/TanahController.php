@@ -10,6 +10,14 @@ use App\Models\Riwayat;
 use App\Models\Tanah;
 use Illuminate\Http\Request;
 
+use Endroid\QrCode\Builder\Builder;
+use Endroid\QrCode\Encoding\Encoding;
+use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelHigh;
+use Endroid\QrCode\Label\Alignment\LabelAlignmentCenter;
+use Endroid\QrCode\Label\Font\NotoSans;
+use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
+use Endroid\QrCode\Writer\PngWriter;
+
 class TanahController extends Controller
 {
     public function index()
@@ -55,6 +63,24 @@ class TanahController extends Controller
         $data['tanah'] = Tanah::find($tanah);
         $data['riwayat'] = Riwayat::where('id_aset', $tanah)->get();
         $data['list_pegawai'] = Pegawai::all();
+
+        $tanah = Tanah::find($tanah);
+        
+        $result = Builder::create()
+            ->writer(new PngWriter())
+            ->writerOptions([])
+            ->data($tanah->kode_barang)
+            ->encoding(new Encoding('UTF-8'))
+            ->errorCorrectionLevel(new ErrorCorrectionLevelHigh())
+            ->size(150)
+            ->margin(10)
+            ->roundBlockSizeMode(new RoundBlockSizeModeMargin())
+            ->labelText($tanah->nama_barang)
+            ->labelFont(new NotoSans(20))
+            ->labelAlignment(new LabelAlignmentCenter())
+            ->build();
+        
+        $data['img'] = $result->getDataUri();
 
         return view('opd.tanah.show', $data);
     }

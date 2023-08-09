@@ -17,7 +17,7 @@
                             </div>
 
                             <div class="col-md-6 text-center">
-                                {!! QrCode::size(200)->generate('{{ $bangunan->kode_aset }}') !!}
+                                <img src="{{ $img }}" alt="QR Code" style="display:block; margin:auto;">
 
                             </div>
                         </div>

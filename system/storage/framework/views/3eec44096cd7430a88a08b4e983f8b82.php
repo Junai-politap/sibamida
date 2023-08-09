@@ -7,9 +7,9 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <title>SIAMIDA - Kab. Ketapang</title>
+        <title>SIBAMIDA - Kab. Ketapang</title>
 
-        <link rel="shortcut icon" href="<?php echo e(url('public/web')); ?>/assets/images/favicon.ico" type="image/png">
+        <link rel="icon" href="<?php echo e(url('public/admin')); ?>/logo.png" type="image/x-icon">
 
         <link rel="stylesheet" href="<?php echo e(url('public/web')); ?>/assets/fonts/fontawesome/css/all.min.css">
 

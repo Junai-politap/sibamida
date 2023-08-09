@@ -9,6 +9,14 @@ use App\Models\Peralatan;
 use App\Models\Riwayat;
 use Illuminate\Http\Request;
 
+use Endroid\QrCode\Builder\Builder;
+use Endroid\QrCode\Encoding\Encoding;
+use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelHigh;
+use Endroid\QrCode\Label\Alignment\LabelAlignmentCenter;
+use Endroid\QrCode\Label\Font\NotoSans;
+use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
+use Endroid\QrCode\Writer\PngWriter;
+
 class PeralatandanmesinController extends Controller
 {
     /**
@@ -76,6 +84,26 @@ class PeralatandanmesinController extends Controller
         $data['kategori'] = Kategori::all();
         $data['list_pegawai'] = Pegawai::all();
         $data['riwayat'] = Riwayat::where('id_aset', $peralatan)->get();
+
+
+        $peralatan = Peralatan::find($peralatan);
+        
+        $result = Builder::create()
+            ->writer(new PngWriter())
+            ->writerOptions([])
+            ->data($peralatan->kode_barang)
+            ->encoding(new Encoding('UTF-8'))
+            ->errorCorrectionLevel(new ErrorCorrectionLevelHigh())
+            ->size(150)
+            ->margin(10)
+            ->roundBlockSizeMode(new RoundBlockSizeModeMargin())
+            ->labelText($peralatan->nama_barang)
+            ->labelFont(new NotoSans(20))
+            ->labelAlignment(new LabelAlignmentCenter())
+            ->build();
+        
+        $data['img'] = $result->getDataUri();
+
         return view('opd.peralatan.show', $data);
     }
 

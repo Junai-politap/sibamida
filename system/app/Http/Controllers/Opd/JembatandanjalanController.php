@@ -9,6 +9,15 @@ use App\Models\Pegawai;
 use App\Models\Riwayat;
 use Illuminate\Http\Request;
 
+use Endroid\QrCode\Builder\Builder;
+use Endroid\QrCode\Encoding\Encoding;
+use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelHigh;
+use Endroid\QrCode\Label\Alignment\LabelAlignmentCenter;
+use Endroid\QrCode\Label\Font\NotoSans;
+use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
+use Endroid\QrCode\Writer\PngWriter;
+
+
 class JembatandanjalanController extends Controller
 {
     /**
@@ -80,6 +89,26 @@ class JembatandanjalanController extends Controller
         $data['kategori'] = Kategori::all();
         $data['list_pegawai'] = Pegawai::all();
         $data['riwayat'] = Riwayat::where('id_aset', $jembatan)->get();
+
+        $jembatan = Jembatan::find($jembatan);
+        
+        $result = Builder::create()
+            ->writer(new PngWriter())
+            ->writerOptions([])
+            ->data($jembatan->kode_aset)
+            ->encoding(new Encoding('UTF-8'))
+            ->errorCorrectionLevel(new ErrorCorrectionLevelHigh())
+            ->size(150)
+            ->margin(10)
+            ->roundBlockSizeMode(new RoundBlockSizeModeMargin())
+            ->labelText($jembatan->nama_aset)
+            ->labelFont(new NotoSans(20))
+            ->labelAlignment(new LabelAlignmentCenter())
+            ->build();
+        
+        $data['img'] = $result->getDataUri();
+
+        
         return view('opd.jembatan.show', $data);
     }
 

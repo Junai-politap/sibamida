@@ -17,7 +17,7 @@
                         <h1>Assets</h1>
                         <ul class="breadcrumbs-link">
                             <li><a href="index.html">Home</a></li>
-                            <li class="active">{{ $opd->nama_opd }}</li>
+                            <li class="active">{{ $opd->singkatan }}</li>
                         </ul>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
             <div class="row justify-content-center">
                 <div class="col-xl-7 col-lg-10">
                     <div class="section-title text-center mb-50 wow fadeInUp">
-                        <span class="sub-title">Project Gallery</span>
+                        <span class="sub-title">Master Aset</span>
                         <h2>We’ve Done Many Other Projects
                             Let’s See Gallery Insights</h2>
                     </div>
@@ -54,13 +54,12 @@
                     <div class="col-lg-4 col-md-6 col-sm-12 project-column cat-1">
                         <div class="project-item-three mb-30 wow fadeInUp">
                             <div class="img-holder">
-                                <img src="{{ url("public/$peralatan->foto") }}" alt="">
+                                <img src="{{ $img }}" style="object-fit: cover; position: static; width: 100%;">
                                 <div class="hover-portfolio">
-                                    <div class="icon-btn"><a href="portfolio-details.html"><i
-                                                class="far fa-arrow-right"></i></a></div>
+                                   
                                     <div class="hover-content">
-                                        <h3 class="title"><a href="portfolio-details.html">Golder Wheat</a></h3>
-                                        <p><a href="#">Agriculture</a>,<a href="#">Foods</a></p>
+                                        <h3 class="title">{{ $peralatan->opd->singkatan }}</h3>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -72,13 +71,12 @@
                     <div class="col-lg-4 col-md-6 col-sm-12 project-column cat-2">
                         <div class="project-item-three mb-30 wow fadeInDown">
                             <div class="img-holder">
-                                <img src="{{ url("public/$jembatan->foto") }}" alt="">
+                                <img src="{{ $img }}" style="object-fit: cover; position: static; width: 100%;">
                                 <div class="hover-portfolio">
-                                    <div class="icon-btn"><a href="portfolio-details.html"><i
-                                                class="far fa-arrow-right"></i></a></div>
+                                   
                                     <div class="hover-content">
-                                        <h3 class="title"><a href="portfolio-details.html">Organic Grap</a></h3>
-                                        <p><a href="#">Agriculture</a>,<a href="#">Foods</a></p>
+                                        <h3 class="title">{{ $jembatan->opd->singkatan }}</h3>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -90,13 +88,12 @@
                 <div class="col-lg-4 col-md-6 col-sm-12 project-column cat-3">
                     <div class="project-item-three mb-30 wow fadeInUp">
                         <div class="img-holder">
-                            <img src="{{ url("public/$tanah->foto") }}" alt="">
+                            <img src="{{ url("public/$tanah->foto") }}" style="object-fit: cover; position: static; width: 100%; height: 300px;">
                             <div class="hover-portfolio">
-                                <div class="icon-btn"><a href="portfolio-details.html"><i
-                                            class="far fa-arrow-right"></i></a></div>
+                                <div class="icon-btn">
                                 <div class="hover-content">
-                                    <h3 class="title"><a href="portfolio-details.html">Golder Wheat</a></h3>
-                                    <p><a href="#">Agriculture</a>,<a href="#">Foods</a></p>
+                                    <h3 class="title">{{ $tanah->opd->singkatan }}</h3>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -108,13 +105,12 @@
                 <div class="col-lg-4 col-md-6 col-sm-12 project-column cat-4">
                     <div class="project-item-three mb-30 wow fadeInDown">
                         <div class="img-holder">
-                            <img src="{{ url("public/$bangunan->foto") }}" alt="">
+                            <img src="{{ url("public/$bangunan->foto") }}" style="object-fit: cover; position: static; width: 100%; height: 300px;">
                             <div class="hover-portfolio">
-                                <div class="icon-btn"><a href="portfolio-details.html"><i
-                                            class="far fa-arrow-right"></i></a></div>
+                                <div class="icon-btn">
                                 <div class="hover-content">
-                                    <h3 class="title"><a href="portfolio-details.html">Golder Wheat</a></h3>
-                                    <p><a href="#">Agriculture</a>,<a href="#">Foods</a></p>
+                                    <h3 class="title">{{ $bangunan->opd->singkatan }}</h3>
+                                    
                                 </div>
                             </div>
                         </div>

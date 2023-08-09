@@ -39,9 +39,7 @@
                             </div>
 
                             <div class="col-md-6 text-center">
-                                <?php echo QrCode::size(200)->generate('<?php echo e($peralatan->kode_aset); ?>'); ?>
-
-
+                                <img src="<?php echo e($img); ?>" alt="QR Code" style="display:block; margin:auto;">
                             </div>
                         </div>
 
