@@ -1,5 +1,5 @@
 <?php
-    
+
     function checkRouteActive($route)
     {
         if (Route::current()->uri == $route) {
@@ -73,12 +73,6 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a href="<?php echo e(url('admin/ruangan')); ?>" class="nav-link <?php echo e(checkRouteActive('admin/ruangan')); ?>">
-                        <i class="nav-icon fa fa-city"></i>
-                        <p>Data Ruangan</p>
-                    </a>
-                </li>
                 <li class="nav-item">
                     <a href="<?php echo e(url('admin/kategori')); ?>" class="nav-link <?php echo e(checkRouteActive('admin/kategori')); ?>">
                         <i class="nav-icon fa fa-list "></i>

@@ -53,12 +53,6 @@ function checkRouteActive($route)
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('opd/ruangan') }}" class="nav-link {{ checkRouteActive('opd/ruangan') }}">
-                        <i class="nav-icon fa fa-city"></i>
-                        <p>Data Ruangan</p>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a href="{{ url('opd/kategori') }}" class="nav-link {{ checkRouteActive('opd/kategori') }}">
                         <i class="nav-icon fa fa-list "></i>
                         <p>Data Kategori Aset</p>
@@ -93,14 +87,14 @@ function checkRouteActive($route)
                                 <p>Bangunan</p>
                             </a>
                         </li>
-                        
+
                         <li class="nav-item">
                             <a href="{{ url('opd/master/tanah') }}" class="nav-link {{ checkRouteActive('opd/master/tanah') }}">
                                 <i class="fa fa-plus nav-icon"></i>
                                 <p>Tanah</p>
                             </a>
                         </li>
-                        
+
 
                     </ul>
                 </li>

@@ -7,7 +7,6 @@ use App\Models\Jembatan;
 use App\Models\Kategori;
 use App\Models\Pegawai;
 use App\Models\Riwayat;
-use App\Models\Ruangan;
 use Illuminate\Http\Request;
 
 class JembatandanjalanController extends Controller
@@ -80,7 +79,6 @@ class JembatandanjalanController extends Controller
         $data['jembatan'] = Jembatan::find($jembatan);
         $data['kategori'] = Kategori::all();
         $data['list_pegawai'] = Pegawai::all();
-        $data['ruangan'] = Ruangan::all();
         $data['riwayat'] = Riwayat::where('id_aset', $jembatan)->get();
         return view('opd.jembatan.show', $data);
     }
@@ -101,7 +99,7 @@ class JembatandanjalanController extends Controller
      */
     public function update(Jembatan $jembatan)
     {
-      
+
         $jembatan->id_opd = request('id_opd');
         $jembatan->id_kategori = request('id_kategori');
         $jembatan->id_pegawai = request('id_pegawai');
@@ -177,7 +175,7 @@ class JembatandanjalanController extends Controller
     public function hapus(string $riwayat)
     {
         $riwayat = Riwayat::find($riwayat);
-        
+
         $riwayat->delete();
 
         return back()->with('danger', 'Data Berhasiil Dihapus');

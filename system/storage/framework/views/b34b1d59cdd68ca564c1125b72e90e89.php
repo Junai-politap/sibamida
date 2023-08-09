@@ -68,8 +68,7 @@
         <div class="container-1350">
             <div class="primary-menu">
                 <div class="site-branding">
-                    <a href="index.html" class="brand-logo"><img
-                            src="<?php echo e(url('public/web')); ?>/assets/images/logo/ketapang.png" alt="Site Logo"></a>
+                    
                 </div>
                 <div class="nav-inner-menu">
                     <div class="nav-menu">
