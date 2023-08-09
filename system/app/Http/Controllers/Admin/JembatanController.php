@@ -12,6 +12,14 @@ use App\Models\Ruangan;
 use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
+use Endroid\QrCode\Builder\Builder;
+use Endroid\QrCode\Encoding\Encoding;
+use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelHigh;
+use Endroid\QrCode\Label\Alignment\LabelAlignmentCenter;
+use Endroid\QrCode\Label\Font\NotoSans;
+use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
+use Endroid\QrCode\Writer\PngWriter;
+
 class JembatanController extends Controller
 {
 
@@ -77,27 +85,24 @@ class JembatanController extends Controller
         $data['list_pegawai'] = Pegawai::all();
 
         $jembatan = Jembatan::find($jembatan);
+      
+        $result = Builder::create()
+            ->writer(new PngWriter())
+            ->writerOptions([])
+            ->data($jembatan->kode_aset)
+            ->encoding(new Encoding('UTF-8'))
+            ->errorCorrectionLevel(new ErrorCorrectionLevelHigh())
+            ->size(150)
+            ->margin(10)
+            ->roundBlockSizeMode(new RoundBlockSizeModeMargin())
+            ->labelText($jembatan->nama_aset)
+            ->labelFont(new NotoSans(20))
+            ->labelAlignment(new LabelAlignmentCenter())
+            ->build();
+        
+        $data['img'] = $result->getDataUri();
 
-        $vCardData = [
-            'Nama OPD' => $jembatan->opd->nama_opd,
-            'Nama Penanggung Jawab' => $jembatan->pegawai->nama,
-            'Kategori' => $jembatan->kategori->nama_kategori,
-            'Kode Aset' => $jembatan->kode_aset,
-            'Nama Aset' => $jembatan->nama_aset,
-            'Nomor Register' => $jembatan->no_register,
-            'Tahun Perolehan' => $jembatan->tahun_perolehan,
-            'Harga Perolehan ' => $jembatan->harga_perolehan,
-            'Keterangan ' => $jembatan->keterangan,
-            'Alamat ' => $jembatan->alamat,
-            'Nama Kondisi ' => $jembatan->nama_kondisi,
-            'Nama Sumber Dana ' => $jembatan->nama_sumber_dana,
-        ];
-
-        $jsonData = json_encode($vCardData);
-        $qrCode = QrCode::size(200)->generate($jsonData);
-
-        return view('admin.jembatan.show', $data, compact('qrCode'));
-
+        return view('admin.jembatan.show', $data);
     }
 
 
