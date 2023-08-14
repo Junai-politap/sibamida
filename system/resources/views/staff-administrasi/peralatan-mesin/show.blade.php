@@ -17,7 +17,7 @@
                             </div>
 
                             <div class="col-md-6 text-center">
-                                <img src="{{ $img }}" alt="QR Code" style="display:block; margin:auto;">
+                                <div id="test"></div>
 
                             </div>
                         </div>
@@ -288,4 +288,28 @@
             </div>
         </div>
     </section>
+
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script>
+        let 
+        
+        card = "Nama OPD: {{ $peralatan->opd->nama_opd }}\r\n";
+        card += "Nama Penanggungjawab: {{ $peralatan->pegawai->nama }}\r\n";
+        card += "Kategori Barang : {{ $peralatan->kategori->nama_kategori }}\r\n";
+        card += "Kode Barang : {{ $peralatan->kode_barang }}\r\n";
+        card += "Nama Barang : {{ $peralatan->nama_barang }}\r\n";
+        card += "Nomor Register : {{ $peralatan->no_register }}\r\n";
+        card += "Tahun Perolehan : {{ $peralatan->tahun_perolehan }}\r\n";
+        card += "Harga Perolehan : {{ $peralatan->harga_perolehan }}\r\n";
+        card += "Keterangan : {{ $peralatan->keterangan }}\r\n";
+        card += "Alamat : {{ $peralatan->alamat }}\r\n";
+        card += "Kecamatan : {{ $peralatan->kecamatan }}\r\n";
+        card += "Kelurahan Desa : {{ $peralatan->kelurahan_desa }}\r\n";
+        card += "Nomor SPPD : {{ $peralatan->no_sppd }}\r\n";
+        card += "Nomor SPK : {{ $peralatan->no_spk }}\r\n";
+        card += "Nomor Berita Acara : {{ $peralatan->no_ba }}\r\n";
+        
+        
+        new QRCode(document.getElementById("test"), card);
+    </script>
 </x-staff>

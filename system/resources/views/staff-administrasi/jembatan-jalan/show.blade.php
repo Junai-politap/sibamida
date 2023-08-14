@@ -17,7 +17,7 @@
                             </div>
 
                             <div class="col-md-6 text-center">
-                                <img src="{{ $img }}" alt="QR Code" style="display:block; margin:auto;">
+                                <div id="test"></div>
 
                             </div>
                         </div>
@@ -313,4 +313,30 @@
             </div>
         </div>
     </section>
+
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script>
+        let 
+        
+        card = "Nama OPD: {{ $jembatan->opd->nama_opd }}\r\n";
+        card += "Nama Penanggungjawab: {{ $jembatan->pegawai->nama }}\r\n";
+        card += "Kategori Aset : {{ $jembatan->kategori->nama_kategori }}\r\n";
+        card += "Kode Aset : {{ $jembatan->kode_aset }}\r\n";
+        card += "Nama Aset : {{ $jembatan->nama_aset }}\r\n";
+        card += "Nomor Register : {{ $jembatan->no_register }}\r\n";
+        card += "Tahun Perolehan : {{ $jembatan->tahun_perolehan }}\r\n";
+        card += "Harga Perolehan : Rp.{{ $jembatan->harga_perolehan }}\r\n";
+        card += "Keterangan : {{ $jembatan->keterangan }}\r\n";
+        card += "Alamat : {{ $jembatan->alamat }}\r\n";
+        card += "Nama Kondisi : {{ $jembatan->nama_kondisi }}\r\n";
+        card += "Sumber Dana : {{ $jembatan->nama_sumber_dana }}\r\n";
+        card += "Nomor SPPD : {{ $jembatan->no_sppd }}\r\n";
+        card += "Nomor SPK : {{ $jembatan->no_spk }}\r\n";
+        card += "Nomor Berita Acara : {{ $jembatan->no_ba }}\r\n";
+        card += "Tanggal Serah Terima : {{ $jembatan->tanggal_serah_terima }}\r\n";
+        card += "Kontruksi : {{ $jembatan->kontruksi }}\r\n";
+        card += "Panjang/Lebar/Luas : {{ $jembatan->panjang }}/{{ $jembatan->lebar }}/{{ $jembatan->luas }}\r\n";
+        
+        new QRCode(document.getElementById("test"), card);
+    </script>
 </x-staff>

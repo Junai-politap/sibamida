@@ -13,8 +13,7 @@
                         <!-- /.card-header -->
                         <!-- form start -->
                         <form action="{{ url('admin/master/bangunan', $bangunan->id) }}" method="POST"
-                            enctype="multipart/form-data">
-                            @csrf
+                            enctype="multipart/form-data"> 
                             @method("PUT")
                             <div class="card-body">
                                 <div class="row">

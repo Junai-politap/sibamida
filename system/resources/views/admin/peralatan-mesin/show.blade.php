@@ -284,7 +284,7 @@
                 </div>
 
             </div>
-        </div>
+        </div> 
     </section>
 
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
