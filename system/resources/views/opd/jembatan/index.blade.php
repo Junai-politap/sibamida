@@ -19,6 +19,8 @@
                                         <th>Kategori</th>
                                         <th>Kode Assets</th>
                                         <th>Nama Assets</th>
+                                        <th>Tahun Perolehan</th>
+                                        <th>Harga Perolehan</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -37,6 +39,8 @@
                                             <td>{{ $jembatan->kategori->nama_kategori }}</td>
                                             <td>{{ $jembatan->kode_aset }}</td>
                                             <td>{{ $jembatan->nama_aset }}</td>
+                                            <td>{{ $jembatan->tahun_perolehan }}</td>
+                                            <td>Rp .{{$jembatan->harga_perolehan }}</td>
                                         </tr>
                                         @endif
                                     @endforeach

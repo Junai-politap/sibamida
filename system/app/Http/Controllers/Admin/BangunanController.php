@@ -22,7 +22,7 @@ class BangunanController extends Controller
 {
     public function index()
     {
-        $data['list_bangunan'] = Bangunan::all();
+        $data['list_bangunan'] = Bangunan::orderBy('tahun_perolehan', 'DESC')->get();
         return view('admin.bangunan.index', $data);
     }
 

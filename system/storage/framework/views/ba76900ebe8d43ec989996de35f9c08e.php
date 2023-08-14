@@ -16,7 +16,7 @@
                         <a href="<?php echo e(url('opd/master/bangunan/create')); ?>" class="btn btn-primary float-right mb-10"> <span
                                 class="fa fa-plus"></span> Tambah Data</a>
                         <h4 class="card-title">
-                            <strong>Master Data Aset</strong>
+                            <strong>Master Data Aset Bangunan</strong>
                         </h4>
 
                     </div>
@@ -30,7 +30,8 @@
                                     <th class="text-center">Kode Aset</th>
                                     <th class="text-center">Nama Aset</th>
                                     <th class="text-center">Nama Penanggungjawab</th>
-                                    <th class="text-center">Nama OPD</th>
+                                    <th class="text-center">Tahun Perolehan</th>
+                                    <th class="text-center">Harga Perolehan</th>
                                     
                                 </tr>
                             </thead>
@@ -95,11 +96,8 @@
                                         </td>
                                         <td class=""><?php echo e($bangunan->nama_barang); ?></td>
                                         <td class=""><?php echo e($bangunan->pegawai->nama); ?></td>
-                                        <td>
-                                            <?php echo e($bangunan->opd->nama_opd); ?>
-
-                                            
-                                        </td>
+                                        <td><?php echo e($bangunan->tahun_perolehan); ?></td>
+                                        <td>Rp .<?php echo e($bangunan->harga_perolehan); ?></td>
                                     </tr>
                                     <?php endif; ?>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

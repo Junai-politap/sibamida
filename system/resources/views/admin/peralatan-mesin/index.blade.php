@@ -19,11 +19,13 @@
                                         <th>Kategori</th>
                                         <th>Kode Barang</th>
                                         <th>Nama Barang</th>
+                                        <th>Tahun Perolehan</th>
+                                        <th>Harga Perolehan</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($list_peralatan as $peralatan)
-                                    
+                                   
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
@@ -37,8 +39,10 @@
                                             <td>{{ $peralatan->kategori->nama_kategori }}</td>
                                             <td>{{ $peralatan->kode_barang }}</td>
                                             <td>{{ $peralatan->nama_barang }}</td>
+                                            <td>{{ $peralatan->tahun_perolehan }}</td>
+                                            <td>Rp .{{ $peralatan->harga_perolehan }}</td>
                                         </tr>
-                                      
+                                        
                                     @endforeach
                                 </tbody>
                             </table>

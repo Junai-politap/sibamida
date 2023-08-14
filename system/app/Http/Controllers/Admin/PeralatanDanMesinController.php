@@ -25,7 +25,7 @@ class PeralatanDanMesinController extends Controller
     public function index()
     {
        
-        $data['list_peralatan'] = Peralatan::all();
+        $data['list_peralatan'] = Peralatan::orderBy('tahun_perolehan', 'DESC')->get();
         return view('admin.peralatan-mesin.index', $data);
     }
 

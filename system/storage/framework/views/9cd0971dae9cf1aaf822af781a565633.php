@@ -27,11 +27,13 @@
                                         <th>Kategori</th>
                                         <th>Kode Barang</th>
                                         <th>Nama Barang</th>
+                                        <th>Tahun Perolehan</th>
+                                        <th>Harga Perolehan</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php $__currentLoopData = $list_peralatan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $peralatan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    
+                                   
                                         <tr>
                                             <td><?php echo e($loop->iteration); ?></td>
                                             <td>
@@ -86,8 +88,10 @@
                                             <td><?php echo e($peralatan->kategori->nama_kategori); ?></td>
                                             <td><?php echo e($peralatan->kode_barang); ?></td>
                                             <td><?php echo e($peralatan->nama_barang); ?></td>
+                                            <td><?php echo e($peralatan->tahun_perolehan); ?></td>
+                                            <td>Rp .<?php echo e($peralatan->harga_perolehan); ?></td>
                                         </tr>
-                                      
+                                        
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </tbody>
                             </table>

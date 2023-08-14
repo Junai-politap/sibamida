@@ -22,7 +22,8 @@
                                     <th class="text-center">Kode Aset</th>
                                     <th class="text-center">Nama Aset</th>
                                     <th class="text-center">Nama Penanggungjawab</th>
-                                    <th class="text-center">Nama OPD</th>
+                                    <th class="text-center">Tahun Perolehan</th>
+                                    <th class="text-center">Harga Perolehan</th>
                                     
                                 </tr>
                             </thead>
@@ -44,10 +45,9 @@
                                         </td>
                                         <td class="">{{ $tanah->nama_barang }}</td>
                                         <td class="">{{ $tanah->pegawai->nama }}</td>
-                                        <td>
-                                            {{ $tanah->opd->nama_opd }}
-                                            
-                                        </td>
+                                        <td class="">{{ $tanah->tahun_perolehan }}</td>
+                                        <td class="">Rp. {{ $tanah->harga }}</td>
+                                       
                                     </tr>
                                     @endif
                                 @endforeach

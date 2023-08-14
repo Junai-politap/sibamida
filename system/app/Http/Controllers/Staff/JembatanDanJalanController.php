@@ -25,7 +25,7 @@ class JembatanDanJalanController extends Controller
      */
     public function index()
     {
-        $data["list_jembatan"] =Jembatan::all();
+        $data["list_jembatan"] =Jembatan::orderBy('tahun_perolehan', 'DESC')->get();
 
         return view('staff-administrasi.jembatan-jalan.index', $data);
     }
@@ -87,24 +87,6 @@ class JembatanDanJalanController extends Controller
         $data['jembatan'] = Jembatan::find($jembatan);
         $data['riwayat'] = Riwayat::all();
         $data['list_pegawai'] = Pegawai::all();
-
-        $jembatan = Jembatan::find($jembatan);
-      
-        $result = Builder::create()
-            ->writer(new PngWriter())
-            ->writerOptions([])
-            ->data($jembatan->kode_aset)
-            ->encoding(new Encoding('UTF-8'))
-            ->errorCorrectionLevel(new ErrorCorrectionLevelHigh())
-            ->size(150)
-            ->margin(10)
-            ->roundBlockSizeMode(new RoundBlockSizeModeMargin())
-            ->labelText($jembatan->nama_aset)
-            ->labelFont(new NotoSans(20))
-            ->labelAlignment(new LabelAlignmentCenter())
-            ->build();
-        
-        $data['img'] = $result->getDataUri();
 
         return view('staff-administrasi.jembatan-jalan.show', $data);
     }

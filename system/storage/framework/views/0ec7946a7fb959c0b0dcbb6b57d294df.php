@@ -13,7 +13,7 @@
     <section class="page-banner bg_cover p-r z-1" style="background-image: url(<?php echo e(url('public/web')); ?>/assets/images/bg/page-bg-2.jpg);">
         <div class="brand-card text-center">
             <img src="<?php echo e(url('public/web')); ?>/assets/images/icon/wheat.png" alt="icon">
-            <h3>Orgarium</h3>
+            <h3>Sibamida</h3>
         </div>
         <div class="container">
             <div class="row">

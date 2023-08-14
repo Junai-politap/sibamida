@@ -30,12 +30,14 @@
                                     <th class="text-center">Kode Aset</th>
                                     <th class="text-center">Nama Aset</th>
                                     <th class="text-center">Nama Penanggungjawab</th>
-                                    <th class="text-center">Nama OPD</th>
+                                    <th class="text-center">Tahun Perolehan</th>
+                                    <th class="text-center">Harga Perolehan</th>
                                     
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php $__currentLoopData = $list_bangunan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bangunan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                               
                                     <tr>
                                         <td class="text-center"><?php echo e($loop->iteration); ?></td>
                                         <td class="text-center">
@@ -94,12 +96,10 @@
                                         </td>
                                         <td class=""><?php echo e($bangunan->nama_barang); ?></td>
                                         <td class=""><?php echo e($bangunan->pegawai->nama); ?></td>
-                                        <td>
-                                            <?php echo e($bangunan->opd->nama_opd); ?>
-
-                                            
-                                        </td>
+                                        <td><?php echo e($bangunan->tahun_perolehan); ?></td>
+                                        <td>Rp .<?php echo e($bangunan->harga_perolehan); ?></td>
                                     </tr>
+                                   
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                             </tbody>

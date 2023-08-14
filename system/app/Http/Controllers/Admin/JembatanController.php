@@ -25,7 +25,7 @@ class JembatanController extends Controller
 
     public function index()
     {
-        $data['list_jembatan'] = Jembatan::all();
+        $data['list_jembatan'] = Jembatan::orderBy('tahun_perolehan', 'DESC')->get();
         return view('admin.jembatan.index', $data);
     }
 

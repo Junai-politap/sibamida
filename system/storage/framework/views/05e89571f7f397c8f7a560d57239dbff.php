@@ -20,25 +20,25 @@
                         </h4>
 
                     </div>
-
                     <div class="card-body">
-                        <table id="example2" class="table table-bordered table-striped">
+                        <table id="example2" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
-                                    <th class="text-center">No</th>
-                                    <th class="text-center">Aksi</th>
-                                    <th class="text-center">Kode Aset</th>
-                                    <th class="text-center">Nama Aset</th>
-                                    <th class="text-center">Nama Penanggungjawab</th>
-                                    <th class="text-center">Nama OPD</th>
-                                    
+                                    <th>No</th>
+                                    <th>Aksi</th>
+                                    <th>Kategori</th>
+                                    <th>Kode Assets</th>
+                                    <th>Nama Assets</th>
+                                    <th>Tahun Perolehan</th>
+                                    <th>Harga Perolehan</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php $__currentLoopData = $list_jembatan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $jembatan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                               
                                     <tr>
-                                        <td class="text-center"><?php echo e($loop->iteration); ?></td>
-                                        <td class="text-center">
+                                        <td><?php echo e($loop->iteration); ?></td>
+                                        <td>
                                             <div class="btn-group">
                                                 <?php if (isset($component)) { $__componentOriginaldf05ec2d539ccc47939751d83314ef26 = $component; } ?>
 <?php $component = App\View\Components\Button\InfoButton::resolve(['url' => 'admin/master/jembatan-jalan','id' => ''.e($jembatan->id).''] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
@@ -87,21 +87,14 @@
 <?php endif; ?>
                                             </div>
                                         </td>
-                                        <td class="text-left">
-                                            <?php echo e($jembatan->kode_aset); ?>
-
-
-                                        </td>
-                                        <td class=""><?php echo e($jembatan->nama_aset); ?></td>
-                                        <td class=""><?php echo e($jembatan->pegawai->nama); ?></td>
-                                        <td>
-                                            <?php echo e($jembatan->opd->nama_opd); ?>
-
-                                            
-                                        </td>
+                                        <td><?php echo e($jembatan->kategori->nama_kategori); ?></td>
+                                        <td><?php echo e($jembatan->kode_aset); ?></td>
+                                        <td><?php echo e($jembatan->nama_aset); ?></td>
+                                        <td><?php echo e($jembatan->tahun_perolehan); ?></td>
+                                        <td>Rp .<?php echo e($jembatan->harga_perolehan); ?></td>
                                     </tr>
+                                    
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
                             </tbody>
                         </table>
                     </div>

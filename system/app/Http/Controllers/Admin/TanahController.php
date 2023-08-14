@@ -22,7 +22,7 @@ class TanahController extends Controller
 {
     public function index()
     {
-        $data['list_tanah'] = Tanah::all();
+        $data['list_tanah'] = Tanah::orderBy('tahun_perolehan', 'DESC')->get();
         return view('admin.tanah.index', $data);
     }
 
