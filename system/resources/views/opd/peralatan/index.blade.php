@@ -7,7 +7,7 @@
                         <div class="card-header">
                             <a href="{{ url('opd/master/peralatan-mesin/create') }}" class="btn btn-primary float-right mb-10"> <span
                                     class="fa fa-plus"></span> Tambah Data</a>
-                            <h3 class="card-title">Data Seluruh Assets</h3>
+                            <h3 class="card-title">Master Data Aset Peralatan dan Mesin</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">

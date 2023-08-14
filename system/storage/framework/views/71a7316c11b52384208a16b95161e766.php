@@ -7,6 +7,12 @@
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
+        integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+        integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <section class="content">
         <div class="row">
             <div class="col-md-6">
@@ -39,7 +45,7 @@
                             </div>
 
                             <div class="col-md-6 text-center">
-                                <img src="<?php echo e($img); ?>" alt="QR Code" style="display:block; margin:auto;">
+                                <div id="test"></div>
 
                             </div>
                         </div>
@@ -201,7 +207,7 @@
                                 <div class="card-body">
                                     <strong>Tanggal Mulai</strong>
                                     <p class="text-muted">
-                                        <?php echo e(date("d-F-Y", strtotime($riwayat->tanggal_mulai))); ?>
+                                        <?php echo e(date('d-F-Y', strtotime($riwayat->tanggal_mulai))); ?>
 
                                     </p>
                                     <hr>
@@ -211,7 +217,7 @@
                                     <strong>Keterangan</strong>
                                     <p class="text-muted">
                                     <p>
-                                        <?php echo nl2br( $riwayat->keterangan ); ?>
+                                        <?php echo nl2br($riwayat->keterangan); ?>
 
                                     </p>
                                     </p>
@@ -229,7 +235,8 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <form action="<?php echo e(url('admin/jembatan-jalan/update-riwayat', $riwayat->id)); ?>" method="POST">
+                                    <form action="<?php echo e(url('admin/jembatan-jalan/update-riwayat', $riwayat->id)); ?>"
+                                        method="POST">
                                         <div class="modal-body">
 
                                             <?php echo csrf_field(); ?>
@@ -258,7 +265,7 @@
                                                     </label>
                                                     <div class="col-sm-9">
                                                         <input type="date" class="form-control" name="tanggal_mulai"
-                                                            value="<?php echo e(date("Y-m-d", strtotime($riwayat->tanggal_mulai))); ?>">
+                                                            value="<?php echo e(date('Y-m-d', strtotime($riwayat->tanggal_mulai))); ?>">
                                                     </div>
                                                 </div>
 
@@ -296,7 +303,8 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="<?php echo e(url('admin/jembatan-jalan/riwayat')); ?>" method="post" enctype="multipart/form-data">
+                        <form action="<?php echo e(url('admin/jembatan-jalan/riwayat')); ?>" method="post"
+                            enctype="multipart/form-data">
                             <?php echo csrf_field(); ?>
                             <div class="row">
                                 <input type="text" value="<?php echo e($jembatan->id); ?>" name="id_aset" hidden>
@@ -337,6 +345,34 @@
             </div>
         </div>
     </section>
+
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script>
+        let 
+        
+        card = "Nama OPD: <?php echo e($jembatan->opd->nama_opd); ?>\r\n";
+        card += "Nama Penanggungjawab: <?php echo e($jembatan->pegawai->nama); ?>\r\n";
+        card += "Kategori Aset : <?php echo e($jembatan->kategori->nama_kategori); ?>\r\n";
+        card += "Kode Aset : <?php echo e($jembatan->kode_aset); ?>\r\n";
+        card += "Nama Aset : <?php echo e($jembatan->nama_aset); ?>\r\n";
+        card += "Nomor Register : <?php echo e($jembatan->no_register); ?>\r\n";
+        card += "Tahun Perolehan : <?php echo e($jembatan->tahun_perolehan); ?>\r\n";
+        card += "Harga Perolehan : <?php echo e($jembatan->hatga_perolehan); ?>\r\n";
+        card += "Keterangan : <?php echo e($jembatan->keterangan); ?>\r\n";
+        card += "Alamat : <?php echo e($jembatan->alamat); ?>\r\n";
+        card += "Nama Kondisi : <?php echo e($jembatan->nama_kondisi); ?>\r\n";
+        card += "Sumber Dana : <?php echo e($jembatan->nama_sumber_dana); ?>\r\n";
+        card += "Nomor SPPD : <?php echo e($jembatan->no_sppd); ?>\r\n";
+        card += "Nomor SPK : <?php echo e($jembatan->no_spk); ?>\r\n";
+        card += "Nomor Berita Acara : <?php echo e($jembatan->no_ba); ?>\r\n";
+        card += "Tanggal Serah Terima : <?php echo e($jembatan->tanggal_serah_terima); ?>\r\n";
+        card += "Kontruksi : <?php echo e($jembatan->kontruksi); ?>\r\n";
+        card += "Panjang/Lebar/Luas : <?php echo e($jembatan->panjang); ?>/<?php echo e($jembatan->lebar); ?>/<?php echo e($jembatan->luas); ?>\r\n";
+        
+        new QRCode(document.getElementById("test"), card);
+    </script>
+
+    
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__componentOriginal2812d824e80b3a65bceda8e6a9bfa7a0)): ?>

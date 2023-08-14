@@ -68,25 +68,6 @@ class BangunanController extends Controller
         $data['riwayat'] = Riwayat::where('id_aset', $bangunan)->get();
         $data['list_pegawai'] = Pegawai::all();
 
-        $bangunan = Bangunan::find($bangunan);
-      
-        $result = Builder::create()
-            ->writer(new PngWriter())
-            ->writerOptions([])
-            ->data($bangunan->kode_barang)
-            ->encoding(new Encoding('UTF-8'))
-            ->errorCorrectionLevel(new ErrorCorrectionLevelHigh())
-            ->size(150)
-            ->margin(10)
-            ->roundBlockSizeMode(new RoundBlockSizeModeMargin())
-            ->labelText($bangunan->nama_barang)
-            ->labelFont(new NotoSans(20))
-            ->labelAlignment(new LabelAlignmentCenter())
-            ->build();
-        
-        $data['img'] = $result->getDataUri();
-
-
         return view('admin.bangunan.show', $data);
     }
 

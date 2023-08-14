@@ -22,7 +22,7 @@ class TanahController extends Controller
 {
     public function index()
     {
-        $data['list_tanah'] = Tanah::all();
+        $data['list_tanah'] = Tanah::orderBy('tahun_perolehan', 'DESC')->get();
         return view('opd.tanah.index', $data);
     }
 
@@ -63,24 +63,6 @@ class TanahController extends Controller
         $data['tanah'] = Tanah::find($tanah);
         $data['riwayat'] = Riwayat::where('id_aset', $tanah)->get();
         $data['list_pegawai'] = Pegawai::all();
-
-        $tanah = Tanah::find($tanah);
-        
-        $result = Builder::create()
-            ->writer(new PngWriter())
-            ->writerOptions([])
-            ->data($tanah->kode_barang)
-            ->encoding(new Encoding('UTF-8'))
-            ->errorCorrectionLevel(new ErrorCorrectionLevelHigh())
-            ->size(150)
-            ->margin(10)
-            ->roundBlockSizeMode(new RoundBlockSizeModeMargin())
-            ->labelText($tanah->nama_barang)
-            ->labelFont(new NotoSans(20))
-            ->labelAlignment(new LabelAlignmentCenter())
-            ->build();
-        
-        $data['img'] = $result->getDataUri();
 
         return view('opd.tanah.show', $data);
     }

@@ -17,7 +17,7 @@
                             </div>
 
                             <div class="col-md-6 text-center">
-                                <img src="{{ $img }}" alt="QR Code" style="display:block; margin:auto;">
+                                <div id="test"></div>
 
                             </div>
                         </div>
@@ -262,4 +262,25 @@
             </div>
         </div>
     </section>
+
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script>
+        let 
+        
+        card = "Nama OPD: {{ $tanah->opd->nama_opd }}\r\n";
+        card += "Nama Penanggungjawab: {{ $tanah->pegawai->nama }}\r\n";
+        card += "Kategori Barang : {{ $tanah->kategori->nama_kategori }}\r\n";
+        card += "Kode Barang : {{ $tanah->kode_barang }}\r\n";
+        card += "Nama Barang : {{ $tanah->nama_barang }}\r\n";
+        card += "Nomor Register : {{ $tanah->no_register }}\r\n";
+        card += "Harga Perolehan : {{ $tanah->cara_perolehan }}\r\n";
+        card += "Tahun Perolehan : {{ $tanah->tahun_perolehan }}\r\n";
+        card += "Harga : Rp. {{ $tanah->harga }}\r\n";
+        card += "Luas : {{ $tanah->luas }}\r\n";
+        card += "Keterangan : {{ $tanah->keterangan }}\r\n";
+        card += "Penggunaan : {{ $tanah->penggunaan }}\r\n";
+        card += "Nomor Sertifikat : {{ $tanah->no_sertifikat }}\r\n";
+       
+        new QRCode(document.getElementById("test"), card);
+    </script>
 </x-admin>

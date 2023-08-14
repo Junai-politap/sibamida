@@ -22,7 +22,7 @@ class BangunanController extends Controller
 {
     public function index()
     {
-        $data['list_bangunan'] = Bangunan::all();
+        $data['list_bangunan'] = Bangunan::orderBy('tahun_perolehan', 'DESC')->get();
         return view('opd.bangunan.index', $data);
     }
 
@@ -47,7 +47,10 @@ class BangunanController extends Controller
         $bangunan->tahun_perolehan      = request('tahun_perolehan');
         $bangunan->harga_perolehan      = request('harga_perolehan');
         $bangunan->alamat               = request('alamat');
+        $bangunan->kecamatan            = request('kecamatan');
+        $bangunan->kelurahan_desa       = request('kelurahan_desa');
         $bangunan->keterangan           = request('keterangan');
+        $bangunan->bidang               = request('bidang');
         $bangunan->nama_sumber_dana     = request('nama_sumber_dana');
         $bangunan->no_sppd              = request('no_sppd');
         $bangunan->no_spk               = request('no_spk');
@@ -59,7 +62,7 @@ class BangunanController extends Controller
         $bangunan->handleUploadFoto();
         $bangunan->save();
 
-        return redirect('opd/master/bangunan')->with('success', 'Data Berhasil Di Simpan');
+        return back()->with('success', 'Data Berhasil Di Simpan');
     }
 
     public function show($bangunan)
@@ -67,25 +70,7 @@ class BangunanController extends Controller
         $data['bangunan'] = Bangunan::find($bangunan);
         $data['riwayat'] = Riwayat::where('id_aset', $bangunan)->get();
         $data['list_pegawai'] = Pegawai::all();
-
-        $bangunan = Bangunan::find($bangunan);
         
-        $result = Builder::create()
-            ->writer(new PngWriter())
-            ->writerOptions([])
-            ->data($bangunan->kode_barang)
-            ->encoding(new Encoding('UTF-8'))
-            ->errorCorrectionLevel(new ErrorCorrectionLevelHigh())
-            ->size(150)
-            ->margin(10)
-            ->roundBlockSizeMode(new RoundBlockSizeModeMargin())
-            ->labelText($bangunan->nama_barang)
-            ->labelFont(new NotoSans(20))
-            ->labelAlignment(new LabelAlignmentCenter())
-            ->build();
-        
-        $data['img'] = $result->getDataUri();
-
         return view('opd.bangunan.show', $data);
     }
 
@@ -110,7 +95,10 @@ class BangunanController extends Controller
         $bangunan->tahun_perolehan      = request('tahun_perolehan');
         $bangunan->harga_perolehan      = request('harga_perolehan');
         $bangunan->alamat               = request('alamat');
+        $bangunan->kecamatan            = request('kecamatan');
+        $bangunan->kelurahan_desa       = request('kelurahan_desa');
         $bangunan->keterangan           = request('keterangan');
+        $bangunan->bidang               = request('bidang');
         $bangunan->nama_sumber_dana     = request('nama_sumber_dana');
         $bangunan->no_sppd              = request('no_sppd');
         $bangunan->no_spk               = request('no_spk');

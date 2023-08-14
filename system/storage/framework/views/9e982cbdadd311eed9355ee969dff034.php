@@ -39,8 +39,7 @@
                             </div>
 
                             <div class="col-md-6 text-center">
-                                <?php echo QrCode::size(200)->generate('<?php echo e($bangunan->kode_aset); ?>'); ?>
-
+                                <div id="test"></div>
 
                             </div>
                         </div>
@@ -306,6 +305,30 @@
             </div>
         </div>
     </section>
+
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script>
+        let 
+        
+        card = "Nama OPD: <?php echo e($bangunan->opd->nama_opd); ?>\r\n";
+        card += "Nama Penanggungjawab: <?php echo e($bangunan->pegawai->nama); ?>\r\n";
+        card += "Kategori Barang : <?php echo e($bangunan->kategori->nama_kategori); ?>\r\n";
+        card += "Kode Barang : <?php echo e($bangunan->kode_barang); ?>\r\n";
+        card += "Nama Barang : <?php echo e($bangunan->nama_barang); ?>\r\n";
+        card += "Nomor Register : <?php echo e($bangunan->no_register); ?>\r\n";
+        card += "Tahun Perolehan : <?php echo e($bangunan->tahun_perolehan); ?>\r\n";
+        card += "Harga Perolehan :Rp. <?php echo e($bangunan->harga_perolehan); ?>\r\n";
+        card += "Keterangan : <?php echo e($bangunan->keterangan); ?>\r\n";
+        card += "Alamat : <?php echo e($bangunan->alamat); ?>\r\n";
+        card += "Kecamatan : <?php echo e($bangunan->kecamatan); ?>\r\n";
+        card += "Kelurahan Desa : <?php echo e($bangunan->kelurahan_desa); ?>\r\n";
+        card += "Nomor SPPD : <?php echo e($bangunan->no_sppd); ?>\r\n";
+        card += "Nomor SPK : <?php echo e($bangunan->no_spk); ?>\r\n";
+        card += "Nomor Berita Acara : <?php echo e($bangunan->no_ba); ?>\r\n";
+        
+        
+        new QRCode(document.getElementById("test"), card);
+    </script>
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__componentOriginal2812d824e80b3a65bceda8e6a9bfa7a0)): ?>

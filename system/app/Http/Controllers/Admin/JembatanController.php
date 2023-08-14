@@ -84,24 +84,6 @@ class JembatanController extends Controller
         $data['riwayat'] = Riwayat::where('id_aset', $jembatan)->get();
         $data['list_pegawai'] = Pegawai::all();
 
-        $jembatan = Jembatan::find($jembatan);
-      
-        $result = Builder::create()
-            ->writer(new PngWriter())
-            ->writerOptions([])
-            ->data($jembatan->kode_aset)
-            ->encoding(new Encoding('UTF-8'))
-            ->errorCorrectionLevel(new ErrorCorrectionLevelHigh())
-            ->size(150)
-            ->margin(10)
-            ->roundBlockSizeMode(new RoundBlockSizeModeMargin())
-            ->labelText($jembatan->nama_aset)
-            ->labelFont(new NotoSans(20))
-            ->labelAlignment(new LabelAlignmentCenter())
-            ->build();
-        
-        $data['img'] = $result->getDataUri();
-
         return view('admin.jembatan.show', $data);
     }
 

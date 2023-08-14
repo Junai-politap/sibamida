@@ -1,4 +1,10 @@
 <x-admin>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
+        integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+        integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <section class="content">
         <div class="row">
             <div class="col-md-6">
@@ -17,7 +23,7 @@
                             </div>
 
                             <div class="col-md-6 text-center">
-                                <img src="{{ $img }}" alt="QR Code" style="display:block; margin:auto;">
+                                <div id="test"></div>
 
                             </div>
                         </div>
@@ -178,7 +184,7 @@
                                 <div class="card-body">
                                     <strong>Tanggal Mulai</strong>
                                     <p class="text-muted">
-                                        {{date("d-F-Y", strtotime($riwayat->tanggal_mulai)) }}
+                                        {{ date('d-F-Y', strtotime($riwayat->tanggal_mulai)) }}
                                     </p>
                                     <hr>
                                     <strong>Nama Penanggung Jawab</strong>
@@ -187,7 +193,7 @@
                                     <strong>Keterangan</strong>
                                     <p class="text-muted">
                                     <p>
-                                        {!! nl2br( $riwayat->keterangan )!!}
+                                        {!! nl2br($riwayat->keterangan) !!}
                                     </p>
                                     </p>
                                     <hr>
@@ -204,7 +210,8 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <form action="{{ url('admin/jembatan-jalan/update-riwayat', $riwayat->id) }}" method="POST">
+                                    <form action="{{ url('admin/jembatan-jalan/update-riwayat', $riwayat->id) }}"
+                                        method="POST">
                                         <div class="modal-body">
 
                                             @csrf
@@ -233,7 +240,7 @@
                                                     </label>
                                                     <div class="col-sm-9">
                                                         <input type="date" class="form-control" name="tanggal_mulai"
-                                                            value="{{date("Y-m-d", strtotime($riwayat->tanggal_mulai)) }}">
+                                                            value="{{ date('Y-m-d', strtotime($riwayat->tanggal_mulai)) }}">
                                                     </div>
                                                 </div>
 
@@ -271,7 +278,8 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="{{ url('admin/jembatan-jalan/riwayat') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ url('admin/jembatan-jalan/riwayat') }}" method="post"
+                            enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <input type="text" value="{{ $jembatan->id }}" name="id_aset" hidden>
@@ -311,4 +319,32 @@
             </div>
         </div>
     </section>
+
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script>
+        let 
+        
+        card = "Nama OPD: {{ $jembatan->opd->nama_opd }}\r\n";
+        card += "Nama Penanggungjawab: {{ $jembatan->pegawai->nama }}\r\n";
+        card += "Kategori Aset : {{ $jembatan->kategori->nama_kategori }}\r\n";
+        card += "Kode Aset : {{ $jembatan->kode_aset }}\r\n";
+        card += "Nama Aset : {{ $jembatan->nama_aset }}\r\n";
+        card += "Nomor Register : {{ $jembatan->no_register }}\r\n";
+        card += "Tahun Perolehan : {{ $jembatan->tahun_perolehan }}\r\n";
+        card += "Harga Perolehan : Rp.{{ $jembatan->harga_perolehan }}\r\n";
+        card += "Keterangan : {{ $jembatan->keterangan }}\r\n";
+        card += "Alamat : {{ $jembatan->alamat }}\r\n";
+        card += "Nama Kondisi : {{ $jembatan->nama_kondisi }}\r\n";
+        card += "Sumber Dana : {{ $jembatan->nama_sumber_dana }}\r\n";
+        card += "Nomor SPPD : {{ $jembatan->no_sppd }}\r\n";
+        card += "Nomor SPK : {{ $jembatan->no_spk }}\r\n";
+        card += "Nomor Berita Acara : {{ $jembatan->no_ba }}\r\n";
+        card += "Tanggal Serah Terima : {{ $jembatan->tanggal_serah_terima }}\r\n";
+        card += "Kontruksi : {{ $jembatan->kontruksi }}\r\n";
+        card += "Panjang/Lebar/Luas : {{ $jembatan->panjang }}/{{ $jembatan->lebar }}/{{ $jembatan->luas }}\r\n";
+        
+        new QRCode(document.getElementById("test"), card);
+    </script>
+
+    
 </x-admin>

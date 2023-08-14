@@ -12,22 +12,21 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{ url('opd/master/bangunan') }}" method="POST"
-                            enctype="multipart/form-data">
+                        <form action="{{ url('opd/master/bangunan') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <input type="text" name="id_opd" class="form-control" value="{{ Auth::guard('opd')->user()->id }}" hidden>
                                 <div class="row">
-                                    
+
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nama Penanggung Jawab</label>
                                             <select name="id_pegawai" class="form-control" required>
-                                                <option value=""> Pilih Penanggung Jawab Aset</option>
+                                                <!-- <option value=""> Pilih Penanggung Jawab Aset</option> -->
                                                 @foreach ($list_pegawai as $pegawai)
                                                 @if ( Auth::guard('opd')->user()->id == $pegawai->id_opd)
-                                                    <option value="{{ $pegawai->id }}">{{ $pegawai->nama }}</option>
-                                                    @endif
+                                                <option value="{{ $pegawai->id }}">{{ $pegawai->nama }}</option>
+                                                @endif
                                                 @endforeach
                                             </select>
                                         </div>
@@ -37,52 +36,48 @@
                                         <div class="form-group">
                                             <label for="exampleInputText">Kategori Aset</label>
                                             <select class="form-control" name="id_kategori" required>
-                                                <option value=""> Pilih Kategori Aset</option>
-                                                @foreach ($list_kategori as $kategori)
+
+                                                @foreach ($list_kategori->where('nama_kategori', 'Tidak Bergerak') as $kategori)
                                                 @if ( Auth::guard('opd')->user()->id == $kategori->id_opd)
-                                                    <option value="{{ $kategori->id }}">
-                                                        {{ $kategori->nama_kategori }}
-                                                    </option>
-                                                    @endif
+                                                <option value="{{ $kategori->id }}">
+                                                    {{ $kategori->nama_kategori }}
+                                                </option>
+                                                @endif
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                   
+
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kode Barang</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan Nama Barang"
-                                                name="kode_barang" required>
+                                            <input type="text" class="form-control" placeholder="Masukkan Nama Barang" name="kode_barang" required>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nama Barang</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan Nama Barang"
-                                                name="nama_barang" required>
+                                            <input type="text" class="form-control" placeholder="Masukkan Nama Barang" name="nama_barang" required>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
 
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nomor Register</label>
-                                            <input type="text" class="form-control"
-                                                placeholder="Masukkan Nomor Register" name="no_register">
+                                            <input type="text" class="form-control" placeholder="Masukkan Nomor Register" name="no_register">
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Tahun Perolehan</label>
-                                            <input type="year" class="form-control"
-                                                placeholder="Masukkan Tahun Perolehan" name="tahun_perolehan">
+                                            <input type="year" class="form-control" placeholder="Masukkan Tahun Perolehan" name="tahun_perolehan">
                                         </div>
                                     </div>
                                 </div>
@@ -92,129 +87,123 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Harga Perolehan</label>
-                                            <input type="text" class="form-control"
-                                                placeholder="Masukkan Harga Perolehan" name="harga_perolehan">
+                                            <input type="text" class="form-control" placeholder="Masukkan Harga Perolehan" name="harga_perolehan">
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Alamat</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan Alamat"
-                                                name="alamat">
+                                            <input type="text" class="form-control" placeholder="Masukkan Alamat" name="alamat">
                                         </div>
                                     </div>
 
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Kecamatan</label>
+                                            <input type="text" class="form-control" placeholder="Masukkan Kecamatan" name="kecamatan">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Kelurahan/Desa</label>
+                                            <input type="text" class="form-control" placeholder="Masukkan Kelurahan/Desa" name="kelurahan_desa">
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Keterangan</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan Keterangan"
-                                                name="keterangan">
+                                            <input type="text" class="form-control" placeholder="Masukkan Keterangan" name="keterangan">
                                         </div>
                                     </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Bidang</label>
+                                            <input type="text" class="form-control" placeholder="Masukkan Nama Bidang" name="bidang">
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="row">
+
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nama Sumber Dana</label>
-                                            <input type="text" class="form-control"
-                                                placeholder="Masukkan Nama Sumber Dana" name="nama_sumber_dana">
+                                            <input type="text" class="form-control" placeholder="Masukkan Nama Sumber Dana" name="nama_sumber_dana">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    
 
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nomor SPPD</label>
-                                            <input type="text" class="form-control"
-                                                placeholder="Masukkan Nomor SPPD" name="no_sppd">
+                                            <input type="text" class="form-control" placeholder="Masukkan Nomor SPPD" name="no_sppd">
                                         </div>
                                     </div>
 
+                                </div>
+
+
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nomor SPK</label>
-                                            <input type="text" class="form-control"
-                                                placeholder="Masukkan Nomor SPK" name="no_spk">
+                                            <input type="text" class="form-control" placeholder="Masukkan Nomor SPK" name="no_spk">
                                         </div>
                                     </div>
 
-                                </div>
-
-
-                                <div class="row">
-                                   
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nomor Berita Acara</label>
-                                            <input type="text" class="form-control"
-                                                placeholder="Masukkan Nomor Berita Acara" name="no_ba">
+                                            <input type="text" class="form-control" placeholder="Masukkan Nomor Berita Acara" name="no_ba">
                                         </div>
                                     </div>
 
+                                </div>
+
+
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Bertingkat</label>
-                                            <input type="text" class="form-control"
-                                                placeholder="Masukan Tingkat" name="bertingkat">
+                                            <input type="text" class="form-control" placeholder="Masukan Tingkat" name="bertingkat">
                                         </div>
                                     </div>
-
-                                </div>
-
-                               
-                                <div class="row">
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="exampleInputText">Tanggal Dokumen</label>
-                                            <input type="date" class="form-control"
-                                                placeholder="Masukkan Tanggal Dokumen" name="tanggal_dokumen">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="exampleInputText">Status Tanah</label>
-                                            <input type="text" class="form-control"
-                                                placeholder="Masukkan Status Tanah" name="status_tanah">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Beton</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan Beton"
-                                                name="beton">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="exampleInputText">Kelompok</label>
-                                            <input type="text" class="form-control"
-                                                placeholder="Masukkan Kelompok" name="kelompok">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="exampleInputText">Urut Kelompok</label>
-                                            <input type="text" class="form-control"
-                                                placeholder="Masukkan Urut Kelompok" name="urut_kelompok">
+                                            <input type="text" class="form-control" placeholder="Masukkan Beton" name="beton">
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Kelompok</label>
+                                            <input type="text" class="form-control" placeholder="Masukkan Kelompok" name="kelompok">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Urut Kelompok</label>
+                                            <input type="text" class="form-control" placeholder="Masukkan Urut Kelompok" name="urut_kelompok">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="exampleInputText">Foto</label>
-                                            <input type="file" class="form-control"
-                                                placeholder="Masukkan Foto Aset" name="foto"
-                                                accept=".jpg, .png, .jpeg">
+                                            <input type="file" class="form-control" placeholder="Masukkan Foto Aset" name="foto" accept=".jpg, .png, .jpeg">
                                         </div>
                                     </div>
                                 </div>
@@ -223,8 +212,7 @@
                                 <div class="footer">
                                     <button type="reset" class="btn btn-default "><span class="fa fa-times"></span>
                                         Batal</button>
-                                    <button type="submit" class="btn btn-primary float-right"><span
-                                            class="fa fa-save"></span>
+                                    <button type="submit" class="btn btn-primary float-right"><span class="fa fa-save"></span>
                                         Simpan</button>
                                 </div>
 

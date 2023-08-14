@@ -39,8 +39,7 @@
                             </div>
 
                             <div class="col-md-6 text-center">
-                                <?php echo QrCode::size(200)->generate('<?php echo e($tanah->kode_aset); ?>'); ?>
-
+                                <div id="test"></div>
 
                             </div>
                         </div>
@@ -152,7 +151,7 @@
                                 <div class="card-body">
                                     <strong>Tanggal Mulai</strong>
                                     <p class="text-muted">
-                                        <?php echo e($riwayat->created_at->format('d F Y')); ?>
+                                        <?php echo e(date("Y-m-d", strtotime($riwayat->tanggal_mulai))); ?>
 
                                     </p>
                                     <hr>
@@ -209,7 +208,7 @@
                                                     </label>
                                                     <div class="col-sm-9">
                                                         <input type="date" class="form-control" name="tanggal_mulai"
-                                                            value="<?php echo e($riwayat->tanggal_mulai); ?>">
+                                                            value="<?php echo e(date("Y-m-d", strtotime($riwayat->tanggal_mulai))); ?>">
                                                     </div>
                                                 </div>
 
@@ -288,6 +287,27 @@
             </div>
         </div>
     </section>
+
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script>
+        let 
+        
+        card = "Nama OPD: <?php echo e($tanah->opd->nama_opd); ?>\r\n";
+        card += "Nama Penanggungjawab: <?php echo e($tanah->pegawai->nama); ?>\r\n";
+        card += "Kategori Barang : <?php echo e($tanah->kategori->nama_kategori); ?>\r\n";
+        card += "Kode Barang : <?php echo e($tanah->kode_barang); ?>\r\n";
+        card += "Nama Barang : <?php echo e($tanah->nama_barang); ?>\r\n";
+        card += "Nomor Register : <?php echo e($tanah->no_register); ?>\r\n";
+        card += "Harga Perolehan : <?php echo e($tanah->cara_perolehan); ?>\r\n";
+        card += "Tahun Perolehan : <?php echo e($tanah->tahun_perolehan); ?>\r\n";
+        card += "Harga : Rp. <?php echo e($tanah->harga); ?>\r\n";
+        card += "Luas : <?php echo e($tanah->luas); ?>\r\n";
+        card += "Keterangan : <?php echo e($tanah->keterangan); ?>\r\n";
+        card += "Penggunaan : <?php echo e($tanah->penggunaan); ?>\r\n";
+        card += "Nomor Sertifikat : <?php echo e($tanah->no_sertifikat); ?>\r\n";
+       
+        new QRCode(document.getElementById("test"), card);
+    </script>
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__componentOriginal2812d824e80b3a65bceda8e6a9bfa7a0)): ?>

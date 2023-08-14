@@ -8,7 +8,7 @@
                         <a href="{{ url('opd/master/bangunan/create') }}" class="btn btn-primary float-right mb-10"> <span
                                 class="fa fa-plus"></span> Tambah Data</a>
                         <h4 class="card-title">
-                            <strong>Master Data Aset</strong>
+                            <strong>Master Data Aset Bangunan</strong>
                         </h4>
 
                     </div>
@@ -22,7 +22,8 @@
                                     <th class="text-center">Kode Aset</th>
                                     <th class="text-center">Nama Aset</th>
                                     <th class="text-center">Nama Penanggungjawab</th>
-                                    <th class="text-center">Nama OPD</th>
+                                    <th class="text-center">Tahun Perolehan</th>
+                                    <th class="text-center">Harga Perolehan</th>
                                     
                                 </tr>
                             </thead>
@@ -44,10 +45,8 @@
                                         </td>
                                         <td class="">{{ $bangunan->nama_barang }}</td>
                                         <td class="">{{ $bangunan->pegawai->nama }}</td>
-                                        <td>
-                                            {{ $bangunan->opd->nama_opd }}
-                                            
-                                        </td>
+                                        <td>{{ $bangunan->tahun_perolehan }}</td>
+                                        <td>Rp .{{ $bangunan->harga_perolehan }}</td>
                                     </tr>
                                     @endif
                                 @endforeach

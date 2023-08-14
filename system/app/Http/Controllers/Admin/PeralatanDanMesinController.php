@@ -81,22 +81,6 @@ class PeralatanDanMesinController extends Controller
         $data['riwayat'] = Riwayat::where('id_aset', $peralatan)->get();
 
         $peralatan = Peralatan::find($peralatan);
-      
-        $result = Builder::create()
-            ->writer(new PngWriter())
-            ->writerOptions([])
-            ->data($peralatan->kode_barang)
-            ->encoding(new Encoding('UTF-8'))
-            ->errorCorrectionLevel(new ErrorCorrectionLevelHigh())
-            ->size(150)
-            ->margin(10)
-            ->roundBlockSizeMode(new RoundBlockSizeModeMargin())
-            ->labelText($peralatan->nama_barang)
-            ->labelFont(new NotoSans(20))
-            ->labelAlignment(new LabelAlignmentCenter())
-            ->build();
-        
-        $data['img'] = $result->getDataUri();
 
         return view('admin.peralatan-mesin.show', $data);
     }

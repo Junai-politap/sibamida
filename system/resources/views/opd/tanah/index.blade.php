@@ -8,7 +8,7 @@
                         <a href="{{ url('opd/master/tanah/create') }}" class="btn btn-primary float-right mb-10"> <span
                                 class="fa fa-plus"></span> Tambah Data</a>
                         <h4 class="card-title">
-                            <strong>Master Data Aset</strong>
+                            <strong>Master Data Aset Tanah</strong>
                         </h4>
 
                     </div>
