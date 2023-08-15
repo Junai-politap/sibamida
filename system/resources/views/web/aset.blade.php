@@ -36,88 +36,63 @@
                     </div>
                 </div>
             </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="portfolio-filter-button text-center mb-60 wow fadeInDown">
-                        <ul class="filter-btn">
-                            <li class="active" data-filter="*">Show All</li>
-                            <li data-filter=".cat-1">Peralatan</li>
-                            <li data-filter=".cat-2">Jembatan</li>
-                            <li data-filter=".cat-3">Tanah</li>
-                            <li data-filter=".cat-4">Bangunan</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="row project-row">
-                @foreach ($list_peralatan as $peralatan)
-                    <div class="col-lg-4 col-md-6 col-sm-12 project-column cat-1">
-                        <div class="project-item-three mb-30 wow fadeInUp">
-                            <div class="img-holder">
-                                <img src="{{ $img }}" style="object-fit: cover; position: static; width: 100%;">
-                                <div class="hover-portfolio">
-                                   
-                                    <div class="hover-content">
-                                        <h3 class="title">{{ $peralatan->opd->singkatan }}</h3>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-
-                @foreach ($list_jembatan as $jembatan)
-                    <div class="col-lg-4 col-md-6 col-sm-12 project-column cat-2">
-                        <div class="project-item-three mb-30 wow fadeInDown">
-                            <div class="img-holder">
-                                <img src="{{ $img }}" style="object-fit: cover; position: static; width: 100%;">
-                                <div class="hover-portfolio">
-                                   
-                                    <div class="hover-content">
-                                        <h3 class="title">{{ $jembatan->opd->singkatan }}</h3>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-
-                @foreach ($list_tanah as $tanah)
-                <div class="col-lg-4 col-md-6 col-sm-12 project-column cat-3">
+            <div class="row">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
                     <div class="project-item-three mb-30 wow fadeInUp">
                         <div class="img-holder">
-                            <img src="{{ url("public/$tanah->foto") }}" style="object-fit: cover; position: static; width: 100%; height: 300px;">
+                            <img src="{{ url('public/admin') }}/logo.png" alt="">
                             <div class="hover-portfolio">
-                                <div class="icon-btn">
+                                <div class="icon-btn"><a href="{{url("jembatan/$opd->id")}}"><i class="far fa-arrow-right"></i></a></div>
                                 <div class="hover-content">
-                                    <h3 class="title">{{ $tanah->opd->singkatan }}</h3>
-                                    
+                                    <h3 class="title"><a href="portfolio-details.html">Jembatan dan Jalan</a></h3>
+                                    <p>{{$list_jembatan->count()}}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                @endforeach
-
-                @foreach ($list_bangunan as $bangunan)
-                <div class="col-lg-4 col-md-6 col-sm-12 project-column cat-4">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
                     <div class="project-item-three mb-30 wow fadeInDown">
                         <div class="img-holder">
-                            <img src="{{ url("public/$bangunan->foto") }}" style="object-fit: cover; position: static; width: 100%; height: 300px;">
+                            <img src="{{ url('public/admin') }}/logo.png" alt="">
                             <div class="hover-portfolio">
-                                <div class="icon-btn">
+                                <div class="icon-btn"><a href="{{url("bangunan/$opd->id")}}"><i class="far fa-arrow-right"></i></a></div>
                                 <div class="hover-content">
-                                    <h3 class="title">{{ $bangunan->opd->singkatan }}</h3>
-                                    
+                                    <h3 class="title"><a href="portfolio-details.html">Bangunan</a></h3>
+                                    <p>{{$list_bangunan->count()}}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                @endforeach
-            </div>
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-item-three mb-30 wow fadeInUp">
+                        <div class="img-holder">
+                            <img src="{{ url('public/admin') }}/logo.png" alt="">
+                            <div class="hover-portfolio">
+                                <div class="icon-btn"><a href="{{url("peralatan/$opd->id")}}"><i class="far fa-arrow-right"></i></a></div>
+                                <div class="hover-content">
+                                    <h3 class="title"><a href="portfolio-details.html">Peralatan dan Mesin</a></h3>
+                                    <p>{{$list_peralatan->count()}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-item-three mb-30 wow fadeInDown">
+                        <div class="img-holder">
+                            <img src="{{ url('public/admin') }}/logo.png" alt="">
+                            <div class="hover-portfolio">
+                                <div class="icon-btn"><a href="{{url("tanah/$opd->id")}}"><i class="far fa-arrow-right"></i></a></div>
+                                <div class="hover-content">
+                                    <h3 class="title"><a href="portfolio-details.html">Tanah</a></h3>
+                                    <p>{{$list_tanah->count()}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </div>
     </section><!--====== End Portfolio Grid Page ======-->
 </x-web>
