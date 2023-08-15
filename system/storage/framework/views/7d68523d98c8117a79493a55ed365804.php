@@ -25,7 +25,7 @@
                         <h1>Assets</h1>
                         <ul class="breadcrumbs-link">
                             <li><a href="index.html">Home</a></li>
-                            <li class="active"><?php echo e($opd->nama_opd); ?></li>
+                            <li class="active"><?php echo e($opd->singkatan); ?></li>
                         </ul>
                     </div>
                 </div>
@@ -38,98 +38,69 @@
             <div class="row justify-content-center">
                 <div class="col-xl-7 col-lg-10">
                     <div class="section-title text-center mb-50 wow fadeInUp">
-                        <span class="sub-title">Project Gallery</span>
+                        <span class="sub-title">Master Aset</span>
                         <h2>We’ve Done Many Other Projects
                             Let’s See Gallery Insights</h2>
                     </div>
                 </div>
             </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="portfolio-filter-button text-center mb-60 wow fadeInDown">
-                        <ul class="filter-btn">
-                            <li class="active" data-filter="*">Show All</li>
-                            <li data-filter=".cat-1">Peralatan</li>
-                            <li data-filter=".cat-2">Jembatan</li>
-                            <li data-filter=".cat-3">Tanah</li>
-                            <li data-filter=".cat-4">Bangunan</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="row project-row">
-                <?php $__currentLoopData = $list_peralatan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $peralatan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <div class="col-lg-4 col-md-6 col-sm-12 project-column cat-1">
-                        <div class="project-item-three mb-30 wow fadeInUp">
-                            <div class="img-holder">
-                                <img src="<?php echo e(url("public/$peralatan->foto")); ?>" alt="">
-                                <div class="hover-portfolio">
-                                    <div class="icon-btn"><a href="portfolio-details.html"><i
-                                                class="far fa-arrow-right"></i></a></div>
-                                    <div class="hover-content">
-                                        <h3 class="title"><a href="portfolio-details.html">Golder Wheat</a></h3>
-                                        <p><a href="#">Agriculture</a>,<a href="#">Foods</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-                <?php $__currentLoopData = $list_jembatan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $jembatan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <div class="col-lg-4 col-md-6 col-sm-12 project-column cat-2">
-                        <div class="project-item-three mb-30 wow fadeInDown">
-                            <div class="img-holder">
-                                <img src="<?php echo e(url("public/$jembatan->foto")); ?>" alt="">
-                                <div class="hover-portfolio">
-                                    <div class="icon-btn"><a href="portfolio-details.html"><i
-                                                class="far fa-arrow-right"></i></a></div>
-                                    <div class="hover-content">
-                                        <h3 class="title"><a href="portfolio-details.html">Organic Grap</a></h3>
-                                        <p><a href="#">Agriculture</a>,<a href="#">Foods</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-                <?php $__currentLoopData = $list_tanah; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tanah): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <div class="col-lg-4 col-md-6 col-sm-12 project-column cat-3">
+            <div class="row">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
                     <div class="project-item-three mb-30 wow fadeInUp">
                         <div class="img-holder">
-                            <img src="<?php echo e(url("public/$tanah->foto")); ?>" alt="">
+                            <img src="<?php echo e(url('public/admin')); ?>/logo.png" alt="">
                             <div class="hover-portfolio">
-                                <div class="icon-btn"><a href="portfolio-details.html"><i
-                                            class="far fa-arrow-right"></i></a></div>
+                                <div class="icon-btn"><a href="<?php echo e(url("jembatan/$opd->id")); ?>"><i class="far fa-arrow-right"></i></a></div>
                                 <div class="hover-content">
-                                    <h3 class="title"><a href="portfolio-details.html">Golder Wheat</a></h3>
-                                    <p><a href="#">Agriculture</a>,<a href="#">Foods</a></p>
+                                    <h3 class="title"><a href="portfolio-details.html">Jembatan dan Jalan</a></h3>
+                                    <p><?php echo e($list_jembatan->count()); ?></p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-                <?php $__currentLoopData = $list_bangunan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bangunan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <div class="col-lg-4 col-md-6 col-sm-12 project-column cat-4">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
                     <div class="project-item-three mb-30 wow fadeInDown">
                         <div class="img-holder">
-                            <img src="<?php echo e(url("public/$bangunan->foto")); ?>" alt="">
+                            <img src="<?php echo e(url('public/admin')); ?>/logo.png" alt="">
                             <div class="hover-portfolio">
-                                <div class="icon-btn"><a href="portfolio-details.html"><i
-                                            class="far fa-arrow-right"></i></a></div>
+                                <div class="icon-btn"><a href="<?php echo e(url("bangunan/$opd->id")); ?>"><i class="far fa-arrow-right"></i></a></div>
                                 <div class="hover-content">
-                                    <h3 class="title"><a href="portfolio-details.html">Golder Wheat</a></h3>
-                                    <p><a href="#">Agriculture</a>,<a href="#">Foods</a></p>
+                                    <h3 class="title"><a href="portfolio-details.html">Bangunan</a></h3>
+                                    <p><?php echo e($list_bangunan->count()); ?></p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            </div>
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-item-three mb-30 wow fadeInUp">
+                        <div class="img-holder">
+                            <img src="<?php echo e(url('public/admin')); ?>/logo.png" alt="">
+                            <div class="hover-portfolio">
+                                <div class="icon-btn"><a href="<?php echo e(url("peralatan/$opd->id")); ?>"><i class="far fa-arrow-right"></i></a></div>
+                                <div class="hover-content">
+                                    <h3 class="title"><a href="portfolio-details.html">Peralatan dan Mesin</a></h3>
+                                    <p><?php echo e($list_peralatan->count()); ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="project-item-three mb-30 wow fadeInDown">
+                        <div class="img-holder">
+                            <img src="<?php echo e(url('public/admin')); ?>/logo.png" alt="">
+                            <div class="hover-portfolio">
+                                <div class="icon-btn"><a href="<?php echo e(url("tanah/$opd->id")); ?>"><i class="far fa-arrow-right"></i></a></div>
+                                <div class="hover-content">
+                                    <h3 class="title"><a href="portfolio-details.html">Tanah</a></h3>
+                                    <p><?php echo e($list_tanah->count()); ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </div>
     </section><!--====== End Portfolio Grid Page ======-->
  <?php echo $__env->renderComponent(); ?>
