@@ -78,7 +78,7 @@
             </div>
         </div>
     </section>
-
+ 
     <section class="fun-fact">
         <div class="big-text mb-105 wow fadeInUp"><h2>Statistics</h2></div>
         <div class="container">
