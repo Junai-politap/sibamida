@@ -46,8 +46,6 @@ class BaseController extends Controller
         $data['opd'] = Opd::find($opd);
         $data['list_opd'] = Opd::all();
         $data['list_jembatan'] = Jembatan::where('id_opd' , $opd)->get();
-        $data['jembatan'] = Jembatan::where('id', $opd)->get();
-        // return   $data;
         return view('web.jembatan', $data);
     }
 
@@ -56,8 +54,7 @@ class BaseController extends Controller
         $data['opd'] = Opd::find($opd);
         $data['list_opd'] = Opd::all();
         $data['list_bangunan'] = Bangunan::where('id_opd' , $opd)->get();
-        $data['bangunan'] = Bangunan::where('id', $opd)->get();
-        // return   $data;
+        $data['data_bangunan'] = Bangunan::all();
         return view('web.bangunan', $data);
     }
 
@@ -66,8 +63,6 @@ class BaseController extends Controller
         $data['opd'] = Opd::find($opd);
         $data['list_opd'] = Opd::all();
         $data['list_peralatan'] = Peralatan::where('id_opd' , $opd)->get();
-        $data['peralatan'] = Peralatan::where('id', $opd)->get();
-        // return   $data;
         return view('web.peralatan', $data);
     }
 
@@ -76,8 +71,6 @@ class BaseController extends Controller
         $data['opd'] = Opd::find($opd);
         $data['list_opd'] = Opd::all();
         $data['list_tanah'] = Tanah::where('id_opd' , $opd)->get();
-        $data['tanah'] = Tanah::where('id', $opd)->get();
-        // return   $data;
         return view('web.tanah', $data);
     }
 }

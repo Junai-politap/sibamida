@@ -3,27 +3,26 @@
     @include('menu.menu')
 
 
-    <!--====== Start Page-Banner Section ======-->
     <section class="page-banner bg_cover p-r z-1"
-        style="background-image: url({{ url('public/web') }}/assets/images/bg/page-bg-1.jpg);">
-        <div class="brand-card text-center">
-            <img src="{{ url('public/web') }}/assets/images/icon/wheat.png" alt="icon">
-            <h3>Orgarium</h3>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-7">
-                    <div class="page-title">
-                        <h1>Assets</h1>
-                        <ul class="breadcrumbs-link">
-                            <li><a href="index.html">Home</a></li>
-                            <li class="active">{{ $opd->singkatan }}</li>
-                        </ul>
-                    </div>
+    style="background-image: url({{ url('public/web') }}/assets/images/bg/page-bg-1.jpg);">
+    <div class="brand-card text-center">
+
+        <h3>{{ $opd->singkatan }}</h3>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="page-title">
+                    <h2 style="color: white">Data Aset Bangunan</h2>
+                    <ul class="breadcrumbs-link">
+                        <li><a href="{{ url('/') }}">Dashboard</a></li>
+                        <li class="active"><a href="{{ url("master-aset/$opd->id") }}">Data Aset</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </section><!--====== End Page-Banner Section ======-->
+    </div>
+</section>
     <section class="project-grid-page p-r z-1 pt-170 pb-130" id="project-filter">
         <div class="container">
             <div class="row justify-content-center">
@@ -58,9 +57,9 @@
                                             <td class="text-left"> {{ $bangunan->kode_barang }}</td>
                                             <td class="">{{ $bangunan->nama_barang }}</td>
                                             <td class="">{{ $bangunan->pegawai->nama }}</td>
-                                            <td>
-                                                <a href="" data-toggle="modal"
-                                                data-target="#Qrcode"><p>Lihat QrCode</p></a>
+                                            <td class="text-center">
+                                                <button class="btn btn-primary" data-toggle="modal"
+                                                data-target="#Qrcode">Lihat QrCode</button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -73,33 +72,51 @@
             </div>
         </div>
     </section>
+    
 </x-web>
-
 
 <div class="modal fade" id="Qrcode" tabindex="-1" role="dialog"
     aria-labelledby="Qrcode" aria-hidden="true">
-    <div class="modal-dialog modal-lg " role="document">
+    <div class="modal-dialog modal-md " role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <img class="img-responsive" src="{{ url('public/admin') }}/logo.png"
-                    style="width: 100%; height: 50%; object-fit: cover" alt="" />
-                    <button type="button" class="btn btn-warning btn-xl" data-dismiss="modal" aria-label="Close">
-                        <span class="icofont-close">Close</span>
-                    </button>
+                
+                <button class="btn btn-warning float-right" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times; Close</span>
+                </button>
             </div>
             <div class="modal-body">
-                <ul class="single-blog-list">
-                    <li>
-                        <div class="post-wrap">
-                            <div class="post-text">
-                                <h3></h3>
-                                <p>
-
-                                </p>
-                            </div>
-                        </div>
-                </ul>
+               <div class="card">
+                <div class="card-body">
+                    <div id="test" style="width: 60%; margin-left:20%"></div>
+                </div>
+               </div>
             </div>
         </div>
     </div>
 </div>
+
+<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script>
+        let 
+        @foreach($list_bangunan as $bangunan)
+        
+        card = "Nama OPD: {{ $bangunan->opd->nama_opd }}\r\n";
+        card += "Nama Penanggungjawab: {{ $bangunan->pegawai->nama }}\r\n";
+        card += "Kategori Barang : {{ $bangunan->kategori->nama_kategori }}\r\n";
+        card += "Kode Barang : {{ $bangunan->kode_barang }}\r\n";
+        card += "Nama Barang : {{ $bangunan->nama_barang }}\r\n";
+        card += "Nomor Register : {{ $bangunan->no_register }}\r\n";
+        card += "Tahun Perolehan : {{ $bangunan->tahun_perolehan }}\r\n";
+        card += "Harga Perolehan :Rp. {{ $bangunan->harga_perolehan }}\r\n";
+        card += "Keterangan : {{ $bangunan->keterangan }}\r\n";
+        card += "Alamat : {{ $bangunan->alamat }}\r\n";
+        card += "Kecamatan : {{ $bangunan->kecamatan }}\r\n";
+        card += "Kelurahan Desa : {{ $bangunan->kelurahan_desa }}\r\n";
+        card += "Nomor SPPD : {{ $bangunan->no_sppd }}\r\n";
+        card += "Nomor SPK : {{ $bangunan->no_spk }}\r\n";
+        card += "Nomor Berita Acara : {{ $bangunan->no_ba }}\r\n";
+        
+        @endforeach
+        new QRCode(document.getElementById("test"), card);
+    </script>

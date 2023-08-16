@@ -5,7 +5,7 @@ use App\Http\Controllers\Web\BaseController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [BaseController::class, 'index']);
-Route::get('assets/{opd}', [BaseController::class, 'aset']);
+Route::get('master-aset/{opd}', [BaseController::class, 'aset']);
 Route::get('contact', [BaseController::class, 'bahaya']);
 Route::get('jembatan/{opd}', [BaseController::class, 'jembatan']);
 Route::get('bangunan/{opd}', [BaseController::class, 'bangunan']);

@@ -38,8 +38,8 @@
                                     onerror="this.src='https://bootdey.com/img/Content/avatar/avatar7.png';">
                             </div>
 
-                            <div class="col-md-6 text-center">
-                                <div id="test"></div>
+                            <div class="col-md-3 text-center">
+                                <p id="test" style="width: 10%"></p>
 
                             </div>
                         </div>
@@ -130,7 +130,7 @@
 
                         </div>
 
-                    </div>
+                    </div> 
 
                 </div>
 
@@ -326,8 +326,8 @@
         card += "Nomor SPK : <?php echo e($bangunan->no_spk); ?>\r\n";
         card += "Nomor Berita Acara : <?php echo e($bangunan->no_ba); ?>\r\n";
         
-        
         new QRCode(document.getElementById("test"), card);
+      
     </script>
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>

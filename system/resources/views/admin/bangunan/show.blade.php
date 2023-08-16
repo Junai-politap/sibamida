@@ -16,8 +16,8 @@
                                     onerror="this.src='https://bootdey.com/img/Content/avatar/avatar7.png';">
                             </div>
 
-                            <div class="col-md-6 text-center">
-                                <div id="test"></div>
+                            <div class="col-md-3 text-center">
+                                <div id="test" style="width: 10%"></div>
 
                             </div>
                         </div>
@@ -301,7 +301,7 @@
         card += "Nomor SPK : {{ $bangunan->no_spk }}\r\n";
         card += "Nomor Berita Acara : {{ $bangunan->no_ba }}\r\n";
         
-        
         new QRCode(document.getElementById("test"), card);
+      
     </script>
 </x-admin>
