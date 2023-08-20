@@ -11,7 +11,7 @@
     <?php echo $__env->make('menu.menu', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
     <section class="page-banner bg_cover p-r z-1"
-        style="background-image: url(<?php echo e(url('public/web')); ?>/assets/images/bg/page-bg-1.jpg);">
+        style="background-image: url(<?php echo e(url('public')); ?>/kantor.jpg);">
         <div class="brand-card text-center">
 
             <h3><?php echo e($opd->singkatan); ?></h3>

@@ -7,6 +7,7 @@ use App\Models\Jembatan;
 use App\Models\Opd;
 use App\Http\Controllers\Controller;
 use App\Models\Peralatan;
+use App\Models\Slide;
 use App\Models\Tanah;
 use Illuminate\Http\Request;
 
@@ -20,6 +21,7 @@ class BaseController extends Controller
         $data['list_tanah'] = Tanah::all();
         $data['list_jembatan'] = Jembatan::all();
         $data['list_opd'] = Opd::all();
+        $data['list_slide'] = Slide::all();
         return view('web.index', $data);
     }
 

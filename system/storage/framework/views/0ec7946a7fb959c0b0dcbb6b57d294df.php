@@ -10,7 +10,8 @@
     <?php echo $__env->make('menu.menu', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
     <!--====== Start Page-Banner Section ======-->
-    <section class="page-banner bg_cover p-r z-1" style="background-image: url(<?php echo e(url('public/web')); ?>/assets/images/bg/page-bg-2.jpg);">
+    <section class="page-banner bg_cover p-r z-1"
+    style="background-image: url(<?php echo e(url('public')); ?>/kantor.jpg);">
         <div class="brand-card text-center">
             <img src="<?php echo e(url('public/web')); ?>/assets/images/icon/wheat.png" alt="icon">
             <h3>Sibamida</h3>
@@ -21,7 +22,7 @@
                     <div class="page-title">
                         <h1>Contact Us</h1>
                         <ul class="breadcrumbs-link">
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="<?php echo e(url('/')); ?>">Home</a></li>
                             <li class="active">Contact Us</li>
                         </ul>
                     </div>
@@ -31,15 +32,16 @@
     </section><!--====== End Page-Banner Section ======-->
     <!--====== Start Contact Information section ======-->
     <section class="contact-information-one p-r z-1 pt-215 pb-130">
-        <div class="information-img_one wow fadeInRight"><img src="<?php echo e(url('public/web')); ?>/assets/images/contact/img-1.jpg" alt="Imaged">
+        <div class="information-img_one wow fadeInRight"><img
+                src="<?php echo e(url('public')); ?>/kantor.jpg" alt="Imaged">
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-xl-9 col-lg-12">
+                <div class="col-xl-12 col-lg-12">
                     <div class="contact-two_information-box">
                         <div class="section-title section-title-left mb-50 wow fadeInUp">
-                            <span class="sub-title">Get In Touch</span>
-                            <h2>Kami Siap Membantu Anda!</h2>
+                            
+                            <h2 style="margin-left: 7%; color: white">Kami Siap Membantu Anda! </h2>
                         </div>
                         <div class="row">
                             <div class="col-lg-4 col-md-6 col-sm-12">
@@ -49,7 +51,7 @@
                                     </div>
                                     <div class="info">
                                         <h5>Locations</h5>
-                                        <p>Teknologi Informasi, Politeknik Negeri Ketapang</p>
+                                        <p style="font-size: 100%">Tengah, Kec. Delta Pawan, Kabupaten Ketapang, Kalimantan Barat 78811</p>
                                     </div>
                                 </div>
                             </div>
@@ -60,7 +62,7 @@
                                     </div>
                                     <div class="info">
                                         <h5>Email Address</h5>
-                                        <p><a href="https://informatika.politap.ac.id/">Teknik Informatika</a></p>
+                                        <p><a href="disparbud@ketapangkab.go.id">disparbud@ketapangkab.go.id</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -71,17 +73,14 @@
                                     </div>
                                     <div class="info">
                                         <h5>Phone Number</h5>
-                                        <p><a href="tel:+62 895-6134-92435">+012 (345) 678 99</a></p>
-                                        <p><a href="tel:+0123456">+0123456</a></p>
+                                        <p><a href="tel:+62 896-1542-7022">+62 896-1542-7022</a></p>
+                                        
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-8">
-                                <p>Natus error sit voluptatem accusantium doloremque laudatium, totam rem
-                                    aperiam eaque ipsa quae abllo inventore veritatis et quase</p>
-                            </div>
+                           
                         </div>
                     </div>
                 </div>

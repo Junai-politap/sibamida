@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\OpdController;
 use App\Http\Controllers\Admin\PegawaiController;
 use App\Http\Controllers\Admin\PeralatanDanMesinController;
 use App\Http\Controllers\Admin\RuanganController;
+use App\Http\Controllers\Admin\SlideController;
 use App\Http\Controllers\Admin\TanahController;
 use Illuminate\Support\Facades\Route;
 
@@ -48,5 +49,10 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::post('tanah/riwayat', [TanahController::class, 'riwayat']);
     Route::put('/tanah/update-riwayat/{riwayat}', [TanahController::class, 'riwayatUpdate']);
     Route::get('/tanah/delete-riwayat/{riwayat}', [TanahController::class, 'hapus']);
+
+    Route::get('slide', [SlideController::class, 'index']);
+    Route::post('slide', [SlideController::class, 'store']);
+    Route::put('slide/{slide}', [SlideController::class, 'update']);
+    Route::get('slide/delete/{slide}', [SlideController::class, 'destroy']);
     
 });

@@ -55,7 +55,7 @@
                             </div>
                             <div class="info">
                                 <h5 class="mb-1">Email Us</h5>
-                                <p><a href="mailto:hotlineinfo@gmial.com">hotlineinfo@gmial.com</a></p>
+                                <p><a href="mailto:disparbud@ketapangkab.go.id">disparbud@ketapangkab.go.id</a></p>
                             </div>
                         </div>
                     </div>

@@ -3,7 +3,7 @@
     @include('menu.menu')
 
     <section class="page-banner bg_cover p-r z-1"
-        style="background-image: url({{ url('public/web') }}/assets/images/bg/page-bg-1.jpg);">
+        style="background-image: url({{ url('public') }}/kantor.jpg);">
         <div class="brand-card text-center">
 
             <h3>{{ $opd->singkatan }}</h3>

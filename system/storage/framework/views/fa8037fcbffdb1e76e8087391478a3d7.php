@@ -123,6 +123,12 @@
                     </ul>
                 </li>
 
+                <li class="nav-item">
+                    <a href="<?php echo e(url('admin/slide')); ?>" class="nav-link <?php echo e(checkRouteActive('admin/slide')); ?>">
+                        <i class="nav-icon fa fa-list "></i>
+                        <p>Data Slide</p>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>
