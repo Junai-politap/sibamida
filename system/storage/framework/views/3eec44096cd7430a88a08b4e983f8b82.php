@@ -39,12 +39,7 @@
 
 <body>
 
-    <div class="preloader">
-        <div class="loader">
-            <div class="pre-shadow"></div>
-            <div class="pre-box"></div>
-        </div>
-    </div>
+    
 
 
     <?php if (isset($component)) { $__componentOriginal7a80e1acc367615cfc529160821a71d0 = $component; } ?>

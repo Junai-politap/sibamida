@@ -12,25 +12,25 @@
 
 
     <section class="page-banner bg_cover p-r z-1"
-    style="background-image: url(<?php echo e(url('public/web')); ?>/assets/images/bg/page-bg-1.jpg);">
-    <div class="brand-card text-center">
+        style="background-image: url(<?php echo e(url('public/web')); ?>/assets/images/bg/page-bg-1.jpg);">
+        <div class="brand-card text-center">
 
-        <h3><?php echo e($opd->singkatan); ?></h3>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-7">
-                <div class="page-title">
-                    <h2 style="color: white">Data Aset Bangunan</h2>
-                    <ul class="breadcrumbs-link">
-                        <li><a href="<?php echo e(url('/')); ?>">Dashboard</a></li>
-                        <li class="active"><a href="<?php echo e(url("master-aset/$opd->id")); ?>">Data Aset</a></li>
-                    </ul>
+            <h3><?php echo e($opd->singkatan); ?></h3>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="page-title">
+                        <h2 style="color: white">Data Aset Bangunan</h2>
+                        <ul class="breadcrumbs-link">
+                            <li><a href="<?php echo e(url('/')); ?>">Dashboard</a></li>
+                            <li class="active"><a href="<?php echo e(url("master-aset/$opd->id")); ?>">Data Aset</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
     <section class="project-grid-page p-r z-1 pt-170 pb-130" id="project-filter">
         <div class="container">
             <div class="row justify-content-center">
@@ -67,7 +67,7 @@
                                             <td class=""><?php echo e($bangunan->pegawai->nama); ?></td>
                                             <td class="text-center">
                                                 <button class="btn btn-primary" data-toggle="modal"
-                                                data-target="#Qrcode">Lihat QrCode</button>
+                                                    data-target="#Qrcode<?php echo e($bangunan->id); ?>">Lihat QrCode</button>
                                             </td>
                                         </tr>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -80,40 +80,42 @@
             </div>
         </div>
     </section>
-    
+
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__componentOriginald5bfc7eeb725fd60f41a76190ac432d4)): ?>
 <?php $component = $__componentOriginald5bfc7eeb725fd60f41a76190ac432d4; ?>
 <?php unset($__componentOriginald5bfc7eeb725fd60f41a76190ac432d4); ?>
 <?php endif; ?>
+<?php $__currentLoopData = $list_bangunan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bangunan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+    <div class="modal fade" id="Qrcode<?php echo e($bangunan->id); ?>" tabindex="-1" role="dialog" aria-labelledby="Qrcode"
+        aria-hidden="true">
+        <div class="modal-dialog modal-md " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
 
-<div class="modal fade" id="Qrcode" tabindex="-1" role="dialog"
-    aria-labelledby="Qrcode" aria-hidden="true">
-    <div class="modal-dialog modal-md " role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                
-                <button class="btn btn-warning float-right" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times; Close</span>
-                </button>
-            </div>
-            <div class="modal-body">
-               <div class="card">
-                <div class="card-body">
-                    <div id="test" style="width: 60%; margin-left:20%"></div>
+                    <button class="btn btn-warning float-right" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times; Close</span>
+                    </button>
                 </div>
-               </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <p class="text-center"><?php echo e($bangunan->nama_barang); ?></p>
+                        <div class="card-body">
+                            <div id="test<?php echo e($bangunan->id); ?>" style="width: 60%; margin-left:20%"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
-    <script>
-        let 
-        <?php $__currentLoopData = $list_bangunan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bangunan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        
+<script>
+    let
+    <?php $__currentLoopData = $list_bangunan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bangunan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
         card = "Nama OPD: <?php echo e($bangunan->opd->nama_opd); ?>\r\n";
         card += "Nama Penanggungjawab: <?php echo e($bangunan->pegawai->nama); ?>\r\n";
         card += "Kategori Barang : <?php echo e($bangunan->kategori->nama_kategori); ?>\r\n";
@@ -129,7 +131,8 @@
         card += "Nomor SPPD : <?php echo e($bangunan->no_sppd); ?>\r\n";
         card += "Nomor SPK : <?php echo e($bangunan->no_spk); ?>\r\n";
         card += "Nomor Berita Acara : <?php echo e($bangunan->no_ba); ?>\r\n";
-        
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        new QRCode(document.getElementById("test"), card);
-    </script><?php /**PATH E:\Sistem\sibamida\system\resources\views/web/bangunan.blade.php ENDPATH**/ ?>
+
+        new QRCode(document.getElementById("test<?php echo e($bangunan->id); ?>"), card);
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+</script>
+<?php /**PATH E:\Sistem\sibamida\system\resources\views/web/bangunan.blade.php ENDPATH**/ ?>

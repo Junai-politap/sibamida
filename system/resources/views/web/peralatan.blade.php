@@ -59,7 +59,7 @@
                                             <td class="">{{ $peralatan->pegawai->nama }}</td>
                                             <td class="text-center">
                                                 <button class="btn btn-primary" data-toggle="modal"
-                                                data-target="#Qrcode">Lihat QrCode</button>
+                                                data-target="#Qrcode{{ $peralatan->id }}">Lihat QrCode</button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -74,23 +74,52 @@
     </section>
 </x-web>
 
-<div class="modal fade" id="Qrcode" tabindex="-1" role="dialog"
-    aria-labelledby="Qrcode" aria-hidden="true">
-    <div class="modal-dialog modal-lg " role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                
-                <button class="btn btn-warning float-right" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times; Close</span>
-                </button>
-            </div>
-            <div class="modal-body">
-               <div class="card">
-                <div class="card-body">
-                    <p>bsa</p>
+
+@foreach ($list_peralatan as $peralatan)
+    <div class="modal fade" id="Qrcode{{ $peralatan->id }}" tabindex="-1" role="dialog" aria-labelledby="Qrcode"
+        aria-hidden="true">
+        <div class="modal-dialog modal-md " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <button class="btn btn-warning float-right" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times; Close</span>
+                    </button>
                 </div>
-               </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <p class="text-center">{{ $peralatan->nama_barang }}</p>
+                        <div class="card-body">
+                            <div id="test{{ $peralatan->id }}" style="width: 60%; margin-left:20%"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+@endforeach
+
+<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+<script>
+    let
+    @foreach ($list_peralatan as $peralatan)
+
+        card = "Nama OPD: {{ $peralatan->opd->nama_opd }}\r\n";
+        card += "Nama Penanggungjawab: {{ $peralatan->pegawai->nama }}\r\n";
+        card += "Kategori Barang : {{ $peralatan->kategori->nama_kategori }}\r\n";
+        card += "Kode Barang : {{ $peralatan->kode_barang }}\r\n";
+        card += "Nama Barang : {{ $peralatan->nama_barang }}\r\n";
+        card += "Nomor Register : {{ $peralatan->no_register }}\r\n";
+        card += "Tahun Perolehan : {{ $peralatan->tahun_perolehan }}\r\n";
+        card += "Harga Perolehan :Rp. {{ $peralatan->harga_perolehan }}\r\n";
+        card += "Keterangan : {{ $peralatan->keterangan }}\r\n";
+        card += "Alamat : {{ $peralatan->alamat }}\r\n";
+        card += "Kecamatan : {{ $peralatan->kecamatan }}\r\n";
+        card += "Kelurahan Desa : {{ $peralatan->kelurahan_desa }}\r\n";
+        card += "Nomor SPPD : {{ $peralatan->no_sppd }}\r\n";
+        card += "Nomor SPK : {{ $peralatan->no_spk }}\r\n";
+        card += "Nomor Berita Acara : {{ $peralatan->no_ba }}\r\n";
+
+        new QRCode(document.getElementById("test{{ $peralatan->id }}"), card);
+    @endforeach
+</script>
