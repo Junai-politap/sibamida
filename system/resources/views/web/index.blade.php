@@ -29,7 +29,7 @@
     </section>
  
     <section class="fun-fact">
-        <div class="big-text mb-105 wow fadeInUp"><h2>Statistics</h2></div>
+        <div class="mt-10 mb-20 fadeInUp text-center" style="color: black"><h2 style="color: black">Statistics</h2></div>
         <div class="container">
             <div class="counter-wrap-one wow fadeInDown">
                 <div class="counter-inner-box">
