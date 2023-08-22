@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Opd;
 
 use App\Http\Controllers\Controller;
+use App\Models\Bangunan;
+use App\Models\Jembatan;
+use App\Models\Peralatan;
+use App\Models\Tanah;
 use Illuminate\Http\Request;
 
 class OpdController extends Controller
@@ -10,7 +14,11 @@ class OpdController extends Controller
     
     public function index()
     {
-        return view('opd.index');
+        $data['list_peralatan'] = Peralatan::all();
+        $data['list_bangunan'] = Bangunan::all();
+        $data['list_tanah'] = Tanah::all();
+        $data['list_jembatan'] = Jembatan::all();
+        return view('opd.index', $data);
     }
 
     

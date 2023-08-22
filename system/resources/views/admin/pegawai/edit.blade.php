@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header">
                         <x-button.back-button url="{{ url('admin/pegawai') }}" />
-                        <h3 class="text-center" style="font-family: bold">Tambah Data OPD</h3>
+                        <h3 class="text-center" style="font-family: bold">Edit Data Pegawai</h3>
                     </div>
                     <form action="{{ url('admin/pegawai',$pegawai->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
