@@ -5,15 +5,21 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin;
-
-
+use App\Models\Bangunan;
+use App\Models\Jembatan;
+use App\Models\Peralatan;
+use App\Models\Tanah;
 
 class AdminController extends Controller
 {
     
     public function dashboard()
     {
-        return view('admin.index');
+        $data['list_peralatan'] = Peralatan::all();
+        $data['list_bangunan'] = Bangunan::all();
+        $data['list_tanah'] = Tanah::all();
+        $data['list_jembatan'] = Jembatan::all();
+        return view('admin.index', $data);
     }
 
     public function index()
@@ -42,9 +48,10 @@ class AdminController extends Controller
     }
 
     
-    public function show(string $id)
+    public function show($admin)
     {
-        //
+        $data['admin'] = Admin::find($admin);
+        return view('admin.admin.show', $data);
     }
 
     

@@ -6,7 +6,7 @@
                     <div class="card-header">
                         <x-button.back-button url="admin/admin" />
                         <h3 class="card-title" style="font-family: bold">
-                            <h2 class="text-center">Edit Data Suoer Admin</h2></h3>
+                            <h2 class="text-center">Edit Data Super Admin</h2></h3>
                     </div>
                     <form action="{{ url('admin/admin', $admin->id) }}" method="POST" enctype="multipart/form-data">
                         @method("PUT")

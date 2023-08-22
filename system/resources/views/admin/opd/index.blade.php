@@ -20,7 +20,6 @@
                                     <th class="text-center">No</th>
                                     <th class="text-center">Aksi</th>
                                     <th class="text-center">Nama OPD</th>
-                                    <th class="text-center">Alamat</th>
                                     <th class="text-center">Jumlah Pegawai</th>
                                 </tr>
                             </thead>
@@ -36,7 +35,6 @@
                                             </div>
                                         </td>
                                         <td class="text-center">{{ $opd->nama_opd }}</td>
-                                        <td class="text-center">{{ $opd->alamat }}</td>
                                         <td class="text-center" style="width: 20%">
                                             @foreach ($list_pegawai as $pegawai)
                                                 {{ $data_pegawai->filter(function ($q) use ($opd) {

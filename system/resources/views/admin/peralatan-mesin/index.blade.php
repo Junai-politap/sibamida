@@ -40,7 +40,8 @@
                                             <td>{{ $peralatan->kode_barang }}</td>
                                             <td>{{ $peralatan->nama_barang }}</td>
                                             <td>{{ $peralatan->tahun_perolehan }}</td>
-                                            <td>Rp .{{ $peralatan->harga_perolehan }}</td>
+                                            <td>Rp .{{ $peralatan->harga_perolehan }}
+                                            </td>
                                         </tr>
                                         
                                     @endforeach
