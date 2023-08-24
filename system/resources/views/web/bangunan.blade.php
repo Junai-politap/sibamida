@@ -58,8 +58,7 @@
                                             <td class="">{{ $bangunan->nama_barang }}</td>
                                             <td class="">{{ $bangunan->pegawai->nama }}</td>
                                             <td class="text-center">
-                                                <button class="btn btn-primary" data-toggle="modal"
-                                                    data-target="#Qrcode{{ $bangunan->id }}">Lihat QrCode</button>
+                                                <a href="{{ url("detail-bangunan/$bangunan->id") }}" class="btn btn-info"><span class="fa fa-info"></span> Detail Aset</a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -74,53 +73,4 @@
     </section>
 
 </x-web>
-
-@foreach ($list_bangunan as $bangunan)
-    <div class="modal fade" id="Qrcode{{ $bangunan->id }}" tabindex="-1" role="dialog" aria-labelledby="Qrcode"
-        aria-hidden="true">
-        <div class="modal-dialog modal-md " role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-
-                    <button class="btn btn-warning float-right" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times; Close</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="card">
-                        <p class="text-center">{{ $bangunan->nama_barang }}</p>
-                        <div class="card-body">
-                            <div id="test{{ $bangunan->id }}" style="width: 60%; margin-left:20%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-@endforeach
-
-<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
-<script>
-    let
-    @foreach ($list_bangunan as $bangunan)
-
-        card = "Nama OPD: {{ $bangunan->opd->nama_opd }}\r\n";
-        card += "Nama Penanggungjawab: {{ $bangunan->pegawai->nama }}\r\n";
-        card += "Kategori Barang : {{ $bangunan->kategori->nama_kategori }}\r\n";
-        card += "Kode Barang : {{ $bangunan->kode_barang }}\r\n";
-        card += "Nama Barang : {{ $bangunan->nama_barang }}\r\n";
-        card += "Nomor Register : {{ $bangunan->no_register }}\r\n";
-        card += "Tahun Perolehan : {{ $bangunan->tahun_perolehan }}\r\n";
-        card += "Harga Perolehan :Rp. {{ $bangunan->harga_perolehan }}\r\n";
-        card += "Keterangan : {{ $bangunan->keterangan }}\r\n";
-        card += "Alamat : {{ $bangunan->alamat }}\r\n";
-        card += "Kecamatan : {{ $bangunan->kecamatan }}\r\n";
-        card += "Kelurahan Desa : {{ $bangunan->kelurahan_desa }}\r\n";
-        card += "Nomor SPPD : {{ $bangunan->no_sppd }}\r\n";
-        card += "Nomor SPK : {{ $bangunan->no_spk }}\r\n";
-        card += "Nomor Berita Acara : {{ $bangunan->no_ba }}\r\n";
-
-        new QRCode(document.getElementById("test{{ $bangunan->id }}"), card);
-    @endforeach
-</script>
 

@@ -29,7 +29,7 @@
 <?php $component = $__componentOriginal211193f73d013ad1f030860171096d7c; ?>
 <?php unset($__componentOriginal211193f73d013ad1f030860171096d7c); ?>
 <?php endif; ?>
-                        <a href="<?php echo e(url("admin/opd/$pegawai->id")); ?>/edit" class="btn btn-primary btn-sm float-right"><span class="fa fa-edit"></span> Edit OPD</a>
+                        <a href="<?php echo e(url("admin/pegawai/$pegawai->id")); ?>/edit" class="btn btn-primary btn-sm float-right"><span class="fa fa-edit"></span> Edit OPD</a>
                     </div>
                     <div class="card-body box-profile">
                         <div class="text-center">

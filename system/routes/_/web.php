@@ -8,8 +8,14 @@ Route::get('/', [BaseController::class, 'index']);
 Route::get('master-aset/{opd}', [BaseController::class, 'aset']);
 Route::get('contact', [BaseController::class, 'bahaya']);
 Route::get('jembatan/{opd}', [BaseController::class, 'jembatan']);
-Route::get('bangunan/{opd}', [BaseController::class, 'bangunan']);
-Route::get('peralatan/{opd}', [BaseController::class, 'peralatan']);
-Route::get('tanah/{opd}', [BaseController::class, 'tanah']);
+Route::get('detail-jembatan/{jembatan}', [BaseController::class, 'showJembatan']);
 
-Route::get('/generate-qr-code', [JembatanController::class, 'generateQRCode']);
+Route::get('bangunan/{opd}', [BaseController::class, 'bangunan']);
+Route::get('detail-bangunan/{bangunan}', [BaseController::class, 'showBangunan']);
+
+Route::get('peralatan/{opd}', [BaseController::class, 'peralatan']);
+Route::get('detail-peralatan/{peralatan}', [BaseController::class, 'showPeralatan']);
+
+Route::get('tanah/{opd}', [BaseController::class, 'tanah']);
+Route::get('detail-tanah/{tanah}', [BaseController::class, 'showTanah']);
+

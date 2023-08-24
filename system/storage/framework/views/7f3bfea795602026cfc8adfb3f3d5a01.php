@@ -27,7 +27,7 @@
 <?php $component = $__componentOriginal211193f73d013ad1f030860171096d7c; ?>
 <?php unset($__componentOriginal211193f73d013ad1f030860171096d7c); ?>
 <?php endif; ?>
-                        <h3 class="text-center" style="font-family: bold">Tambah Data OPD</h3>
+                        <h3 class="text-center" style="font-family: bold">Edit Data Pegawai</h3>
                     </div>
                     <form action="<?php echo e(url('admin/pegawai',$pegawai->id)); ?>" method="POST" enctype="multipart/form-data">
                         <?php echo csrf_field(); ?>
