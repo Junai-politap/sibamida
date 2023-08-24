@@ -7,6 +7,7 @@ use App\Models\Jembatan;
 use App\Models\Opd;
 use App\Http\Controllers\Controller;
 use App\Models\Peralatan;
+use App\Models\Riwayat;
 use App\Models\Slide;
 use App\Models\Tanah;
 use Illuminate\Http\Request;
@@ -51,6 +52,14 @@ class BaseController extends Controller
         return view('web.jembatan', $data);
     }
 
+    public function showJembatan($jembatan){
+        $data['jembatan'] = Jembatan::find($jembatan);
+        $data['list_opd'] = Opd::all();
+        $data['list_riwayat'] = Riwayat::where('id_aset', $jembatan)->get();
+
+        return view('web.show-jembatan', $data);
+    }
+
     public function bangunan($opd)
     {
         $data['opd'] = Opd::find($opd);
@@ -58,6 +67,14 @@ class BaseController extends Controller
         $data['list_bangunan'] = Bangunan::where('id_opd' , $opd)->get();
         $data['data_bangunan'] = Bangunan::all();
         return view('web.bangunan', $data);
+    }
+
+    public function showBangunan($bangunan){
+        $data['bangunan'] = Bangunan::find($bangunan);
+        $data['list_opd'] = Opd::all();
+        $data['list_riwayat'] = Riwayat::where('id_aset', $bangunan)->get();
+
+        return view('web.show-bangunan', $data);
     }
 
     public function peralatan($opd)
@@ -68,11 +85,29 @@ class BaseController extends Controller
         return view('web.peralatan', $data);
     }
 
+
+    public function showPeralatan($peralatan){
+        $data['peralatan'] = Peralatan::find($peralatan);
+        $data['list_opd'] = Opd::all();
+        $data['list_riwayat'] = Riwayat::where('id_aset', $peralatan)->get();
+
+        return view('web.show-peralatan', $data);
+    }
+
+
     public function tanah($opd)
     {
         $data['opd'] = Opd::find($opd);
         $data['list_opd'] = Opd::all();
         $data['list_tanah'] = Tanah::where('id_opd' , $opd)->get();
         return view('web.tanah', $data);
+    }
+
+    public function showTanah($tanah){
+        $data['tanah'] = Tanah::find($tanah);
+        $data['list_opd'] = Opd::all();
+        $data['list_riwayat'] = Riwayat::where('id_aset', $tanah)->get();
+
+        return view('web.show-tanah', $data);
     }
 }
