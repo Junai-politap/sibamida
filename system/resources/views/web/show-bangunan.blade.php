@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-lg-7">
                     <div class="page-title">
-                        <h1 class="cat-btn" style="font-size: 300%">Detail {{ $bangunan->nama_aset }}</h1>
+                        <h1 class="cat-btn" style="font-size: 300%">Detail {{ $bangunan->nama_barang }}</h1>
                         <ul class="breadcrumbs-link">
                             <li><a href="{{ url('/') }}">Dashboard</a></li>
                             <li class="active"><a href="{{ url("bangunan/$bangunan->id_opd") }}"> Data Aset bangunan dan
@@ -38,6 +38,10 @@
                                     <p class="cat-btn">{{ $bangunan->pegawai->nama }}</p>
                                     <h3 class="title">
                                         {{ $bangunan->nama_barang }}
+                                    </h3>
+
+                                    <h3 style="font-size: 120%; margin-top: -2%">
+                                        Bidang {{ $bangunan->bidang }}
                                     </h3>
                                     <div class="post-meta">
                                         <ul>
@@ -80,11 +84,22 @@
                                                             <td style="width: 40%">Alamat</td>
                                                             <td> : {{ $bangunan->alamat }}</td>
                                                         </tr>
+
+                                                        <tr>
+                                                            <td style="width: 40%">Kecamatan</td>
+                                                            <td> : {{ $bangunan->kecamatan }}</td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td style="width: 40%">Kelurahan Desa</td>
+                                                            <td> : {{ $bangunan->kelurahan_desa }}</td>
+                                                        </tr>
                                                         <tr>
                                                             <td style="width: 40%">Keterangan</td>
                                                             <td> : {{ $bangunan->keterangan }}</td>
                                                         </tr>
                                                         
+
                                                         <tr>
                                                             <td style="width: 40%">Nama Sumber Dana</td>
                                                             <td> : {{ $bangunan->nama_sumber_dana }}</td>
@@ -172,6 +187,7 @@
         card += "Kategori Barang : {{ $bangunan->kategori->nama_kategori }}\r\n";
         card += "Kode Barang : {{ $bangunan->kode_barang }}\r\n";
         card += "Nama Barang : {{ $bangunan->nama_barang }}\r\n";
+        card += "Nama Bidang : {{ $bangunan->bidang }}\r\n";
         card += "Nomor Register : {{ $bangunan->no_register }}\r\n";
         card += "Tahun Perolehan : {{ $bangunan->tahun_perolehan }}\r\n";
         card += "Harga Perolehan :Rp. {{ $bangunan->harga_perolehan }}\r\n";

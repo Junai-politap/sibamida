@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col-lg-7">
                     <div class="page-title">
-                        <h1 class="cat-btn" style="font-size: 300%">Detail <?php echo e($bangunan->nama_aset); ?></h1>
+                        <h1 class="cat-btn" style="font-size: 300%">Detail <?php echo e($bangunan->nama_barang); ?></h1>
                         <ul class="breadcrumbs-link">
                             <li><a href="<?php echo e(url('/')); ?>">Dashboard</a></li>
                             <li class="active"><a href="<?php echo e(url("bangunan/$bangunan->id_opd")); ?>"> Data Aset bangunan dan
@@ -46,6 +46,11 @@
                                     <p class="cat-btn"><?php echo e($bangunan->pegawai->nama); ?></p>
                                     <h3 class="title">
                                         <?php echo e($bangunan->nama_barang); ?>
+
+                                    </h3>
+
+                                    <h3 style="font-size: 120%; margin-top: -2%">
+                                        Bidang <?php echo e($bangunan->bidang); ?>
 
                                     </h3>
                                     <div class="post-meta">
@@ -91,11 +96,22 @@
                                                             <td style="width: 40%">Alamat</td>
                                                             <td> : <?php echo e($bangunan->alamat); ?></td>
                                                         </tr>
+
+                                                        <tr>
+                                                            <td style="width: 40%">Kecamatan</td>
+                                                            <td> : <?php echo e($bangunan->kecamatan); ?></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td style="width: 40%">Kelurahan Desa</td>
+                                                            <td> : <?php echo e($bangunan->kelurahan_desa); ?></td>
+                                                        </tr>
                                                         <tr>
                                                             <td style="width: 40%">Keterangan</td>
                                                             <td> : <?php echo e($bangunan->keterangan); ?></td>
                                                         </tr>
                                                         
+
                                                         <tr>
                                                             <td style="width: 40%">Nama Sumber Dana</td>
                                                             <td> : <?php echo e($bangunan->nama_sumber_dana); ?></td>
@@ -190,6 +206,7 @@
         card += "Kategori Barang : <?php echo e($bangunan->kategori->nama_kategori); ?>\r\n";
         card += "Kode Barang : <?php echo e($bangunan->kode_barang); ?>\r\n";
         card += "Nama Barang : <?php echo e($bangunan->nama_barang); ?>\r\n";
+        card += "Nama Bidang : <?php echo e($bangunan->bidang); ?>\r\n";
         card += "Nomor Register : <?php echo e($bangunan->no_register); ?>\r\n";
         card += "Tahun Perolehan : <?php echo e($bangunan->tahun_perolehan); ?>\r\n";
         card += "Harga Perolehan :Rp. <?php echo e($bangunan->harga_perolehan); ?>\r\n";
