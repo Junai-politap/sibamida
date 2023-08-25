@@ -64,7 +64,7 @@
                                             <td class="text-center"><?php echo e($loop->iteration); ?></td>
                                             <td class="text-left"> <?php echo e($bangunan->kode_barang); ?></td>
                                             <td class=""><?php echo e($bangunan->nama_barang); ?></td>
-                                            <td class=""><?php echo e($bangunan->pegawai->nama); ?></td>
+                                            <td class=""><?php echo e($bangunan->pegawai->jabatan); ?></td>
                                             <td class="text-center">
                                                 <a href="<?php echo e(url("detail-bangunan/$bangunan->id")); ?>" class="btn btn-info"><span class="fa fa-info"></span> Detail Aset</a>
                                             </td>

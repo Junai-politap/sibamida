@@ -56,7 +56,7 @@
                                             <td class="text-center">{{ $loop->iteration }}</td>
                                             <td class="text-left"> {{ $bangunan->kode_barang }}</td>
                                             <td class="">{{ $bangunan->nama_barang }}</td>
-                                            <td class="">{{ $bangunan->pegawai->nama }}</td>
+                                            <td class="">{{ $bangunan->pegawai->jabatan }}</td>
                                             <td class="text-center">
                                                 <a href="{{ url("detail-bangunan/$bangunan->id") }}" class="btn btn-info"><span class="fa fa-info"></span> Detail Aset</a>
                                             </td>
