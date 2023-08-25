@@ -12,7 +12,7 @@
 
 
     <section class="page-banner bg_cover p-r z-1"
-        style="background-image: url(<?php echo e(url('public/web')); ?>/assets/images/bg/page-bg-1.jpg);">
+    style="background-image: url(<?php echo e(url('public')); ?>/kantor.jpg);">
         <div class="brand-card text-center">
 
             <h3><?php echo e($opd->singkatan); ?></h3>
@@ -64,10 +64,9 @@
                                             <td class="text-center"><?php echo e($loop->iteration); ?></td>
                                             <td class="text-left"> <?php echo e($bangunan->kode_barang); ?></td>
                                             <td class=""><?php echo e($bangunan->nama_barang); ?></td>
-                                            <td class=""><?php echo e($bangunan->pegawai->nama); ?></td>
+                                            <td class=""><?php echo e($bangunan->pegawai->jabatan); ?></td>
                                             <td class="text-center">
-                                                <button class="btn btn-primary" data-toggle="modal"
-                                                    data-target="#Qrcode<?php echo e($bangunan->id); ?>">Lihat QrCode</button>
+                                                <a href="<?php echo e(url("detail-bangunan/$bangunan->id")); ?>" class="btn btn-info"><span class="fa fa-info"></span> Detail Aset</a>
                                             </td>
                                         </tr>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -87,52 +86,5 @@
 <?php $component = $__componentOriginald5bfc7eeb725fd60f41a76190ac432d4; ?>
 <?php unset($__componentOriginald5bfc7eeb725fd60f41a76190ac432d4); ?>
 <?php endif; ?>
-<?php $__currentLoopData = $list_bangunan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bangunan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-    <div class="modal fade" id="Qrcode<?php echo e($bangunan->id); ?>" tabindex="-1" role="dialog" aria-labelledby="Qrcode"
-        aria-hidden="true">
-        <div class="modal-dialog modal-md " role="document">
-            <div class="modal-content">
-                <div class="modal-header">
 
-                    <button class="btn btn-warning float-right" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times; Close</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="card">
-                        <p class="text-center"><?php echo e($bangunan->nama_barang); ?></p>
-                        <div class="card-body">
-                            <div id="test<?php echo e($bangunan->id); ?>" style="width: 60%; margin-left:20%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
-<script>
-    let
-    <?php $__currentLoopData = $list_bangunan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bangunan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-
-        card = "Nama OPD: <?php echo e($bangunan->opd->nama_opd); ?>\r\n";
-        card += "Nama Penanggungjawab: <?php echo e($bangunan->pegawai->nama); ?>\r\n";
-        card += "Kategori Barang : <?php echo e($bangunan->kategori->nama_kategori); ?>\r\n";
-        card += "Kode Barang : <?php echo e($bangunan->kode_barang); ?>\r\n";
-        card += "Nama Barang : <?php echo e($bangunan->nama_barang); ?>\r\n";
-        card += "Nomor Register : <?php echo e($bangunan->no_register); ?>\r\n";
-        card += "Tahun Perolehan : <?php echo e($bangunan->tahun_perolehan); ?>\r\n";
-        card += "Harga Perolehan :Rp. <?php echo e($bangunan->harga_perolehan); ?>\r\n";
-        card += "Keterangan : <?php echo e($bangunan->keterangan); ?>\r\n";
-        card += "Alamat : <?php echo e($bangunan->alamat); ?>\r\n";
-        card += "Kecamatan : <?php echo e($bangunan->kecamatan); ?>\r\n";
-        card += "Kelurahan Desa : <?php echo e($bangunan->kelurahan_desa); ?>\r\n";
-        card += "Nomor SPPD : <?php echo e($bangunan->no_sppd); ?>\r\n";
-        card += "Nomor SPK : <?php echo e($bangunan->no_spk); ?>\r\n";
-        card += "Nomor Berita Acara : <?php echo e($bangunan->no_ba); ?>\r\n";
-
-        new QRCode(document.getElementById("test<?php echo e($bangunan->id); ?>"), card);
-    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-</script>
 <?php /**PATH E:\Sistem\sibamida\system\resources\views/web/bangunan.blade.php ENDPATH**/ ?>
