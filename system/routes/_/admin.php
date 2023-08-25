@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BangunanController;
+use App\Http\Controllers\Admin\BidangController;
 use App\Http\Controllers\Admin\JembatanController;
 use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\OpdController;
@@ -54,5 +55,11 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::post('slide', [SlideController::class, 'store']);
     Route::put('slide/{slide}', [SlideController::class, 'update']);
     Route::get('slide/delete/{slide}', [SlideController::class, 'destroy']);
+
+    Route::get('bidang', [BidangController::class, 'index']);
+    Route::post('bidang', [BidangController::class, 'store']);
+    Route::put('bidang/{bidang}', [BidangController::class, 'update']);
+    Route::get('bidang/delete/{bidang}', [BidangController::class, 'destroy']);
+    
     
 });

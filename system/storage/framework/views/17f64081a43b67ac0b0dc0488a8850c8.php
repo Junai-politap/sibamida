@@ -34,8 +34,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="<?php echo e(url('admin/master/bangunan')); ?>" method="POST"
-                            enctype="multipart/form-data">
+                        <form action="<?php echo e(url('admin/master/bangunan')); ?>" method="POST" enctype="multipart/form-data">
                             <?php echo csrf_field(); ?>
                             <div class="card-body">
                                 <div class="row">
@@ -56,40 +55,41 @@
                                             <label for="exampleInputText">Nama Penanggung Jawab</label>
                                             <select name="id_pegawai" class="form-control pegawai" id="pegawai">
                                                 <option value=""> Pilih Penanggung Jawab Aset</option>
-                                               
+
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kode Barang</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan Kode Barang"
-                                                name="kode_barang" required>
+                                            <input type="text" class="form-control"
+                                                placeholder="Masukkan Kode Barang" name="kode_barang" required>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nama Barang</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan Nama Barang"
-                                                name="nama_barang" required>
+                                            <input type="text" class="form-control"
+                                                placeholder="Masukkan Nama Barang" name="nama_barang" required>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4">
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kategori Aset</label>
                                             <select class="form-control kategori" name="id_kategori" id="kategori">
                                                 <option value=""> Pilih Kategori Aset</option>
-                                               
+
                                             </select>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nomor Register</label>
@@ -98,6 +98,10 @@
                                         </div>
                                     </div>
 
+
+                                </div>
+
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Tahun Perolehan</label>
@@ -105,10 +109,6 @@
                                                 placeholder="Masukkan Tahun Perolehan" name="tahun_perolehan">
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="row">
-
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Harga Perolehan</label>
@@ -117,6 +117,10 @@
                                         </div>
                                     </div>
 
+
+                                </div>
+
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Alamat</label>
@@ -125,16 +129,42 @@
                                         </div>
                                     </div>
 
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Kecamatan</label>
+                                            <input type="text" class="form-control" placeholder="Masukkan Kecamatan"
+                                                name="kecamatan">
+                                        </div>
+                                    </div>
                                 </div>
-
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="exampleInputText">Keterangan</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan Keterangan"
-                                                name="keterangan">
+                                            <label for="exampleInputText">Kelurahan Desa</label>
+                                            <input type="text" class="form-control"
+                                                placeholder="Masukkan Kelurahan Desa" name="kelurahan_desa">
                                         </div>
                                     </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Keterangan</label>
+                                            <input type="text" class="form-control"
+                                                placeholder="Masukkan Keterangan" name="keterangan">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Nama Bidang</label>
+                                            <select class="form-control bidang" name="id_bidang" id="bidang">
+                                                <option value=""> Pilih Bidang</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nama Sumber Dana</label>
@@ -142,10 +172,11 @@
                                                 placeholder="Masukkan Nama Sumber Dana" name="nama_sumber_dana">
                                         </div>
                                     </div>
+                                   
                                 </div>
-                                <div class="row">
-                                    
 
+
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nomor SPPD</label>
@@ -162,11 +193,12 @@
                                         </div>
                                     </div>
 
+                                    
+
                                 </div>
 
 
                                 <div class="row">
-                                   
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nomor Berita Acara</label>
@@ -174,20 +206,17 @@
                                                 placeholder="Masukkan Nomor Berita Acara" name="no_ba">
                                         </div>
                                     </div>
-
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Bertingkat</label>
-                                            <input type="text" class="form-control"
-                                                placeholder="Masukan Tingkat" name="bertingkat">
+                                            <input type="text" class="form-control" placeholder="Masukan Tingkat"
+                                                name="bertingkat">
                                         </div>
                                     </div>
-
+                                   
                                 </div>
 
-                               
                                 <div class="row">
-
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Tanggal Dokumen</label>
@@ -202,9 +231,10 @@
                                                 placeholder="Masukkan Status Tanah" name="status_tanah">
                                         </div>
                                     </div>
-                                </div>
 
+                                </div>
                                 <div class="row">
+                                    
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Beton</label>
@@ -219,6 +249,7 @@
                                                 placeholder="Masukkan Kelompok" name="kelompok">
                                         </div>
                                     </div>
+                                   
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -228,7 +259,6 @@
                                                 placeholder="Masukkan Urut Kelompok" name="urut_kelompok">
                                         </div>
                                     </div>
-
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Foto</label>
@@ -238,7 +268,6 @@
                                         </div>
                                     </div>
                                 </div>
-
 
                                 <div class="footer">
                                     <button type="reset" class="btn btn-default "><span class="fa fa-times"></span>
@@ -259,30 +288,40 @@
     </section>
 
     <?php $__env->startPush('script'); ?>
-    <script>
-        function gantiOpd(id) {
-            $.get("/api/opd/" + id, function(result) {
-                result = JSON.parse(result)
-                option = ""
-                for (item of result) {
-                    option += `<option value="${item.id}">${item.nama}</option>`;
-                    console.log(item.nama)
-                }
-                $("#pegawai").html(option)
-            });
+        <script>
+            function gantiOpd(id) {
+                $.get("/api/opd/" + id, function(result) {
+                    result = JSON.parse(result)
+                    option = ""
+                    for (item of result) {
+                        option += `<option value="${item.id}">${item.nama}</option>`;
+                        console.log(item.nama)
+                    }
+                    $("#pegawai").html(option)
+                });
 
-            $.get("/api/opd-kategori/" + id, function(result) {
-                result = JSON.parse(result)
-                option = ""
-                for (item of result) {
-                    option += `<option value="${item.id}">${item.nama_kategori}</option>`;
-                    console.log(item.nama)
-                }
-                $("#kategori").html(option)
-            });
-        }
-    </script>
-<?php $__env->stopPush(); ?>
+                $.get("/api/opd-kategori/" + id, function(result) {
+                    result = JSON.parse(result)
+                    option = ""
+                    for (item of result) {
+                        option += `<option value="${item.id}">${item.nama_kategori}</option>`;
+                        console.log(item.nama)
+                    }
+                    $("#kategori").html(option)
+                });
+
+                $.get("/api/opd-bidang/" + id, function(result) {
+                    result = JSON.parse(result)
+                    option = ""
+                    for (item of result) {
+                        option += `<option value="${item.id}">${item.nama_bidang}</option>`;
+                        console.log(item.nama)
+                    }
+                    $("#bidang").html(option)
+                });
+            }
+        </script>
+    <?php $__env->stopPush(); ?>
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__componentOriginal2812d824e80b3a65bceda8e6a9bfa7a0)): ?>

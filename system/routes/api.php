@@ -22,3 +22,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('opd/{id}', [OpdResource::class, 'getPegawai']);
 Route::get('opd-kategori/{id}', [OpdResource::class, 'getKategori']);
+Route::get('opd-bidang/{id}', [OpdResource::class, 'getBidang']);

@@ -7,8 +7,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [BaseController::class, 'index']);
 Route::get('master-aset/{opd}', [BaseController::class, 'aset']);
 Route::get('contact', [BaseController::class, 'bahaya']);
+
 Route::get('jembatan/{opd}', [BaseController::class, 'jembatan']);
 Route::get('detail-jembatan/{jembatan}', [BaseController::class, 'showJembatan']);
+Route::post('jembatan/{opd}/filter', [BaseController::class, 'filter']);
 
 Route::get('bangunan/{opd}', [BaseController::class, 'bangunan']);
 Route::get('detail-bangunan/{bangunan}', [BaseController::class, 'showBangunan']);

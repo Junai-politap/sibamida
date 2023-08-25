@@ -60,6 +60,16 @@ class BaseController extends Controller
         return view('web.show-jembatan', $data);
     }
 
+    function filter($opd)
+    {
+        $data['list_opd'] = Opd::all();
+        $data['opd'] = Opd::find($opd);
+        $nama_aset = request('nama_aset');
+        $data['list_jembatan'] = Jembatan::where('nama_aset', 'like', "%$nama_aset%")->get();
+        $data['nama_aset'] = $nama_aset;
+        return view('web.jembatan', $data);
+    }
+
     public function bangunan($opd)
     {
         $data['opd'] = Opd::find($opd);

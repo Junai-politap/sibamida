@@ -6,6 +6,7 @@ use App\Models\ModelAuthenticate;
 use Illuminate\Support\Str;
 use App\Models\Pegawai;
 use App\Models\Jembatan;
+use App\Models\Bidang;
 
 class Opd extends ModelAuthenticate
 {
@@ -53,6 +54,11 @@ class Opd extends ModelAuthenticate
     public function Kategori()
     {
         return $this->belongsTo(Kategori::class, 'id');
+    }
+
+    public function Bidang()
+    {
+        return $this->belongsTo(Bidang::class, 'id');
     }
 
 }
