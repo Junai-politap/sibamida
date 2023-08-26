@@ -166,6 +166,10 @@ class BangunanController extends Controller
 
     public function downloadLaporan(Request $request)
     {
-        return Excel::download(new BangunanTanggalExport($request->tahun_perolehan), 'laporan bangunan.xlsx');
+
+        $tahunMulai = $request->input('tahun_mulai');
+        $tahunSelesai = $request->input('tahun_selesai');
+
+        return Excel::download(new BangunanTanggalExport($tahunMulai, $tahunSelesai), 'laporan bangunan.xlsx');
     }
 }
