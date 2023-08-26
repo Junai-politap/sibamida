@@ -14,9 +14,16 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="btn-group float-right mb-10">
+                                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
+                                    <i class="fa fa-print"> CetakLaporan</i>
+                                </button>
                                 <a href="<?php echo e(url('opd/peralatan-export')); ?>" class="btn btn-success"> <span class="fa fa-file-export"></span> Export Excel</a>
+                                <button class="btn btn-primary float-right" data-toggle="modal" data-target="#modal-lg">
+                                    <span class="fa fa-plus"></span> Tambah Kondisi
+                                </button>
                                 <a href="<?php echo e(url('opd/master/peralatan-mesin/create')); ?>" class="btn btn-primary float-right mb-10"> <span
                                         class="fa fa-plus"></span> Tambah Data</a>
+                                        
                             </div>
                             <h3 class="card-title">Master Data Aset Peralatan dan Mesin</h3>
                         </div>
@@ -111,4 +118,62 @@
 <?php $component = $__componentOriginal851cb6f5a7f89db41449dadedd8953e5; ?>
 <?php unset($__componentOriginal851cb6f5a7f89db41449dadedd8953e5); ?>
 <?php endif; ?>
+<div class="modal fade" id="modal-lg">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Tambah Data Kondisi</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="<?php echo e(url('opd/kondisi')); ?>" method="POST" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <?php echo csrf_field(); ?>
+                    <div class="card-body">
+                        <input type="text" name="id_opd" value="<?php echo e(Auth::guard('opd')->user()->id); ?>" hidden>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Nama Kondisi</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" placeholder="Nama Kondisi"
+                                    name="nama_kondisi">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button class="btn btn-default" data-dismiss="modal">Batal</button>
+                    <button class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+<div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="<?php echo e(url('opd/peralatan-download-laporan')); ?>" method="get">
+                <?php echo csrf_field(); ?>
+                <div class="modal-header">
+                    <h4 class="modal-title">Default Modal</h4>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="tahun_perolehan">Tahun</label>
+                        <input type="year" class="form-control" id="tahun_perolehan" name="tahun_perolehan" required>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="submit" class="btn btn-primary">Download Laporan Excel</button>
+                </div>
+            </form>
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
 <?php /**PATH D:\GitHub\sibamida\system\resources\views/opd/peralatan/index.blade.php ENDPATH**/ ?>

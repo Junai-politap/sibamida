@@ -53,12 +53,32 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
+                                            <label for="exampleInputText">Nama Bidang</label>
+                                            <select class="form-control" name="id_bidang" required>
+                                                <option value=""> Pilih Nama Bidang</option>
+                                                @foreach ($list_bidang as $bidang)
+                                                    @if (Auth::guard('opd')->user()->id == $bidang->id_opd)
+                                                        <option value="{{ $bidang->id }}">
+                                                            {{ $bidang->nama_bidang }}
+                                                        </option>
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
                                             <label for="exampleInputText">Kode Barang</label>
                                             <input type="text" class="form-control" placeholder="Masukkan Kode Barang"
                                                 name="kode_barang" required>
                                         </div>
                                     </div>
 
+                                </div>
+
+                                <div class="row">
+                                    
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nama Barang</label>
@@ -67,16 +87,17 @@
                                         </div>
                                     </div>
 
-                                </div>
-
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nomor Register</label>
                                             <input type="text" class="form-control"
-                                                placeholder="Masukkan Nomor Register" name="no_register">
+                                                placeholder="Masukkan Nomor Register" name="register">
                                         </div>
                                     </div>
+
+                                </div>
+
+                                <div class="row">
 
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -85,10 +106,6 @@
                                                 placeholder="Masukkan Tahun Perolehan" name="tahun_perolehan">
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="row">
-
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Cara Perolehan</label>
@@ -97,6 +114,11 @@
                                         </div>
                                     </div>
 
+                                    
+
+                                </div>
+
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Harga</label>
@@ -104,10 +126,6 @@
                                                 name="harga">
                                         </div>
                                     </div>
-
-                                </div>
-
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Luas</label>
@@ -115,6 +133,9 @@
                                                 name="luas">
                                         </div>
                                     </div>
+                                  
+                                </div>
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Lokasi</label>
@@ -122,11 +143,6 @@
                                                 placeholder="Masukkan Lokasi" name="lokasi">
                                         </div>
                                     </div>
-
-
-
-                                </div>
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Keterangan</label>
@@ -135,19 +151,17 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="exampleInputText">Penggunaan</label>
                                             <input type="text" class="form-control"
                                                 placeholder="Masukkan Penggunaan" name="penggunaan">
                                         </div>
                                     </div>
-
-                                </div>
-
-                                <div class="row">
-
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nomor Sertifikat</label>
                                             <input type="text" class="form-control"
@@ -156,7 +170,7 @@
                                     </div>
 
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="exampleInputText">Foto</label>
                                             <input type="file" class="form-control" name="foto"

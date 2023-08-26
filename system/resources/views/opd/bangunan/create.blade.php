@@ -2,16 +2,12 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <!-- left column -->
                 <div class="col-md-12">
-                    <!-- general form elements -->
                     <div class="card">
                         <div class="card-header">
                             <x-button.back-button url="opd/master/bangunan" />
                             <h3 class="text-center title">Tambah Data Aset</h3>
                         </div>
-                        <!-- /.card-header -->
-                        <!-- form start -->
                         <form action="{{ url('opd/master/bangunan') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
@@ -22,7 +18,6 @@
                                         <div class="form-group">
                                             <label for="exampleInputText">Nama Penanggung Jawab</label>
                                             <select name="id_pegawai" class="form-control" required>
-                                                <!-- <option value=""> Pilih Penanggung Jawab Aset</option> -->
                                                 @foreach ($list_pegawai as $pegawai)
                                                 @if ( Auth::guard('opd')->user()->id == $pegawai->id_opd)
                                                 <option value="{{ $pegawai->id }}">{{ $pegawai->nama }}</option>
@@ -37,7 +32,7 @@
                                             <label for="exampleInputText">Kategori Aset</label>
                                             <select class="form-control" name="id_kategori" required>
 
-                                                @foreach ($list_kategori->where('nama_kategori', 'Tidak Bergerak') as $kategori)
+                                                @foreach ($list_kategori as $kategori)
                                                 @if ( Auth::guard('opd')->user()->id == $kategori->id_opd)
                                                 <option value="{{ $kategori->id }}">
                                                     {{ $kategori->nama_kategori }}
@@ -49,24 +44,36 @@
                                     </div>
                                 </div>
                                 <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Nama Bidang</label>
+                                            <select class="form-control" name="id_bidang" required>
 
+                                                @foreach ($list_bidang as $bidang)
+                                                @if ( Auth::guard('opd')->user()->id == $bidang->id_opd)
+                                                <option value="{{ $bidang->id }}">
+                                                    {{ $bidang->nama_bidang }}
+                                                </option>
+                                                @endif
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kode Barang</label>
                                             <input type="text" class="form-control" placeholder="Masukkan Nama Barang" name="kode_barang" required>
                                         </div>
                                     </div>
+                                </div>
 
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nama Barang</label>
                                             <input type="text" class="form-control" placeholder="Masukkan Nama Barang" name="nama_barang" required>
                                         </div>
                                     </div>
-
-                                </div>
-
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nomor Register</label>
@@ -74,16 +81,16 @@
                                         </div>
                                     </div>
 
+                                </div>
+
+                                <div class="row">
+
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Tahun Perolehan</label>
                                             <input type="year" class="form-control" placeholder="Masukkan Tahun Perolehan" name="tahun_perolehan">
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="row">
-
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Harga Perolehan</label>
@@ -91,46 +98,39 @@
                                         </div>
                                     </div>
 
+
+                                </div>
+
+                                <div class="row">
+                                    
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Alamat</label>
                                             <input type="text" class="form-control" placeholder="Masukkan Alamat" name="alamat">
                                         </div>
                                     </div>
-
-                                </div>
-
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kecamatan</label>
                                             <input type="text" class="form-control" placeholder="Masukkan Kecamatan" name="kecamatan">
                                         </div>
                                     </div>
+                                    
+                                </div>
+
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kelurahan/Desa</label>
                                             <input type="text" class="form-control" placeholder="Masukkan Kelurahan/Desa" name="kelurahan_desa">
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Keterangan</label>
                                             <input type="text" class="form-control" placeholder="Masukkan Keterangan" name="keterangan">
                                         </div>
                                     </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="exampleInputText">Bidang</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan Nama Bidang" name="bidang">
-                                        </div>
-                                    </div>
-
-
                                 </div>
 
                                 <div class="row">

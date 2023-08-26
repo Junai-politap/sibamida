@@ -53,6 +53,20 @@ function checkRouteActive($route)
                 </li>
 
                 <li class="nav-item">
+                    <a href="{{ url('staff-administrasi/bidang') }}" class="nav-link {{ checkRouteActive('staff-administrasi/bidang') }}">
+                        <i class="nav-icon fa fa-list "></i>
+                        <p>Data Bidang</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ url('staff-administrasi/ruangan') }}" class="nav-link {{ checkRouteActive('staff-administrasi/ruangan') }}">
+                        <i class="nav-icon fa fa-list "></i>
+                        <p>Data Ruangan</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-database"></i>
                         <p>
@@ -90,13 +104,6 @@ function checkRouteActive($route)
 
                     </ul>
     
-                </li>
-
-                <li class="nav-item">
-                    <a href="{{ url('staff-administrasi/laporan') }}" class="nav-link {{ checkRouteActive('staff-administrasi/laporan') }}">
-                        <i class="nav-icon fa fa-list "></i>
-                        <p> Laporan</p>
-                    </a>
                 </li>
 
             </ul>
