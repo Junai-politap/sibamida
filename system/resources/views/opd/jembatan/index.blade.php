@@ -5,8 +5,11 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <a href="{{ url('opd/master/jembatan-jalan/create') }}" class="btn btn-primary float-right mb-10"> <span
-                                    class="fa fa-plus"></span> Tambah Data</a>
+                            <div class="btn-group float-right mb-10">
+                                <a href="{{ url('opd/jembatan-export') }}" class="btn btn-success"> <span class="fa fa-file-export"></span> Export Excel</a>
+                                <a href="{{ url('opd/master/jembatan-jalan/create') }}" class="btn btn-primary"> <span
+                                        class="fa fa-plus"></span> Tambah Data</a>
+                            </div>
                             <h3 class="card-title">Master Data Aset Jembatan dan Jalan</h3>
                         </div>
                         <!-- /.card-header -->

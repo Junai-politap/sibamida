@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Opd;
 
+use App\Exports\PeralatanExport;
 use App\Http\Controllers\Controller;
 use App\Models\Kategori;
 use App\Models\Pegawai;
@@ -16,6 +17,7 @@ use Endroid\QrCode\Label\Alignment\LabelAlignmentCenter;
 use Endroid\QrCode\Label\Font\NotoSans;
 use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
 use Endroid\QrCode\Writer\PngWriter;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PeralatandanmesinController extends Controller
 {
@@ -174,9 +176,14 @@ class PeralatandanmesinController extends Controller
     public function hapus(string $riwayat)
     {
         $riwayat = Riwayat::find($riwayat);
-        
+
         $riwayat->delete();
 
         return back()->with('danger', 'Data Berhasiil Dihapus');
+    }
+
+    public function export()
+    {
+        return Excel::download(new PeralatanExport, 'peralatan.xlsx');
     }
 }
