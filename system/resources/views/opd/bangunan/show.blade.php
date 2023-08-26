@@ -39,6 +39,17 @@
                                             <td>Nama Penanggung Jawab</td>
                                             <td> : {{ $bangunan->pegawai->nama }}</td>
                                         </tr>
+
+                                        <tr>
+                                            <td>Nama Bidang</td>
+                                            <td> :
+                                                @isset($bangunan->bidang->nama_bidang)
+                                                    {{ $bangunan->bidang->nama_bidang }}
+                                                @else
+                                                    <strong>Belum Ada Nama Bidang</strong>
+                                                @endisset
+                                            </td>
+                                        </tr>
                                         <tr>
                                             <td>Kode Barang</td>
                                             <td> : {{ $bangunan->kode_barang }}</td>
@@ -67,7 +78,7 @@
                                             <td>Keterangan</td>
                                             <td> : {{ $bangunan->keterangan }}</td>
                                         </tr>
-                                        
+
                                         <tr>
                                             <td>Nama Sumber Dana</td>
                                             <td> : {{ $bangunan->nama_sumber_dana }}</td>
@@ -88,8 +99,8 @@
                                             <td>Bertingkat</td>
                                             <td> : {{ $bangunan->bertingkat }}</td>
                                         </tr>
-                                        
-                                        
+
+
                                         <tr>
                                             <td>Beton</td>
                                             <td> : {{ $bangunan->beton }}</td>
@@ -145,13 +156,31 @@
 
 
                                 <div class="card-body">
-                                    <strong>Tanggal Mulai</strong>
-                                    <p class="text-muted">
-                                        {{date("d-F-Y", strtotime($riwayat->tanggal_mulai)) }}
-                                    </p>
-                                    <hr>
-                                    <strong>Nama Penanggung Jawab</strong>
-                                    <p class="text-muted">{{ $riwayat->pegawai->nama }}</p>
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <strong>Tanggal Mulai</strong>
+                                            <p class="text-muted">
+                                                {{ date('Y-m-d', strtotime($riwayat->tanggal_mulai)) }}
+                                            </p>
+                                            <hr>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <strong>Nama Penanggung Jawab</strong>
+                                            <p class="text-muted">{{ $riwayat->pegawai->nama }}</p>
+                                            <hr>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <strong>File SK</strong>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a class="btn btn-info" href="{{ url("public/$riwayat->sk") }}"
+                                                target="_blank"><span class="fa fa-download"></span> File SK</a>
+
+                                        </div>
+                                    </div>
                                     <hr>
                                     <strong>Keterangan</strong>
                                     <p class="text-muted">
@@ -173,7 +202,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <form action="{{ url('opd/bangunan/update-riwayat', $riwayat->id) }}" method="POST">
+                                    <form action="{{ url('opd/bangunan/update-riwayat', $riwayat->id) }}" method="POST" enctype="multipart/form-data">
                                         <div class="modal-body">
 
                                             @csrf
@@ -205,7 +234,15 @@
                                                             value="{{date("Y-m-d", strtotime($riwayat->tanggal_mulai)) }}">
                                                     </div>
                                                 </div>
-
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label">
+                                                        File SK
+                                                    </label>
+                                                    <div class="col-sm-9">
+                                                        <input type="file" class="form-control" name="sk"
+                                                            accept="application/pdf" value="{{ $riwayat->sk }}">
+                                                    </div>
+                                                </div>
                                                 <div class="form-group row">
                                                     <label class="col-sm-3 col-form-label">
                                                         Keterangan
@@ -265,7 +302,11 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="form-group">
+                                <label for="exampleInputText"> File SK</label>
+                                <input type="file" class="form-control" name="sk" accept="application/pdf"
+                                    required>
+                            </div>
                             <div class="form-group">
                                 <label for="exampleInputText">Keterangan</label>
 
@@ -288,6 +329,8 @@
         card = "Nama OPD: {{ $bangunan->opd->nama_opd }}\r\n";
         card += "Nama Penanggungjawab: {{ $bangunan->pegawai->nama }}\r\n";
         card += "Kategori Barang : {{ $bangunan->kategori->nama_kategori }}\r\n";
+        card +=
+            "Nama Bidang : @isset($bangunan->bidang->nama_bidang){{ $bangunan->bidang->nama_bidang }}@else Belum Ada Nama Bidang @endisset\r\n";
         card += "Kode Barang : {{ $bangunan->kode_barang }}\r\n";
         card += "Nama Barang : {{ $bangunan->nama_barang }}\r\n";
         card += "Nomor Register : {{ $bangunan->no_register }}\r\n";
@@ -300,8 +343,6 @@
         card += "Nomor SPPD : {{ $bangunan->no_sppd }}\r\n";
         card += "Nomor SPK : {{ $bangunan->no_spk }}\r\n";
         card += "Nomor Berita Acara : {{ $bangunan->no_ba }}\r\n";
-        
-        
         new QRCode(document.getElementById("test"), card);
     </script>
 </x-opd>

@@ -6,6 +6,7 @@ use App\Exports\BangunanTanggalExport;
 use App\Http\Controllers\Controller;
 use App\Exports\BangunanExport;
 use App\Models\Bangunan;
+use App\Models\Bidang;
 use App\Models\Kategori;
 use App\Models\Opd;
 use App\Models\Pegawai;
@@ -34,7 +35,7 @@ class BangunanController extends Controller
         $data['list_opd'] = Opd::all();
         $data['list_pegawai'] = Pegawai::all();
         $data['list_kategori'] = Kategori::all();
-
+        $data['list_bidang'] = Bidang::all();
         return view('opd.bangunan.create', $data);
     }
 
@@ -44,6 +45,7 @@ class BangunanController extends Controller
         $bangunan->id_opd               = request('id_opd');
         $bangunan->id_kategori          = request('id_kategori');
         $bangunan->id_pegawai           = request('id_pegawai');
+        $bangunan->id_bidang           = request('id_bidang');
         $bangunan->kode_barang          = request('kode_barang');
         $bangunan->nama_barang          = request('nama_barang');
         $bangunan->no_register          = request('no_register');
@@ -53,19 +55,18 @@ class BangunanController extends Controller
         $bangunan->kecamatan            = request('kecamatan');
         $bangunan->kelurahan_desa       = request('kelurahan_desa');
         $bangunan->keterangan           = request('keterangan');
-        $bangunan->id_bidang               = request('id_bidang');
         $bangunan->nama_sumber_dana     = request('nama_sumber_dana');
         $bangunan->no_sppd              = request('no_sppd');
         $bangunan->no_spk               = request('no_spk');
         $bangunan->no_ba                = request('no_ba');
         $bangunan->bertingkat           = request('bertingkat');
-        $bangunan->beton                = request('beton');
+        $bangunan->beton                = request('beton');       
         $bangunan->kelompok             = request('kelompok');
         $bangunan->urut_kelompok        = request('urut_kelompok');
         $bangunan->handleUploadFoto();
         $bangunan->save();
 
-        return back()->with('success', 'Data Berhasil Di Simpan');
+        return redirect('opd/master/bangunan')->with('success', 'Data Berhasil Di Simpan');
     }
 
     public function show($bangunan)
@@ -83,7 +84,7 @@ class BangunanController extends Controller
         $data['list_opd'] = Opd::all();
         $data['list_pegawai'] = Pegawai::all();
         $data['list_kategori'] = Kategori::all();
-
+        $data['list_bidang'] = Bidang::all();
         return view('opd.bangunan.edit', $data);
     }
 
@@ -92,6 +93,7 @@ class BangunanController extends Controller
         $bangunan = Bangunan::find($bangunan);
         $bangunan->id_kategori          = request('id_kategori');
         $bangunan->id_pegawai           = request('id_pegawai');
+        $bangunan->id_bidang           = request('id_bidang');
         $bangunan->kode_barang          = request('kode_barang');
         $bangunan->nama_barang          = request('nama_barang');
         $bangunan->no_register          = request('no_register');
@@ -101,13 +103,12 @@ class BangunanController extends Controller
         $bangunan->kecamatan            = request('kecamatan');
         $bangunan->kelurahan_desa       = request('kelurahan_desa');
         $bangunan->keterangan           = request('keterangan');
-        $bangunan->id_bidang               = request('id_bidang');
         $bangunan->nama_sumber_dana     = request('nama_sumber_dana');
         $bangunan->no_sppd              = request('no_sppd');
         $bangunan->no_spk               = request('no_spk');
         $bangunan->no_ba                = request('no_ba');
         $bangunan->bertingkat           = request('bertingkat');
-        $bangunan->beton                = request('beton');
+        $bangunan->beton                = request('beton');       
         $bangunan->kelompok             = request('kelompok');
         $bangunan->urut_kelompok        = request('urut_kelompok');
         $bangunan->handleUploadFoto();
@@ -125,23 +126,25 @@ class BangunanController extends Controller
 
     public function riwayat(Request $request)
     {
-        $jembatan = new Riwayat();
-        $jembatan->id_pegawai = request('id_pegawai');
-        $jembatan->id_aset = request('id_aset');
-        $jembatan->tanggal_mulai = request('tanggal_mulai');
-        $jembatan->keterangan = request('keterangan');
-        $jembatan->save();
+        $riwayat = new Riwayat();
+        $riwayat->id_pegawai = request('id_pegawai');
+        $riwayat->id_aset = request('id_aset');
+        $riwayat->tanggal_mulai = request('tanggal_mulai');
+        $riwayat->keterangan = request('keterangan');
+        $riwayat->handleUploadSK();
+        $riwayat->save();
 
         return back()->with('success', 'Data Berhasil Disimpan');
     }
 
     public function riwayatUpdate($riwayat)
     {
-        $jembatan = Riwayat::find($riwayat);
-        $jembatan->id_pegawai = request('id_pegawai');
-        $jembatan->tanggal_mulai = request('tanggal_mulai');
-        $jembatan->keterangan = request('keterangan');
-        $jembatan->save();
+        $riwayat = Riwayat::find($riwayat);
+        $riwayat->id_pegawai = request('id_pegawai');
+        $riwayat->tanggal_mulai = request('tanggal_mulai');
+        $riwayat->keterangan = request('keterangan');
+        $riwayat->handleUploadSK();
+        $riwayat->save();
 
         return back()->with('success', 'Data Berhasil Disimpan');
     }

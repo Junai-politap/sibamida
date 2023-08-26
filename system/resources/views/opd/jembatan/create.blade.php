@@ -29,23 +29,23 @@
                                     </select>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="exampleInputText">Kode Aset</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan Kode Aset"
-                                                name="kode_aset" required>
+                                            <label for="exampleInputText">Nama Bidang</label>
+                                            <select class="form-control" name="id_bidang" required>
+                                                <option value=""> Pilih Bidang</option>
+                                                @foreach ($list_bidang as $bidang)
+                                                    @if (Auth::guard('opd')->user()->id == $bidang->id_opd)
+                                                        <option value="{{ $bidang->id }}">
+                                                            {{ $bidang->nama_bidang }}
+                                                        </option>
+                                                    @endif
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="exampleInputText">Nama Aset</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan Nama Aset"
-                                                name="nama_aset" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kategori Aset</label>
                                             <select class="form-control" name="id_kategori" required>
@@ -60,6 +60,25 @@
                                             </select>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Kode Aset</label>
+                                            <input type="text" class="form-control" placeholder="Masukkan Kode Aset"
+                                                name="kode_aset" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Nama Aset</label>
+                                            <input type="text" class="form-control" placeholder="Masukkan Nama Aset"
+                                                name="nama_aset" required>
+                                        </div>
+                                    </div>
+
+                                   
                                 </div>
 
                                 <div class="row">

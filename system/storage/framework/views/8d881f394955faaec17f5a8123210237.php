@@ -14,6 +14,9 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="btn-group float-right mb-10">
+                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
+                                <i class="fa fa-print"> CetakLaporan</i>
+                            </button>
                             <a href="<?php echo e(url('opd/bangunan-export')); ?>" class="btn btn-success"> <span
                                     class="fa fa-file-export"></span> Export Excel</a>
                             <a href="<?php echo e(url('opd/master/bangunan/create')); ?>" class="btn btn-primary"> <span
@@ -119,4 +122,30 @@
 <?php $component = $__componentOriginal851cb6f5a7f89db41449dadedd8953e5; ?>
 <?php unset($__componentOriginal851cb6f5a7f89db41449dadedd8953e5); ?>
 <?php endif; ?>
+
+<div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="<?php echo e(url('opd/bangunan-download-laporan')); ?>" method="get">
+                <?php echo csrf_field(); ?>
+                <div class="modal-header">
+                    <h4 class="modal-title">Default Modal</h4>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="tahun_perolehan">Tahun</label>
+                        <input type="year" class="form-control" id="tahun_perolehan" name="tahun_perolehan" required>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="submit" class="btn btn-primary">Download Laporan Excel</button>
+                </div>
+            </form>
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
 <?php /**PATH D:\GitHub\sibamida\system\resources\views/opd/bangunan/index.blade.php ENDPATH**/ ?>

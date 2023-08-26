@@ -54,20 +54,36 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
+                                            <label for="exampleInputText">Nama Bidang</label>
+                                            <select class="form-control" name="id_bidang">
+                                                @foreach ($list_bidang as $bidang)
+                                                @if ( Auth::guard('opd')->user()->id == $bidang->id_opd)
+                                                <option @if ($bidang->id == $bangunan->id_bidang) selected @endif
+                                                    value="{{ $bidang->id }}">
+                                                    {{ $bidang->nama_bidang }}
+                                                </option>
+                                                @endif
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
                                             <label for="exampleInputText">Kode Barang</label>
                                             <input type="text" class="form-control" name="kode_barang" value="{{ $bangunan->kode_barang }}">
                                         </div>
                                     </div>
 
+                                   
+                                </div>
+
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nama Barang</label>
                                             <input type="text" class="form-control" name="nama_barang" value="{{ $bangunan->nama_barang }}">
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nomor Register</label>
@@ -75,16 +91,16 @@
                                         </div>
                                     </div>
 
+                                </div>
+
+                                <div class="row">
+                                    
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Tahun Perolehan</label>
                                             <input type="year" class="form-control" name="tahun_perolehan" value="{{ $bangunan->tahun_perolehan }}">
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="row">
-
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Harga Perolehan</label>
@@ -92,6 +108,10 @@
                                         </div>
                                     </div>
 
+                                </div>
+
+                                <div class="row">
+                                    
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Alamat</label>
@@ -99,21 +119,13 @@
                                         </div>
                                     </div>
 
-                                </div>
-
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kecamatan</label>
                                             <input type="text" class="form-control" name="kecamatan" value="{{ $bangunan->kecamatan }}">
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="exampleInputText">Kelurahan/Desa</label>
-                                            <input type="text" class="form-control" name="kelurahan_desa" value="{{ $bangunan->kelurahan_desa }}">
-                                        </div>
-                                    </div>
+                                    
 
                                 </div>
 
@@ -121,17 +133,17 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="exampleInputText">Keterangan</label>
-                                            <input type="text" class="form-control" name="keterangan" value="{{ $bangunan->keterangan }}">
+                                            <label for="exampleInputText">Kelurahan/Desa</label>
+                                            <input type="text" class="form-control" name="kelurahan_desa" value="{{ $bangunan->kelurahan_desa }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="exampleInputText">Bidang</label>
-                                            <input type="text" class="form-control" name="bidang" value="{{ $bangunan->bidang }}">
+                                            <label for="exampleInputText">Keterangan</label>
+                                            <input type="text" class="form-control" name="keterangan" value="{{ $bangunan->keterangan }}">
                                         </div>
                                     </div>
-
+                                  
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">

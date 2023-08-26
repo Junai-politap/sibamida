@@ -58,6 +58,21 @@ function checkRouteActive($route)
                         <p>Data Kategori Aset</p>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a href="{{ url('opd/bidang') }}" class="nav-link {{ checkRouteActive('opd/bidang') }}">
+                        <i class="nav-icon fa fa-list "></i>
+                        <p>Data Bidang</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ url('opd/ruangan') }}" class="nav-link {{ checkRouteActive('opd/ruangan') }}">
+                        <i class="nav-icon fa fa-list "></i>
+                        <p>Data Ruangan</p>
+                    </a>
+                </li>
+
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-database"></i>
@@ -98,12 +113,6 @@ function checkRouteActive($route)
 
                     </ul>
 
-                    <li class="nav-item">
-                        <a href="{{ url('opd/laporan') }}" class="nav-link {{ checkRouteActive('opd/laporan') }}">
-                            <i class="nav-icon fa fa-list "></i>
-                            <p> Data Laporan</p>
-                        </a>
-                    </li>
                 </li>
 
             </ul>

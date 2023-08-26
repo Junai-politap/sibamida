@@ -21,36 +21,38 @@
                                     
                                 <div class="form-group">
                                     <label for="exampleInputText">Nama Penanggung Jawab</label>
-                                    <select name="id_pegawai" class="form-control" required>
+                                    <select name="id_pegawai" class="form-control" >
                                         <option value=""> Pilih Penanggung Jawab Aset</option>
                                         @foreach ($list_pegawai as $pegawai)
                                             @if (Auth::guard('opd')->user()->id == $pegawai->id_opd)
-                                                <option value="{{ $pegawai->id }}">{{ $pegawai->nama }}</option>
+                                            <option @if ($pegawai->id == $jembatan->id_pegawai) selected @endif
+                                                value="{{ $pegawai->id }}">
+                                                {{ $pegawai->nama }}
+                                            </option>
                                             @endif
                                         @endforeach
                                     </select>
                                 </div>
-
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="exampleInputText">Kode Aset</label>
-                                            <input type="text" class="form-control" value="{{$jembatan->kode_aset}}" placeholder="Masukkan Kode Aset"
-                                                name="kode_aset" required>
+                                            <label for="exampleInputText">Nama Bidang</label>
+                                            <select class="form-control" name="id_bidang" >
+                                                @foreach ($list_bidang as $bidang)
+                                                    @if (Auth::guard('opd')->user()->id == $bidang->id_opd)
+                                                        <option value="{{ $bidang->id }}">
+                                                            {{ $bidang->nama_bidang }}
+                                                        </option>
+                                                    @endif
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="exampleInputText">Nama Aset</label>
-                                            <input type="text" class="form-control" value="{{$jembatan->nama_aset}}" placeholder="Masukkan Nama Aset"
-                                                name="nama_aset" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
+
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kategori Aset</label>
-                                            <select class="form-control" name="id_kategori" required>
-                                                <option value=""> Pilih Kategori Aset</option>
+                                            <select class="form-control" name="id_kategori" >
                                                 @foreach ($kategori as $kategori)
                                                     @if (Auth::guard('opd')->user()->id == $kategori->id_opd)
                                                         <option value="{{ $kategori->id }}">
@@ -61,6 +63,23 @@
                                             </select>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Kode Aset</label>
+                                            <input type="text" class="form-control" value="{{$jembatan->kode_aset}}" placeholder="Masukkan Kode Aset"
+                                                name="kode_aset" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Nama Aset</label>
+                                            <input type="text" class="form-control" value="{{$jembatan->nama_aset}}" placeholder="Masukkan Nama Aset"
+                                                name="nama_aset" >
+                                        </div>
+                                    </div>
+                                    
                                 </div>
 
                                 <div class="row">
@@ -261,8 +280,14 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Foto</label>
-                                            <input type="file" class="form-control" placeholder="Masukkan Foto Aset" name="foto"
-                                                accept=".jpg, .png, .jpeg">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <img src="{{ url("public/$jembatan->foto") }}" style="width: 40%"">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input type="file" class="form-control" name="foto" accept=".jpg, .png, .jpeg" value="{{ $jembatan->foto }}">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

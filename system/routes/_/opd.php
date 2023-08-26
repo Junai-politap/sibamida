@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Opd\BangunanController;
+use App\Http\Controllers\Opd\BidangController;
 use App\Http\Controllers\Opd\JembatandanjalanController;
 use App\Http\Controllers\Opd\KategoriController;
 use App\Http\Controllers\Opd\LaporanController;
@@ -17,8 +18,21 @@ Route::group(['middleware' => 'auth:opd'], function () {
     Route::get('/', [OpdController::class, 'index']);
 
     Route::resource('pegawai', PegawaiController::class);
-    Route::resource('ruangan', RuanganController::class);
-    Route::resource('kategori', KategoriController::class);
+
+    Route::get('ruangan', [RuanganController::class, 'index']);
+    Route::post('ruangan', [RuanganController::class, 'store']);
+    Route::put('ruangan/{ruangan}', [RuanganController::class, 'update']);
+    Route::get('ruangan/delete/{ruangan}', [RuanganController::class, 'destroy']);
+
+    Route::get('kategori', [KategoriController::class, 'index']);
+    Route::post('kategori', [KategoriController::class, 'store']);
+    Route::put('kategori/{kategori}', [KategoriController::class, 'update']);
+    Route::get('kategori/delete/{kategori}', [KategoriController::class, 'destroy']);
+
+    Route::get('bidang', [BidangController::class, 'index']);
+    Route::post('bidang', [BidangController::class, 'store']);
+    Route::put('bidang/{bidang}', [BidangController::class, 'update']);
+    Route::get('bidang/delete/{bidang}', [BidangController::class, 'destroy']);
 
     //jembatan
     Route::resource('master/jembatan-jalan', JembatandanjalanController::class);
@@ -53,4 +67,7 @@ Route::group(['middleware' => 'auth:opd'], function () {
     Route::get('/tanah-download-laporan', [TanahController::class, 'downloadLaporan']);
 
     Route::get('laporan', [LaporanController::class, 'index']);
+
+    
+    Route::post('kondisi', [PeralatanDanMesinController::class, 'storeKondisi']);
 });

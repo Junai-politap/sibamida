@@ -10,8 +10,12 @@
                                     <i class="fa fa-print"> CetakLaporan</i>
                                 </button>
                                 <a href="{{ url('opd/peralatan-export') }}" class="btn btn-success"> <span class="fa fa-file-export"></span> Export Excel</a>
+                                <button class="btn btn-primary float-right" data-toggle="modal" data-target="#modal-lg">
+                                    <span class="fa fa-plus"></span> Tambah Kondisi
+                                </button>
                                 <a href="{{ url('opd/master/peralatan-mesin/create') }}" class="btn btn-primary float-right mb-10"> <span
                                         class="fa fa-plus"></span> Tambah Data</a>
+                                        
                             </div>
                             <h3 class="card-title">Master Data Aset Peralatan dan Mesin</h3>
                         </div>
@@ -60,7 +64,39 @@
         </div>
     </section>
 </x-opd>
+<div class="modal fade" id="modal-lg">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Tambah Data Kondisi</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{ url('opd/kondisi') }}" method="POST" enctype="multipart/form-data">
+                <div class="modal-body">
+                    @csrf
+                    <div class="card-body">
+                        <input type="text" name="id_opd" value="{{ Auth::guard('opd')->user()->id }}" hidden>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Nama Kondisi</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" placeholder="Nama Kondisi"
+                                    name="nama_kondisi">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button class="btn btn-default" data-dismiss="modal">Batal</button>
+                    <button class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
+        </div>
 
+    </div>
+
+</div>
 <div class="modal fade" id="modal-default">
     <div class="modal-dialog">
         <div class="modal-content">

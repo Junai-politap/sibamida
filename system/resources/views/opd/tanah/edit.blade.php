@@ -15,20 +15,20 @@
                         <form action="{{ url('opd/master/tanah', $tanah->id) }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
-                            @method("PUT")
+                            @method('PUT')
                             <div class="card-body">
                                 <div class="row">
-                                    
+
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nama Penanggung Jawab</label>
                                             <select name="id_pegawai" class="form-control">
                                                 @foreach ($list_pegawai as $pegawai)
-                                                @if ( Auth::guard('opd')->user()->id == $pegawai->id_opd)
-                                                    <option @if ($pegawai->id == $tanah->id_pegawai) selected @endif
-                                                        value="{{ $pegawai->id }}">
-                                                        {{ $pegawai->nama }}</option>
-                                                        @endif
+                                                    @if (Auth::guard('opd')->user()->id == $pegawai->id_opd)
+                                                        <option @if ($pegawai->id == $tanah->id_pegawai) selected @endif
+                                                            value="{{ $pegawai->id }}">
+                                                            {{ $pegawai->nama }}</option>
+                                                    @endif
                                                 @endforeach
                                             </select>
                                         </div>
@@ -39,11 +39,11 @@
                                             <label for="exampleInputText">Kategori Aset</label>
                                             <select class="form-control" name="id_kategori">
                                                 @foreach ($list_kategori as $kategori)
-                                                @if ( Auth::guard('opd')->user()->id == $kategori->id_opd)
-                                                    <option @if ($kategori->id == $tanah->id_kategori) selected @endif
-                                                        value="{{ $kategori->id }}">
-                                                        {{ $kategori->nama_kategori }}</option>
-                                                        @endif
+                                                    @if (Auth::guard('opd')->user()->id == $kategori->id_opd)
+                                                        <option @if ($kategori->id == $tanah->id_kategori) selected @endif
+                                                            value="{{ $kategori->id }}">
+                                                            {{ $kategori->nama_kategori }}</option>
+                                                    @endif
                                                 @endforeach
                                             </select>
                                         </div>
@@ -52,12 +52,31 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
+                                            <label for="exampleInputText">Nama Bidang</label>
+                                            <select class="form-control" name="id_bidang">
+                                                @foreach ($list_bidang as $bidang)
+                                                    @if (Auth::guard('opd')->user()->id == $bidang->id_opd)
+                                                        <option @if ($bidang->id == $tanah->id_bidang) selected @endif
+                                                            value="{{ $bidang->id }}">
+                                                            {{ $bidang->nama_bidang }}</option>
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
                                             <label for="exampleInputText">Kode Barang</label>
                                             <input type="text" class="form-control" name="kode_barang"
                                                 value="{{ $tanah->kode_barang }}">
                                         </div>
                                     </div>
 
+
+
+                                </div>
+
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nama Barang</label>
@@ -65,10 +84,6 @@
                                                 value="{{ $tanah->nama_barang }}">
                                         </div>
                                     </div>
-
-                                </div>
-
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nomor Register</label>
@@ -77,6 +92,10 @@
                                         </div>
                                     </div>
 
+                                </div>
+
+                                <div class="row">
+
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Cara Perolehan</label>
@@ -84,10 +103,6 @@
                                                 value="{{ $tanah->cara_perolehan }}">
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="row">
-
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Tahun Perolehan</label>
@@ -96,6 +111,10 @@
                                         </div>
                                     </div>
 
+
+                                </div>
+
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Harga</label>
@@ -104,9 +123,6 @@
                                         </div>
                                     </div>
 
-                                </div>
-
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Luas</label>
@@ -114,6 +130,9 @@
                                                 value="{{ $tanah->luas }}">
                                         </div>
                                     </div>
+
+                                </div>
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Lokasi</label>
@@ -122,10 +141,6 @@
                                         </div>
                                     </div>
 
-
-
-                                </div>
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Keterangan</label>
@@ -133,6 +148,10 @@
                                                 value="{{ $tanah->keterangan }}">
                                         </div>
                                     </div>
+
+                                </div>
+
+                                <div class="row">
 
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -142,10 +161,6 @@
                                         </div>
                                     </div>
 
-                                </div>
-
-                                <div class="row">
-
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nomor Sertifikat</label>
@@ -153,15 +168,14 @@
                                                 value="{{ $tanah->no_sertifikat }}">
                                         </div>
                                     </div>
-
-
-                                    <div class="col-md-6">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="exampleInputText">Foto</label>
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                    <img src="{{ url("public/$tanah->foto") }}"
-                                                        style="width: 100%">
+                                                    <img src="{{ url("public/$tanah->foto") }}" style="width: 100%">
                                                 </div>
                                                 <div class="col-md-6">
                                                     <input type="file" class="form-control" name="foto"
