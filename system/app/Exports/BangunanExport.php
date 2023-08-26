@@ -4,10 +4,8 @@ namespace App\Exports;
 
 use App\Models\Bangunan;
 use Maatwebsite\Excel\Concerns\FromCollection;
-use Maatwebsite\Excel\Concerns\WithHeadings;
-use Maatwebsite\Excel\Concerns\WithMapping;
 
-class BangunanExport implements FromCollection, WithMapping, WithHeadings
+class BangunanExport implements FromCollection
 {
     /**
     * @return \Illuminate\Support\Collection
