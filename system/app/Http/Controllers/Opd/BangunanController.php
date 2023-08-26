@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Opd;
 
-use App\Exports\BangunanExport;
+use App\Exports\BangunanTanggalExport;
 use App\Http\Controllers\Controller;
+use App\Exports\BangunanExport;
 use App\Models\Bangunan;
 use App\Models\Kategori;
 use App\Models\Opd;
@@ -158,5 +159,10 @@ class BangunanController extends Controller
     public function export()
     {
         return Excel::download(new BangunanExport, 'bangunan.xlsx');
+    }
+
+    public function downloadLaporan(Request $request)
+    {
+        return Excel::download(new BangunanTanggalExport($request->tahun_perolehan), 'laporan bangunan.xlsx');
     }
 }

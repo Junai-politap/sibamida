@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Opd;
 
 use App\Exports\PeralatanExport;
+use App\Exports\PeralatanTanggalExport;
 use App\Http\Controllers\Controller;
 use App\Models\Kategori;
 use App\Models\Pegawai;
@@ -185,5 +186,10 @@ class PeralatandanmesinController extends Controller
     public function export()
     {
         return Excel::download(new PeralatanExport, 'peralatan.xlsx');
+    }
+
+    public function downloadLaporan(Request $request)
+    {
+        return Excel::download(new PeralatanTanggalExport($request->tahun_perolehan), 'laporan peralatan.xlsx');
     }
 }
