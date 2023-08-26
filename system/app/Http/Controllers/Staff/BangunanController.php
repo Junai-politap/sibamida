@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Staff;
 
+use App\Exports\BangunanExport;
+use App\Exports\BangunanTanggalExport;
 use App\Http\Controllers\Controller;
 use App\Models\Bangunan;
 use App\Models\Kategori;
@@ -17,6 +19,7 @@ use Endroid\QrCode\Label\Alignment\LabelAlignmentCenter;
 use Endroid\QrCode\Label\Font\NotoSans;
 use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
 use Endroid\QrCode\Writer\PngWriter;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BangunanController extends Controller
 {
@@ -53,7 +56,7 @@ class BangunanController extends Controller
         $bangunan->no_spk               = request('no_spk');
         $bangunan->no_ba                = request('no_ba');
         $bangunan->bertingkat           = request('bertingkat');
-        $bangunan->beton                = request('beton');       
+        $bangunan->beton                = request('beton');
         $bangunan->kelompok             = request('kelompok');
         $bangunan->urut_kelompok        = request('urut_kelompok');
         $bangunan->handleUploadFoto();
@@ -98,7 +101,7 @@ class BangunanController extends Controller
         $bangunan->no_spk               = request('no_spk');
         $bangunan->no_ba                = request('no_ba');
         $bangunan->bertingkat           = request('bertingkat');
-        $bangunan->beton                = request('beton');       
+        $bangunan->beton                = request('beton');
         $bangunan->kelompok             = request('kelompok');
         $bangunan->urut_kelompok        = request('urut_kelompok');
         $bangunan->handleUploadFoto();
@@ -141,9 +144,19 @@ class BangunanController extends Controller
     public function hapus(string $riwayat)
     {
         $riwayat = Riwayat::find($riwayat);
-        
+
         $riwayat->delete();
 
         return back()->with('danger', 'Data Berhasiil Dihapus');
+    }
+
+    public function export()
+    {
+        return Excel::download(new BangunanExport, 'bangunan.xlsx');
+    }
+
+    public function downloadLaporan(Request $request)
+    {
+        return Excel::download(new BangunanTanggalExport($request->tahun_perolehan), 'laporan bangunan.xlsx');
     }
 }

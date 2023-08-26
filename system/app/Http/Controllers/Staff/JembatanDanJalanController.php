@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Staff;
 
+use App\Exports\JembatanExport;
+use App\Exports\JembatanTanggalExport;
 use App\Http\Controllers\Controller;
 use App\Models\Jembatan;
 use App\Models\Kategori;
@@ -17,6 +19,7 @@ use Endroid\QrCode\Label\Alignment\LabelAlignmentCenter;
 use Endroid\QrCode\Label\Font\NotoSans;
 use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
 use Endroid\QrCode\Writer\PngWriter;
+use Maatwebsite\Excel\Facades\Excel;
 
 class JembatanDanJalanController extends Controller
 {
@@ -181,9 +184,19 @@ class JembatanDanJalanController extends Controller
     public function hapus(string $riwayat)
     {
         $riwayat = Riwayat::find($riwayat);
-        
+
         $riwayat->delete();
 
         return back()->with('danger', 'Data Berhasiil Dihapus');
+    }
+
+    public function export()
+    {
+        return Excel::download(new JembatanExport, 'jembatan.xlsx');
+    }
+
+    public function downloadLaporan(Request $request)
+    {
+        return Excel::download(new JembatanTanggalExport($request->tahun_perolehan), 'laporan jembatan.xlsx');
     }
 }

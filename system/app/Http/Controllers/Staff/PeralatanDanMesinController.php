@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Staff;
 
+use App\Exports\PeralatanExport;
+use App\Exports\PeralatanTanggalExport;
 use App\Http\Controllers\Controller;
 use App\Models\Kategori;
 use App\Models\Pegawai;
@@ -17,6 +19,7 @@ use Endroid\QrCode\Label\Alignment\LabelAlignmentCenter;
 use Endroid\QrCode\Label\Font\NotoSans;
 use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
 use Endroid\QrCode\Writer\PngWriter;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PeralatanDanMesinController extends Controller
 {
@@ -157,5 +160,15 @@ class PeralatanDanMesinController extends Controller
         $riwayat->delete();
 
         return back()->with('danger', 'Data Berhasiil Dihapus');
+    }
+
+    public function export()
+    {
+        return Excel::download(new PeralatanExport, 'peralatan.xlsx');
+    }
+
+    public function downloadLaporan(Request $request)
+    {
+        return Excel::download(new PeralatanTanggalExport($request->tahun_perolehan), 'laporan peralatan.xlsx');
     }
 }
