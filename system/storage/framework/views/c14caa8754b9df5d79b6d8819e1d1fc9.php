@@ -62,6 +62,7 @@
                                         <th class="text-center">Nama Aset</th>
                                         <th class="text-center">Nama Penanggungjawab</th>
                                         <th class="text-center">Harga </th>
+                                        <th class="text-center" style="width: 30%">Keterangan </th>
                                         <th class="text-center">Aksi</th>
 
                                     </tr>
@@ -74,6 +75,7 @@
                                             <td class=""><?php echo e($tanah->nama_barang); ?></td>
                                             <td class=""><?php echo e($tanah->pegawai->jabatan); ?></td>
                                             <td class="">Rp. <?php echo e($tanah->harga); ?></td>
+                                            <td class=""><?php echo e($tanah->keterangan); ?></td>
                                             <td class="text-center">
                                                 <a href="<?php echo e(url("detail-tanah/$tanah->id")); ?>" class="btn btn-info"><span class="fa fa-info"></span> Detail Aset</a>
                                             </td>

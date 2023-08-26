@@ -41,7 +41,11 @@
                                     </h3>
 
                                     <h3 style="font-size: 120%; margin-top: -2%">
-                                        Bidang {{ $jembatan->bidang->nama_bidang }}
+                                        @isset($jembatan->bidang->nama_bidang)
+                                        BIDANG {{ $jembatan->bidang->nama_bidang }}
+                                    @else
+                                        <strong>DATA TIDAK ADA NAMA BIDANG</strong>
+                                    @endisset
                                     </h3>
                                     <div class="post-meta">
                                         <ul>
@@ -204,23 +208,24 @@
     let 
     
     card = "Nama OPD: {{ $jembatan->opd->nama_opd }}\r\n";
-    card += "Nama Penanggungjawab: {{ $jembatan->pegawai->nama }}\r\n";
-    card += "Kategori Aset : {{ $jembatan->kategori->nama_kategori }}\r\n";
-    card += "Kode Aset : {{ $jembatan->kode_aset }}\r\n";
-    card += "Nama Aset : {{ $jembatan->nama_aset }}\r\n";
-    card += "Nomor Register : {{ $jembatan->no_register }}\r\n";
-    card += "Tahun Perolehan : {{ $jembatan->tahun_perolehan }}\r\n";
-    card += "Harga Perolehan : Rp.{{ $jembatan->harga_perolehan }}\r\n";
-    card += "Keterangan : {{ $jembatan->keterangan }}\r\n";
-    card += "Alamat : {{ $jembatan->alamat }}\r\n";
-    card += "Nama Kondisi : {{ $jembatan->nama_kondisi }}\r\n";
-    card += "Sumber Dana : {{ $jembatan->nama_sumber_dana }}\r\n";
-    card += "Nomor SPPD : {{ $jembatan->no_sppd }}\r\n";
-    card += "Nomor SPK : {{ $jembatan->no_spk }}\r\n";
-    card += "Nomor Berita Acara : {{ $jembatan->no_ba }}\r\n";
-    card += "Tanggal Serah Terima : {{ $jembatan->tanggal_serah_terima }}\r\n";
-    card += "Kontruksi : {{ $jembatan->kontruksi }}\r\n";
-    card += "Panjang/Lebar/Luas : {{ $jembatan->panjang }}/{{ $jembatan->lebar }}/{{ $jembatan->luas }}\r\n";
+        card += "Nama Penanggungjawab: {{ $jembatan->pegawai->nama }}\r\n";
+        card += "Nama Bidang: @isset($jembatan->bidang->nama_bidang ){{ $jembatan->bidang->nama_bidang }}@else Belum Ada Nama Bidang @endisset\r\n";
+        card += "Kategori Aset : {{ $jembatan->kategori->nama_kategori }}\r\n";
+        card += "Kode Aset : {{ $jembatan->kode_aset }}\r\n";
+        card += "Nama Aset : {{ $jembatan->nama_aset }}\r\n";
+        card += "Nomor Register : {{ $jembatan->no_register }}\r\n";
+        card += "Tahun Perolehan : {{ $jembatan->tahun_perolehan }}\r\n";
+        card += "Harga Perolehan : Rp.{{ $jembatan->harga_perolehan }}\r\n";
+        card += "Keterangan : {{ $jembatan->keterangan }}\r\n";
+        card += "Alamat : {{ $jembatan->alamat }}\r\n";
+        card += "Nama Kondisi : {{ $jembatan->nama_kondisi }}\r\n";
+        card += "Sumber Dana : {{ $jembatan->nama_sumber_dana }}\r\n";
+        card += "Nomor SPPD : {{ $jembatan->no_sppd }}\r\n";
+        card += "Nomor SPK : {{ $jembatan->no_spk }}\r\n";
+        card += "Nomor Berita Acara : {{ $jembatan->no_ba }}\r\n";
+        card += "Tanggal Serah Terima : {{ $jembatan->tanggal_serah_terima }}\r\n";
+        card += "Kontruksi : {{ $jembatan->kontruksi }}\r\n";
+        card += "Panjang/Lebar/Luas : {{ $jembatan->panjang }}/{{ $jembatan->lebar }}/{{ $jembatan->luas }}\r\n";
     
     new QRCode(document.getElementById("test"), card);
 </script>

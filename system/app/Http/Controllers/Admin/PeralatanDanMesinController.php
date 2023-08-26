@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Bangunan;
 use App\Models\Bidang;
 use App\Models\Kategori;
 use App\Models\Kondisi;
@@ -11,6 +10,7 @@ use App\Models\Opd;
 use App\Models\Pegawai;
 use App\Models\Peralatan;
 use App\Models\Riwayat;
+use App\Models\Ruangan;
 use Illuminate\Http\Request;
 
 use Endroid\QrCode\Builder\Builder;
@@ -26,9 +26,8 @@ class PeralatanDanMesinController extends Controller
 
     public function index()
     {
-
-        $data['list_peralatan'] = Peralatan::orderBy('tahun_perolehan', 'DESC')->get();
         $data['list_opd'] = Opd::all();
+        $data['list_peralatan'] = Peralatan::orderBy('tahun_perolehan', 'DESC')->get();
         return view('admin.peralatan-mesin.index', $data);
     }
 
@@ -48,6 +47,7 @@ class PeralatanDanMesinController extends Controller
         $peralatan->id_kategori = request('id_kategori');
         $peralatan->id_pegawai = request('id_pegawai');
         $peralatan->id_bidang = request('id_bidang');
+        $peralatan->id_ruangan = request('id_ruangan');
         $peralatan->kode_barang = request('kode_barang');
         $peralatan->nama_barang = request('nama_barang');
         $peralatan->no_register = request('no_register');
@@ -98,6 +98,7 @@ class PeralatanDanMesinController extends Controller
         $data['list_kategori'] = Kategori::all();
         $data['list_bidang'] = Bidang::all();
         $data['list_kondisi'] = Kondisi::all();
+        $data['list_ruangan'] = Ruangan::all();
         return view('admin.peralatan-mesin.edit', $data);
     }
 
@@ -109,6 +110,7 @@ class PeralatanDanMesinController extends Controller
         $peralatan->id_pegawai = request('id_pegawai');
         $peralatan->id_kategori = request('id_kategori');
         $peralatan->id_bidang = request('id_bidang');
+        $peralatan->id_ruangan = request('id_ruangan');
         $peralatan->kode_barang = request('kode_barang');
         $peralatan->nama_barang = request('nama_barang');
         $peralatan->no_register = request('no_register');
@@ -146,23 +148,25 @@ class PeralatanDanMesinController extends Controller
 
     public function riwayat(Request $request)
     {
-        $jembatan = new Riwayat();
-        $jembatan->id_pegawai = request('id_pegawai');
-        $jembatan->id_aset = request('id_aset');
-        $jembatan->tanggal_mulai = request('tanggal_mulai');
-        $jembatan->keterangan = request('keterangan');
-        $jembatan->save();
+        $riwayat = new Riwayat();
+        $riwayat->id_pegawai = request('id_pegawai');
+        $riwayat->id_aset = request('id_aset');
+        $riwayat->tanggal_mulai = request('tanggal_mulai');
+        $riwayat->keterangan = request('keterangan');
+        $riwayat->handleUploadSK();
+        $riwayat->save();
 
         return back()->with('success', 'Data Berhasil Disimpan');
     }
 
     public function riwayatUpdate($riwayat)
     {
-        $jembatan = Riwayat::find($riwayat);
-        $jembatan->id_pegawai = request('id_pegawai');
-        $jembatan->tanggal_mulai = request('tanggal_mulai');
-        $jembatan->keterangan = request('keterangan');
-        $jembatan->save();
+        $riwayat = Riwayat::find($riwayat);
+        $riwayat->id_pegawai = request('id_pegawai');
+        $riwayat->tanggal_mulai = request('tanggal_mulai');
+        $riwayat->keterangan = request('keterangan');
+        $riwayat->handleUploadSK();
+        $riwayat->save();
 
         return back()->with('success', 'Data Berhasil Disimpan');
     }
@@ -186,4 +190,6 @@ class PeralatanDanMesinController extends Controller
 
         return back()->with('success', 'Data Berhasil Di Simpan');
     }
+
+
 }

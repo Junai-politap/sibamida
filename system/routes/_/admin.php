@@ -63,5 +63,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
 
     Route::post('kondisi', [PeralatanDanMesinController::class, 'storeKondisi']);
     
-    
+    Route::get('ruangan', [RuanganController::class, 'index']);
+    Route::post('ruangan', [RuanganController::class, 'store']);
+    Route::put('ruangan/{ruangan}', [RuanganController::class, 'update']);
 });

@@ -61,4 +61,9 @@ class Opd extends ModelAuthenticate
         return $this->belongsTo(Bidang::class, 'id');
     }
 
+    public function Ruangan()
+    {
+        return $this->belongsTo(Ruangan::class, 'id');
+    }
+
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Bidang;
 use App\Models\Kategori;
 use App\Models\Opd;
 use App\Models\Pegawai;
@@ -41,6 +42,7 @@ class TanahController extends Controller
         $tanah->id_opd               = request('id_opd');
         $tanah->id_kategori          = request('id_kategori');
         $tanah->id_pegawai           = request('id_pegawai');
+        $tanah->id_bidang           = request('id_bidang');
         $tanah->kode_barang          = request('kode_barang');
         $tanah->nama_barang          = request('nama_barang');
         $tanah->register             = request('register');
@@ -73,6 +75,7 @@ class TanahController extends Controller
         $data['list_opd'] = Opd::all();
         $data['list_pegawai'] = Pegawai::all();
         $data['list_kategori'] = Kategori::all();
+        $data['list_bidang'] = Bidang::all();
 
         return view('admin.tanah.edit', $data);
     }
@@ -83,6 +86,7 @@ class TanahController extends Controller
         $tanah->id_opd               = request('id_opd');
         $tanah->id_kategori          = request('id_kategori');
         $tanah->id_pegawai           = request('id_pegawai');
+        $tanah->id_bidang           = request('id_bidang');
         $tanah->kode_barang          = request('kode_barang');
         $tanah->nama_barang          = request('nama_barang');
         $tanah->register             = request('register');
@@ -109,23 +113,25 @@ class TanahController extends Controller
 
     public function riwayat(Request $request)
     {
-        $jembatan = new Riwayat();
-        $jembatan->id_pegawai = request('id_pegawai');
-        $jembatan->id_aset = request('id_aset');
-        $jembatan->tanggal_mulai = request('tanggal_mulai');
-        $jembatan->keterangan = request('keterangan');
-        $jembatan->save();
+        $riwayat = new Riwayat();
+        $riwayat->id_pegawai = request('id_pegawai');
+        $riwayat->id_aset = request('id_aset');
+        $riwayat->tanggal_mulai = request('tanggal_mulai');
+        $riwayat->keterangan = request('keterangan');
+        $riwayat->handleUploadSK();
+        $riwayat->save();
 
         return back()->with('success', 'Data Berhasil Disimpan');
     }
 
     public function riwayatUpdate($riwayat)
     {
-        $jembatan = Riwayat::find($riwayat);
-        $jembatan->id_pegawai = request('id_pegawai');
-        $jembatan->tanggal_mulai = request('tanggal_mulai');
-        $jembatan->keterangan = request('keterangan');
-        $jembatan->save();
+        $riwayat = Riwayat::find($riwayat);
+        $riwayat->id_pegawai = request('id_pegawai');
+        $riwayat->tanggal_mulai = request('tanggal_mulai');
+        $riwayat->keterangan = request('keterangan');
+        $riwayat->handleUploadSK();
+        $riwayat->save();
 
         return back()->with('success', 'Data Berhasil Disimpan');
     }

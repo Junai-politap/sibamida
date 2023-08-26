@@ -61,6 +61,7 @@
                                         <th class="text-center">Nama Aset</th>
                                         <th class="text-center">Nama Penanggungjawab</th>
                                         <th class="text-center">Harga Perolehan</th>
+                                        <th class="text-center" style="width: 30%">Keterangan</th>
                                         <th class="text-center">Aksi</th>
 
                                     </tr>
@@ -73,6 +74,7 @@
                                             <td class=""><?php echo e($jembatan->nama_aset); ?></td>
                                             <td class=""><?php echo e($jembatan->pegawai->nama); ?></td>
                                             <td class="">Rp. <?php echo e($jembatan->harga_perolehan); ?></td>
+                                            <td class=""><?php echo e($jembatan->keterangan); ?></td>
                                             <td class="text-center">
 
 
@@ -101,7 +103,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="<?php echo e(url("jembatan/$jembatan->id_opd")); ?>/filter" method="POST" enctype="multipart/form-data">
+                <form action="<?php echo e(url("jembatan/$jembatan->id_opd")); ?>/filter-jembatan" method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
                         <?php echo csrf_field(); ?>
                         <div class="card-body">

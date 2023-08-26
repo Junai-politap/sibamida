@@ -7,6 +7,7 @@ use App\Models\Bidang;
 use App\Models\Kategori;
 use App\Models\Kondisi;
 use App\Models\Pegawai;
+use App\Models\Ruangan;
 use Illuminate\Http\Request;
 
 class OpdResource extends Controller
@@ -25,5 +26,9 @@ class OpdResource extends Controller
 
     public function getKondisi($id_opd) {
         return Kondisi::where("id_opd", $id_opd)->get()->toJson();
+    }
+
+    public function getRuangan($id_opd) {
+        return Ruangan::where("id_opd", $id_opd)->get()->toJson();
     }
 }

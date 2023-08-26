@@ -48,6 +48,16 @@
                                         <?php echo e($tanah->nama_barang); ?>
 
                                     </h3>
+
+                                    <h3 style="font-size: 120%; margin-top: -2%">
+                                         <?php if(isset($tanah->bidang->nama_bidang )): ?>
+                                        BIDANG <?php echo e($tanah->bidang->nama_bidang); ?>
+
+                                        <?php else: ?>
+                                        <strong>DATA TIDAK ADA NAMA BIDANG</strong>
+                                        <?php endif; ?>
+                                    </h3>
+
                                     <div class="post-meta">
                                         <ul>
                                             <li>
@@ -166,18 +176,19 @@
     let 
     
     card = "Nama OPD: <?php echo e($tanah->opd->nama_opd); ?>\r\n";
-    card += "Nama Penanggungjawab: <?php echo e($tanah->pegawai->nama); ?>\r\n";
-    card += "Kategori Barang : <?php echo e($tanah->kategori->nama_kategori); ?>\r\n";
-    card += "Kode Barang : <?php echo e($tanah->kode_barang); ?>\r\n";
-    card += "Nama Barang : <?php echo e($tanah->nama_barang); ?>\r\n";
-    card += "Nomor Register : <?php echo e($tanah->no_register); ?>\r\n";
-    card += "Harga Perolehan : <?php echo e($tanah->cara_perolehan); ?>\r\n";
-    card += "Tahun Perolehan : <?php echo e($tanah->tahun_perolehan); ?>\r\n";
-    card += "Harga : Rp. <?php echo e($tanah->harga); ?>\r\n";
-    card += "Luas : <?php echo e($tanah->luas); ?>\r\n";
-    card += "Keterangan : <?php echo e($tanah->keterangan); ?>\r\n";
-    card += "Penggunaan : <?php echo e($tanah->penggunaan); ?>\r\n";
-    card += "Nomor Sertifikat : <?php echo e($tanah->no_sertifikat); ?>\r\n";
+        card += "Nama Penanggungjawab: <?php echo e($tanah->pegawai->nama); ?>\r\n";
+        card += "Nama Bidang: <?php if(isset($tanah->bidang->nama_bidang )): ?><?php echo e($tanah->bidang->nama_bidang); ?><?php else: ?> DATA TIDAK ADA NAMA BIDANG <?php endif; ?>\r\n";
+        card += "Kategori Barang : <?php echo e($tanah->kategori->nama_kategori); ?>\r\n";
+        card += "Kode Barang : <?php echo e($tanah->kode_barang); ?>\r\n";
+        card += "Nama Barang : <?php echo e($tanah->nama_barang); ?>\r\n";
+        card += "Nomor Register : <?php echo e($tanah->no_register); ?>\r\n";
+        card += "Harga Perolehan : <?php echo e($tanah->cara_perolehan); ?>\r\n";
+        card += "Tahun Perolehan : <?php echo e($tanah->tahun_perolehan); ?>\r\n";
+        card += "Harga : Rp. <?php echo e($tanah->harga); ?>\r\n";
+        card += "Luas : <?php echo e($tanah->luas); ?>\r\n";
+        card += "Keterangan : <?php echo e($tanah->keterangan); ?>\r\n";
+        card += "Penggunaan : <?php echo e($tanah->penggunaan); ?>\r\n";
+        card += "Nomor Sertifikat : <?php echo e($tanah->no_sertifikat); ?>\r\n";
    
     new QRCode(document.getElementById("test"), card);
 </script><?php /**PATH D:\GitHub\sibamida\system\resources\views/web/show-tanah.blade.php ENDPATH**/ ?>

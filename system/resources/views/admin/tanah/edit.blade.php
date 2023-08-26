@@ -45,23 +45,21 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                   
+                                    <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="exampleInputText">Kode Barang</label>
-                                            <input type="text" class="form-control" name="kode_barang"
-                                                value="{{ $tanah->kode_barang }}">
+                                            <label for="exampleInputText">Nama Bidang</label>
+                                            <select class="form-control" name="id_bidang">
+                                                @foreach ($list_bidang as $bidang)
+                                                    <option @if ($bidang->id == $tanah->id_bidang) selected @endif
+                                                        value="{{ $bidang->id }}">
+                                                        {{ $bidang->nama_bidang }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="exampleInputText">Nama Barang</label>
-                                            <input type="text" class="form-control" name="nama_barang"
-                                                value="{{ $tanah->nama_barang }}">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kategori Aset</label>
                                             <select class="form-control" name="id_kategori">
@@ -75,6 +73,23 @@
                                     </div>
                                 </div>
 
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Kode Barang</label>
+                                            <input type="text" class="form-control" name="kode_barang"
+                                                value="{{ $tanah->kode_barang }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Nama Barang</label>
+                                            <input type="text" class="form-control" name="nama_barang"
+                                                value="{{ $tanah->nama_barang }}">
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">

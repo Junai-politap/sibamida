@@ -25,6 +25,8 @@
                                         <th>Kategori</th>
                                         <th>Kode Barang</th>
                                         <th>Nama Barang</th>
+                                        <th>Nama Ruangan</th>
+                                        <th>Kondisi Barang</th>
                                         <th>Tahun Perolehan</th>
                                         <th>Harga Perolehan</th>
                                     </tr>
@@ -46,6 +48,20 @@
                                             <td>{{ $peralatan->kategori->nama_kategori }}</td>
                                             <td>{{ $peralatan->kode_barang }}</td>
                                             <td>{{ $peralatan->nama_barang }}</td>
+                                            <td>
+                                                @isset($peralatan->ruangan->nama_ruangan )
+                                                {{ $peralatan->ruangan->nama_ruangan }}
+                                                @else
+                                                <strong>TIDAK ADA RUANGAN</strong>
+                                                @endisset    
+                                            </td>
+                                            <td>
+                                                @isset($peralatan->kondisi->nama_kondisi )
+                                                {{ $peralatan->kondisi->nama_kondisi }}
+                                                @else
+                                                <strong>TIDAK ADA KONDISI</strong>
+                                                @endisset    
+                                            </td>
                                             <td>{{ $peralatan->tahun_perolehan }}</td>
                                             <td>Rp .{{ $peralatan->harga_perolehan }}
                                             </td>

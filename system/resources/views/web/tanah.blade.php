@@ -54,6 +54,7 @@
                                         <th class="text-center">Nama Aset</th>
                                         <th class="text-center">Nama Penanggungjawab</th>
                                         <th class="text-center">Harga </th>
+                                        <th class="text-center" style="width: 30%">Keterangan </th>
                                         <th class="text-center">Aksi</th>
 
                                     </tr>
@@ -66,6 +67,7 @@
                                             <td class="">{{ $tanah->nama_barang }}</td>
                                             <td class="">{{ $tanah->pegawai->jabatan }}</td>
                                             <td class="">Rp. {{ $tanah->harga }}</td>
+                                            <td class="">{{ $tanah->keterangan }}</td>
                                             <td class="text-center">
                                                 <a href="{{ url("detail-tanah/$tanah->id") }}" class="btn btn-info"><span class="fa fa-info"></span> Detail Aset</a>
                                             </td>

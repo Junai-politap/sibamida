@@ -40,23 +40,18 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    
+                                    <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="exampleInputText">Kode Barang</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan Kode Barang"
-                                                name="kode_barang" required>
+                                            <label for="exampleInputText">Nama Bidang</label>
+                                            <select class="form-control bidang" name="id_bidang" id="bidang">
+                                                <option value=""> Pilih Nama Bidang</option>
+                                                
+                                            </select>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="exampleInputText">Nama Barang</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan Nama Barang"
-                                                name="nama_barang" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kategori Aset</label>
                                             <select class="form-control kategori" name="id_kategori" id="kategori">
@@ -65,6 +60,24 @@
                                             </select>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Kode Barang</label>
+                                            <input type="text" class="form-control" placeholder="Masukkan Kode Barang"
+                                                name="kode_barang" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Nama Barang</label>
+                                            <input type="text" class="form-control" placeholder="Masukkan Nama Barang"
+                                                name="nama_barang" required>
+                                        </div>
+                                    </div>
+
                                 </div>
 
                                 <div class="row">
@@ -203,6 +216,16 @@
                     console.log(item.nama)
                 }
                 $("#kategori").html(option)
+            });
+
+            $.get("/api/opd-bidang/" + id, function(result) {
+                result = JSON.parse(result)
+                option = ""
+                for (item of result) {
+                    option += `<option value="${item.id}">${item.nama_bidang}</option>`;
+                    console.log(item.nama)
+                }
+                $("#bidang").html(option)
             });
         }
     </script>
