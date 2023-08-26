@@ -68,8 +68,12 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="tahun_perolehan">Tahun</label>
-                        <input type="year" class="form-control" id="tahun_perolehan" name="tahun_perolehan" required>
+                        <label for="tahun_mulai">Tahun Mulai</label>
+                        <input type="year" class="form-control" id="tahun_mulai" name="tahun_mulai" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tahun_selesai">Tahun Selesai</label>
+                        <input type="year" class="form-control" id="tahun_selesai" name="tahun_selesai" required>
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between">

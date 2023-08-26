@@ -149,6 +149,9 @@ class TanahController extends Controller
 
     public function downloadLaporan(Request $request)
     {
-        return Excel::download(new TanahTanggalExport($request->tahun_perolehan), 'laporan tanah.xlsx');
+        $tahunMulai = $request->input('tahun_mulai');
+        $tahunSelesai = $request->input('tahun_selesai');
+
+        return Excel::download(new TanahTanggalExport($tahunMulai, $tahunSelesai), 'laporan tanah.xlsx');
     }
 }

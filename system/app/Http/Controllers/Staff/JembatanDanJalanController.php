@@ -197,6 +197,9 @@ class JembatanDanJalanController extends Controller
 
     public function downloadLaporan(Request $request)
     {
-        return Excel::download(new JembatanTanggalExport($request->tahun_perolehan), 'laporan jembatan.xlsx');
+        $tahunMulai = $request->input('tahun_mulai');
+        $tahunSelesai = $request->input('tahun_selesai');
+
+        return Excel::download(new JembatanTanggalExport($tahunMulai, $tahunSelesai), 'laporan jembatan.xlsx');
     }
 }
