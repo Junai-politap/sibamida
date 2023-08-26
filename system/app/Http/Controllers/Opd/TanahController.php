@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Opd;
 
 use App\Exports\TanahExport;
+use App\Exports\TanahTanggalExport;
 use App\Http\Controllers\Controller;
 use App\Models\Kategori;
 use App\Models\Opd;
@@ -145,5 +146,10 @@ class TanahController extends Controller
     public function export()
     {
         return Excel::download(new TanahExport, 'tanah.xlsx');
+    }
+
+    public function downloadLaporan(Request $request)
+    {
+        return Excel::download(new TanahTanggalExport($request->tahun_perolehan), 'laporan tanah.xlsx');
     }
 }

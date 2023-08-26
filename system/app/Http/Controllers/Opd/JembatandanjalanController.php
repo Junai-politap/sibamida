@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Opd;
 
 use App\Exports\JembatanExport;
+use App\Exports\JembatanTanggalExport;
 use App\Http\Controllers\Controller;
 use App\Models\Jembatan;
 use App\Models\Kategori;
@@ -196,5 +197,10 @@ class JembatandanjalanController extends Controller
     public function export()
     {
         return Excel::download(new JembatanExport, 'jembatan.xlsx');
+    }
+
+    public function downloadLaporan(Request $request)
+    {
+        return Excel::download(new JembatanTanggalExport($request->tahun_perolehan), 'laporan jembatan.xlsx');
     }
 }
