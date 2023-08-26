@@ -29,11 +29,22 @@
                                             <td>Nama OPD</td>
                                             <td> : {{ $peralatan->opd->nama_opd }}</td>
                                         </tr>
-
                                         <tr>
-                                            <td>Kategori</td>
-                                            <td> : {{ $peralatan->kategori->nama_kategori }}</td>
+                                            <td>Nama Penanggung Jawab</td>
+                                            <td> : {{ $peralatan->pegawai->nama }}</td>
                                         </tr>
+                                       
+                                        <tr>
+                                            <td>Ruangan Barang</td>
+                                            <td> : 
+                                                @isset($peralatan->ruangan->nama_ruangan )
+                                                {{ $peralatan->ruangan->nama_ruangan }}
+                                                @else
+                                                <strong>TIDAK ADA RUANGAN</strong>
+                                                @endisset
+                                            </td>
+                                        </tr>
+
                                         <tr>
                                             <td>Nama Bidang</td>
                                             <td> : 
@@ -45,9 +56,10 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Nama Penanggung Jawab</td>
-                                            <td> : {{ $peralatan->pegawai->nama }}</td>
+                                            <td>Kategori</td>
+                                            <td> : {{ $peralatan->kategori->nama_kategori }}</td>
                                         </tr>
+
                                         <tr>
                                             <td>Kelompok</td>
                                             <td> : {{ $peralatan->kelompok }}</td>
@@ -60,6 +72,8 @@
                                             <td>Nama Barang</td>
                                             <td> : {{ $peralatan->nama_barang }}</td>
                                         </tr>
+                                        
+
                                         <tr>
                                             <td>Nomor Register</td>
                                             <td> : {{ $peralatan->no_register }}</td>
@@ -171,13 +185,31 @@
 
 
                                 <div class="card-body">
-                                    <strong>Tanggal Mulai</strong>
-                                    <p class="text-muted">
-                                        {{date("Y-m-d", strtotime($riwayat->tanggal_mulai)) }}
-                                    </p>
-                                    <hr>
-                                    <strong>Nama Penanggung Jawab</strong>
-                                    <p class="text-muted">{{ $riwayat->pegawai->nama }}</p>
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <strong>Tanggal Mulai</strong>
+                                            <p class="text-muted">
+                                                {{ date('Y-m-d', strtotime($riwayat->tanggal_mulai)) }}
+                                            </p>
+                                            <hr>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <strong>Nama Penanggung Jawab</strong>
+                                            <p class="text-muted">{{ $riwayat->pegawai->nama }}</p>
+                                            <hr>
+                                        </div>
+                                    </div>
+<hr>
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <strong>File SK</strong>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a class="btn btn-info" href="{{ url("public/$riwayat->sk") }}"
+                                                target="_blank"><span class="fa fa-download"></span> File SK</a>
+
+                                        </div>
+                                    </div>
                                     <hr>
                                     <strong>Keterangan</strong>
                                     <p class="text-muted">
@@ -199,7 +231,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <form action="{{ url('admin/peralatan-mesin/update-riwayat', $riwayat->id) }}" method="POST">
+                                    <form action="{{ url('admin/peralatan-mesin/update-riwayat', $riwayat->id) }}" method="POST" enctype="multipart/form-data">
                                         <div class="modal-body">
 
                                             @csrf
@@ -231,7 +263,15 @@
                                                             value="{{date("Y-m-d", strtotime($riwayat->tanggal_mulai)) }}">
                                                     </div>
                                                 </div>
-
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 col-form-label">
+                                                        File SK
+                                                    </label>
+                                                    <div class="col-sm-9">
+                                                        <input type="file" class="form-control" name="sk"
+                                                            accept="application/pdf" value="{{ $riwayat->sk }}">
+                                                    </div>
+                                                </div>
                                                 <div class="form-group row">
                                                     <label class="col-sm-3 col-form-label">
                                                         Keterangan
@@ -291,7 +331,11 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="form-group">
+                                <label for="exampleInputText"> File SK</label>
+                                <input type="file" class="form-control" name="sk" accept="application/pdf"
+                                    required>
+                            </div>
                             <div class="form-group">
                                 <label for="exampleInputText">Keterangan</label>
 
@@ -315,6 +359,7 @@
         card += "Nama Penanggungjawab: {{ $peralatan->pegawai->nama }}\r\n";
         card += "Kategori Barang : {{ $peralatan->kategori->nama_kategori }}\r\n";
         card += "Nama Bidang: @isset($peralatan->bidang->nama_bidang ){{ $peralatan->bidang->nama_bidang }}@else TIDAK ADA NAMA BIDANG @endisset\r\n";
+        card += "Nama Ruangan: @isset($peralatan->ruangan->nama_ruangan ){{ $peralatan->ruangan->nama_ruangan }}@else TIDAK ADA RUANGAN @endisset\r\n";
         card += "Kode Barang : {{ $peralatan->kode_barang }}\r\n";
         card += "Nama Barang : {{ $peralatan->nama_barang }}\r\n";
         card += "Nomor Register : {{ $peralatan->no_register }}\r\n";

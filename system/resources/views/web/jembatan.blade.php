@@ -54,6 +54,7 @@
                                         <th class="text-center">Nama Aset</th>
                                         <th class="text-center">Nama Penanggungjawab</th>
                                         <th class="text-center">Harga Perolehan</th>
+                                        <th class="text-center" style="width: 30%">Keterangan</th>
                                         <th class="text-center">Aksi</th>
 
                                     </tr>
@@ -66,6 +67,7 @@
                                             <td class="">{{ $jembatan->nama_aset }}</td>
                                             <td class="">{{ $jembatan->pegawai->nama }}</td>
                                             <td class="">Rp. {{ $jembatan->harga_perolehan }}</td>
+                                            <td class="">{{ $jembatan->keterangan }}</td>
                                             <td class="text-center">
 
 

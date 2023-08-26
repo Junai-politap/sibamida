@@ -41,7 +41,11 @@
                                     </h3>
 
                                     <h3 style="font-size: 120%; margin-top: -2%">
-                                        Bidang {{ $tanah->bidang->nama_bidang }}
+                                         @isset($tanah->bidang->nama_bidang )
+                                        BIDANG {{ $tanah->bidang->nama_bidang }}
+                                        @else
+                                        <strong>DATA TIDAK ADA NAMA BIDANG</strong>
+                                        @endisset
                                     </h3>
 
                                     <div class="post-meta">
@@ -153,18 +157,19 @@
     let 
     
     card = "Nama OPD: {{ $tanah->opd->nama_opd }}\r\n";
-    card += "Nama Penanggungjawab: {{ $tanah->pegawai->nama }}\r\n";
-    card += "Kategori Barang : {{ $tanah->kategori->nama_kategori }}\r\n";
-    card += "Kode Barang : {{ $tanah->kode_barang }}\r\n";
-    card += "Nama Barang : {{ $tanah->nama_barang }}\r\n";
-    card += "Nomor Register : {{ $tanah->no_register }}\r\n";
-    card += "Harga Perolehan : {{ $tanah->cara_perolehan }}\r\n";
-    card += "Tahun Perolehan : {{ $tanah->tahun_perolehan }}\r\n";
-    card += "Harga : Rp. {{ $tanah->harga }}\r\n";
-    card += "Luas : {{ $tanah->luas }}\r\n";
-    card += "Keterangan : {{ $tanah->keterangan }}\r\n";
-    card += "Penggunaan : {{ $tanah->penggunaan }}\r\n";
-    card += "Nomor Sertifikat : {{ $tanah->no_sertifikat }}\r\n";
+        card += "Nama Penanggungjawab: {{ $tanah->pegawai->nama }}\r\n";
+        card += "Nama Bidang: @isset($tanah->bidang->nama_bidang ){{ $tanah->bidang->nama_bidang }}@else DATA TIDAK ADA NAMA BIDANG @endisset\r\n";
+        card += "Kategori Barang : {{ $tanah->kategori->nama_kategori }}\r\n";
+        card += "Kode Barang : {{ $tanah->kode_barang }}\r\n";
+        card += "Nama Barang : {{ $tanah->nama_barang }}\r\n";
+        card += "Nomor Register : {{ $tanah->no_register }}\r\n";
+        card += "Harga Perolehan : {{ $tanah->cara_perolehan }}\r\n";
+        card += "Tahun Perolehan : {{ $tanah->tahun_perolehan }}\r\n";
+        card += "Harga : Rp. {{ $tanah->harga }}\r\n";
+        card += "Luas : {{ $tanah->luas }}\r\n";
+        card += "Keterangan : {{ $tanah->keterangan }}\r\n";
+        card += "Penggunaan : {{ $tanah->penggunaan }}\r\n";
+        card += "Nomor Sertifikat : {{ $tanah->no_sertifikat }}\r\n";
    
     new QRCode(document.getElementById("test"), card);
 </script>

@@ -33,6 +33,8 @@
                                         <th>Kategori</th>
                                         <th>Kode Barang</th>
                                         <th>Nama Barang</th>
+                                        <th>Nama Ruangan</th>
+                                        <th>Kondisi Barang</th>
                                         <th>Tahun Perolehan</th>
                                         <th>Harga Perolehan</th>
                                     </tr>
@@ -93,6 +95,22 @@
                                             <td><?php echo e($peralatan->kategori->nama_kategori); ?></td>
                                             <td><?php echo e($peralatan->kode_barang); ?></td>
                                             <td><?php echo e($peralatan->nama_barang); ?></td>
+                                            <td>
+                                                <?php if(isset($peralatan->ruangan->nama_ruangan )): ?>
+                                                <?php echo e($peralatan->ruangan->nama_ruangan); ?>
+
+                                                <?php else: ?>
+                                                <strong>TIDAK ADA RUANGAN</strong>
+                                                <?php endif; ?>    
+                                            </td>
+                                            <td>
+                                                <?php if(isset($peralatan->kondisi->nama_kondisi )): ?>
+                                                <?php echo e($peralatan->kondisi->nama_kondisi); ?>
+
+                                                <?php else: ?>
+                                                <strong>TIDAK ADA KONDISI</strong>
+                                                <?php endif; ?>    
+                                            </td>
                                             <td><?php echo e($peralatan->tahun_perolehan); ?></td>
                                             <td>Rp .<?php echo e($peralatan->harga_perolehan); ?>
 
@@ -159,5 +177,4 @@
 <?php if (isset($__componentOriginal2812d824e80b3a65bceda8e6a9bfa7a0)): ?>
 <?php $component = $__componentOriginal2812d824e80b3a65bceda8e6a9bfa7a0; ?>
 <?php unset($__componentOriginal2812d824e80b3a65bceda8e6a9bfa7a0); ?>
-<?php endif; ?>
-<?php /**PATH D:\GitHub\sibamida\system\resources\views/admin/peralatan-mesin/index.blade.php ENDPATH**/ ?>
+<?php endif; ?><?php /**PATH D:\GitHub\sibamida\system\resources\views/admin/peralatan-mesin/index.blade.php ENDPATH**/ ?>

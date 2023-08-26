@@ -51,11 +51,23 @@
                                             <td>Nama OPD</td>
                                             <td> : <?php echo e($peralatan->opd->nama_opd); ?></td>
                                         </tr>
-
                                         <tr>
-                                            <td>Kategori</td>
-                                            <td> : <?php echo e($peralatan->kategori->nama_kategori); ?></td>
+                                            <td>Nama Penanggung Jawab</td>
+                                            <td> : <?php echo e($peralatan->pegawai->nama); ?></td>
                                         </tr>
+                                       
+                                        <tr>
+                                            <td>Ruangan Barang</td>
+                                            <td> : 
+                                                <?php if(isset($peralatan->ruangan->nama_ruangan )): ?>
+                                                <?php echo e($peralatan->ruangan->nama_ruangan); ?>
+
+                                                <?php else: ?>
+                                                <strong>TIDAK ADA RUANGAN</strong>
+                                                <?php endif; ?>
+                                            </td>
+                                        </tr>
+
                                         <tr>
                                             <td>Nama Bidang</td>
                                             <td> : 
@@ -68,9 +80,10 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Nama Penanggung Jawab</td>
-                                            <td> : <?php echo e($peralatan->pegawai->nama); ?></td>
+                                            <td>Kategori</td>
+                                            <td> : <?php echo e($peralatan->kategori->nama_kategori); ?></td>
                                         </tr>
+
                                         <tr>
                                             <td>Kelompok</td>
                                             <td> : <?php echo e($peralatan->kelompok); ?></td>
@@ -83,6 +96,8 @@
                                             <td>Nama Barang</td>
                                             <td> : <?php echo e($peralatan->nama_barang); ?></td>
                                         </tr>
+                                        
+
                                         <tr>
                                             <td>Nomor Register</td>
                                             <td> : <?php echo e($peralatan->no_register); ?></td>
@@ -195,14 +210,32 @@
 
 
                                 <div class="card-body">
-                                    <strong>Tanggal Mulai</strong>
-                                    <p class="text-muted">
-                                        <?php echo e(date("Y-m-d", strtotime($riwayat->tanggal_mulai))); ?>
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <strong>Tanggal Mulai</strong>
+                                            <p class="text-muted">
+                                                <?php echo e(date('Y-m-d', strtotime($riwayat->tanggal_mulai))); ?>
 
-                                    </p>
-                                    <hr>
-                                    <strong>Nama Penanggung Jawab</strong>
-                                    <p class="text-muted"><?php echo e($riwayat->pegawai->nama); ?></p>
+                                            </p>
+                                            <hr>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <strong>Nama Penanggung Jawab</strong>
+                                            <p class="text-muted"><?php echo e($riwayat->pegawai->nama); ?></p>
+                                            <hr>
+                                        </div>
+                                    </div>
+<hr>
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <strong>File SK</strong>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a class="btn btn-info" href="<?php echo e(url("public/$riwayat->sk")); ?>"
+                                                target="_blank"><span class="fa fa-download"></span> File SK</a>
+
+                                        </div>
+                                    </div>
                                     <hr>
                                     <strong>Keterangan</strong>
                                     <p class="text-muted">
@@ -225,7 +258,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <form action="<?php echo e(url('admin/peralatan-mesin/update-riwayat', $riwayat->id)); ?>" method="POST">
+                                    <form action="<?php echo e(url('admin/peralatan-mesin/update-riwayat', $riwayat->id)); ?>" method="POST" enctype="multipart/form-data">
                                         <div class="modal-body">
 
                                             <?php echo csrf_field(); ?>
@@ -257,7 +290,15 @@
                                                             value="<?php echo e(date("Y-m-d", strtotime($riwayat->tanggal_mulai))); ?>">
                                                     </div>
                                                 </div>
-
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 col-form-label">
+                                                        File SK
+                                                    </label>
+                                                    <div class="col-sm-9">
+                                                        <input type="file" class="form-control" name="sk"
+                                                            accept="application/pdf" value="<?php echo e($riwayat->sk); ?>">
+                                                    </div>
+                                                </div>
                                                 <div class="form-group row">
                                                     <label class="col-sm-3 col-form-label">
                                                         Keterangan
@@ -318,7 +359,11 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="form-group">
+                                <label for="exampleInputText"> File SK</label>
+                                <input type="file" class="form-control" name="sk" accept="application/pdf"
+                                    required>
+                            </div>
                             <div class="form-group">
                                 <label for="exampleInputText">Keterangan</label>
 
@@ -342,6 +387,7 @@
         card += "Nama Penanggungjawab: <?php echo e($peralatan->pegawai->nama); ?>\r\n";
         card += "Kategori Barang : <?php echo e($peralatan->kategori->nama_kategori); ?>\r\n";
         card += "Nama Bidang: <?php if(isset($peralatan->bidang->nama_bidang )): ?><?php echo e($peralatan->bidang->nama_bidang); ?><?php else: ?> TIDAK ADA NAMA BIDANG <?php endif; ?>\r\n";
+        card += "Nama Ruangan: <?php if(isset($peralatan->ruangan->nama_ruangan )): ?><?php echo e($peralatan->ruangan->nama_ruangan); ?><?php else: ?> TIDAK ADA RUANGAN <?php endif; ?>\r\n";
         card += "Kode Barang : <?php echo e($peralatan->kode_barang); ?>\r\n";
         card += "Nama Barang : <?php echo e($peralatan->nama_barang); ?>\r\n";
         card += "Nomor Register : <?php echo e($peralatan->no_register); ?>\r\n";

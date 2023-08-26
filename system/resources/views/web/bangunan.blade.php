@@ -54,6 +54,7 @@
                                         <th class="text-center">Nama Barang</th>
                                         <th class="text-center">Nama Penanggungjawab</th>
                                         <th class="text-center"> Harga Perolehan</th>
+                                        <th class="text-center" style="width: 30%">Keterangan</th>
                                         <th class="text-center">Aksi</th>
 
                                     </tr>
@@ -66,6 +67,7 @@
                                             <td class="">{{ $bangunan->nama_barang }}</td>
                                             <td class="">{{ $bangunan->pegawai->jabatan }}</td>
                                             <td class="">Rp. {{ $bangunan->harga_perolehan }}</td>
+                                            <td class="">{{ $bangunan->keterangan }}</td>
                                             <td class="text-center">
                                                 <a href="{{ url("detail-bangunan/$bangunan->id") }}" class="btn btn-info"><span class="fa fa-info"></span> Detail Aset</a>
                                             </td>

@@ -124,23 +124,25 @@ class BangunanController extends Controller
 
     public function riwayat(Request $request)
     {
-        $jembatan = new Riwayat();
-        $jembatan->id_pegawai = request('id_pegawai');
-        $jembatan->id_aset = request('id_aset');
-        $jembatan->tanggal_mulai = request('tanggal_mulai');
-        $jembatan->keterangan = request('keterangan');
-        $jembatan->save();
+        $riwayat = new Riwayat();
+        $riwayat->id_pegawai = request('id_pegawai');
+        $riwayat->id_aset = request('id_aset');
+        $riwayat->tanggal_mulai = request('tanggal_mulai');
+        $riwayat->keterangan = request('keterangan');
+        $riwayat->handleUploadSK();
+        $riwayat->save();
 
         return back()->with('success', 'Data Berhasil Disimpan');
     }
 
     public function riwayatUpdate($riwayat)
     {
-        $jembatan = Riwayat::find($riwayat);
-        $jembatan->id_pegawai = request('id_pegawai');
-        $jembatan->tanggal_mulai = request('tanggal_mulai');
-        $jembatan->keterangan = request('keterangan');
-        $jembatan->save();
+        $riwayat = Riwayat::find($riwayat);
+        $riwayat->id_pegawai = request('id_pegawai');
+        $riwayat->tanggal_mulai = request('tanggal_mulai');
+        $riwayat->keterangan = request('keterangan');
+        $riwayat->handleUploadSK();
+        $riwayat->save();
 
         return back()->with('success', 'Data Berhasil Disimpan');
     }

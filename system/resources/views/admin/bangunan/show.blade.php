@@ -43,10 +43,10 @@
                                         <tr>
                                             <td>Nama Bidang</td>
                                             <td> :
-                                                @isset($bangunan->bidang->nama_bidang )
-                                                {{ $bangunan->bidang->nama_bidang }}
+                                                @isset($bangunan->bidang->nama_bidang)
+                                                    {{ $bangunan->bidang->nama_bidang }}
                                                 @else
-                                                <strong>Belum Ada Nama Bidang</strong>
+                                                    <strong>Belum Ada Nama Bidang</strong>
                                                 @endisset
                                             </td>
                                         </tr>
@@ -156,13 +156,32 @@
 
 
                                 <div class="card-body">
-                                    <strong>Tanggal Mulai</strong>
-                                    <p class="text-muted">
-                                        {{ date('Y-m-d', strtotime($riwayat->tanggal_mulai)) }}
-                                    </p>
-                                    <hr>
-                                    <strong>Nama Penanggung Jawab</strong>
-                                    <p class="text-muted">{{ $riwayat->pegawai->nama }}</p>
+
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <strong>Tanggal Mulai</strong>
+                                            <p class="text-muted">
+                                                {{ date('Y-m-d', strtotime($riwayat->tanggal_mulai)) }}
+                                            </p>
+                                            <hr>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <strong>Nama Penanggung Jawab</strong>
+                                            <p class="text-muted">{{ $riwayat->pegawai->nama }}</p>
+                                            <hr>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <strong>File SK</strong>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a class="btn btn-info" href="{{ url("public/$riwayat->sk") }}"
+                                                target="_blank"><span class="fa fa-download"></span> File SK</a>
+
+                                        </div>
+                                    </div>
                                     <hr>
                                     <strong>Keterangan</strong>
                                     <p class="text-muted">
@@ -185,7 +204,7 @@
                                         </button>
                                     </div>
                                     <form action="{{ url('admin/bangunan/update-riwayat', $riwayat->id) }}"
-                                        method="POST">
+                                        method="POST" enctype="multipart/form-data">
                                         <div class="modal-body">
 
                                             @csrf
@@ -220,10 +239,20 @@
 
                                                 <div class="form-group row">
                                                     <label class="col-sm-3 col-form-label">
+                                                        File SK
+                                                    </label>
+                                                    <div class="col-sm-9">
+                                                        <input type="file" class="form-control" name="sk"
+                                                            accept="application/pdf" value="{{ $riwayat->sk }}">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label">
                                                         Keterangan
                                                     </label>
                                                     <div class="col-sm-9">
-                                                        <textarea class="summernote" name="keterangan">{{ $riwayat->keterangan }}</textarea>
+                                                        <textarea class="summernote" name="keterangan">{!! nl2br($riwayat->keterangan) !!}</textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -246,7 +275,8 @@
                         <h3 class="card-title">Tambah Riwayat </h3>
 
                         <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                title="Collapse">
                                 <i class="fas fa-minus"></i>
                             </button>
                         </div>
@@ -278,7 +308,11 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="form-group">
+                                <label for="exampleInputText"> File SK</label>
+                                <input type="file" class="form-control" name="sk" accept="application/pdf"
+                                    required>
+                            </div>
                             <div class="form-group">
                                 <label for="exampleInputText">Keterangan</label>
 
@@ -298,10 +332,11 @@
     <script>
         let
 
-        card = "Nama OPD: {{ $bangunan->opd->nama_opd }}\r\n";
+            card = "Nama OPD: {{ $bangunan->opd->nama_opd }}\r\n";
         card += "Nama Penanggungjawab: {{ $bangunan->pegawai->nama }}\r\n";
         card += "Kategori Barang : {{ $bangunan->kategori->nama_kategori }}\r\n";
-        card += "Nama Bidang : @isset($bangunan->bidang->nama_bidang ){{ $bangunan->bidang->nama_bidang }}@else Belum Ada Nama Bidang @endisset\r\n";
+        card +=
+            "Nama Bidang : @isset($bangunan->bidang->nama_bidang){{ $bangunan->bidang->nama_bidang }}@else Belum Ada Nama Bidang @endisset\r\n";
         card += "Kode Barang : {{ $bangunan->kode_barang }}\r\n";
         card += "Nama Barang : {{ $bangunan->nama_barang }}\r\n";
         card += "Nomor Register : {{ $bangunan->no_register }}\r\n";

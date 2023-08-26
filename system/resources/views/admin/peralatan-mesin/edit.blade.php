@@ -92,11 +92,28 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="exampleInputText">kelompok</label>
+                                            <label for="exampleInputText">Nama Ruangan</label>
+                                            <select class="form-control" name="id_ruangan">
+                                                @foreach ($list_ruangan as $ruangan)
+                                                    <option @if ($ruangan->id == $peralatan->id_ruangan) selected @endif
+                                                        value="{{ $ruangan->id }}">
+                                                        {{ $ruangan->nama_ruangan }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Kelompok</label>
                                             <input type="text" class="form-control"
                                                 value="{{ $peralatan->kelompok }}" name="kelompok">
                                         </div>
                                     </div>
+                                   
+                                </div>
+
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nomor Register</label>
@@ -105,9 +122,6 @@
                                                 value="{{ $peralatan->no_register }}" name="no_register">
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Merk Barang</label>
@@ -116,6 +130,10 @@
                                                 name="merk">
                                         </div>
                                     </div>
+                                    
+                                </div>
+
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kondisi</label>
@@ -128,9 +146,6 @@
                                             </select>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Tahun Perolehan</label>
@@ -140,6 +155,10 @@
                                         </div>
                                     </div>
 
+                                </div>
+
+                                <div class="row">
+                                    
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Harga Perolehan</label>
@@ -149,9 +168,6 @@
                                         </div>
                                     </div>
 
-                                </div>
-
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Keterangan</label>
@@ -161,6 +177,10 @@
                                         </div>
                                     </div>
 
+                                </div>
+
+                                <div class="row">
+                                    
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nomor SPPD</label>
@@ -170,9 +190,6 @@
                                         </div>
                                     </div>
 
-                                </div>
-
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nomor SPK</label>
@@ -182,6 +199,10 @@
                                         </div>
                                     </div>
 
+                                </div>
+
+                                <div class="row">
+                                    
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nomor BA</label>
@@ -191,9 +212,6 @@
                                         </div>
                                     </div>
 
-                                </div>
-
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Tanggal Serah Terima</label>
@@ -204,6 +222,10 @@
                                         </div>
                                     </div>
 
+                                </div>
+
+                                <div class="row">
+                                    
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Ekstrakomtable</label>
@@ -213,9 +235,6 @@
                                         </div>
                                     </div>
 
-                                </div>
-
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Ukuran</label>
@@ -224,6 +243,10 @@
                                         </div>
                                     </div>
 
+                                </div>
+
+                                <div class="row">
+                                    
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nomor Pabrik</label>
@@ -233,9 +256,6 @@
                                         </div>
                                     </div>
 
-                                </div>
-
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nomor Mesin</label>
@@ -244,6 +264,10 @@
                                                 name="no_mesin">
                                         </div>
                                     </div>
+                                    
+                                </div>
+
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nomor BPKB </label>
@@ -253,9 +277,6 @@
                                         </div>
                                     </div>
 
-                                </div>
-
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nomor Polisi </label>
@@ -265,6 +286,11 @@
                                         </div>
                                     </div>
 
+
+                                </div>
+
+                                <div class="row">
+                                    
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nomor Rangka</label>
@@ -273,10 +299,6 @@
                                                 value="{{ $peralatan->no_rangka }}" name="no_rangka">
                                         </div>
                                     </div>
-
-                                </div>
-
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Keterangan 1</label>
@@ -286,6 +308,9 @@
                                         </div>
                                     </div>
 
+                                  
+                                </div>
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Harga Perolehan 1</label>
@@ -294,9 +319,7 @@
                                                 value="{{ $peralatan->harga_perolehan1 }}" name="harga_perolehan1">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Foto</label>
                                             <div class="row">

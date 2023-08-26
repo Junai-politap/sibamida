@@ -37,6 +37,11 @@ class Peralatan extends Model
         return $this->belongsTo(Bidang::class, 'id_bidang');
     }
 
+    public function Ruangan()
+    {
+        return $this->belongsTo(Ruangan::class, 'id_ruangan');
+    }
+
     public function Pegawai()
     {
         return $this->belongsTo(Pegawai::class, 'id_pegawai');
