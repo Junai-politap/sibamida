@@ -5,8 +5,12 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <a href="{{ url('opd/master/bangunan/create') }}" class="btn btn-primary float-right mb-10"> <span
-                                class="fa fa-plus"></span> Tambah Data</a>
+                        <div class="btn-group float-right mb-10">
+                            <a href="{{ url('opd/bangunan-export') }}" class="btn btn-success"> <span
+                                    class="fa fa-file-export"></span> Export Excel</a>
+                            <a href="{{ url('opd/master/bangunan/create') }}" class="btn btn-primary"> <span
+                                    class="fa fa-plus"></span> Tambah Data</a>
+                        </div>
                         <h4 class="card-title">
                             <strong>Master Data Aset Bangunan</strong>
                         </h4>
@@ -24,7 +28,7 @@
                                     <th class="text-center">Nama Penanggungjawab</th>
                                     <th class="text-center">Tahun Perolehan</th>
                                     <th class="text-center">Harga Perolehan</th>
-                                    
+
                                 </tr>
                             </thead>
                             <tbody>
