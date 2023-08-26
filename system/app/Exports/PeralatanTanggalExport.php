@@ -16,16 +16,20 @@ class PeralatanTanggalExport implements WithMapping, WithHeadings, FromQuery
     */
     protected $tahun_perolehan;
 
-    public function __construct($tahun_perolehan,)
+    protected $tahunMulai;
+    protected $tahunSelesai;
+
+    public function __construct($tahunMulai,$tahunSelesai)
     {
-        $this->tahun_perolehan = $tahun_perolehan;
+        $this->tahunMulai = $tahunMulai;
+        $this->tahunSelesai = $tahunSelesai;
     }
 
     public function query()
     {
         // Di sini Anda dapat menulis logika untuk mengambil data laporan berdasarkan tahun
         // Misalnya, menggunakan model atau data yang diperlukan
-        return Peralatan::query()->where('tahun_perolehan', [$this->tahun_perolehan]);
+        return Peralatan::query()->whereBetween('tahun_perolehan', [$this->tahunMulai,$this->tahunSelesai]);
     }
 
     public function map($peralatan): array

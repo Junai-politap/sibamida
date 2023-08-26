@@ -13,18 +13,20 @@ class BangunanTanggalExport implements WithMapping, WithHeadings, FromQuery
     /**
     * @return \Illuminate\Support\Collection
     */
-    protected $tahun_perolehan;
+    protected $tahunMulai;
+    protected $tahunSelesai;
 
-    public function __construct($tahun_perolehan,)
+    public function __construct($tahunMulai,$tahunSelesai)
     {
-        $this->tahun_perolehan = $tahun_perolehan;
+        $this->tahunMulai = $tahunMulai;
+        $this->tahunSelesai = $tahunSelesai;
     }
 
     public function query()
     {
         // Di sini Anda dapat menulis logika untuk mengambil data laporan berdasarkan tahun
         // Misalnya, menggunakan model atau data yang diperlukan
-        return Bangunan::query()->where('tahun_perolehan', [$this->tahun_perolehan]);
+        return Bangunan::query()->whereBetween('tahun_perolehan', [$this->tahunMulai,$this->tahunSelesai]);
     }
 
 

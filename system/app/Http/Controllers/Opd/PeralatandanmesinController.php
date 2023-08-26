@@ -190,6 +190,9 @@ class PeralatandanmesinController extends Controller
 
     public function downloadLaporan(Request $request)
     {
-        return Excel::download(new PeralatanTanggalExport($request->tahun_perolehan), 'laporan peralatan.xlsx');
+        $tahunMulai = $request->input('tahun_mulai');
+        $tahunSelesai = $request->input('tahun_selesai');
+
+        return Excel::download(new PeralatanTanggalExport($tahunMulai, $tahunSelesai), 'laporan peralatan.xlsx');
     }
 }
