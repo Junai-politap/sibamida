@@ -13,9 +13,12 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <a href="<?php echo e(url('opd/master/jembatan-jalan/create')); ?>" class="btn btn-primary float-right mb-10"> <span
-                                    class="fa fa-plus"></span> Tambah Data</a>
-                            <h3 class="card-title">Data Seluruh Assets</h3>
+                            <div class="btn-group float-right mb-10">
+                                <a href="<?php echo e(url('opd/jembatan-export')); ?>" class="btn btn-success"> <span class="fa fa-file-export"></span> Export Excel</a>
+                                <a href="<?php echo e(url('opd/master/jembatan-jalan/create')); ?>" class="btn btn-primary"> <span
+                                        class="fa fa-plus"></span> Tambah Data</a>
+                            </div>
+                            <h3 class="card-title">Master Data Aset Jembatan dan Jalan</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -27,16 +30,18 @@
                                         <th>Kategori</th>
                                         <th>Kode Assets</th>
                                         <th>Nama Assets</th>
+                                        <th>Tahun Perolehan</th>
+                                        <th>Harga Perolehan</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php $__currentLoopData = $list_jembatan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $jembatan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <?php if( Auth::guard('opd')->user()->id == $jembatan->id_opd): ?>
-                                        <tr>
-                                            <td><?php echo e($loop->iteration); ?></td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <?php if (isset($component)) { $__componentOriginaldf05ec2d539ccc47939751d83314ef26 = $component; } ?>
+                                        <?php if(Auth::guard('opd')->user()->id == $jembatan->id_opd): ?>
+                                            <tr>
+                                                <td><?php echo e($loop->iteration); ?></td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <?php if (isset($component)) { $__componentOriginaldf05ec2d539ccc47939751d83314ef26 = $component; } ?>
 <?php $component = App\View\Components\Button\InfoButton::resolve(['url' => 'opd/master/jembatan-jalan','id' => ''.e($jembatan->id).''] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('button.info-button'); ?>
 <?php if ($component->shouldRender()): ?>
@@ -51,7 +56,7 @@
 <?php $component = $__componentOriginaldf05ec2d539ccc47939751d83314ef26; ?>
 <?php unset($__componentOriginaldf05ec2d539ccc47939751d83314ef26); ?>
 <?php endif; ?>
-                                                    <?php if (isset($component)) { $__componentOriginalce5449c7668d717a9640b38f7a62eeb4 = $component; } ?>
+                                                        <?php if (isset($component)) { $__componentOriginalce5449c7668d717a9640b38f7a62eeb4 = $component; } ?>
 <?php $component = App\View\Components\Button\EditButton::resolve(['url' => 'opd/master/jembatan-jalan','id' => ''.e($jembatan->id).''] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('button.edit-button'); ?>
 <?php if ($component->shouldRender()): ?>
@@ -66,7 +71,7 @@
 <?php $component = $__componentOriginalce5449c7668d717a9640b38f7a62eeb4; ?>
 <?php unset($__componentOriginalce5449c7668d717a9640b38f7a62eeb4); ?>
 <?php endif; ?>
-                                                    <?php if (isset($component)) { $__componentOriginal021a61a9a840f36f9df15b806898218b = $component; } ?>
+                                                        <?php if (isset($component)) { $__componentOriginal021a61a9a840f36f9df15b806898218b = $component; } ?>
 <?php $component = App\View\Components\Button\DeleteButton::resolve(['url' => 'opd/master/jembatan-jalan','id' => ''.e($jembatan->id).''] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('button.delete-button'); ?>
 <?php if ($component->shouldRender()): ?>
@@ -81,12 +86,14 @@
 <?php $component = $__componentOriginal021a61a9a840f36f9df15b806898218b; ?>
 <?php unset($__componentOriginal021a61a9a840f36f9df15b806898218b); ?>
 <?php endif; ?>
-                                                </div>
-                                            </td>
-                                            <td><?php echo e($jembatan->kategori->nama_kategori); ?></td>
-                                            <td><?php echo e($jembatan->kode_aset); ?></td>
-                                            <td><?php echo e($jembatan->nama_aset); ?></td>
-                                        </tr>
+                                                    </div>
+                                                </td>
+                                                <td><?php echo e($jembatan->kategori->nama_kategori); ?></td>
+                                                <td><?php echo e($jembatan->kode_aset); ?></td>
+                                                <td><?php echo e($jembatan->nama_aset); ?></td>
+                                                <td><?php echo e($jembatan->tahun_perolehan); ?></td>
+                                                <td>Rp .<?php echo e($jembatan->harga_perolehan); ?></td>
+                                            </tr>
                                         <?php endif; ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </tbody>

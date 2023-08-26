@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Opd;
 
+use App\Exports\BangunanExport;
 use App\Http\Controllers\Controller;
 use App\Models\Bangunan;
 use App\Models\Kategori;
@@ -17,6 +18,8 @@ use Endroid\QrCode\Label\Alignment\LabelAlignmentCenter;
 use Endroid\QrCode\Label\Font\NotoSans;
 use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
 use Endroid\QrCode\Writer\PngWriter;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class BangunanController extends Controller
 {
@@ -38,27 +41,27 @@ class BangunanController extends Controller
     public function store(Request $request)
     {
         $bangunan = new Bangunan();
-        $bangunan->id_opd               = request('id_opd');
-        $bangunan->id_kategori          = request('id_kategori');
-        $bangunan->id_pegawai           = request('id_pegawai');
-        $bangunan->kode_barang          = request('kode_barang');
-        $bangunan->nama_barang          = request('nama_barang');
-        $bangunan->no_register          = request('no_register');
-        $bangunan->tahun_perolehan      = request('tahun_perolehan');
-        $bangunan->harga_perolehan      = request('harga_perolehan');
-        $bangunan->alamat               = request('alamat');
-        $bangunan->kecamatan            = request('kecamatan');
-        $bangunan->kelurahan_desa       = request('kelurahan_desa');
-        $bangunan->keterangan           = request('keterangan');
-        $bangunan->bidang               = request('bidang');
-        $bangunan->nama_sumber_dana     = request('nama_sumber_dana');
-        $bangunan->no_sppd              = request('no_sppd');
-        $bangunan->no_spk               = request('no_spk');
-        $bangunan->no_ba                = request('no_ba');
-        $bangunan->bertingkat           = request('bertingkat');
-        $bangunan->beton                = request('beton');       
-        $bangunan->kelompok             = request('kelompok');
-        $bangunan->urut_kelompok        = request('urut_kelompok');
+        $bangunan->id_opd = request('id_opd');
+        $bangunan->id_kategori = request('id_kategori');
+        $bangunan->id_pegawai = request('id_pegawai');
+        $bangunan->kode_barang = request('kode_barang');
+        $bangunan->nama_barang = request('nama_barang');
+        $bangunan->no_register = request('no_register');
+        $bangunan->tahun_perolehan = request('tahun_perolehan');
+        $bangunan->harga_perolehan = request('harga_perolehan');
+        $bangunan->alamat = request('alamat');
+        $bangunan->kecamatan = request('kecamatan');
+        $bangunan->kelurahan_desa = request('kelurahan_desa');
+        $bangunan->keterangan = request('keterangan');
+        $bangunan->bidang = request('bidang');
+        $bangunan->nama_sumber_dana = request('nama_sumber_dana');
+        $bangunan->no_sppd = request('no_sppd');
+        $bangunan->no_spk = request('no_spk');
+        $bangunan->no_ba = request('no_ba');
+        $bangunan->bertingkat = request('bertingkat');
+        $bangunan->beton = request('beton');
+        $bangunan->kelompok = request('kelompok');
+        $bangunan->urut_kelompok = request('urut_kelompok');
         $bangunan->handleUploadFoto();
         $bangunan->save();
 
@@ -70,7 +73,7 @@ class BangunanController extends Controller
         $data['bangunan'] = Bangunan::find($bangunan);
         $data['riwayat'] = Riwayat::where('id_aset', $bangunan)->get();
         $data['list_pegawai'] = Pegawai::all();
-        
+
         return view('opd.bangunan.show', $data);
     }
 
@@ -87,26 +90,26 @@ class BangunanController extends Controller
     public function update($bangunan)
     {
         $bangunan = Bangunan::find($bangunan);
-        $bangunan->id_kategori          = request('id_kategori');
-        $bangunan->id_pegawai           = request('id_pegawai');
-        $bangunan->kode_barang          = request('kode_barang');
-        $bangunan->nama_barang          = request('nama_barang');
-        $bangunan->no_register          = request('no_register');
-        $bangunan->tahun_perolehan      = request('tahun_perolehan');
-        $bangunan->harga_perolehan      = request('harga_perolehan');
-        $bangunan->alamat               = request('alamat');
-        $bangunan->kecamatan            = request('kecamatan');
-        $bangunan->kelurahan_desa       = request('kelurahan_desa');
-        $bangunan->keterangan           = request('keterangan');
-        $bangunan->bidang               = request('bidang');
-        $bangunan->nama_sumber_dana     = request('nama_sumber_dana');
-        $bangunan->no_sppd              = request('no_sppd');
-        $bangunan->no_spk               = request('no_spk');
-        $bangunan->no_ba                = request('no_ba');
-        $bangunan->bertingkat           = request('bertingkat');
-        $bangunan->beton                = request('beton');       
-        $bangunan->kelompok             = request('kelompok');
-        $bangunan->urut_kelompok        = request('urut_kelompok');
+        $bangunan->id_kategori = request('id_kategori');
+        $bangunan->id_pegawai = request('id_pegawai');
+        $bangunan->kode_barang = request('kode_barang');
+        $bangunan->nama_barang = request('nama_barang');
+        $bangunan->no_register = request('no_register');
+        $bangunan->tahun_perolehan = request('tahun_perolehan');
+        $bangunan->harga_perolehan = request('harga_perolehan');
+        $bangunan->alamat = request('alamat');
+        $bangunan->kecamatan = request('kecamatan');
+        $bangunan->kelurahan_desa = request('kelurahan_desa');
+        $bangunan->keterangan = request('keterangan');
+        $bangunan->bidang = request('bidang');
+        $bangunan->nama_sumber_dana = request('nama_sumber_dana');
+        $bangunan->no_sppd = request('no_sppd');
+        $bangunan->no_spk = request('no_spk');
+        $bangunan->no_ba = request('no_ba');
+        $bangunan->bertingkat = request('bertingkat');
+        $bangunan->beton = request('beton');
+        $bangunan->kelompok = request('kelompok');
+        $bangunan->urut_kelompok = request('urut_kelompok');
         $bangunan->handleUploadFoto();
         $bangunan->save();
 
@@ -147,9 +150,44 @@ class BangunanController extends Controller
     public function hapus(string $riwayat)
     {
         $riwayat = Riwayat::find($riwayat);
-        
+
         $riwayat->delete();
 
         return back()->with('danger', 'Data Berhasiil Dihapus');
     }
+
+    public function export()
+    {
+        return Excel::download(new BangunanExport, 'bangunan.xlsx');
+    }
+
+    // public function downloadLaporan(Request $request)
+    // {
+
+    //     // Di sini Anda dapat membuat logika untuk mengambil data laporan berdasarkan tanggal
+    //     // Misalnya, menggunakan model atau data yang diperlukan
+
+    //     // Generate Excel using Laravel Excel (PHPExcel)
+    //     return Excel::download(new BangunanExport($request->tahun_perolehan), 'laporan bangunan.xlsx');
+    // }
+
+    // public function downloadLaporan(Request $request)
+    // {
+    //     $tahunPerolehan = $request->input('tahun_perolehan');
+
+    //     // Di sini Anda dapat membuat logika untuk mengambil data laporan berdasarkan tanggal
+    //     // Misalnya, menggunakan model atau data yang diperlukan
+
+    //     // Generate PDF
+    //     $pdf = PDF::loadView('bangunan', [
+    //         'tahun_perolehan' => $tahunPerolehan,
+    //         // ... data laporan lainnya ...
+    //     ]);
+
+    //     // Nama file PDF yang akan didownload
+    //     $fileName = 'laporan bangunan' . now()->format('YmdHis') . '.pdf';
+
+    //     // Download PDF
+    //     return $pdf->download($fileName);
+    // }
 }

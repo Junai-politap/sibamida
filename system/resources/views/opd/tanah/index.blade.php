@@ -5,8 +5,11 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <a href="{{ url('opd/master/tanah/create') }}" class="btn btn-primary float-right mb-10"> <span
-                                class="fa fa-plus"></span> Tambah Data</a>
+                        <div class="btn-group float-right mb-10">
+                            <a href="{{ url('opd/tanah-export') }}" class="btn btn-success"> <span class="fa fa-file-export"></span> Export Excel</a>
+                            <a href="{{ url('opd/master/tanah/create') }}" class="btn btn-primary float-right mb-10"> <span
+                                    class="fa fa-plus"></span> Tambah Data</a>
+                        </div>
                         <h4 class="card-title">
                             <strong>Master Data Aset Tanah</strong>
                         </h4>
@@ -24,7 +27,7 @@
                                     <th class="text-center">Nama Penanggungjawab</th>
                                     <th class="text-center">Tahun Perolehan</th>
                                     <th class="text-center">Harga Perolehan</th>
-                                    
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -47,7 +50,7 @@
                                         <td class="">{{ $tanah->pegawai->nama }}</td>
                                         <td class="">{{ $tanah->tahun_perolehan }}</td>
                                         <td class="">Rp. {{ $tanah->harga }}</td>
-                                       
+
                                     </tr>
                                     @endif
                                 @endforeach

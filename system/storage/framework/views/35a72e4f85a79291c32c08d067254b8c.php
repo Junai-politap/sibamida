@@ -39,8 +39,7 @@
                             </div>
 
                             <div class="col-md-6 text-center">
-                                <?php echo QrCode::size(200)->generate('<?php echo e($jembatan->kode_aset); ?>'); ?>
-
+                                <div id="test"></div>
 
                             </div>
                         </div>
@@ -189,7 +188,7 @@
                                             <span class="fa fa-edit"></span>
                                         </button>
 
-                                        <a href="<?php echo e(url("opd/delete-riwayat/$riwayat->id")); ?>"
+                                        <a href="<?php echo e(url("opd/jembatan-jalan/delete-riwayat/$riwayat->id")); ?>"
                                             class="btn btn-danger"><i class="fa fa-trash"></i></a>
 
 
@@ -200,7 +199,7 @@
                                 <div class="card-body">
                                     <strong>Tanggal Mulai</strong>
                                     <p class="text-muted">
-                                        <?php echo e($riwayat->created_at->format('d F Y')); ?>
+                                        <?php echo e(date("Y-m-d", strtotime($riwayat->tanggal_mulai))); ?>
 
                                     </p>
                                     <hr>
@@ -228,7 +227,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <form action="<?php echo e(url('opd/kategori', $riwayat->id)); ?>" method="POST">
+                                    <form action="<?php echo e(url('opd/jembatan-jalan/update-riwayat', $riwayat->id)); ?>" method="POST">
                                         <div class="modal-body">
 
                                             <?php echo csrf_field(); ?>
@@ -240,10 +239,12 @@
                                                     <div class="col-sm-9">
                                                         <select name="id_pegawai" class="form-control">
                                                             <?php $__currentLoopData = $list_pegawai; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pegawai): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <?php if(Auth::guard('opd')->user()->id == $pegawai->id_opd): ?>
                                                                 <option
                                                                     <?php if($pegawai->id == $riwayat->id_pegawai): ?> selected <?php endif; ?>
                                                                     value="<?php echo e($pegawai->id); ?>">
                                                                     <?php echo e($pegawai->nama); ?></option>
+                                                                    <?php endif; ?>
                                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                         </select>
                                                     </div>
@@ -254,8 +255,8 @@
                                                         Tanggal Mulai
                                                     </label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="tanggal_mulai"
-                                                            value="<?php echo e($riwayat->tanggal_mulai); ?>">
+                                                        <input type="date" class="form-control" name="tanggal_mulai"
+                                                            value="<?php echo e(date("Y-m-d", strtotime($riwayat->tanggal_mulai))); ?>">
                                                     </div>
                                                 </div>
 
@@ -293,7 +294,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="<?php echo e(url('opd/riwayat')); ?>" method="post" enctype="multipart/form-data">
+                        <form action="<?php echo e(url('opd/jembatan-jalan/riwayat')); ?>" method="post" enctype="multipart/form-data">
                             <?php echo csrf_field(); ?>
                             <div class="row">
                                 <input type="text" value="<?php echo e($jembatan->id); ?>" name="id_aset" hidden>
@@ -334,6 +335,32 @@
             </div>
         </div>
     </section>
+
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script>
+        let 
+        
+        card = "Nama OPD: <?php echo e($jembatan->opd->nama_opd); ?>\r\n";
+        card += "Nama Penanggungjawab: <?php echo e($jembatan->pegawai->nama); ?>\r\n";
+        card += "Kategori Aset : <?php echo e($jembatan->kategori->nama_kategori); ?>\r\n";
+        card += "Kode Aset : <?php echo e($jembatan->kode_aset); ?>\r\n";
+        card += "Nama Aset : <?php echo e($jembatan->nama_aset); ?>\r\n";
+        card += "Nomor Register : <?php echo e($jembatan->no_register); ?>\r\n";
+        card += "Tahun Perolehan : <?php echo e($jembatan->tahun_perolehan); ?>\r\n";
+        card += "Harga Perolehan : Rp.<?php echo e($jembatan->harga_perolehan); ?>\r\n";
+        card += "Keterangan : <?php echo e($jembatan->keterangan); ?>\r\n";
+        card += "Alamat : <?php echo e($jembatan->alamat); ?>\r\n";
+        card += "Nama Kondisi : <?php echo e($jembatan->nama_kondisi); ?>\r\n";
+        card += "Sumber Dana : <?php echo e($jembatan->nama_sumber_dana); ?>\r\n";
+        card += "Nomor SPPD : <?php echo e($jembatan->no_sppd); ?>\r\n";
+        card += "Nomor SPK : <?php echo e($jembatan->no_spk); ?>\r\n";
+        card += "Nomor Berita Acara : <?php echo e($jembatan->no_ba); ?>\r\n";
+        card += "Tanggal Serah Terima : <?php echo e($jembatan->tanggal_serah_terima); ?>\r\n";
+        card += "Kontruksi : <?php echo e($jembatan->kontruksi); ?>\r\n";
+        card += "Panjang/Lebar/Luas : <?php echo e($jembatan->panjang); ?>/<?php echo e($jembatan->lebar); ?>/<?php echo e($jembatan->luas); ?>\r\n";
+        
+        new QRCode(document.getElementById("test"), card);
+    </script>
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__componentOriginal851cb6f5a7f89db41449dadedd8953e5)): ?>

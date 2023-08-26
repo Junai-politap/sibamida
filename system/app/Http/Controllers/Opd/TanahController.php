@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Opd;
 
+use App\Exports\TanahExport;
 use App\Http\Controllers\Controller;
 use App\Models\Kategori;
 use App\Models\Opd;
@@ -17,6 +18,7 @@ use Endroid\QrCode\Label\Alignment\LabelAlignmentCenter;
 use Endroid\QrCode\Label\Font\NotoSans;
 use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
 use Endroid\QrCode\Writer\PngWriter;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TanahController extends Controller
 {
@@ -80,7 +82,7 @@ class TanahController extends Controller
     public function update($tanah)
     {
         $tanah = Tanah::find($tanah);
-        
+
         $tanah->id_kategori          = request('id_kategori');
         $tanah->id_pegawai           = request('id_pegawai');
         $tanah->kode_barang          = request('kode_barang');
@@ -134,9 +136,14 @@ class TanahController extends Controller
     public function hapus(string $riwayat)
     {
         $riwayat = Riwayat::find($riwayat);
-        
+
         $riwayat->delete();
 
         return back()->with('danger', 'Data Berhasiil Dihapus');
+    }
+
+    public function export()
+    {
+        return Excel::download(new TanahExport, 'tanah.xlsx');
     }
 }

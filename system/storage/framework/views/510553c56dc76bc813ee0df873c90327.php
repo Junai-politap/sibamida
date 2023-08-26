@@ -39,8 +39,7 @@
                             </div>
 
                             <div class="col-md-6 text-center">
-                                <?php echo QrCode::size(200)->generate('<?php echo e($peralatan->kode_aset); ?>'); ?>
-
+                                <div id="test"></div>
 
                             </div>
                         </div>
@@ -174,7 +173,7 @@
                                 <div class="card-body">
                                     <strong>Tanggal Mulai</strong>
                                     <p class="text-muted">
-                                        <?php echo e($riwayat->created_at->format('d F Y')); ?>
+                                        <?php echo e(date("Y-m-d", strtotime($riwayat->tanggal_mulai))); ?>
 
                                     </p>
                                     <hr>
@@ -214,10 +213,12 @@
                                                     <div class="col-sm-9">
                                                         <select name="id_pegawai" class="form-control">
                                                             <?php $__currentLoopData = $list_pegawai; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pegawai): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <?php if(Auth::guard('opd')->user()->id == $pegawai->id_opd): ?>
                                                                 <option
                                                                     <?php if($pegawai->id == $riwayat->id_pegawai): ?> selected <?php endif; ?>
                                                                     value="<?php echo e($pegawai->id); ?>">
                                                                     <?php echo e($pegawai->nama); ?></option>
+                                                                    <?php endif; ?>
                                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                         </select>
                                                     </div>
@@ -228,8 +229,8 @@
                                                         Tanggal Mulai
                                                     </label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="tanggal_mulai"
-                                                            value="<?php echo e($riwayat->tanggal_mulai); ?>">
+                                                        <input type="date" class="form-control" name="tanggal_mulai"
+                                                            value="<?php echo e(date("Y-m-d", strtotime($riwayat->tanggal_mulai))); ?>">
                                                     </div>
                                                 </div>
 
@@ -308,6 +309,30 @@
             </div>
         </div>
     </section>
+
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script>
+        let 
+        
+        card = "Nama OPD: <?php echo e($peralatan->opd->nama_opd); ?>\r\n";
+        card += "Nama Penanggungjawab: <?php echo e($peralatan->pegawai->nama); ?>\r\n";
+        card += "Kategori Barang : <?php echo e($peralatan->kategori->nama_kategori); ?>\r\n";
+        card += "Kode Barang : <?php echo e($peralatan->kode_barang); ?>\r\n";
+        card += "Nama Barang : <?php echo e($peralatan->nama_barang); ?>\r\n";
+        card += "Nomor Register : <?php echo e($peralatan->no_register); ?>\r\n";
+        card += "Tahun Perolehan : <?php echo e($peralatan->tahun_perolehan); ?>\r\n";
+        card += "Harga Perolehan : <?php echo e($peralatan->harga_perolehan); ?>\r\n";
+        card += "Keterangan : <?php echo e($peralatan->keterangan); ?>\r\n";
+        card += "Alamat : <?php echo e($peralatan->alamat); ?>\r\n";
+        card += "Kecamatan : <?php echo e($peralatan->kecamatan); ?>\r\n";
+        card += "Kelurahan Desa : <?php echo e($peralatan->kelurahan_desa); ?>\r\n";
+        card += "Nomor SPPD : <?php echo e($peralatan->no_sppd); ?>\r\n";
+        card += "Nomor SPK : <?php echo e($peralatan->no_spk); ?>\r\n";
+        card += "Nomor Berita Acara : <?php echo e($peralatan->no_ba); ?>\r\n";
+        
+        
+        new QRCode(document.getElementById("test"), card);
+    </script>
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__componentOriginal851cb6f5a7f89db41449dadedd8953e5)): ?>
