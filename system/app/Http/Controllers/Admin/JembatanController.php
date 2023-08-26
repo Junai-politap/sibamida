@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Bidang;
 use App\Models\Jembatan;
 use App\Models\Kategori;
 use App\Models\Opd;
@@ -46,13 +47,14 @@ class JembatanController extends Controller
         $jembatan->id_opd               = request('id_opd');
         $jembatan->id_kategori          = request('id_kategori');
         $jembatan->id_pegawai           = request('id_pegawai');
+        $jembatan->id_bidang            = request('id_bidang');
         $jembatan->kode_aset            = request('kode_aset');
         $jembatan->nama_aset            = request('nama_aset');
         $jembatan->no_register          = request('no_register');
         $jembatan->tahun_perolehan      = request('tahun_perolehan');
         $jembatan->harga_perolehan      = request('harga_perolehan');
         $jembatan->keterangan           = request('keterangan');
-        $jembatan->alamat               = request('alamat');
+        $jembatan->alamat       = request('alamat');
         $jembatan->nama_kondisi         = request('nama_kondisi');
         $jembatan->nama_sumber_dana     = request('nama_sumber_dana');
         $jembatan->no_sppd              = request('no_sppd');
@@ -93,6 +95,7 @@ class JembatanController extends Controller
         $data['list_opd'] = Opd::all();
         $data['list_kategori'] = Kategori::all();
         $data['list_pegawai'] = Pegawai::all();
+        $data['list_bidang'] = Bidang::all();
         $data['jembatan'] = Jembatan::find($jembatan);
 
         return view('admin.jembatan.edit', $data);
@@ -106,13 +109,14 @@ class JembatanController extends Controller
         $jembatan->id_opd               = request('id_opd');
         $jembatan->id_kategori          = request('id_kategori');
         $jembatan->id_pegawai           = request('id_pegawai');
+        $jembatan->id_bidang            = request('id_bidang');
         $jembatan->kode_aset            = request('kode_aset');
         $jembatan->nama_aset            = request('nama_aset');
         $jembatan->no_register          = request('no_register');
         $jembatan->tahun_perolehan      = request('tahun_perolehan');
         $jembatan->harga_perolehan      = request('harga_perolehan');
         $jembatan->keterangan           = request('keterangan');
-        $jembatan->alamat               = request('alamat');
+        $jembatan->alamat       = request('alamat');
         $jembatan->nama_kondisi         = request('nama_kondisi');
         $jembatan->nama_sumber_dana     = request('nama_sumber_dana');
         $jembatan->no_sppd              = request('no_sppd');

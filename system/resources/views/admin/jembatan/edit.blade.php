@@ -45,23 +45,20 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="exampleInputText">Kode Aset</label>
-                                            <input type="text" class="form-control" name="kode_aset"
-                                                value="{{ $jembatan->kode_aset }}">
+                                            <label for="exampleInputText">Nama Bidang</label>
+                                            <select class="form-control" name="id_bidang">
+                                                @foreach ($list_bidang as $bidang)
+                                                    <option @if ($bidang->id == $jembatan->id_bidang) selected @endif
+                                                        value="{{ $bidang->id }}">
+                                                        {{ $bidang->nama_bidang }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="exampleInputText">Nama Aset</label>
-                                            <input type="text" class="form-control" name="nama_aset"
-                                                value="{{ $jembatan->nama_aset }}">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kategori Aset</label>
                                             <select class="form-control" name="id_kategori">
@@ -74,7 +71,23 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Kode Aset</label>
+                                            <input type="text" class="form-control" name="kode_aset"
+                                                value="{{ $jembatan->kode_aset }}">
+                                        </div>
+                                    </div>
 
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Nama Aset</label>
+                                            <input type="text" class="form-control" name="nama_aset"
+                                                value="{{ $jembatan->nama_aset }}">
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">

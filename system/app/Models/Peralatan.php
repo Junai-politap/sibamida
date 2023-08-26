@@ -27,6 +27,16 @@ class Peralatan extends Model
         return $this->belongsTo(Opd::class, 'id_opd');
     }
 
+    public function Kondisi()
+    {
+        return $this->belongsTo(Kondisi::class, 'id_kondisi');
+    }
+
+    public function Bidang()
+    {
+        return $this->belongsTo(Bidang::class, 'id_bidang');
+    }
+
     public function Pegawai()
     {
         return $this->belongsTo(Pegawai::class, 'id_pegawai');

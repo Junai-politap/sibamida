@@ -264,41 +264,40 @@
 
         </div>
     </section>
-
+    @push('script')
+    <script>
+        function gantiOpd(id) {
+            $.get("/api/opd/" + id, function(result) {
+                result = JSON.parse(result)
+                option = ""
+                for (item of result) {
+                    option += `<option value="${item.id}">${item.nama}</option>`;
+                    console.log(item.nama)
+                }
+                $("#pegawai").html(option)
+            });
+    
+            $.get("/api/opd-kategori/" + id, function(result) {
+                result = JSON.parse(result)
+                option = ""
+                for (item of result) {
+                    option += `<option value="${item.id}">${item.nama_kategori}</option>`;
+                    console.log(item.nama)
+                }
+                $("#kategori").html(option)
+            });
+    
+            $.get("/api/opd-bidang/" + id, function(result) {
+                result = JSON.parse(result)
+                option = ""
+                for (item of result) {
+                    option += `<option value="${item.id}">${item.nama_bidang}</option>`;
+                    console.log(item.nama)
+                }
+                $("#bidang").html(option)
+            });
+        }
+    </script>
+    @endpush
    
 </x-admin>
-@push('script')
-<script>
-    function gantiOpd(id) {
-        $.get("/api/opd/" + id, function(result) {
-            result = JSON.parse(result)
-            option = ""
-            for (item of result) {
-                option += `<option value="${item.id}">${item.nama}</option>`;
-                console.log(item.nama)
-            }
-            $("#pegawai").html(option)
-        });
-
-        $.get("/api/opd-kategori/" + id, function(result) {
-            result = JSON.parse(result)
-            option = ""
-            for (item of result) {
-                option += `<option value="${item.id}">${item.nama_kategori}</option>`;
-                console.log(item.nama)
-            }
-            $("#kategori").html(option)
-        });
-
-        $.get("/api/opd-bidang/" + id, function(result) {
-            result = JSON.parse(result)
-            option = ""
-            for (item of result) {
-                option += `<option value="${item.id}">${item.nama_bidang}</option>`;
-                console.log(item.nama)
-            }
-            $("#bidang").html(option)
-        });
-    }
-</script>
-@endpush

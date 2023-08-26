@@ -39,6 +39,17 @@
                                             <td>Nama Penanggung Jawab</td>
                                             <td> : {{ $bangunan->pegawai->nama }}</td>
                                         </tr>
+
+                                        <tr>
+                                            <td>Nama Bidang</td>
+                                            <td> :
+                                                @isset($bangunan->bidang->nama_bidang )
+                                                {{ $bangunan->bidang->nama_bidang }}
+                                                @else
+                                                <strong>Belum Ada Nama Bidang</strong>
+                                                @endisset
+                                            </td>
+                                        </tr>
                                         <tr>
                                             <td>Kode Barang</td>
                                             <td> : {{ $bangunan->kode_barang }}</td>
@@ -67,7 +78,7 @@
                                             <td>Keterangan</td>
                                             <td> : {{ $bangunan->keterangan }}</td>
                                         </tr>
-                                        
+
                                         <tr>
                                             <td>Nama Sumber Dana</td>
                                             <td> : {{ $bangunan->nama_sumber_dana }}</td>
@@ -88,8 +99,8 @@
                                             <td>Bertingkat</td>
                                             <td> : {{ $bangunan->bertingkat }}</td>
                                         </tr>
-                                        
-                                        
+
+
                                         <tr>
                                             <td>Beton</td>
                                             <td> : {{ $bangunan->beton }}</td>
@@ -108,7 +119,7 @@
 
                         </div>
 
-                    </div> 
+                    </div>
 
                 </div>
 
@@ -147,7 +158,7 @@
                                 <div class="card-body">
                                     <strong>Tanggal Mulai</strong>
                                     <p class="text-muted">
-                                        {{date("Y-m-d", strtotime($riwayat->tanggal_mulai)) }}
+                                        {{ date('Y-m-d', strtotime($riwayat->tanggal_mulai)) }}
                                     </p>
                                     <hr>
                                     <strong>Nama Penanggung Jawab</strong>
@@ -156,7 +167,7 @@
                                     <strong>Keterangan</strong>
                                     <p class="text-muted">
                                     <p>
-                                        {!! nl2br($riwayat->keterangan )!!}
+                                        {!! nl2br($riwayat->keterangan) !!}
                                     </p>
                                     </p>
                                     <hr>
@@ -173,7 +184,8 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <form action="{{ url('admin/bangunan/update-riwayat', $riwayat->id) }}" method="POST">
+                                    <form action="{{ url('admin/bangunan/update-riwayat', $riwayat->id) }}"
+                                        method="POST">
                                         <div class="modal-body">
 
                                             @csrf
@@ -202,7 +214,7 @@
                                                     </label>
                                                     <div class="col-sm-9">
                                                         <input type="date" class="form-control" name="tanggal_mulai"
-                                                            value="{{date("Y-m-d", strtotime($riwayat->tanggal_mulai)) }}">
+                                                            value="{{ date('Y-m-d', strtotime($riwayat->tanggal_mulai)) }}">
                                                     </div>
                                                 </div>
 
@@ -240,7 +252,8 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="{{ url('admin/bangunan/riwayat') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ url('admin/bangunan/riwayat') }}" method="post"
+                            enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <input type="text" value="{{ $bangunan->id }}" name="id_aset" hidden>
@@ -283,11 +296,12 @@
 
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
     <script>
-        let 
-        
+        let
+
         card = "Nama OPD: {{ $bangunan->opd->nama_opd }}\r\n";
         card += "Nama Penanggungjawab: {{ $bangunan->pegawai->nama }}\r\n";
         card += "Kategori Barang : {{ $bangunan->kategori->nama_kategori }}\r\n";
+        card += "Nama Bidang : @isset($bangunan->bidang->nama_bidang ){{ $bangunan->bidang->nama_bidang }}@else Belum Ada Nama Bidang @endisset\r\n";
         card += "Kode Barang : {{ $bangunan->kode_barang }}\r\n";
         card += "Nama Barang : {{ $bangunan->nama_barang }}\r\n";
         card += "Nomor Register : {{ $bangunan->no_register }}\r\n";
@@ -300,8 +314,7 @@
         card += "Nomor SPPD : {{ $bangunan->no_sppd }}\r\n";
         card += "Nomor SPK : {{ $bangunan->no_spk }}\r\n";
         card += "Nomor Berita Acara : {{ $bangunan->no_ba }}\r\n";
-        
+
         new QRCode(document.getElementById("test"), card);
-      
     </script>
 </x-admin>

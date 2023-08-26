@@ -67,6 +67,18 @@
                                             <td>Nama Penanggung Jawab</td>
                                             <td> : <?php echo e($jembatan->pegawai->nama); ?></td>
                                         </tr>
+
+                                        <tr>
+                                            <td>Nama Bidang</td>
+                                            <td> : 
+                                                <?php if(isset($jembatan->bidang->nama_bidang )): ?>
+                                                <?php echo e($jembatan->bidang->nama_bidang); ?>
+
+                                                <?php else: ?>
+                                                <strong>Belum Ada Nama Bidang</strong>
+                                                <?php endif; ?>    
+                                            </td>
+                                        </tr>
                                         <tr>
                                             <td>Kode Aset</td>
                                             <td> : <?php echo e($jembatan->kode_aset); ?></td>
@@ -352,6 +364,7 @@
         
         card = "Nama OPD: <?php echo e($jembatan->opd->nama_opd); ?>\r\n";
         card += "Nama Penanggungjawab: <?php echo e($jembatan->pegawai->nama); ?>\r\n";
+        card += "Nama Bidang: <?php if(isset($bangunan->bidang->nama_bidang )): ?><?php echo e($bangunan->bidang->nama_bidang); ?><?php else: ?> Belum Ada Nama Bidang <?php endif; ?>\r\n";
         card += "Kategori Aset : <?php echo e($jembatan->kategori->nama_kategori); ?>\r\n";
         card += "Kode Aset : <?php echo e($jembatan->kode_aset); ?>\r\n";
         card += "Nama Aset : <?php echo e($jembatan->nama_aset); ?>\r\n";

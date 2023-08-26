@@ -39,6 +39,15 @@
                                     <h3 class="title">
                                         {{ $peralatan->nama_barang }}
                                     </h3>
+
+                                    <h3 style="font-size: 120%; margin-top: -2%">
+                                        Bidang 
+                                        @isset($peralatan->bidang->nama_bidang )
+                                                {{ $peralatan->bidang->nama_bidang }}
+                                                @else
+                                                <strong>DATA TIDAK ADA NAMA BIDANG</strong>
+                                                @endisset
+                                    </h3>
                                     <div class="post-meta">
                                         <ul>
                                             <li>
@@ -72,9 +81,21 @@
                                                             <td style="width: 40%">Merk Barang</td>
                                                             <td> : {{ $peralatan->merk }}</td>
                                                         </tr>
+
+                                                        <tr>
+                                                            <td style="width: 40%">Kondisi Barang</td>
+                                                            <td> : 
+                                                                @isset($peralatan->kondisi->nama_kondisi )
+                                                                {{ $peralatan->kondisi->nama_kondisi }}
+                                                                @else
+                                                                <strong>TIDAK ADA KONDISI</strong>
+                                                                @endisset    
+                                                            </td>
+                                                        </tr>
+
                                                         <tr>
                                                             <td style="width: 40%">Tahun Perolehan</td>
-                                                            <td> : {{ $peralatan->harga_perolehan }}</td>
+                                                            <td> : {{ $peralatan->tahun_perolehan }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td style="width: 40%">Keterangan</td>
@@ -173,18 +194,29 @@
         card = "Nama OPD: {{ $peralatan->opd->nama_opd }}\r\n";
         card += "Nama Penanggungjawab: {{ $peralatan->pegawai->nama }}\r\n";
         card += "Kategori Barang : {{ $peralatan->kategori->nama_kategori }}\r\n";
+        card += "Nama Bidang: @isset($peralatan->bidang->nama_bidang ){{ $peralatan->bidang->nama_bidang }}@else TIDAK ADA NAMA BIDANG @endisset\r\n";
         card += "Kode Barang : {{ $peralatan->kode_barang }}\r\n";
         card += "Nama Barang : {{ $peralatan->nama_barang }}\r\n";
         card += "Nomor Register : {{ $peralatan->no_register }}\r\n";
         card += "Tahun Perolehan : {{ $peralatan->tahun_perolehan }}\r\n";
-        card += "Harga Perolehan : {{ $peralatan->harga_perolehan }}\r\n";
+        card += "Harga Perolehan : Rp. {{ $peralatan->harga_perolehan }}\r\n";
         card += "Keterangan : {{ $peralatan->keterangan }}\r\n";
-        card += "Alamat : {{ $peralatan->alamat }}\r\n";
-        card += "Kecamatan : {{ $peralatan->kecamatan }}\r\n";
-        card += "Kelurahan Desa : {{ $peralatan->kelurahan_desa }}\r\n";
         card += "Nomor SPPD : {{ $peralatan->no_sppd }}\r\n";
         card += "Nomor SPK : {{ $peralatan->no_spk }}\r\n";
         card += "Nomor Berita Acara : {{ $peralatan->no_ba }}\r\n";
+        card += "Tanggal Serah Terima : {{ $peralatan->tanggal_serah_terima }}\r\n";
+        card += "Merk : {{ $peralatan->merk }}\r\n";
+        card += "Kondisi: @isset($peralatan->kondisi->nama_kondisi ){{ $peralatan->kondisi->nama_kondisi }}@else TIDAK ADA KONDISI @endisset\r\n";
+        card += "Ukuran : {{ $peralatan->ukuran }}\r\n";
+        card += "Nomor Pabrik : {{ $peralatan->no_pabrik }}\r\n";
+        card += "Nomor Mesin : {{ $peralatan->no_mesin }}\r\n";
+        card += "Nomor BPKB : {{ $peralatan->no_bpkb }}\r\n";
+        card += "Nomor Polisi : {{ $peralatan->no_polisi }}\r\n";
+        card += "Nomor Rangka : {{ $peralatan->no_rangka }}\r\n";
+        card += "Keterangan 1 : {{ $peralatan->keterangan1 }}\r\n";
+        card += "Ekstrakomtable : {{ $peralatan->ekstrakomtable }}\r\n";
+        card += "Kelompok : {{ $peralatan->kelompok }}\r\n";
+        card += "Harga Perolehan 1 : Rp. {{ $peralatan->harga_perolehan1 }}\r\n";  
         
         
         new QRCode(document.getElementById("test"), card);

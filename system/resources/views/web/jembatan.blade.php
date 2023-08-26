@@ -53,6 +53,7 @@
                                         <th class="text-center">Kode Aset</th>
                                         <th class="text-center">Nama Aset</th>
                                         <th class="text-center">Nama Penanggungjawab</th>
+                                        <th class="text-center">Harga Perolehan</th>
                                         <th class="text-center">Aksi</th>
 
                                     </tr>
@@ -64,6 +65,7 @@
                                             <td class="text-left"> {{ $jembatan->kode_aset }}</td>
                                             <td class="">{{ $jembatan->nama_aset }}</td>
                                             <td class="">{{ $jembatan->pegawai->nama }}</td>
+                                            <td class="">Rp. {{ $jembatan->harga_perolehan }}</td>
                                             <td class="text-center">
 
 
@@ -92,7 +94,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{ url("jembatan/$jembatan->id_opd") }}/filter" method="POST" enctype="multipart/form-data">
+                <form action="{{ url("jembatan/$jembatan->id_opd") }}/filter-jembatan" method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
                         @csrf
                         <div class="card-body">

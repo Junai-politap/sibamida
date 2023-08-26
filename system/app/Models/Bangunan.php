@@ -33,6 +33,10 @@ class Bangunan extends Model
         return $this->belongsTo(Pegawai::class, 'id_pegawai');
     }
 
+    public function Bidang()
+    {
+        return $this->belongsTo(Bidang::class, 'id_bidang');
+    }
 
 
     function handleUploadFoto()

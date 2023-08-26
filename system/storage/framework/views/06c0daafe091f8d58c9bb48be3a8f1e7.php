@@ -57,6 +57,17 @@
                                             <td> : <?php echo e($peralatan->kategori->nama_kategori); ?></td>
                                         </tr>
                                         <tr>
+                                            <td>Nama Bidang</td>
+                                            <td> : 
+                                                <?php if(isset($peralatan->bidang->nama_bidang )): ?>
+                                                <?php echo e($peralatan->bidang->nama_bidang); ?>
+
+                                                <?php else: ?>
+                                                <strong>DATA TIDAK ADA NAMA BIDANG</strong>
+                                                <?php endif; ?>
+                                            </td>
+                                        </tr>
+                                        <tr>
                                             <td>Nama Penanggung Jawab</td>
                                             <td> : <?php echo e($peralatan->pegawai->nama); ?></td>
                                         </tr>
@@ -81,8 +92,19 @@
                                             <td> : <?php echo e($peralatan->merk); ?></td>
                                         </tr>
                                         <tr>
+                                            <td>Kondisi Barang</td>
+                                            <td> : 
+                                                <?php if(isset($peralatan->kondisi->nama_kondisi )): ?>
+                                                <?php echo e($peralatan->kondisi->nama_kondisi); ?>
+
+                                                <?php else: ?>
+                                                <strong>TIDAK ADA KONDISI</strong>
+                                                <?php endif; ?>
+                                            </td>
+                                        </tr>
+                                        <tr>
                                             <td>Tahun Perolehan</td>
-                                            <td> : <?php echo e($peralatan->harga_perolehan); ?></td>
+                                            <td> : <?php echo e($peralatan->tahun_perolehan); ?></td>
                                         </tr>
                                         <tr>
                                             <td>Keterangan</td>
@@ -319,19 +341,29 @@
         card = "Nama OPD: <?php echo e($peralatan->opd->nama_opd); ?>\r\n";
         card += "Nama Penanggungjawab: <?php echo e($peralatan->pegawai->nama); ?>\r\n";
         card += "Kategori Barang : <?php echo e($peralatan->kategori->nama_kategori); ?>\r\n";
+        card += "Nama Bidang: <?php if(isset($peralatan->bidang->nama_bidang )): ?><?php echo e($peralatan->bidang->nama_bidang); ?><?php else: ?> TIDAK ADA NAMA BIDANG <?php endif; ?>\r\n";
         card += "Kode Barang : <?php echo e($peralatan->kode_barang); ?>\r\n";
         card += "Nama Barang : <?php echo e($peralatan->nama_barang); ?>\r\n";
         card += "Nomor Register : <?php echo e($peralatan->no_register); ?>\r\n";
         card += "Tahun Perolehan : <?php echo e($peralatan->tahun_perolehan); ?>\r\n";
-        card += "Harga Perolehan : <?php echo e($peralatan->harga_perolehan); ?>\r\n";
+        card += "Harga Perolehan : Rp. <?php echo e($peralatan->harga_perolehan); ?>\r\n";
         card += "Keterangan : <?php echo e($peralatan->keterangan); ?>\r\n";
-        card += "Alamat : <?php echo e($peralatan->alamat); ?>\r\n";
-        card += "Kecamatan : <?php echo e($peralatan->kecamatan); ?>\r\n";
-        card += "Kelurahan Desa : <?php echo e($peralatan->kelurahan_desa); ?>\r\n";
         card += "Nomor SPPD : <?php echo e($peralatan->no_sppd); ?>\r\n";
         card += "Nomor SPK : <?php echo e($peralatan->no_spk); ?>\r\n";
         card += "Nomor Berita Acara : <?php echo e($peralatan->no_ba); ?>\r\n";
-        
+        card += "Tanggal Serah Terima : <?php echo e($peralatan->tanggal_serah_terima); ?>\r\n";
+        card += "Merk : <?php echo e($peralatan->merk); ?>\r\n";
+        card += "Kondisi: <?php if(isset($peralatan->kondisi->nama_kondisi )): ?><?php echo e($peralatan->kondisi->nama_kondisi); ?><?php else: ?> TIDAK ADA KONDISI <?php endif; ?>\r\n";
+        card += "Ukuran : <?php echo e($peralatan->ukuran); ?>\r\n";
+        card += "Nomor Pabrik : <?php echo e($peralatan->no_pabrik); ?>\r\n";
+        card += "Nomor Mesin : <?php echo e($peralatan->no_mesin); ?>\r\n";
+        card += "Nomor BPKB : <?php echo e($peralatan->no_bpkb); ?>\r\n";
+        card += "Nomor Polisi : <?php echo e($peralatan->no_polisi); ?>\r\n";
+        card += "Nomor Rangka : <?php echo e($peralatan->no_rangka); ?>\r\n";
+        card += "Keterangan 1 : <?php echo e($peralatan->keterangan1); ?>\r\n";
+        card += "Ekstrakomtable : <?php echo e($peralatan->ekstrakomtable); ?>\r\n";
+        card += "Kelompok : <?php echo e($peralatan->kelompok); ?>\r\n";
+        card += "Harga Perolehan 1 : Rp. <?php echo e($peralatan->harga_perolehan1); ?>\r\n";       
         
         new QRCode(document.getElementById("test"), card);
     </script>

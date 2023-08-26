@@ -45,6 +45,17 @@
                                             <td>Nama Penanggung Jawab</td>
                                             <td> : {{ $jembatan->pegawai->nama }}</td>
                                         </tr>
+
+                                        <tr>
+                                            <td>Nama Bidang</td>
+                                            <td> : 
+                                                @isset($jembatan->bidang->nama_bidang )
+                                                {{ $jembatan->bidang->nama_bidang }}
+                                                @else
+                                                <strong>Belum Ada Nama Bidang</strong>
+                                                @endisset    
+                                            </td>
+                                        </tr>
                                         <tr>
                                             <td>Kode Aset</td>
                                             <td> : {{ $jembatan->kode_aset }}</td>
@@ -326,6 +337,7 @@
         
         card = "Nama OPD: {{ $jembatan->opd->nama_opd }}\r\n";
         card += "Nama Penanggungjawab: {{ $jembatan->pegawai->nama }}\r\n";
+        card += "Nama Bidang: @isset($jembatan->bidang->nama_bidang ){{ $jembatan->bidang->nama_bidang }}@else Belum Ada Nama Bidang @endisset\r\n";
         card += "Kategori Aset : {{ $jembatan->kategori->nama_kategori }}\r\n";
         card += "Kode Aset : {{ $jembatan->kode_aset }}\r\n";
         card += "Nama Aset : {{ $jembatan->nama_aset }}\r\n";
