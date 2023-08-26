@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Opd;
 
+use App\Exports\JembatanExport;
 use App\Http\Controllers\Controller;
 use App\Models\Jembatan;
 use App\Models\Kategori;
@@ -16,6 +17,7 @@ use Endroid\QrCode\Label\Alignment\LabelAlignmentCenter;
 use Endroid\QrCode\Label\Font\NotoSans;
 use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
 use Endroid\QrCode\Writer\PngWriter;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 class JembatandanjalanController extends Controller
@@ -89,7 +91,7 @@ class JembatandanjalanController extends Controller
         $data['kategori'] = Kategori::all();
         $data['list_pegawai'] = Pegawai::all();
         $data['riwayat'] = Riwayat::where('id_aset', $jembatan)->get();
-        
+
         return view('opd.jembatan.show', $data);
     }
 
@@ -189,5 +191,10 @@ class JembatandanjalanController extends Controller
         $riwayat->delete();
 
         return back()->with('danger', 'Data Berhasiil Dihapus');
+    }
+
+    public function export()
+    {
+        return Excel::download(new JembatanExport, 'jembatan.xlsx');
     }
 }

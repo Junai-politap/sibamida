@@ -13,9 +13,12 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <a href="<?php echo e(url('opd/master/jembatan-jalan/create')); ?>" class="btn btn-primary float-right mb-10"> <span
-                                    class="fa fa-plus"></span> Tambah Data</a>
-                            <h3 class="card-title">Data Seluruh Assets</h3>
+                            <div class="btn-group float-right mb-10">
+                                <a href="<?php echo e(url('opd/jembatan-export')); ?>" class="btn btn-success"> <span class="fa fa-file-export"></span> Export Excel</a>
+                                <a href="<?php echo e(url('opd/master/jembatan-jalan/create')); ?>" class="btn btn-primary"> <span
+                                        class="fa fa-plus"></span> Tambah Data</a>
+                            </div>
+                            <h3 class="card-title">Master Data Aset Jembatan dan Jalan</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -27,6 +30,8 @@
                                         <th>Kategori</th>
                                         <th>Kode Assets</th>
                                         <th>Nama Assets</th>
+                                        <th>Tahun Perolehan</th>
+                                        <th>Harga Perolehan</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -86,6 +91,8 @@
                                             <td><?php echo e($jembatan->kategori->nama_kategori); ?></td>
                                             <td><?php echo e($jembatan->kode_aset); ?></td>
                                             <td><?php echo e($jembatan->nama_aset); ?></td>
+                                            <td><?php echo e($jembatan->tahun_perolehan); ?></td>
+                                            <td>Rp .<?php echo e($jembatan->harga_perolehan); ?></td>
                                         </tr>
                                         <?php endif; ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

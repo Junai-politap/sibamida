@@ -39,12 +39,7 @@
 
 <body>
 
-    <div class="preloader">
-        <div class="loader">
-            <div class="pre-shadow"></div>
-            <div class="pre-box"></div>
-        </div>
-    </div>
+    
 
 
     <?php if (isset($component)) { $__componentOriginal7a80e1acc367615cfc529160821a71d0 = $component; } ?>
@@ -127,7 +122,7 @@
     <script src="<?php echo e(url('public/admin')); ?>/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="<?php echo e(url('public/admin')); ?>/plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="<?php echo e(url('public/admin')); ?>/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-
+    <?php echo $__env->yieldPushContent('script'); ?>
     <script>
         $(function() {
             $('.summernote').summernote({
