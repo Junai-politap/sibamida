@@ -72,7 +72,7 @@
                                             <td class="text-center"><?php echo e($loop->iteration); ?></td>
                                             <td class="text-left"> <?php echo e($jembatan->kode_aset); ?></td>
                                             <td class=""><?php echo e($jembatan->nama_aset); ?></td>
-                                            <td class=""><?php echo e($jembatan->pegawai->nama); ?></td>
+                                            <td class=""><?php echo e($jembatan->pegawai->jabatan); ?></td>
                                             <td class="">Rp. <?php echo e($jembatan->harga_perolehan); ?></td>
                                             <td class=""><?php echo e($jembatan->keterangan); ?></td>
                                             <td class="text-center">

@@ -65,7 +65,7 @@
                                             <td class="text-center">{{ $loop->iteration }}</td>
                                             <td class="text-left"> {{ $jembatan->kode_aset }}</td>
                                             <td class="">{{ $jembatan->nama_aset }}</td>
-                                            <td class="">{{ $jembatan->pegawai->nama }}</td>
+                                            <td class="">{{ $jembatan->pegawai->jabatan }}</td>
                                             <td class="">Rp. {{ $jembatan->harga_perolehan }}</td>
                                             <td class="">{{ $jembatan->keterangan }}</td>
                                             <td class="text-center">
