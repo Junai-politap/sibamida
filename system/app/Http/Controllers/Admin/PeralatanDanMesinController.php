@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Bangunan;
+use App\Models\Bidang;
 use App\Models\Kategori;
+use App\Models\Kondisi;
 use App\Models\Opd;
 use App\Models\Pegawai;
 use App\Models\Peralatan;
@@ -21,11 +23,12 @@ use Endroid\QrCode\Writer\PngWriter;
 
 class PeralatanDanMesinController extends Controller
 {
-    
+
     public function index()
     {
-       
+
         $data['list_peralatan'] = Peralatan::orderBy('tahun_perolehan', 'DESC')->get();
+        $data['list_opd'] = Opd::all();
         return view('admin.peralatan-mesin.index', $data);
     }
 
@@ -35,20 +38,21 @@ class PeralatanDanMesinController extends Controller
         $data['list_pegawai'] = Pegawai::all();
         $data['list_kategori'] = Kategori::all();
         return view('admin.peralatan-mesin.create', $data);
-
     }
 
-    
+
     public function store(Request $request)
     {
         $peralatan = new Peralatan();
         $peralatan->id_opd = request('id_opd');
         $peralatan->id_kategori = request('id_kategori');
         $peralatan->id_pegawai = request('id_pegawai');
+        $peralatan->id_bidang = request('id_bidang');
         $peralatan->kode_barang = request('kode_barang');
         $peralatan->nama_barang = request('nama_barang');
         $peralatan->no_register = request('no_register');
         $peralatan->merk = request('merk');
+        $peralatan->id_kondisi = request('id_kondisi');
         $peralatan->tahun_perolehan = request('tahun_perolehan');
         $peralatan->harga_perolehan = request('harga_perolehan');
         $peralatan->keterangan = request('keterangan');
@@ -72,7 +76,7 @@ class PeralatanDanMesinController extends Controller
         return redirect('admin/master/peralatan-mesin')->with('success', 'Data Berhasil Disimpan');
     }
 
-   
+
     public function show(string $peralatan)
     {
         $data['peralatan'] = Peralatan::find($peralatan);
@@ -85,27 +89,31 @@ class PeralatanDanMesinController extends Controller
         return view('admin.peralatan-mesin.show', $data);
     }
 
-   
+
     public function edit(string $peralatan)
     {
         $data['peralatan'] = Peralatan::find($peralatan);
         $data['list_opd'] = Opd::all();
         $data['list_pegawai'] = Pegawai::all();
         $data['list_kategori'] = Kategori::all();
+        $data['list_bidang'] = Bidang::all();
+        $data['list_kondisi'] = Kondisi::all();
         return view('admin.peralatan-mesin.edit', $data);
     }
 
-    
+
     public function update($peralatan)
     {
         $peralatan = Peralatan::find($peralatan);
         $peralatan->id_opd = request('id_opd');
         $peralatan->id_pegawai = request('id_pegawai');
         $peralatan->id_kategori = request('id_kategori');
+        $peralatan->id_bidang = request('id_bidang');
         $peralatan->kode_barang = request('kode_barang');
         $peralatan->nama_barang = request('nama_barang');
         $peralatan->no_register = request('no_register');
         $peralatan->merk = request('merk');
+        $peralatan->id_kondisi = request('id_kondisi');
         $peralatan->tahun_perolehan = request('tahun_perolehan');
         $peralatan->harga_perolehan = request('harga_perolehan');
         $peralatan->keterangan = request('keterangan');
@@ -129,15 +137,13 @@ class PeralatanDanMesinController extends Controller
         return redirect('admin/master/peralatan-mesin')->with('success', 'Data Berhasil Diedit');
     }
 
-    
+
     public function destroy(string $peralatan)
     {
-        $peralatan = Peralatan::find($peralatan);
-        $peralatan->handleDelete();
-
+        Peralatan::destroy($peralatan);
         return back()->with('danger', 'Data Berhasil Di Hapus');
     }
-    
+
     public function riwayat(Request $request)
     {
         $jembatan = new Riwayat();
@@ -165,9 +171,19 @@ class PeralatanDanMesinController extends Controller
     public function hapus(string $riwayat)
     {
         $riwayat = Riwayat::find($riwayat);
-        
+
         $riwayat->delete();
 
         return back()->with('danger', 'Data Berhasiil Dihapus');
+    }
+
+    public function storeKondisi()
+    {
+        $kondisi = new Kondisi();
+        $kondisi->id_opd = request('id_opd');
+        $kondisi->nama_kondisi = request('nama_kondisi');
+        $kondisi->save();
+
+        return back()->with('success', 'Data Berhasil Di Simpan');
     }
 }

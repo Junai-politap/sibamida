@@ -41,7 +41,7 @@
                                     </h3>
 
                                     <h3 style="font-size: 120%; margin-top: -2%">
-                                        Bidang {{ $bangunan->bidang }}
+                                        Bidang {{ $bangunan->bidang->nama_bidang }}
                                     </h3>
                                     <div class="post-meta">
                                         <ul>
@@ -185,9 +185,9 @@
         card = "Nama OPD: {{ $bangunan->opd->nama_opd }}\r\n";
         card += "Nama Penanggungjawab: {{ $bangunan->pegawai->nama }}\r\n";
         card += "Kategori Barang : {{ $bangunan->kategori->nama_kategori }}\r\n";
+        card += "Nama Bidang : {{ $bangunan->bidang->nama_bidang }}\r\n";
         card += "Kode Barang : {{ $bangunan->kode_barang }}\r\n";
         card += "Nama Barang : {{ $bangunan->nama_barang }}\r\n";
-        card += "Nama Bidang : {{ $bangunan->bidang }}\r\n";
         card += "Nomor Register : {{ $bangunan->no_register }}\r\n";
         card += "Tahun Perolehan : {{ $bangunan->tahun_perolehan }}\r\n";
         card += "Harga Perolehan :Rp. {{ $bangunan->harga_perolehan }}\r\n";

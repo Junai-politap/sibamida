@@ -13,9 +13,15 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <a href="<?php echo e(url('admin/master/peralatan-mesin/create')); ?>" class="btn btn-primary float-right mb-10"> <span
-                                    class="fa fa-plus"></span> Tambah Data</a>
-                            <h3 class="card-title">Data Seluruh Assets</h3>
+
+                            <a href="<?php echo e(url('admin/master/peralatan-mesin/create')); ?>"
+                                class="btn btn-primary float-right mb-10"> <span class="fa fa-plus"></span> Tambah
+                                Data</a>
+                            <button class="btn btn-primary float-right" style="margin-right: 1%" data-toggle="modal" data-target="#modal-lg">
+                                <span class="fa fa-plus"></span> Tambah Kondisi
+                            </button>
+
+                            <h3 class="card-title">Data Seluruh Aset Peralatan dan Mesin</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -33,7 +39,6 @@
                                 </thead>
                                 <tbody>
                                     <?php $__currentLoopData = $list_peralatan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $peralatan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                   
                                         <tr>
                                             <td><?php echo e($loop->iteration); ?></td>
                                             <td>
@@ -93,7 +98,6 @@
 
                                             </td>
                                         </tr>
-                                        
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </tbody>
                             </table>
@@ -104,6 +108,52 @@
             </div>
         </div>
     </section>
+    <div class="modal fade" id="modal-lg">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Tambah Data Kondisi</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="<?php echo e(url('admin/kondisi')); ?>" method="POST" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <?php echo csrf_field(); ?>
+                        <div class="card-body">
+
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Nama OPD</label>
+                                <div class="col-sm-9">
+                                    <select name="id_opd" class="form-control" required>
+                                        <option value=""> Pilih Organisasi Perangkat Daerah</option>
+                                        <?php $__currentLoopData = $list_opd; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $opd): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($opd->id); ?>"><?php echo e($opd->nama_opd); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Nama Kondisi</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" placeholder="Nama Kondisi"
+                                        name="nama_kondisi">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button class="btn btn-default" data-dismiss="modal">Batal</button>
+                        <button class="btn btn-primary">Simpan</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__componentOriginal2812d824e80b3a65bceda8e6a9bfa7a0)): ?>

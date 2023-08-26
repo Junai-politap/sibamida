@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Bangunan;
+use App\Models\Bidang;
 use App\Models\Kategori;
 use App\Models\Opd;
 use App\Models\Pegawai;
@@ -41,12 +42,15 @@ class BangunanController extends Controller
         $bangunan->id_opd               = request('id_opd');
         $bangunan->id_kategori          = request('id_kategori');
         $bangunan->id_pegawai           = request('id_pegawai');
+        $bangunan->id_bidang           = request('id_bidang');
         $bangunan->kode_barang          = request('kode_barang');
         $bangunan->nama_barang          = request('nama_barang');
         $bangunan->no_register          = request('no_register');
         $bangunan->tahun_perolehan      = request('tahun_perolehan');
         $bangunan->harga_perolehan      = request('harga_perolehan');
         $bangunan->alamat               = request('alamat');
+        $bangunan->kecamatan            = request('kecamatan');
+        $bangunan->kelurahan_desa       = request('kelurahan_desa');
         $bangunan->keterangan           = request('keterangan');
         $bangunan->nama_sumber_dana     = request('nama_sumber_dana');
         $bangunan->no_sppd              = request('no_sppd');
@@ -77,7 +81,7 @@ class BangunanController extends Controller
         $data['list_opd'] = Opd::all();
         $data['list_pegawai'] = Pegawai::all();
         $data['list_kategori'] = Kategori::all();
-
+        $data['list_bidang'] = Bidang::all();
         return view('admin.bangunan.edit', $data);
     }
 
@@ -87,12 +91,15 @@ class BangunanController extends Controller
         $bangunan->id_opd               = request('id_opd');
         $bangunan->id_kategori          = request('id_kategori');
         $bangunan->id_pegawai           = request('id_pegawai');
+        $bangunan->id_bidang           = request('id_bidang');
         $bangunan->kode_barang          = request('kode_barang');
         $bangunan->nama_barang          = request('nama_barang');
         $bangunan->no_register          = request('no_register');
         $bangunan->tahun_perolehan      = request('tahun_perolehan');
         $bangunan->harga_perolehan      = request('harga_perolehan');
         $bangunan->alamat               = request('alamat');
+        $bangunan->kecamatan            = request('kecamatan');
+        $bangunan->kelurahan_desa       = request('kelurahan_desa');
         $bangunan->keterangan           = request('keterangan');
         $bangunan->nama_sumber_dana     = request('nama_sumber_dana');
         $bangunan->no_sppd              = request('no_sppd');

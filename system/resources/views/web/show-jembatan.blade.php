@@ -39,6 +39,10 @@
                                     <h3 class="title">
                                         {{ $jembatan->nama_aset }}
                                     </h3>
+
+                                    <h3 style="font-size: 120%; margin-top: -2%">
+                                        Bidang {{ $jembatan->bidang->nama_bidang }}
+                                    </h3>
                                     <div class="post-meta">
                                         <ul>
                                             <li>

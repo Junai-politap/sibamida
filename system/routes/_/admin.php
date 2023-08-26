@@ -60,6 +60,8 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::post('bidang', [BidangController::class, 'store']);
     Route::put('bidang/{bidang}', [BidangController::class, 'update']);
     Route::get('bidang/delete/{bidang}', [BidangController::class, 'destroy']);
+
+    Route::post('kondisi', [PeralatanDanMesinController::class, 'storeKondisi']);
     
     
 });

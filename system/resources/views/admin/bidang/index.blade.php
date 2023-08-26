@@ -89,9 +89,9 @@
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer justify-content-between">
-                                                        <button class="btn btn-default"
-                                                            data-dismiss="modal">Batal</button>
-                                                        <button class="btn btn-primary">Simpan</button>
+                                                        <button class="btn btn-info"
+                                                            data-dismiss="modal"><span class="fa fa-times"></span> Batal</button>
+                                                        <button class="btn btn-primary"><span class="fa fa-save"></span> Simpan</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -145,8 +145,8 @@
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
-                        <button class="btn btn-default" data-dismiss="modal">Batal</button>
-                        <button class="btn btn-primary">Simpan</button>
+                        <button class="btn btn-info" data-dismiss="modal"><span class="fa fa-times"></span> Batal</button>
+                        <button class="btn btn-primary"><span class="fa fa-save"></span> Simpan</button>
                     </div>
                 </form>
             </div>

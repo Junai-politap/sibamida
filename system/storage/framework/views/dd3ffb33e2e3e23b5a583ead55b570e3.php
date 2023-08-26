@@ -67,23 +67,20 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="exampleInputText">Kode Aset</label>
-                                            <input type="text" class="form-control" name="kode_aset"
-                                                value="<?php echo e($jembatan->kode_aset); ?>">
+                                            <label for="exampleInputText">Nama Bidang</label>
+                                            <select class="form-control" name="id_bidang">
+                                                <?php $__currentLoopData = $list_bidang; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bidang): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <option <?php if($bidang->id == $jembatan->id_bidang): ?> selected <?php endif; ?>
+                                                        value="<?php echo e($bidang->id); ?>">
+                                                        <?php echo e($bidang->nama_bidang); ?></option>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            </select>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="exampleInputText">Nama Aset</label>
-                                            <input type="text" class="form-control" name="nama_aset"
-                                                value="<?php echo e($jembatan->nama_aset); ?>">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kategori Aset</label>
                                             <select class="form-control" name="id_kategori">
@@ -96,7 +93,23 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Kode Aset</label>
+                                            <input type="text" class="form-control" name="kode_aset"
+                                                value="<?php echo e($jembatan->kode_aset); ?>">
+                                        </div>
+                                    </div>
 
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Nama Aset</label>
+                                            <input type="text" class="form-control" name="nama_aset"
+                                                value="<?php echo e($jembatan->nama_aset); ?>">
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">

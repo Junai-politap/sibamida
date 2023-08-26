@@ -44,7 +44,14 @@
         </div>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12">
+                <div class="col-md-12">
+                    <div class="body">
+                        <div class="header">
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#modal-lg"><span
+                                    class="fa fa-search"></span> Filter Aset Investasi Daerah</button>
+                        </div>
+                    </div>
+
                     <div class="card">
                         <div class="card-body">
                             <table id="example2" class="table table-bordered table-striped">
@@ -54,6 +61,7 @@
                                         <th class="text-center">Kode Aset</th>
                                         <th class="text-center">Nama Aset</th>
                                         <th class="text-center">Nama Penanggungjawab</th>
+                                        <th class="text-center">Harga Perolehan</th>
                                         <th class="text-center">Aksi</th>
 
                                     </tr>
@@ -64,7 +72,8 @@
                                             <td class="text-center"><?php echo e($loop->iteration); ?></td>
                                             <td class="text-left"> <?php echo e($peralatan->kode_barang); ?></td>
                                             <td class=""><?php echo e($peralatan->nama_barang); ?></td>
-                                            <td class=""><?php echo e($peralatan->pegawai->nama); ?></td>
+                                            <td class=""><?php echo e($peralatan->pegawai->jabatan); ?></td>
+                                            <td class="">Rp. <?php echo e($peralatan->harga_perolehan); ?></td>
                                             <td class="text-center">
                                                 <a href="<?php echo e(url("detail-peralatan/$peralatan->id")); ?>" class="btn btn-info"><span class="fa fa-info"></span> Detail Aset</a>
                                             </td>
@@ -79,6 +88,38 @@
             </div>
         </div>
     </section>
+
+    <div class="modal fade" id="modal-lg">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Filter Data Aset Investasi Daerah</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="<?php echo e(url("peralatan/$peralatan->id_opd")); ?>/filter-peralatan" method="POST" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <?php echo csrf_field(); ?>
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Nama Barang</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="nama_barang" value="<?php echo e($nama_barang ?? ''); ?>">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button class="btn btn-warning" data-dismiss="modal"><span class="fa fa-times"></span> Batal</button>
+                        <button class="btn btn-primary"><span class="fa fa-search"></span> Cari</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__componentOriginald5bfc7eeb725fd60f41a76190ac432d4)): ?>

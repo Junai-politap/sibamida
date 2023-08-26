@@ -50,7 +50,7 @@ class BangunanController extends Controller
         $bangunan->kecamatan            = request('kecamatan');
         $bangunan->kelurahan_desa       = request('kelurahan_desa');
         $bangunan->keterangan           = request('keterangan');
-        $bangunan->bidang               = request('bidang');
+        $bangunan->id_bidang               = request('id_bidang');
         $bangunan->nama_sumber_dana     = request('nama_sumber_dana');
         $bangunan->no_sppd              = request('no_sppd');
         $bangunan->no_spk               = request('no_spk');
@@ -98,7 +98,7 @@ class BangunanController extends Controller
         $bangunan->kecamatan            = request('kecamatan');
         $bangunan->kelurahan_desa       = request('kelurahan_desa');
         $bangunan->keterangan           = request('keterangan');
-        $bangunan->bidang               = request('bidang');
+        $bangunan->id_bidang               = request('id_bidang');
         $bangunan->nama_sumber_dana     = request('nama_sumber_dana');
         $bangunan->no_sppd              = request('no_sppd');
         $bangunan->no_spk               = request('no_spk');

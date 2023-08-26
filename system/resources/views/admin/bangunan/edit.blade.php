@@ -14,6 +14,7 @@
                         <!-- form start -->
                         <form action="{{ url('admin/master/bangunan', $bangunan->id) }}" method="POST"
                             enctype="multipart/form-data"> 
+                            @csrf
                             @method("PUT")
                             <div class="card-body">
                                 <div class="row">
@@ -44,7 +45,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kode Barang</label>
                                             <input type="text" class="form-control" name="kode_barang"
@@ -52,15 +53,17 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nama Barang</label>
                                             <input type="text" class="form-control" name="nama_barang"
                                                 value="{{ $bangunan->nama_barang }}">
                                         </div>
                                     </div>
+                                </div>
 
-                                    <div class="col-md-4">
+                                <div class="row">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kategori Aset</label>
                                             <select class="form-control" name="id_kategori">
@@ -72,9 +75,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nomor Register</label>
@@ -83,6 +84,10 @@
                                         </div>
                                     </div>
 
+                                    
+                                </div>
+
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Tahun Perolehan</label>
@@ -90,10 +95,6 @@
                                                 value="{{ $bangunan->tahun_perolehan }}">
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="row">
-
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Harga Perolehan</label>
@@ -102,6 +103,11 @@
                                         </div>
                                     </div>
 
+                                    
+                                </div>
+
+                                <div class="row">
+
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Alamat</label>
@@ -109,10 +115,22 @@
                                                 value="{{ $bangunan->alamat }}">
                                         </div>
                                     </div>
-
+                                    
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Kecamatan</label>
+                                            <input type="text" class="form-control" name="kecamatan" value="{{ $bangunan->kecamatan }}">
+                                        </div>
+                                    </div>
                                 </div>
-
                                 <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Kelurahan/Desa</label>
+                                            <input type="text" class="form-control" name="kelurahan_desa" value="{{ $bangunan->kelurahan_desa }}">
+                                        </div>
+                                    </div>
+
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Keterangan</label>
@@ -120,6 +138,23 @@
                                                 value="{{ $bangunan->keterangan }}">
                                         </div>
                                     </div>
+                                   
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Nama Bidang</label>
+                                            <select class="form-control" name="id_bidang">
+                                                @foreach ($list_bidang as $bidang)
+                                                    <option @if ($bidang->id == $bangunan->id_bidang) selected @endif
+                                                        value="{{ $bidang->id }}">
+                                                        {{ $bidang->nama_bidang }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nama Sumber Dana</label>
@@ -127,8 +162,10 @@
                                                 value="{{ $bangunan->nama_sumber_dana }}">
                                         </div>
                                     </div>
-
+                                    
                                 </div>
+
+
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -145,12 +182,10 @@
                                                 value="{{ $bangunan->no_spk }}">
                                         </div>
                                     </div>
-
-                                </div>
-
-
-                                <div class="row">
                                     
+                                </div>
+                        
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nomor Berita Acara</label>
@@ -168,10 +203,8 @@
                                     </div>
 
                                 </div>
-
-                               
-
                                 <div class="row">
+                                    
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Beton</label>
@@ -179,6 +212,7 @@
                                                 value="{{ $bangunan->beton }}">
                                         </div>
                                     </div>
+                                   
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Urut Kelompok</label>
@@ -187,10 +221,10 @@
                                         </div>
                                     </div>
 
-
                                 </div>
-                                <div class="row">
 
+                                <div class="row">
+                                    
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kelompok</label>
@@ -198,8 +232,6 @@
                                                 value="{{ $bangunan->kelompok }}">
                                         </div>
                                     </div>
-
-
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Foto</label>

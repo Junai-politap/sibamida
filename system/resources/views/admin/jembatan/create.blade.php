@@ -2,16 +2,12 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <!-- left column -->
                 <div class="col-md-12">
-                    <!-- general form elements -->
                     <div class="card">
                         <div class="card-header">
                             <x-button.back-button url="admin/master/jembatan-jalan" />
                             <h3 class="text-center title">Tambah Data Aset</h3>
                         </div>
-                        <!-- /.card-header -->
-                        <!-- form start -->
                         <form action="{{ url('admin/master/jembatan-jalan') }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
@@ -40,23 +36,17 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="exampleInputText">Kode Aset</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan Kode Aset"
-                                                name="kode_aset" required>
+                                            <label for="exampleInputText">Nama Bidang</label>
+                                            <select class="form-control bidang" name="id_bidang" id="bidang">
+                                                <option value=""> Pilih Nama Bidang</option>
+                                               
+                                            </select>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="exampleInputText">Nama Aset</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan Nama Aset"
-                                                name="nama_aset" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kategori Aset</label>
                                             <select class="form-control kategori" name="id_kategori" id="kategori">
@@ -65,8 +55,26 @@
                                             </select>
                                         </div>
                                     </div>
-                                </div>
 
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Kode Aset</label>
+                                            <input type="text" class="form-control" placeholder="Masukkan Kode Aset"
+                                                name="kode_aset" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Nama Aset</label>
+                                            <input type="text" class="form-control" placeholder="Masukkan Nama Aset"
+                                                name="nama_aset" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -347,6 +355,16 @@
                 }
                 $("#kategori").html(option)
             });
+
+            $.get("/api/opd-bidang/" + id, function(result) {
+            result = JSON.parse(result)
+            option = ""
+            for (item of result) {
+                option += `<option value="${item.id}">${item.nama_bidang}</option>`;
+                console.log(item.nama)
+            }
+            $("#bidang").html(option)
+        });
         }
     </script>
 @endpush

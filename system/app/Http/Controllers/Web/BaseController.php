@@ -60,7 +60,7 @@ class BaseController extends Controller
         return view('web.show-jembatan', $data);
     }
 
-    function filter($opd)
+    function filterJembatan($opd)
     {
         $data['list_opd'] = Opd::all();
         $data['opd'] = Opd::find($opd);
@@ -86,6 +86,17 @@ class BaseController extends Controller
         return view('web.show-bangunan', $data);
     }
 
+    function filterBangunan($opd)
+    {
+        $data['list_opd'] = Opd::all();
+        $data['opd'] = Opd::find($opd);
+        $nama_barang = request('nama_barang');
+        $data['list_bangunan'] = Bangunan::where('nama_barang', 'like', "%$nama_barang%")->get();
+        $data['nama_barang'] = $nama_barang;
+        return view('web.bangunan', $data);
+    }
+
+
     public function peralatan($opd)
     {
         $data['opd'] = Opd::find($opd);
@@ -103,6 +114,16 @@ class BaseController extends Controller
         return view('web.show-peralatan', $data);
     }
 
+    function filterPeralatan($opd)
+    {
+        $data['list_opd'] = Opd::all();
+        $data['opd'] = Opd::find($opd);
+        $nama_barang = request('nama_barang');
+        $data['list_peralatan'] = Peralatan::where('nama_barang', 'like', "%$nama_barang%")->get();
+        $data['nama_barang'] = $nama_barang;
+        return view('web.peralatan', $data);
+    }
+
 
     public function tanah($opd)
     {
@@ -118,5 +139,15 @@ class BaseController extends Controller
         $data['list_riwayat'] = Riwayat::where('id_aset', $tanah)->get();
 
         return view('web.show-tanah', $data);
+    }
+
+    function filterTanah($opd)
+    {
+        $data['list_opd'] = Opd::all();
+        $data['opd'] = Opd::find($opd);
+        $nama_barang = request('nama_barang');
+        $data['list_tanah'] = Tanah::where('nama_barang', 'like', "%$nama_barang%")->get();
+        $data['nama_barang'] = $nama_barang;
+        return view('web.tanah', $data);
     }
 }
