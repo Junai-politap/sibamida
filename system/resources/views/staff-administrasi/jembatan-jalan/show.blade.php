@@ -37,7 +37,18 @@
                                         </tr>
                                         <tr>
                                             <td>Nama Penanggung Jawab</td>
-                                            <td> : {{ $jembatan->pegawai->nama }}</td>
+                                            <td> : {{ $jembatan->pegawai->jabatan }}</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Nama Bidang</td>
+                                            <td> :
+                                                @isset($jembatan->bidang->nama_bidang)
+                                                    {{ $jembatan->bidang->nama_bidang }}
+                                                @else
+                                                    <strong>Belum Ada Nama Bidang</strong>
+                                                @endisset
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Kode Aset</td>
@@ -176,13 +187,31 @@
 
 
                                 <div class="card-body">
-                                    <strong>Tanggal Mulai</strong>
-                                    <p class="text-muted">
-                                        {{ $riwayat->created_at->format('d F Y') }}
-                                    </p>
-                                    <hr>
-                                    <strong>Nama Penanggung Jawab</strong>
-                                    <p class="text-muted">{{ $riwayat->pegawai->nama }}</p>
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <strong>Tanggal Mulai</strong>
+                                            <p class="text-muted">
+                                                {{ date('Y-m-d', strtotime($riwayat->tanggal_mulai)) }}
+                                            </p>
+                                            <hr>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <strong>Nama Penanggung Jawab</strong>
+                                            <p class="text-muted">{{ $riwayat->pegawai->nama }}</p>
+                                            <hr>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <strong>File SK</strong>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a class="btn btn-info" href="{{ url("public/$riwayat->sk") }}"
+                                                target="_blank"><span class="fa fa-download"></span> File SK</a>
+
+                                        </div>
+                                    </div>
                                     <hr>
                                     <strong>Keterangan</strong>
                                     <p class="text-muted">
@@ -205,7 +234,7 @@
                                         </button>
                                     </div>
                                     <form action="{{ url('staff-administrasi/jembatan-jalan/update-riwayat', $riwayat->id) }}"
-                                        method="POST">
+                                        method="POST" enctype="multipart/form-data"> 
                                         <div class="modal-body">
 
                                             @csrf
@@ -237,7 +266,15 @@
                                                             value="{{ $riwayat->tanggal_mulai }}">
                                                     </div>
                                                 </div>
-
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 col-form-label">
+                                                        File SK
+                                                    </label>
+                                                    <div class="col-sm-9">
+                                                        <input type="file" class="form-control" name="sk"
+                                                            accept="application/pdf" value="{{ $riwayat->sk }}">
+                                                    </div>
+                                                </div>
                                                 <div class="form-group row">
                                                     <label class="col-sm-3 col-form-label">
                                                         Keterangan
@@ -298,7 +335,11 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="form-group">
+                                <label for="exampleInputText"> File SK</label>
+                                <input type="file" class="form-control" name="sk" accept="application/pdf"
+                                    required>
+                            </div>
                             <div class="form-group">
                                 <label for="exampleInputText">Keterangan</label>
 
@@ -317,9 +358,11 @@
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
     <script>
         let 
-        
+      
         card = "Nama OPD: {{ $jembatan->opd->nama_opd }}\r\n";
-        card += "Nama Penanggungjawab: {{ $jembatan->pegawai->nama }}\r\n";
+        card += "Nama Penanggungjawab: {{ $jembatan->pegawai->jabatan }}\r\n";
+        card +=
+            "Nama Bidang: @isset($jembatan->bidang->nama_bidang){{ $jembatan->bidang->nama_bidang }}@else Belum Ada Nama Bidang @endisset\r\n";
         card += "Kategori Aset : {{ $jembatan->kategori->nama_kategori }}\r\n";
         card += "Kode Aset : {{ $jembatan->kode_aset }}\r\n";
         card += "Nama Aset : {{ $jembatan->nama_aset }}\r\n";

@@ -39,8 +39,7 @@
                             </div>
 
                             <div class="col-md-6 text-center">
-                                <?php echo QrCode::size(200)->generate('<?php echo e($peralatan->kode_aset); ?>'); ?>
-
+                                <div id="test"></div>
 
                             </div>
                         </div>
@@ -48,91 +47,130 @@
                         <div class="row invoice-info mt-5">
                             <div class="col-sm-12 invoice-col">
                                 <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <td>Nama OPD</td>
-                                            <td> : <?php echo e($peralatan->opd->nama_opd); ?></td>
-                                        </tr>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <td>Nama OPD</td>
+                                                <td> : <?php echo e($peralatan->opd->nama_opd); ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nama Penanggung Jawab</td>
+                                                <td> : <?php echo e($peralatan->pegawai->nama); ?></td>
+                                            </tr>
+    
+                                            <tr>
+                                                <td>Ruangan Barang</td>
+                                                <td> :
+                                                    <?php if(isset($peralatan->ruangan->nama_ruangan)): ?>
+                                                        <?php echo e($peralatan->ruangan->nama_ruangan); ?>
 
-                                        <tr>
-                                            <td>Kategori</td>
-                                            <td> : <?php echo e($peralatan->kategori->nama_kategori); ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Nama Penanggung Jawab</td>
-                                            <td> : <?php echo e($peralatan->pegawai->nama); ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Kelompok</td>
-                                            <td> : <?php echo e($peralatan->kelompok); ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Kode Barang</td>
-                                            <td> : <?php echo e($peralatan->kode_barang); ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Nama Barang</td>
-                                            <td> : <?php echo e($peralatan->nama_barang); ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Nomor Register</td>
-                                            <td> : <?php echo e($peralatan->no_register); ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Merk Barang</td>
-                                            <td> : <?php echo e($peralatan->merk); ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tahun Perolehan</td>
-                                            <td> : <?php echo e($peralatan->harga_perolehan); ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Keterangan</td>
-                                            <td> : <?php echo e($peralatan->keterangan); ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Harga Perolehan</td>
-                                            <td> : <?php echo e($peralatan->harga_perolehan); ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Nomor SPPD</td>
-                                            <td> : <?php echo e($peralatan->no_sppd); ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Nomor SPK</td>
-                                            <td> : <?php echo e($peralatan->no_spk); ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Nomor Berita Acara</td>
-                                            <td> : <?php echo e($peralatan->no_ba); ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tanggal Serah Terima</td>
-                                            <td> : <?php echo e($peralatan->tanggal_serah_terima); ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ekstrakomtable</td>
-                                            <td> : <?php echo e($peralatan->ekstrakomtable); ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ukuran</td>
-                                            <td> : <?php echo e($peralatan->ukuran); ?> </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Nomor Pabrik / Mesin / BPKB / Polisi / Rangka</td>
-                                            <td> : <?php echo e($peralatan->no_pabrik); ?> / <?php echo e($peralatan->no_mesin); ?> /
-                                                <?php echo e($peralatan->no_bpkb); ?> / <?php echo e($peralatan->no_polisi); ?> /
-                                                <?php echo e($peralatan->no_rangka); ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>keterangan 1</td>
-                                            <td> : <?php echo e($peralatan->keterangan1); ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Harga Perolehan 1</td>
-                                            <td> : <?php echo e($peralatan->harga_perolehan1); ?></td>
-                                        </tr>
-                                    </thead>
+                                                    <?php else: ?>
+                                                        <strong>TIDAK ADA RUANGAN</strong>
+                                                    <?php endif; ?>
+                                                </td>
+                                            </tr>
+    
+                                            <tr>
+                                                <td>Nama Bidang</td>
+                                                <td> :
+                                                    <?php if(isset($peralatan->bidang->nama_bidang)): ?>
+                                                        <?php echo e($peralatan->bidang->nama_bidang); ?>
+
+                                                    <?php else: ?>
+                                                        <strong>DATA TIDAK ADA NAMA BIDANG</strong>
+                                                    <?php endif; ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Kategori</td>
+                                                <td> : <?php echo e($peralatan->kategori->nama_kategori); ?></td>
+                                            </tr>
+    
+                                            <tr>
+                                                <td>Kelompok</td>
+                                                <td> : <?php echo e($peralatan->kelompok); ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Kode Barang</td>
+                                                <td> : <?php echo e($peralatan->kode_barang); ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nama Barang</td>
+                                                <td> : <?php echo e($peralatan->nama_barang); ?></td>
+                                            </tr>
+    
+    
+                                            <tr>
+                                                <td>Nomor Register</td>
+                                                <td> : <?php echo e($peralatan->no_register); ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Merk Barang</td>
+                                                <td> : <?php echo e($peralatan->merk); ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Kondisi Barang</td>
+                                                <td> :
+                                                    <?php if(isset($peralatan->kondisi->nama_kondisi)): ?>
+                                                        <?php echo e($peralatan->kondisi->nama_kondisi); ?>
+
+                                                    <?php else: ?>
+                                                        <strong>TIDAK ADA KONDISI</strong>
+                                                    <?php endif; ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tahun Perolehan</td>
+                                                <td> : <?php echo e($peralatan->tahun_perolehan); ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Keterangan</td>
+                                                <td> : <?php echo e($peralatan->keterangan); ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Harga Perolehan</td>
+                                                <td> : <?php echo e($peralatan->harga_perolehan); ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nomor SPPD</td>
+                                                <td> : <?php echo e($peralatan->no_sppd); ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nomor SPK</td>
+                                                <td> : <?php echo e($peralatan->no_spk); ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nomor Berita Acara</td>
+                                                <td> : <?php echo e($peralatan->no_ba); ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tanggal Serah Terima</td>
+                                                <td> : <?php echo e($peralatan->tanggal_serah_terima); ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ekstrakomtable</td>
+                                                <td> : <?php echo e($peralatan->ekstrakomtable); ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ukuran</td>
+                                                <td> : <?php echo e($peralatan->ukuran); ?> </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nomor Pabrik / Mesin / BPKB / Polisi / Rangka</td>
+                                                <td> : <?php echo e($peralatan->no_pabrik); ?> / <?php echo e($peralatan->no_mesin); ?> /
+                                                    <?php echo e($peralatan->no_bpkb); ?> / <?php echo e($peralatan->no_polisi); ?> /
+                                                    <?php echo e($peralatan->no_rangka); ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>keterangan 1</td>
+                                                <td> : <?php echo e($peralatan->keterangan1); ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Harga Perolehan 1</td>
+                                                <td> : <?php echo e($peralatan->harga_perolehan1); ?></td>
+                                            </tr>
+                                        </thead>
+                                    </table>
                                 </table>
                             </div>
 
@@ -165,7 +203,7 @@
                                             <span class="fa fa-edit"></span>
                                         </button>
 
-                                        <a onclick="return confirm('Yakin ingin menghapus data ini?')" href="<?php echo e(url("staff-administrasi/delete-riwayat/$riwayat->id")); ?>"
+                                        <a onclick="return confirm('Yakin ingin menghapus data ini?')" href="<?php echo e(url("staff-administrasi/peralatan-jalan/delete-riwayat/$riwayat->id")); ?>"
                                             class="btn btn-danger"><i class="fa fa-trash"></i></a>
 
 
@@ -174,14 +212,32 @@
 
 
                                 <div class="card-body">
-                                    <strong>Tanggal Mulai</strong>
-                                    <p class="text-muted">
-                                        <?php echo e($riwayat->created_at->format('d F Y')); ?>
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <strong>Tanggal Mulai</strong>
+                                            <p class="text-muted">
+                                                <?php echo e(date('Y-m-d', strtotime($riwayat->tanggal_mulai))); ?>
 
-                                    </p>
+                                            </p>
+                                            <hr>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <strong>Nama Penanggung Jawab</strong>
+                                            <p class="text-muted"><?php echo e($riwayat->pegawai->nama); ?></p>
+                                            <hr>
+                                        </div>
+                                    </div>
                                     <hr>
-                                    <strong>Nama Penanggung Jawab</strong>
-                                    <p class="text-muted"><?php echo e($riwayat->pegawai->nama); ?></p>
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <strong>File SK</strong>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a class="btn btn-info" href="<?php echo e(url("public/$riwayat->sk")); ?>"
+                                                target="_blank"><span class="fa fa-download"></span> File SK</a>
+
+                                        </div>
+                                    </div>
                                     <hr>
                                     <strong>Keterangan</strong>
                                     <p class="text-muted">
@@ -204,8 +260,8 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <form action="<?php echo e(url('staff-administrasi/update-riwayat', $riwayat->id)); ?>"
-                                        method="POST">
+                                    <form action="<?php echo e(url('staff-administrasi/peralatan-jalan/update-riwayat', $riwayat->id)); ?>"
+                                        method="POST" enctype="multipart/form-data">
                                         <div class="modal-body">
 
                                             <?php echo csrf_field(); ?>
@@ -237,7 +293,15 @@
                                                             value="<?php echo e($riwayat->tanggal_mulai); ?>">
                                                     </div>
                                                 </div>
-
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 col-form-label">
+                                                        File SK
+                                                    </label>
+                                                    <div class="col-sm-9">
+                                                        <input type="file" class="form-control" name="sk"
+                                                            accept="application/pdf" value="<?php echo e($riwayat->sk); ?>">
+                                                    </div>
+                                                </div>
                                                 <div class="form-group row">
                                                     <label class="col-sm-3 col-form-label">
                                                         Keterangan
@@ -272,7 +336,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="<?php echo e(url('staff-administrasi/riwayat')); ?>" method="post"
+                        <form action="<?php echo e(url('staff-administrasi/peralatan-jalan/riwayat')); ?>" method="post"
                             enctype="multipart/form-data">
                             <?php echo csrf_field(); ?>
                             <div class="row">
@@ -299,7 +363,11 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="form-group">
+                                <label for="exampleInputText"> File SK</label>
+                                <input type="file" class="form-control" name="sk" accept="application/pdf"
+                                    required>
+                            </div>
                             <div class="form-group">
                                 <label for="exampleInputText">Keterangan</label>
 
@@ -314,6 +382,45 @@
             </div>
         </div>
     </section>
+
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script>
+        let 
+        
+        card = "Nama OPD: <?php echo e($peralatan->opd->nama_opd); ?>\r\n";
+        card += "Nama Penanggungjawab: <?php echo e($peralatan->pegawai->nama); ?>\r\n";
+        card += "Kategori Barang : <?php echo e($peralatan->kategori->nama_kategori); ?>\r\n";
+        card +=
+            "Nama Bidang: <?php if(isset($peralatan->bidang->nama_bidang)): ?><?php echo e($peralatan->bidang->nama_bidang); ?><?php else: ?> TIDAK ADA NAMA BIDANG <?php endif; ?>\r\n";
+        card +=
+            "Nama Ruangan: <?php if(isset($peralatan->ruangan->nama_ruangan)): ?><?php echo e($peralatan->ruangan->nama_ruangan); ?><?php else: ?> TIDAK ADA RUANGAN <?php endif; ?>\r\n";
+        card += "Kode Barang : <?php echo e($peralatan->kode_barang); ?>\r\n";
+        card += "Nama Barang : <?php echo e($peralatan->nama_barang); ?>\r\n";
+        card += "Nomor Register : <?php echo e($peralatan->no_register); ?>\r\n";
+        card += "Tahun Perolehan : <?php echo e($peralatan->tahun_perolehan); ?>\r\n";
+        card += "Harga Perolehan : Rp. <?php echo e($peralatan->harga_perolehan); ?>\r\n";
+        card += "Keterangan : <?php echo e($peralatan->keterangan); ?>\r\n";
+        card += "Nomor SPPD : <?php echo e($peralatan->no_sppd); ?>\r\n";
+        card += "Nomor SPK : <?php echo e($peralatan->no_spk); ?>\r\n";
+        card += "Nomor Berita Acara : <?php echo e($peralatan->no_ba); ?>\r\n";
+        card += "Tanggal Serah Terima : <?php echo e($peralatan->tanggal_serah_terima); ?>\r\n";
+        card += "Merk : <?php echo e($peralatan->merk); ?>\r\n";
+        card +=
+            "Kondisi: <?php if(isset($peralatan->kondisi->nama_kondisi)): ?><?php echo e($peralatan->kondisi->nama_kondisi); ?><?php else: ?> TIDAK ADA KONDISI <?php endif; ?>\r\n";
+        card += "Ukuran : <?php echo e($peralatan->ukuran); ?>\r\n";
+        card += "Nomor Pabrik : <?php echo e($peralatan->no_pabrik); ?>\r\n";
+        card += "Nomor Mesin : <?php echo e($peralatan->no_mesin); ?>\r\n";
+        card += "Nomor BPKB : <?php echo e($peralatan->no_bpkb); ?>\r\n";
+        card += "Nomor Polisi : <?php echo e($peralatan->no_polisi); ?>\r\n";
+        card += "Nomor Rangka : <?php echo e($peralatan->no_rangka); ?>\r\n";
+        card += "Keterangan 1 : <?php echo e($peralatan->keterangan1); ?>\r\n";
+        card += "Ekstrakomtable : <?php echo e($peralatan->ekstrakomtable); ?>\r\n";
+        card += "Kelompok : <?php echo e($peralatan->kelompok); ?>\r\n";
+        card += "Harga Perolehan 1 : Rp. <?php echo e($peralatan->harga_perolehan1); ?>\r\n";
+        
+        
+        new QRCode(document.getElementById("test"), card);
+    </script>
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__componentOriginal347db4b87a67030074eb1f762cfda9c2)): ?>

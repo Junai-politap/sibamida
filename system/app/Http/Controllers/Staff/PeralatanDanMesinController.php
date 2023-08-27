@@ -5,10 +5,13 @@ namespace App\Http\Controllers\Staff;
 use App\Exports\PeralatanExport;
 use App\Exports\PeralatanTanggalExport;
 use App\Http\Controllers\Controller;
+use App\Models\Bidang;
 use App\Models\Kategori;
+use App\Models\Kondisi;
 use App\Models\Pegawai;
 use App\Models\Peralatan;
 use App\Models\Riwayat;
+use App\Models\Ruangan;
 use Faker\Provider\ar_EG\Person;
 use Illuminate\Http\Request;
 
@@ -32,6 +35,9 @@ class PeralatanDanMesinController extends Controller
     public function create()
     {
         $data['list_kategori'] = Kategori::all();
+        $data['list_bidang'] = Bidang::all();
+        $data['list_kondisi'] = Kondisi::all();
+        $data['list_ruangan'] = Ruangan::all();
         return view('staff-administrasi.peralatan-mesin.create', $data);
 
     }
@@ -42,10 +48,13 @@ class PeralatanDanMesinController extends Controller
         $peralatan->id_opd = request('id_opd');
         $peralatan->id_kategori = request('id_kategori');
         $peralatan->id_pegawai = request('id_pegawai');
+        $peralatan->id_bidang = request('id_bidang');
+        $peralatan->id_ruangan = request('id_ruangan');
         $peralatan->kode_barang = request('kode_barang');
         $peralatan->nama_barang = request('nama_barang');
         $peralatan->no_register = request('no_register');
         $peralatan->merk = request('merk');
+        $peralatan->id_kondisi = request('id_kondisi');
         $peralatan->tahun_perolehan = request('tahun_perolehan');
         $peralatan->harga_perolehan = request('harga_perolehan');
         $peralatan->keterangan = request('keterangan');
@@ -84,6 +93,9 @@ class PeralatanDanMesinController extends Controller
         $data['peralatan'] = Peralatan::find($peralatan);
         $data['list_kategori'] = Kategori::all();
         $data['list_pegawai'] = Pegawai::all();
+        $data['list_bidang'] = Bidang::all();
+        $data['list_kondisi'] = Kondisi::all();
+        $data['list_ruangan'] = Ruangan::all();
         return view('staff-administrasi.peralatan-mesin.edit', $data);
     }
 
@@ -91,12 +103,15 @@ class PeralatanDanMesinController extends Controller
     {
         $peralatan = Peralatan::find($peralatan);
         $peralatan->id_opd = request('id_opd');
-        $peralatan->id_pegawai = request('id_pegawai');
         $peralatan->id_kategori = request('id_kategori');
+        $peralatan->id_pegawai = request('id_pegawai');
+        $peralatan->id_bidang = request('id_bidang');
+        $peralatan->id_ruangan = request('id_ruangan');
         $peralatan->kode_barang = request('kode_barang');
         $peralatan->nama_barang = request('nama_barang');
         $peralatan->no_register = request('no_register');
         $peralatan->merk = request('merk');
+        $peralatan->id_kondisi = request('id_kondisi');
         $peralatan->tahun_perolehan = request('tahun_perolehan');
         $peralatan->harga_perolehan = request('harga_perolehan');
         $peralatan->keterangan = request('keterangan');
@@ -132,31 +147,34 @@ class PeralatanDanMesinController extends Controller
 
     public function riwayat(Request $request)
     {
-        $jembatan = new Riwayat();
-        $jembatan->id_pegawai = request('id_pegawai');
-        $jembatan->id_aset = request('id_aset');
-        $jembatan->tanggal_mulai = request('tanggal_mulai');
-        $jembatan->keterangan = request('keterangan');
-        $jembatan->save();
+        $riwayat = new Riwayat();
+        $riwayat->id_pegawai = request('id_pegawai');
+        $riwayat->id_aset = request('id_aset');
+        $riwayat->tanggal_mulai = request('tanggal_mulai');
+        $riwayat->keterangan = request('keterangan');
+        $riwayat->handleUploadSK();
+        $riwayat->save();
 
         return back()->with('success', 'Data Berhasil Disimpan');
     }
 
     public function riwayatUpdate($riwayat)
     {
-        $jembatan = Riwayat::find($riwayat);
-        $jembatan->id_pegawai = request('id_pegawai');
-        $jembatan->tanggal_mulai = request('tanggal_mulai');
-        $jembatan->keterangan = request('keterangan');
-        $jembatan->save();
+        $riwayat = Riwayat::find($riwayat);
+        $riwayat->id_pegawai = request('id_pegawai');
+        $riwayat->tanggal_mulai = request('tanggal_mulai');
+        $riwayat->keterangan = request('keterangan');
+        $riwayat->handleUploadSK();
+        $riwayat->save();
 
         return back()->with('success', 'Data Berhasil Disimpan');
     }
 
+
     public function hapus(string $riwayat)
     {
         $riwayat = Riwayat::find($riwayat);
-        // return $jembatan;
+
         $riwayat->delete();
 
         return back()->with('danger', 'Data Berhasiil Dihapus');

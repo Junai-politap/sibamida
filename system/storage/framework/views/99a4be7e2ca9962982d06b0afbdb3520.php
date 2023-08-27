@@ -40,8 +40,7 @@
                             <?php echo method_field("PUT"); ?>
                             <div class="card-body">
                                 <div class="row">
-                                    
-
+                                
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nama Penanggung Jawab</label>
@@ -75,12 +74,31 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
+                                            <label for="exampleInputText">Nama Bidang</label>
+                                            <select class="form-control" name="id_bidang">
+                                                <?php $__currentLoopData = $list_bidang; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bidang): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if( Auth::guard('staff')->user()->id_opd == $bidang->id_opd): ?>
+                                                    <option <?php if($bidang->id == $bangunan->id_bidang): ?> selected <?php endif; ?>
+                                                        value="<?php echo e($bidang->id); ?>">
+                                                        <?php echo e($bidang->nama_bidang); ?></option>
+                                                        <?php endif; ?>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
                                             <label for="exampleInputText">Kode Barang</label>
                                             <input type="text" class="form-control" name="kode_barang"
                                                 value="<?php echo e($bangunan->kode_barang); ?>">
                                         </div>
                                     </div>
 
+
+                                </div>
+
+                                <div class="row">
+                                    
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nama Barang</label>
@@ -88,10 +106,6 @@
                                                 value="<?php echo e($bangunan->nama_barang); ?>">
                                         </div>
                                     </div>
-
-                                </div>
-
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nomor Register</label>
@@ -99,7 +113,9 @@
                                                 value="<?php echo e($bangunan->no_register); ?>">
                                         </div>
                                     </div>
+                                </div>
 
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Tahun Perolehan</label>
@@ -107,10 +123,6 @@
                                                 value="<?php echo e($bangunan->tahun_perolehan); ?>">
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="row">
-
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Harga Perolehan</label>
@@ -119,6 +131,10 @@
                                         </div>
                                     </div>
 
+                                </div>
+
+                                <div class="row">
+                                    
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Alamat</label>
@@ -126,10 +142,6 @@
                                                 value="<?php echo e($bangunan->alamat); ?>">
                                         </div>
                                     </div>
-
-                                </div>
-
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Keterangan</label>
@@ -137,6 +149,9 @@
                                                 value="<?php echo e($bangunan->keterangan); ?>">
                                         </div>
                                     </div>
+                                  
+                                </div>
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nama Sumber Dana</label>
@@ -145,21 +160,11 @@
                                         </div>
                                     </div>
 
-                                </div>
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nomor SPPD</label>
                                             <input type="text" class="form-control" name="no_sppd"
                                                 value="<?php echo e($bangunan->no_sppd); ?>">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="exampleInputText">Nomor SPK</label>
-                                            <input type="text" class="form-control" name="no_spk"
-                                                value="<?php echo e($bangunan->no_spk); ?>">
                                         </div>
                                     </div>
 
@@ -170,17 +175,17 @@
                                     
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="exampleInputText">Nomor Berita Acara</label>
-                                            <input type="text" class="form-control" name="no_ba"
-                                                value="<?php echo e($bangunan->no_ba); ?>">
+                                            <label for="exampleInputText">Nomor SPK</label>
+                                            <input type="text" class="form-control" name="no_spk"
+                                                value="<?php echo e($bangunan->no_spk); ?>">
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="exampleInputText">Bertingkat</label>
-                                            <input type="text" class="form-control" name="bertingkat"
-                                                value="<?php echo e($bangunan->bertingkat); ?>">
+                                            <label for="exampleInputText">Nomor Berita Acara</label>
+                                            <input type="text" class="form-control" name="no_ba"
+                                                value="<?php echo e($bangunan->no_ba); ?>">
                                         </div>
                                     </div>
 
@@ -189,6 +194,15 @@
                                
 
                                 <div class="row">
+                                    
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Bertingkat</label>
+                                            <input type="text" class="form-control" name="bertingkat"
+                                                value="<?php echo e($bangunan->bertingkat); ?>">
+                                        </div>
+                                    </div>
+
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Beton</label>
@@ -196,6 +210,11 @@
                                                 value="<?php echo e($bangunan->beton); ?>">
                                         </div>
                                     </div>
+                                   
+
+
+                                </div>
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Urut Kelompok</label>
@@ -203,11 +222,6 @@
                                                 value="<?php echo e($bangunan->urut_kelompok); ?>">
                                         </div>
                                     </div>
-
-
-                                </div>
-                                <div class="row">
-
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kelompok</label>
@@ -215,9 +229,10 @@
                                                 value="<?php echo e($bangunan->kelompok); ?>">
                                         </div>
                                     </div>
+                                </div>
+                                <div class="row">
 
-
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="exampleInputText">Foto</label>
                                             <div class="row">

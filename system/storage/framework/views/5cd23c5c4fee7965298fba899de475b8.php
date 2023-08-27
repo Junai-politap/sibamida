@@ -59,6 +59,23 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group">
+                                            <label for="exampleInputText">Nama Bidang</label>
+                                            <select class="form-control" name="id_bidang">
+                                                <?php $__currentLoopData = $list_bidang; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bidang): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if( Auth::guard('staff')->user()->id_opd == $bidang->id_opd): ?>
+                                                    <option <?php if($bidang->id == $tanah->id_bidang): ?> selected <?php endif; ?>
+                                                        value="<?php echo e($bidang->id); ?>">
+                                                        <?php echo e($bidang->nama_bidang); ?></option>
+                                                        <?php endif; ?>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
                                             <label for="exampleInputText">Kategori</label>
                                             <select class="form-control" name="id_kategori">
                                                 <?php $__currentLoopData = $list_kategori; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $kategori): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -71,10 +88,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kode Barang</label>
                                             <input type="text" class="form-control" name="kode_barang"
@@ -82,7 +96,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nama Barang</label>
                                             <input type="text" class="form-control" name="nama_barang"

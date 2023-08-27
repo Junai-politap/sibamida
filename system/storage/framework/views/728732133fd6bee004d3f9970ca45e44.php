@@ -34,8 +34,8 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="<?php echo e(url('staff-administrasi/master/peralatan-mesin', $peralatan->id)); ?>" method="POST"
-                            enctype="multipart/form-data">
+                        <form action="<?php echo e(url('staff-administrasi/master/peralatan-mesin', $peralatan->id)); ?>"
+                            method="POST" enctype="multipart/form-data">
                             <?php echo csrf_field(); ?>
                             <?php echo method_field('PUT'); ?>
                             <div class="card-body">
@@ -48,32 +48,47 @@
                                         <option value=""> Pilih Penanggung Jawab Aset</option>
                                         <?php $__currentLoopData = $list_pegawai; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pegawai): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <?php if(Auth::guard('staff')->user()->id_opd == $pegawai->id_opd): ?>
-                                            <option <?php if($pegawai->id == $peralatan->id_pegawai): ?> selected <?php endif; ?>
-                                                value="<?php echo e($pegawai->id); ?>">
-                                                <?php echo e($pegawai->nama); ?></option>
+                                                <option <?php if($pegawai->id == $peralatan->id_pegawai): ?> selected <?php endif; ?>
+                                                    value="<?php echo e($pegawai->id); ?>">
+                                                    <?php echo e($pegawai->nama); ?></option>
                                             <?php endif; ?>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="exampleInputText">Kategori Aset</label>
-                                            <select class="form-control" name="id_kategori" required>
-                                                <option value=""> Pilih Kategori Aset</option>
-                                                <?php $__currentLoopData = $list_kategori; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $kategori): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                    <?php if(Auth::guard('staff')->user()->id_opd == $kategori->id_opd): ?>
-                                                    <option <?php if($kategori->id == $peralatan->id_kategori): ?> selected <?php endif; ?>
-                                                        value="<?php echo e($kategori->id); ?>">
-                                                        <?php echo e($kategori->nama_kategori); ?></option>
+                                            <label for="exampleInputText">Nama Bidang</label>
+                                            <select class="form-control" name="id_bidang" required>
+                                                <?php $__currentLoopData = $list_bidang; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bidang): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <?php if(Auth::guard('staff')->user()->id_opd == $bidang->id_opd): ?>
+                                                        <option <?php if($bidang->id == $peralatan->id_bidang): ?> selected <?php endif; ?>
+                                                            value="<?php echo e($bidang->id); ?>">
+                                                            <?php echo e($bidang->nama_bidang); ?></option>
                                                     <?php endif; ?>
                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </select>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Kategori Aset</label>
+                                            <select class="form-control" name="id_kategori" required>
+                                                <?php $__currentLoopData = $list_kategori; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $kategori): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <?php if(Auth::guard('staff')->user()->id_opd == $kategori->id_opd): ?>
+                                                        <option <?php if($kategori->id == $peralatan->id_kategori): ?> selected <?php endif; ?>
+                                                            value="<?php echo e($kategori->id); ?>">
+                                                            <?php echo e($kategori->nama_kategori); ?></option>
+                                                    <?php endif; ?>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nama Barang</label>
                                             <input type="text" class="form-control"
@@ -81,24 +96,43 @@
                                                 name="nama_barang" required>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="exampleInputText">Kode Barang</label>
-                                            <input type="text" class="form-control"
-                                                placeholder="Masukkan Kode Barang" value="<?php echo e($peralatan->kode_barang); ?>"
-                                                name="kode_barang" required>
+                                            <label for="exampleInputText">Nama Ruangan</label>
+                                            <select class="form-control" name="id_ruangan" required>
+                                                <?php $__currentLoopData = $list_ruangan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ruangan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <?php if(Auth::guard('staff')->user()->id_opd == $ruangan->id_opd): ?>
+                                                        <option <?php if($ruangan->id == $peralatan->id_ruangan): ?> selected <?php endif; ?>
+                                                            value="<?php echo e($ruangan->id); ?>">
+                                                            <?php echo e($ruangan->nama_ruangan); ?></option>
+                                                    <?php endif; ?>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            </select>
                                         </div>
                                     </div>
+
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="exampleInputText">kelompok</label>
+                                            <label for="exampleInputText">Kode Barang</label>
                                             <input type="text" class="form-control"
-                                                placeholder="Masukkan kelompok" value="<?php echo e($peralatan->kelompok); ?>"
-                                                name="kelompok" required>
+                                                placeholder="Masukkan Kode Barang"
+                                                value="<?php echo e($peralatan->kode_barang); ?>" name="kode_barang" required>
                                         </div>
                                     </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">kelompok</label>
+                                            <input type="text" class="form-control" placeholder="Masukkan kelompok"
+                                                value="<?php echo e($peralatan->kelompok); ?>" name="kelompok" required>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nomor Register</label>
@@ -107,15 +141,31 @@
                                                 value="<?php echo e($peralatan->no_register); ?>" name="no_register">
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Merk Barang</label>
                                             <input type="text" class="form-control"
                                                 placeholder="Masukkan Merk Barang" value="<?php echo e($peralatan->merk); ?>"
                                                 name="merk">
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Nama Kondisi</label>
+                                            <select class="form-control" name="id_kondisi" required>
+                                                <?php $__currentLoopData = $list_kondisi; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $kondisi): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <?php if(Auth::guard('staff')->user()->id_opd == $kondisi->id_opd): ?>
+                                                        <option <?php if($kondisi->id == $peralatan->id_kondisi): ?> selected <?php endif; ?>
+                                                            value="<?php echo e($kondisi->id); ?>">
+                                                            <?php echo e($kondisi->nama_kondisi); ?></option>
+                                                    <?php endif; ?>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -126,6 +176,7 @@
                                                 value="<?php echo e($peralatan->tahun_perolehan); ?>" name="tahun_perolehan">
                                         </div>
                                     </div>
+
                                 </div>
 
                                 <div class="row">
@@ -137,13 +188,17 @@
                                                 value="<?php echo e($peralatan->harga_perolehan); ?>" name="harga_perolehan">
                                         </div>
                                     </div>
+
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">keterangan</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan keterangan"
+                                            <input type="text" class="form-control"
+                                                placeholder="Masukkan keterangan"
                                                 value="<?php echo e($peralatan->keterangan); ?>" name="keterangan">
                                         </div>
                                     </div>
+
+
                                 </div>
 
                                 <div class="row">
@@ -163,6 +218,8 @@
                                                 name="no_spk">
                                         </div>
                                     </div>
+
+
                                 </div>
 
                                 <div class="row">
@@ -183,6 +240,7 @@
                                                 name="tanggal_serah_terima">
                                         </div>
                                     </div>
+
                                 </div>
 
                                 <div class="row">
@@ -194,6 +252,7 @@
                                                 value="<?php echo e($peralatan->ekstrakomtable); ?>" name="ekstrakomtable">
                                         </div>
                                     </div>
+
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Ukuran</label>
@@ -201,6 +260,7 @@
                                                 value="<?php echo e($peralatan->ukuran); ?>" name="ukuran">
                                         </div>
                                     </div>
+
                                 </div>
 
                                 <div class="row">
@@ -212,6 +272,7 @@
                                                 value="<?php echo e($peralatan->no_pabrik); ?>" name="no_pabrik">
                                         </div>
                                     </div>
+
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nomor Mesin</label>
@@ -220,6 +281,8 @@
                                                 name="no_mesin">
                                         </div>
                                     </div>
+
+
                                 </div>
 
                                 <div class="row">
@@ -239,6 +302,7 @@
                                                 value="<?php echo e($peralatan->no_polisi); ?>" name="no_polisi">
                                         </div>
                                     </div>
+
                                 </div>
 
                                 <div class="row">
@@ -250,6 +314,7 @@
                                                 value="<?php echo e($peralatan->no_rangka); ?>" name="no_rangka">
                                         </div>
                                     </div>
+
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Keterangan 1</label>
@@ -258,8 +323,8 @@
                                                 value="<?php echo e($peralatan->keterangan1); ?>" name="keterangan1">
                                         </div>
                                     </div>
-                                </div>
 
+                                </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -275,7 +340,7 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <img src="<?php echo e(url("public/$peralatan->foto")); ?>"
-                                                        style="width: 100%">
+                                                        style="width: 50%">
                                                 </div>
                                                 <div class="col-md-6">
                                                     <input type="file" class="form-control" name="foto"

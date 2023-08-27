@@ -26,6 +26,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($list_bidang as $bidang)
+                                @if ( Auth::guard('opd')->user()->id == $bidang->id_opd)
                                     <tr>
                                         <td class="text-center">{{ $loop->iteration }}</td>
                                         <td class="text-center">
@@ -84,6 +85,7 @@
                                         </div>
 
                                     </div>
+                                    @endif
                                 @endforeach
                             </tbody>
                         </table>

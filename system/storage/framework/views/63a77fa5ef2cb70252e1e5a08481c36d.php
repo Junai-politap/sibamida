@@ -39,8 +39,7 @@
                             </div>
 
                             <div class="col-md-6 text-center">
-                                <?php echo QrCode::size(200)->generate('<?php echo e($jembatan->kode_aset); ?>'); ?>
-
+                                <div id="test"></div>
 
                             </div>
                         </div>
@@ -61,6 +60,18 @@
                                         <tr>
                                             <td>Nama Penanggung Jawab</td>
                                             <td> : <?php echo e($jembatan->pegawai->nama); ?></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Nama Bidang</td>
+                                            <td> :
+                                                <?php if(isset($jembatan->bidang->nama_bidang)): ?>
+                                                    <?php echo e($jembatan->bidang->nama_bidang); ?>
+
+                                                <?php else: ?>
+                                                    <strong>Belum Ada Nama Bidang</strong>
+                                                <?php endif; ?>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Kode Aset</td>
@@ -200,14 +211,32 @@
 
 
                                 <div class="card-body">
-                                    <strong>Tanggal Mulai</strong>
-                                    <p class="text-muted">
-                                        <?php echo e($riwayat->created_at->format('d F Y')); ?>
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <strong>Tanggal Mulai</strong>
+                                            <p class="text-muted">
+                                                <?php echo e(date('Y-m-d', strtotime($riwayat->tanggal_mulai))); ?>
 
-                                    </p>
-                                    <hr>
-                                    <strong>Nama Penanggung Jawab</strong>
-                                    <p class="text-muted"><?php echo e($riwayat->pegawai->nama); ?></p>
+                                            </p>
+                                            <hr>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <strong>Nama Penanggung Jawab</strong>
+                                            <p class="text-muted"><?php echo e($riwayat->pegawai->nama); ?></p>
+                                            <hr>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <strong>File SK</strong>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a class="btn btn-info" href="<?php echo e(url("public/$riwayat->sk")); ?>"
+                                                target="_blank"><span class="fa fa-download"></span> File SK</a>
+
+                                        </div>
+                                    </div>
                                     <hr>
                                     <strong>Keterangan</strong>
                                     <p class="text-muted">
@@ -231,7 +260,7 @@
                                         </button>
                                     </div>
                                     <form action="<?php echo e(url('staff-administrasi/jembatan-jalan/update-riwayat', $riwayat->id)); ?>"
-                                        method="POST">
+                                        method="POST" enctype="multipart/form-data"> 
                                         <div class="modal-body">
 
                                             <?php echo csrf_field(); ?>
@@ -263,7 +292,15 @@
                                                             value="<?php echo e($riwayat->tanggal_mulai); ?>">
                                                     </div>
                                                 </div>
-
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 col-form-label">
+                                                        File SK
+                                                    </label>
+                                                    <div class="col-sm-9">
+                                                        <input type="file" class="form-control" name="sk"
+                                                            accept="application/pdf" value="<?php echo e($riwayat->sk); ?>">
+                                                    </div>
+                                                </div>
                                                 <div class="form-group row">
                                                     <label class="col-sm-3 col-form-label">
                                                         Keterangan
@@ -325,7 +362,11 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="form-group">
+                                <label for="exampleInputText"> File SK</label>
+                                <input type="file" class="form-control" name="sk" accept="application/pdf"
+                                    required>
+                            </div>
                             <div class="form-group">
                                 <label for="exampleInputText">Keterangan</label>
 
@@ -340,6 +381,34 @@
             </div>
         </div>
     </section>
+
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script>
+        let 
+      
+        card = "Nama OPD: <?php echo e($jembatan->opd->nama_opd); ?>\r\n";
+        card += "Nama Penanggungjawab: <?php echo e($jembatan->pegawai->jabatan); ?>\r\n";
+        card +=
+            "Nama Bidang: <?php if(isset($jembatan->bidang->nama_bidang)): ?><?php echo e($jembatan->bidang->nama_bidang); ?><?php else: ?> Belum Ada Nama Bidang <?php endif; ?>\r\n";
+        card += "Kategori Aset : <?php echo e($jembatan->kategori->nama_kategori); ?>\r\n";
+        card += "Kode Aset : <?php echo e($jembatan->kode_aset); ?>\r\n";
+        card += "Nama Aset : <?php echo e($jembatan->nama_aset); ?>\r\n";
+        card += "Nomor Register : <?php echo e($jembatan->no_register); ?>\r\n";
+        card += "Tahun Perolehan : <?php echo e($jembatan->tahun_perolehan); ?>\r\n";
+        card += "Harga Perolehan : Rp.<?php echo e($jembatan->harga_perolehan); ?>\r\n";
+        card += "Keterangan : <?php echo e($jembatan->keterangan); ?>\r\n";
+        card += "Alamat : <?php echo e($jembatan->alamat); ?>\r\n";
+        card += "Nama Kondisi : <?php echo e($jembatan->nama_kondisi); ?>\r\n";
+        card += "Sumber Dana : <?php echo e($jembatan->nama_sumber_dana); ?>\r\n";
+        card += "Nomor SPPD : <?php echo e($jembatan->no_sppd); ?>\r\n";
+        card += "Nomor SPK : <?php echo e($jembatan->no_spk); ?>\r\n";
+        card += "Nomor Berita Acara : <?php echo e($jembatan->no_ba); ?>\r\n";
+        card += "Tanggal Serah Terima : <?php echo e($jembatan->tanggal_serah_terima); ?>\r\n";
+        card += "Kontruksi : <?php echo e($jembatan->kontruksi); ?>\r\n";
+        card += "Panjang/Lebar/Luas : <?php echo e($jembatan->panjang); ?>/<?php echo e($jembatan->lebar); ?>/<?php echo e($jembatan->luas); ?>\r\n";
+        
+        new QRCode(document.getElementById("test"), card);
+    </script>
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__componentOriginal347db4b87a67030074eb1f762cfda9c2)): ?>

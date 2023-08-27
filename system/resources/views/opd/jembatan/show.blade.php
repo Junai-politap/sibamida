@@ -232,7 +232,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <form action="{{ url('opd/jembatan-jalan/update-riwayat', $riwayat->id) }}" method="POST">
+                                    <form action="{{ url('opd/jembatan-jalan/update-riwayat', $riwayat->id) }}" method="POST" enctype="multipart/form-data">
                                         <div class="modal-body">
 
                                             @csrf

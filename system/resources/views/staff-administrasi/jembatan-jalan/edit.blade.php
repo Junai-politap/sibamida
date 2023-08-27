@@ -20,7 +20,7 @@
                                     hidden>
                                 <div class="form-group">
                                     <label for="exampleInputText">Nama Penanggung Jawab</label>
-                                    <select name="id_pegawai" class="form-control" required>
+                                    <select name="id_pegawai" class="form-control" >
                                         <option value=""> Pilih Penanggung Jawab Aset</option>
                                         @foreach ($list_pegawai as $pegawai)
                                             @if (Auth::guard('staff')->user()->id_opd == $pegawai->id_opd)
@@ -31,27 +31,27 @@
                                         @endforeach
                                     </select>
                                 </div>
-
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="exampleInputText">Kode Aset</label>
-                                            <input type="text" class="form-control" value="{{$jembatan->kode_aset}}" placeholder="Masukkan Kode Aset"
-                                                name="kode_aset" required>
+                                            <label for="exampleInputText">Nama Bidang</label>
+                                            <select class="form-control" name="id_bidang" >
+                                                
+                                                @foreach ($list_bidang as $bidang)
+                                                    @if (Auth::guard('staff')->user()->id_opd == $bidang->id_opd)
+                                                    <option @if ($bidang->id == $jembatan->id_bidang) selected @endif
+                                                        value="{{ $bidang->id }}">
+                                                        {{ $bidang->nama_bidang }}</option>
+                                                    @endif
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="exampleInputText">Nama Aset</label>
-                                            <input type="text" class="form-control" value="{{$jembatan->nama_aset}}" placeholder="Masukkan Nama Aset"
-                                                name="nama_aset" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kategori Aset</label>
-                                            <select class="form-control" name="id_kategori" required>
-                                                <option value=""> Pilih Kategori Aset</option>
+                                            <select class="form-control" name="id_kategori" >
+                                                
                                                 @foreach ($list_kategori as $kategori)
                                                     @if (Auth::guard('staff')->user()->id_opd == $kategori->id_opd)
                                                     <option @if ($kategori->id == $jembatan->id_kategori) selected @endif
@@ -63,6 +63,23 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Kode Aset</label>
+                                            <input type="text" class="form-control" value="{{$jembatan->kode_aset}}" placeholder="Masukkan Kode Aset"
+                                                name="kode_aset" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Nama Aset</label>
+                                            <input type="text" class="form-control" value="{{$jembatan->nama_aset}}" placeholder="Masukkan Nama Aset"
+                                                name="nama_aset" >
+                                        </div>
+                                    </div>
+                                </div>
+                               
 
                                 <div class="row">
                                     <div class="col-md-6">

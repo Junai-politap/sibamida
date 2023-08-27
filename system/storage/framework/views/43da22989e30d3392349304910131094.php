@@ -39,8 +39,7 @@
                             </div>
 
                             <div class="col-md-6 text-center">
-                                <?php echo QrCode::size(200)->generate('<?php echo e($tanah->kode_aset); ?>'); ?>
-
+                                <div id="test"></div>
 
                             </div>
                         </div>
@@ -60,7 +59,18 @@
                                         </tr>
                                         <tr>
                                             <td>Nama Penanggung Jawab</td>
-                                            <td> : <?php echo e($tanah->pegawai->nama); ?></td>
+                                            <td> : <?php echo e($tanah->pegawai->jabatan); ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Nama Bidang</td>
+                                            <td> :
+                                                <?php if(isset($tanah->bidang->nama_bidang)): ?>
+                                                    <?php echo e($tanah->bidang->nama_bidang); ?>
+
+                                                <?php else: ?>
+                                                    <strong>DATA TIDAK ADA NAMA BIDANG</strong>
+                                                <?php endif; ?>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Kode Aset</td>
@@ -106,7 +116,7 @@
                                             <td>Nomor Sertifikat</td>
                                             <td> : <?php echo e($tanah->no_sertifikat); ?></td>
                                         </tr>
-                                        
+
                                     </thead>
                                 </table>
                             </div>
@@ -150,14 +160,32 @@
 
 
                                 <div class="card-body">
-                                    <strong>Tanggal Mulai</strong>
-                                    <p class="text-muted">
-                                        <?php echo e(date("Y-m-d", strtotime($riwayat->tanggal_mulai))); ?>
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <strong>Tanggal Mulai</strong>
+                                            <p class="text-muted">
+                                                <?php echo e(date('Y-m-d', strtotime($riwayat->tanggal_mulai))); ?>
 
-                                    </p>
+                                            </p>
+                                            <hr>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <strong>Nama Penanggung Jawab</strong>
+                                            <p class="text-muted"><?php echo e($riwayat->pegawai->nama); ?></p>
+                                            <hr>
+                                        </div>
+                                    </div>
                                     <hr>
-                                    <strong>Nama Penanggung Jawab</strong>
-                                    <p class="text-muted"><?php echo e($riwayat->pegawai->nama); ?></p>
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <strong>File SK</strong>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a class="btn btn-info" href="<?php echo e(url("public/$riwayat->sk")); ?>"
+                                                target="_blank"><span class="fa fa-download"></span> File SK</a>
+
+                                        </div>
+                                    </div>
                                     <hr>
                                     <strong>Keterangan</strong>
                                     <p class="text-muted">
@@ -180,7 +208,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <form action="<?php echo e(url('staff-administrasi/tanah/update-riwayat', $riwayat->id)); ?>" method="POST">
+                                    <form action="<?php echo e(url('staff-administrasi/tanah/update-riwayat', $riwayat->id)); ?>" method="POST" enctype="multipart/form-data">
                                         <div class="modal-body">
 
                                             <?php echo csrf_field(); ?>
@@ -212,7 +240,15 @@
                                                             value="<?php echo e(date("Y-m-d", strtotime($riwayat->tanggal_mulai))); ?>">
                                                     </div>
                                                 </div>
-
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 col-form-label">
+                                                        File SK
+                                                    </label>
+                                                    <div class="col-sm-9">
+                                                        <input type="file" class="form-control" name="sk"
+                                                            accept="application/pdf" value="<?php echo e($riwayat->sk); ?>">
+                                                    </div>
+                                                </div>
                                                 <div class="form-group row">
                                                     <label class="col-sm-3 col-form-label">
                                                         Keterangan
@@ -273,7 +309,11 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="form-group">
+                                <label for="exampleInputText"> File SK</label>
+                                <input type="file" class="form-control" name="sk" accept="application/pdf"
+                                    required>
+                            </div>
                             <div class="form-group">
                                 <label for="exampleInputText">Keterangan</label>
 
@@ -288,6 +328,28 @@
             </div>
         </div>
     </section>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script>
+        let 
+        
+        card = "Nama OPD: <?php echo e($tanah->opd->nama_opd); ?>\r\n";
+        card += "Nama Penanggungjawab: <?php echo e($tanah->pegawai->jabatan); ?>\r\n";
+        card +=
+            "Nama Bidang: <?php if(isset($tanah->bidang->nama_bidang)): ?><?php echo e($tanah->bidang->nama_bidang); ?><?php else: ?> DATA TIDAK ADA NAMA BIDANG <?php endif; ?>\r\n";
+        card += "Kategori Barang : <?php echo e($tanah->kategori->nama_kategori); ?>\r\n";
+        card += "Kode Barang : <?php echo e($tanah->kode_barang); ?>\r\n";
+        card += "Nama Barang : <?php echo e($tanah->nama_barang); ?>\r\n";
+        card += "Nomor Register : <?php echo e($tanah->no_register); ?>\r\n";
+        card += "Harga Perolehan : <?php echo e($tanah->cara_perolehan); ?>\r\n";
+        card += "Tahun Perolehan : <?php echo e($tanah->tahun_perolehan); ?>\r\n";
+        card += "Harga : Rp. <?php echo e($tanah->harga); ?>\r\n";
+        card += "Luas : <?php echo e($tanah->luas); ?>\r\n";
+        card += "Keterangan : <?php echo e($tanah->keterangan); ?>\r\n";
+        card += "Penggunaan : <?php echo e($tanah->penggunaan); ?>\r\n";
+        card += "Nomor Sertifikat : <?php echo e($tanah->no_sertifikat); ?>\r\n";
+       
+        new QRCode(document.getElementById("test"), card);
+    </script>
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__componentOriginal347db4b87a67030074eb1f762cfda9c2)): ?>

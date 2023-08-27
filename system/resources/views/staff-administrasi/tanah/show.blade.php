@@ -37,7 +37,17 @@
                                         </tr>
                                         <tr>
                                             <td>Nama Penanggung Jawab</td>
-                                            <td> : {{ $tanah->pegawai->nama }}</td>
+                                            <td> : {{ $tanah->pegawai->jabatan }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Nama Bidang</td>
+                                            <td> :
+                                                @isset($tanah->bidang->nama_bidang)
+                                                    {{ $tanah->bidang->nama_bidang }}
+                                                @else
+                                                    <strong>DATA TIDAK ADA NAMA BIDANG</strong>
+                                                @endisset
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Kode Aset</td>
@@ -83,7 +93,7 @@
                                             <td>Nomor Sertifikat</td>
                                             <td> : {{ $tanah->no_sertifikat }}</td>
                                         </tr>
-                                        
+
                                     </thead>
                                 </table>
                             </div>
@@ -127,13 +137,31 @@
 
 
                                 <div class="card-body">
-                                    <strong>Tanggal Mulai</strong>
-                                    <p class="text-muted">
-                                        {{date("Y-m-d", strtotime($riwayat->tanggal_mulai)) }}
-                                    </p>
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <strong>Tanggal Mulai</strong>
+                                            <p class="text-muted">
+                                                {{ date('Y-m-d', strtotime($riwayat->tanggal_mulai)) }}
+                                            </p>
+                                            <hr>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <strong>Nama Penanggung Jawab</strong>
+                                            <p class="text-muted">{{ $riwayat->pegawai->nama }}</p>
+                                            <hr>
+                                        </div>
+                                    </div>
                                     <hr>
-                                    <strong>Nama Penanggung Jawab</strong>
-                                    <p class="text-muted">{{ $riwayat->pegawai->nama }}</p>
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <strong>File SK</strong>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a class="btn btn-info" href="{{ url("public/$riwayat->sk") }}"
+                                                target="_blank"><span class="fa fa-download"></span> File SK</a>
+
+                                        </div>
+                                    </div>
                                     <hr>
                                     <strong>Keterangan</strong>
                                     <p class="text-muted">
@@ -155,7 +183,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <form action="{{ url('staff-administrasi/tanah/update-riwayat', $riwayat->id) }}" method="POST">
+                                    <form action="{{ url('staff-administrasi/tanah/update-riwayat', $riwayat->id) }}" method="POST" enctype="multipart/form-data">
                                         <div class="modal-body">
 
                                             @csrf
@@ -187,7 +215,15 @@
                                                             value="{{date("Y-m-d", strtotime($riwayat->tanggal_mulai)) }}">
                                                     </div>
                                                 </div>
-
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 col-form-label">
+                                                        File SK
+                                                    </label>
+                                                    <div class="col-sm-9">
+                                                        <input type="file" class="form-control" name="sk"
+                                                            accept="application/pdf" value="{{ $riwayat->sk }}">
+                                                    </div>
+                                                </div>
                                                 <div class="form-group row">
                                                     <label class="col-sm-3 col-form-label">
                                                         Keterangan
@@ -247,7 +283,11 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="form-group">
+                                <label for="exampleInputText"> File SK</label>
+                                <input type="file" class="form-control" name="sk" accept="application/pdf"
+                                    required>
+                            </div>
                             <div class="form-group">
                                 <label for="exampleInputText">Keterangan</label>
 
@@ -267,7 +307,9 @@
         let 
         
         card = "Nama OPD: {{ $tanah->opd->nama_opd }}\r\n";
-        card += "Nama Penanggungjawab: {{ $tanah->pegawai->nama }}\r\n";
+        card += "Nama Penanggungjawab: {{ $tanah->pegawai->jabatan }}\r\n";
+        card +=
+            "Nama Bidang: @isset($tanah->bidang->nama_bidang){{ $tanah->bidang->nama_bidang }}@else DATA TIDAK ADA NAMA BIDANG @endisset\r\n";
         card += "Kategori Barang : {{ $tanah->kategori->nama_kategori }}\r\n";
         card += "Kode Barang : {{ $tanah->kode_barang }}\r\n";
         card += "Nama Barang : {{ $tanah->nama_barang }}\r\n";

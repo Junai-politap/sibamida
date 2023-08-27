@@ -18,7 +18,7 @@
                                 <input type="text" name="id_opd" value="{{ Auth::guard('staff')->user()->id_opd }}" class="form-control" hidden>
                                     <input type="text" name="id_pegawai" value="{{ Auth::guard('staff')->user()->id }}" class="form-control" hidden>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kode Aset</label>
                                             <input type="text" class="form-control" placeholder="Masukkan Kode Aset"
@@ -26,15 +26,31 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nama Aset</label>
                                             <input type="text" class="form-control" placeholder="Masukkan Nama Aset"
                                                 name="nama_aset" required>
                                         </div>
                                     </div>
-
-                                    <div class="col-md-4">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Nama Bidang</label>
+                                            <select class="form-control" name="id_bidang" required>
+                                                <option value=""> Pilih Nama Bidang</option>
+                                                @foreach ($list_bidang as $bidang)
+                                                    @if (Auth::guard('staff')->user()->id_opd == $bidang->id_opd)
+                                                        <option value="{{ $bidang->id }}">
+                                                            {{ $bidang->nama_bidang }}
+                                                        </option>
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kategori Aset</label>
                                             <select class="form-control" name="id_kategori" required>

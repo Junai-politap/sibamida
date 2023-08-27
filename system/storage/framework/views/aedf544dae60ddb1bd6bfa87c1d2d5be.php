@@ -41,7 +41,7 @@
                                 <input type="text" name="id_opd" value="<?php echo e(Auth::guard('staff')->user()->id_opd); ?>" hidden>
                                 <input type="text" name="id_pegawai" value="<?php echo e(Auth::guard('staff')->user()->id); ?>" hidden>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kode Barang</label>
                                             <input type="text" class="form-control" placeholder="Masukkan Kode Barang"
@@ -49,15 +49,32 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nama Barang</label>
                                             <input type="text" class="form-control" placeholder="Masukkan Nama Barang"
                                                 name="nama_barang" required>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Nama Bidang </label>
+                                            <select class="form-control" name="id_bidang" required>
+                                                <option value=""> Pilih bidang Aset</option>
+                                                <?php $__currentLoopData = $list_bidang; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bidang): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if( Auth::guard('staff')->user()->id_opd == $bidang->id_opd): ?>
+                                                    <option value="<?php echo e($bidang->id); ?>">
+                                                        <?php echo e($bidang->nama_bidang); ?>
 
-                                    <div class="col-md-4">
+                                                    </option>
+                                                    <?php endif; ?>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kategori Aset</label>
                                             <select class="form-control" name="id_kategori" required>
