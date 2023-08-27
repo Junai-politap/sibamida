@@ -28,7 +28,7 @@
                                     <th class="text-center">Kode Aset</th>
                                     <th class="text-center">Nama Aset</th>
                                     <th class="text-center">Nama Penanggungjawab</th>
-                                    <th class="text-center">Nama OPD</th>
+                                    <th class="text-center">Keterangan</th>
 
                                 </tr>
                             </thead>
@@ -49,9 +49,9 @@
 
                                         </td>
                                         <td class="">{{ $bangunan->nama_barang }}</td>
-                                        <td class="">{{ $bangunan->pegawai->nama }}</td>
+                                        <td class="">{{ $bangunan->pegawai->jabatan }}</td>
                                         <td>
-                                            {{ $bangunan->opd->nama_opd }}
+                                            {{ $bangunan->keterangan }}
 
                                         </td>
                                     </tr>

@@ -42,7 +42,7 @@
                                     hidden>
                                 <div class="form-group">
                                     <label for="exampleInputText">Nama Penanggung Jawab</label>
-                                    <select name="id_pegawai" class="form-control" required>
+                                    <select name="id_pegawai" class="form-control" >
                                         <option value=""> Pilih Penanggung Jawab Aset</option>
                                         <?php $__currentLoopData = $list_pegawai; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pegawai): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <?php if(Auth::guard('staff')->user()->id_opd == $pegawai->id_opd): ?>
@@ -53,27 +53,27 @@
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                 </div>
-
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="exampleInputText">Kode Aset</label>
-                                            <input type="text" class="form-control" value="<?php echo e($jembatan->kode_aset); ?>" placeholder="Masukkan Kode Aset"
-                                                name="kode_aset" required>
+                                            <label for="exampleInputText">Nama Bidang</label>
+                                            <select class="form-control" name="id_bidang" >
+                                                
+                                                <?php $__currentLoopData = $list_bidang; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bidang): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <?php if(Auth::guard('staff')->user()->id_opd == $bidang->id_opd): ?>
+                                                    <option <?php if($bidang->id == $jembatan->id_bidang): ?> selected <?php endif; ?>
+                                                        value="<?php echo e($bidang->id); ?>">
+                                                        <?php echo e($bidang->nama_bidang); ?></option>
+                                                    <?php endif; ?>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="exampleInputText">Nama Aset</label>
-                                            <input type="text" class="form-control" value="<?php echo e($jembatan->nama_aset); ?>" placeholder="Masukkan Nama Aset"
-                                                name="nama_aset" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kategori Aset</label>
-                                            <select class="form-control" name="id_kategori" required>
-                                                <option value=""> Pilih Kategori Aset</option>
+                                            <select class="form-control" name="id_kategori" >
+                                                
                                                 <?php $__currentLoopData = $list_kategori; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $kategori): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                     <?php if(Auth::guard('staff')->user()->id_opd == $kategori->id_opd): ?>
                                                     <option <?php if($kategori->id == $jembatan->id_kategori): ?> selected <?php endif; ?>
@@ -85,6 +85,23 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Kode Aset</label>
+                                            <input type="text" class="form-control" value="<?php echo e($jembatan->kode_aset); ?>" placeholder="Masukkan Kode Aset"
+                                                name="kode_aset" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Nama Aset</label>
+                                            <input type="text" class="form-control" value="<?php echo e($jembatan->nama_aset); ?>" placeholder="Masukkan Nama Aset"
+                                                name="nama_aset" >
+                                        </div>
+                                    </div>
+                                </div>
+                               
 
                                 <div class="row">
                                     <div class="col-md-6">

@@ -9,7 +9,7 @@ function checkRouteActive($route)
 ?>
 
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <a href="index3.html" class="brand-link">
+    <a href="<?php echo e(url('staff-administrasi')); ?>" class="brand-link">
         <img src="<?php echo e(url('public/admin')); ?>/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
             class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light"> SIBAMIDA</span>
@@ -22,7 +22,7 @@ function checkRouteActive($route)
                     alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">
+                <a href="<?php echo e(url('staff-administrasi')); ?>" class="d-block">
                     <?php echo e(Auth::guard('staff')->user()->nama); ?>
 
                 </a>
@@ -50,6 +50,20 @@ function checkRouteActive($route)
                     <a href="<?php echo e(url('staff-administrasi/kategori')); ?>" class="nav-link <?php echo e(checkRouteActive('staff-administrasi/kategori')); ?>">
                         <i class="nav-icon fa fa-list "></i>
                         <p>Data Kategori Aset</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="<?php echo e(url('staff-administrasi/bidang')); ?>" class="nav-link <?php echo e(checkRouteActive('staff-administrasi/bidang')); ?>">
+                        <i class="nav-icon fa fa-list "></i>
+                        <p>Data Bidang</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="<?php echo e(url('staff-administrasi/ruangan')); ?>" class="nav-link <?php echo e(checkRouteActive('staff-administrasi/ruangan')); ?>">
+                        <i class="nav-icon fa fa-list "></i>
+                        <p>Data Ruangan</p>
                     </a>
                 </li>
 
@@ -91,13 +105,6 @@ function checkRouteActive($route)
 
                     </ul>
     
-                </li>
-
-                <li class="nav-item">
-                    <a href="<?php echo e(url('staff-administrasi/laporan')); ?>" class="nav-link <?php echo e(checkRouteActive('staff-administrasi/laporan')); ?>">
-                        <i class="nav-icon fa fa-list "></i>
-                        <p> Laporan</p>
-                    </a>
                 </li>
 
             </ul>

@@ -16,35 +16,53 @@
                             enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
-                                <input type="text" name="id_opd" value="{{ Auth::guard('staff')->user()->id_opd }}" hidden>
-                                <input type="text" name="id_pegawai" value="{{ Auth::guard('staff')->user()->id }}" hidden>
+                                <input type="text" name="id_opd" value="{{ Auth::guard('staff')->user()->id_opd }}"
+                                    hidden>
+                                <input type="text" name="id_pegawai" value="{{ Auth::guard('staff')->user()->id }}"
+                                    hidden>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Nama Bidang</label>
+                                            <select class="form-control" name="id_bidang" required>
+                                                <option value=""> Pilih Nama Bidang</option>
+                                                @foreach ($list_bidang as $bidang)
+                                                    @if (Auth::guard('staff')->user()->id_opd == $bidang->id_opd)
+                                                        <option value="{{ $bidang->id }}">
+                                                            {{ $bidang->nama_bidang }}
+                                                        </option>
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kode Barang</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan Kode Barang"
-                                                name="kode_barang" required>
+                                            <input type="text" class="form-control"
+                                                placeholder="Masukkan Kode Barang" name="kode_barang" required>
                                         </div>
                                     </div>
-
-                                    <div class="col-md-4">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nama Barang</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan Nama Barang"
-                                                name="nama_barang" required>
+                                            <input type="text" class="form-control"
+                                                placeholder="Masukkan Nama Barang" name="nama_barang" required>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kategori Aset</label>
                                             <select class="form-control" name="id_kategori" required>
                                                 <option value=""> Pilih Kategori Aset</option>
                                                 @foreach ($list_kategori as $kategori)
-                                                @if ( Auth::guard('staff')->user()->id_opd == $kategori->id_opd)
-                                                    <option value="{{ $kategori->id }}">
-                                                        {{ $kategori->nama_kategori }}
-                                                    </option>
+                                                    @if (Auth::guard('staff')->user()->id_opd == $kategori->id_opd)
+                                                        <option value="{{ $kategori->id }}">
+                                                            {{ $kategori->nama_kategori }}
+                                                        </option>
                                                     @endif
                                                 @endforeach
                                             </select>
@@ -101,8 +119,8 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Lokasi</label>
-                                            <input type="text" class="form-control"
-                                                placeholder="Masukkan Lokasi" name="lokasi">
+                                            <input type="text" class="form-control" placeholder="Masukkan Lokasi"
+                                                name="lokasi">
                                         </div>
                                     </div>
 
@@ -113,8 +131,8 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Keterangan</label>
-                                            <input type="text" class="form-control"
-                                                placeholder="Masukkan Keterangan" name="keterangan">
+                                            <input type="text" class="form-control" placeholder="Masukkan Keterangan"
+                                                name="keterangan">
                                         </div>
                                     </div>
 

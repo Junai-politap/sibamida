@@ -38,36 +38,55 @@
                             enctype="multipart/form-data">
                             <?php echo csrf_field(); ?>
                             <div class="card-body">
-                                <input type="text" name="id_opd" value="<?php echo e(Auth::guard('staff')->user()->id_opd); ?>" hidden>
-                                <input type="text" name="id_pegawai" value="<?php echo e(Auth::guard('staff')->user()->id); ?>" hidden>
+                                <input type="text" name="id_opd" value="<?php echo e(Auth::guard('staff')->user()->id_opd); ?>"
+                                    hidden>
+                                <input type="text" name="id_pegawai" value="<?php echo e(Auth::guard('staff')->user()->id); ?>"
+                                    hidden>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText">Nama Bidang</label>
+                                            <select class="form-control" name="id_bidang" required>
+                                                <option value=""> Pilih Nama Bidang</option>
+                                                <?php $__currentLoopData = $list_bidang; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bidang): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <?php if(Auth::guard('staff')->user()->id_opd == $bidang->id_opd): ?>
+                                                        <option value="<?php echo e($bidang->id); ?>">
+                                                            <?php echo e($bidang->nama_bidang); ?>
+
+                                                        </option>
+                                                    <?php endif; ?>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kode Barang</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan Kode Barang"
-                                                name="kode_barang" required>
+                                            <input type="text" class="form-control"
+                                                placeholder="Masukkan Kode Barang" name="kode_barang" required>
                                         </div>
                                     </div>
-
-                                    <div class="col-md-4">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Nama Barang</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan Nama Barang"
-                                                name="nama_barang" required>
+                                            <input type="text" class="form-control"
+                                                placeholder="Masukkan Nama Barang" name="nama_barang" required>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Kategori Aset</label>
                                             <select class="form-control" name="id_kategori" required>
                                                 <option value=""> Pilih Kategori Aset</option>
                                                 <?php $__currentLoopData = $list_kategori; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $kategori): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <?php if( Auth::guard('staff')->user()->id_opd == $kategori->id_opd): ?>
-                                                    <option value="<?php echo e($kategori->id); ?>">
-                                                        <?php echo e($kategori->nama_kategori); ?>
+                                                    <?php if(Auth::guard('staff')->user()->id_opd == $kategori->id_opd): ?>
+                                                        <option value="<?php echo e($kategori->id); ?>">
+                                                            <?php echo e($kategori->nama_kategori); ?>
 
-                                                    </option>
+                                                        </option>
                                                     <?php endif; ?>
                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </select>
@@ -124,8 +143,8 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Lokasi</label>
-                                            <input type="text" class="form-control"
-                                                placeholder="Masukkan Lokasi" name="lokasi">
+                                            <input type="text" class="form-control" placeholder="Masukkan Lokasi"
+                                                name="lokasi">
                                         </div>
                                     </div>
 
@@ -136,8 +155,8 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputText">Keterangan</label>
-                                            <input type="text" class="form-control"
-                                                placeholder="Masukkan Keterangan" name="keterangan">
+                                            <input type="text" class="form-control" placeholder="Masukkan Keterangan"
+                                                name="keterangan">
                                         </div>
                                     </div>
 
