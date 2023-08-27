@@ -74,6 +74,13 @@ function checkRouteActive($route)
                 </li>
 
                 <li class="nav-item">
+                    <a href="{{ url('opd/kondisi') }}" class="nav-link {{ checkRouteActive('opd/kondisi') }}">
+                        <i class="nav-icon fa fa-list "></i>
+                        <p>Data Kondisi Aset</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-database"></i>
                         <p>

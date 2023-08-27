@@ -4,6 +4,7 @@ use App\Http\Controllers\Staff\BangunanController;
 use App\Http\Controllers\Staff\BidangController;
 use App\Http\Controllers\Staff\JembatanDanJalanController;
 use App\Http\Controllers\Staff\KategoriController;
+use App\Http\Controllers\Staff\KondisiController;
 use App\Http\Controllers\Staff\PeralatanDanMesinController;
 use App\Http\Controllers\Staff\RuanganController;
 use App\Http\Controllers\Staff\StaffController;
@@ -58,4 +59,9 @@ Route::group(['middleware' => 'auth:staff'], function () {
     Route::post('bidang', [BidangController::class, 'store']);
     Route::put('bidang/{bidang}', [BidangController::class, 'update']);
     Route::get('bidang/delete/{bidang}', [BidangController::class, 'destroy']);
+
+    Route::get('kondisi', [KondisiController::class, 'index']);
+    Route::post('kondisi', [KondisiController::class, 'store']);
+    Route::put('kondisi/{kondisi}', [KondisiController::class, 'update']);
+    Route::get('kondisi/delete/{kondisi}', [KondisiController::class, 'destroy']);
 });

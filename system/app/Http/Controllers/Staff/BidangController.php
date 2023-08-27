@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class BidangController extends Controller
 {
-     public function index()
+    public function index()
     {
         $data['list_bidang'] = Bidang::all();
         return view('staff-administrasi.bidang.index', $data);

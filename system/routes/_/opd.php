@@ -4,6 +4,7 @@ use App\Http\Controllers\Opd\BangunanController;
 use App\Http\Controllers\Opd\BidangController;
 use App\Http\Controllers\Opd\JembatandanjalanController;
 use App\Http\Controllers\Opd\KategoriController;
+use App\Http\Controllers\Opd\KondisiController;
 use App\Http\Controllers\Opd\LaporanController;
 use App\Http\Controllers\Opd\OpdController;
 use App\Http\Controllers\Opd\PegawaiController;
@@ -33,6 +34,11 @@ Route::group(['middleware' => 'auth:opd'], function () {
     Route::post('bidang', [BidangController::class, 'store']);
     Route::put('bidang/{bidang}', [BidangController::class, 'update']);
     Route::get('bidang/delete/{bidang}', [BidangController::class, 'destroy']);
+
+    Route::get('kondisi', [KondisiController::class, 'index']);
+    Route::post('kondisi', [KondisiController::class, 'store']);
+    Route::put('kondisi/{kondisi}', [KondisiController::class, 'update']);
+    Route::get('kondisi/delete/{kondisi}', [KondisiController::class, 'destroy']);
 
     //jembatan
     Route::resource('master/jembatan-jalan', JembatandanjalanController::class);
